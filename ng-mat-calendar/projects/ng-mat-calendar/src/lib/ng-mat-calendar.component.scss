@@ -1,0 +1,170 @@
+@import '../../shared/styles/variables.scss';
+@import '../../shared/styles/mixins.scss';
+
+:host(ng-mat-calendar) {
+    flex: 1;
+}
+
+.calendar {
+    display: flex;
+    flex-direction: column;
+}
+
+.calendar__times {
+    display: flex;
+    width: 80px;
+    flex-direction: column;
+
+    color: $color-gray-medium;
+    text-align: center;
+
+    border-left: 1px solid $color-gray-light;
+    border-right: 1px solid $color-gray-light;
+}
+
+.time-unit {
+    display: flex;
+    justify-content: center;
+}
+
+.calendar__toolbar {
+    display: flex;
+    flex-direction: row;  
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: $margin-md;
+
+    .toolbar__button,
+    .toolbar__month {
+        display: flex;
+    }
+
+    .toolbar__button--today {
+        margin-right: $margin-md;
+    }
+
+    .toolbar__month {
+        margin-left: $margin-md;
+        font-size: $font-size-md;
+        font-weight: 200;
+    }
+}
+
+.calendar__content {
+    flex: 1;
+    flex-direction: column;
+}
+
+.calendar__days {
+    display: flex;
+    flex-direction: row;
+    margin-left: 79px;
+    border-left: 1px solid $color-gray-light;
+}
+
+.calendar__lanes {
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+
+    overflow: scroll;
+    max-height: calc(100vh - 258px);
+
+    .day__lane {
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        flex: 1;
+        padding: 0 $margin-xs;
+        border-right: 1px solid $color-gray-light;
+        transition: $transition-md;
+
+        &:hover {
+            background-color: $color-gray-lightest;
+        }
+    }
+
+    .day__lane--today {
+        background-color: $color-bluish-light;
+    }
+}
+
+.calendar__day {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+
+    border-right: 1px solid $color-gray-light;
+    padding-right: $margin-xs;
+    margin-left: $margin-xs;
+
+    .day__header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: $color-gray-medium;
+
+        .day-name {
+            margin-bottom: $margin-xs;
+        }
+    
+        .day-number {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: $margin-xs;
+
+            width: 40px;
+            height: 40px;
+            border-radius: 20px;
+            background-color: $color-gray-light;
+            color: $color-gray-darker;
+        }
+    }
+
+    .day__header--today {
+        .day-number {
+            background-color: $brand-primary;
+            color: $color-lightest;
+        }
+    }
+}
+
+.calendar__spy {
+    position: relative;
+    z-index: 1;
+    border: 1px solid $color-focus;
+    width: calc(100% + 1rem);
+    left: -.5rem;
+
+    &:before {
+        content: '';
+        display: block;
+        position: absolute;
+        width: 10px;
+        background-color: $color-focus;
+        height: 10px;
+        border-radius: 10px;
+        top: -5px;
+        left: -7px;
+    }
+}
+
+.calendar__item {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    left: $margin-xs;
+    flex: 1;
+    background-color: $color-100;
+    border-radius: $radius-md;
+    min-height: 58px;
+    
+    width: calc(100% - #{$margin-md});
+    transition: $transition-md;
+
+    &:hover {
+        background-color: darken($color-100, 10%);
+        cursor: pointer;
+    }
+}

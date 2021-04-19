@@ -1,0 +1,70 @@
+<div class="calendar">
+    <div class="calendar__toolbar">
+        <app-button
+            class="toolbar__button toolbar__button--today"
+            title="Today"
+            [color]="buttonTodayColor"
+            [type]="buttonTodayType"
+            (action)="setCalendarToday()">
+        </app-button>
+
+        <app-button
+            class="toolbar__button"
+            icon="chevron_left"
+            [color]="buttonNavigationColor"
+            [type]="buttonNavigationType"
+            (action)="setCalendar(-7)">
+        </app-button>
+
+        <app-button
+            class="toolbar__button"
+            icon="chevron_right"
+            [color]="buttonNavigationColor"
+            [type]="buttonNavigationType"
+            (action)="setCalendar(7)">
+        </app-button>
+
+        <div class="toolbar__month">
+            {{ selectedMonthAndYear }}
+        </div>
+    </div>
+
+    <div class="calendar__content">
+        <div class="calendar__days">
+            <div class="calendar__day" *ngFor="let activeLane of calendar.activeDayLanes;">
+                <div class="day__header" [ngClass]="{ 'day__header--today': isToday(activeLane.date) }">
+                    <span class="day-name">{{ getDayName(activeLane.date) }}</span> 
+                    <span class="day-number">{{ getDayNumber(activeLane.date) }}</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="calendar__lanes">
+            <div class="calendar__times" [style.height.px]="calculateGrid().height">
+                <div class="time-unit" *ngFor="let time of times;" [style.height.px]="pixelsPerHour">
+                    {{ time.time }}
+                </div>
+            </div>
+
+            <div class="day__lane"
+                *ngFor="let activeLane of calendar.activeDayLanes;"
+                [style.height.px]="calculateGrid().height"
+                [ngClass]="{ 'day__lane--today': isToday(activeLane.date) }">
+
+                <div class="calendar__spy" *ngIf="isToday(activeLane.date)" [style.marginTop.px]="calculateSpy()"></div>
+                
+                <event-display
+                    [component]="options.renderComponent"
+                    [event]="event"
+                    class="calendar__item"
+                    *ngFor="let event of activeLane.events; let i = index"
+                    [style.marginTop.px]="event.offset.offsetTop"
+                    [style.height.px]="event.offset.durationOffset"
+                    matTooltip="{{ event.title }} ({{ event.startTime }} - {{ event.endTime }})"
+                    matTooltipPosition="right"
+                    (click)="eventClick(event)">
+                </event-display>
+            </div>
+        </div>
+    </div>
+</div>
