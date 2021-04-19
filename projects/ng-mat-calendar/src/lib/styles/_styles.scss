@@ -1,2 +1,6 @@
-@import '../../../shared/styles/variables.scss';
-@import '../../../shared/styles/mixins.scss';
+@import './variables.scss';
+@import './mixins.scss';
+
+* {
+    box-sizing: border-box;
+}

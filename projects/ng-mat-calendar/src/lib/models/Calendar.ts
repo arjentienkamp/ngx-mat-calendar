@@ -1,18 +1,19 @@
 export default interface ICalendar {
-    activeDayLanes: IDayLane[];
+    activeDayLanes: Day[];
 }
 
-export interface IDayLane {
+export interface Day {
     date: string;
-    events: IDayLaneEvent[];
+    events: CalendarEvent[];
 }
 
-export interface IDayLaneEvent {
+export interface CalendarEvent {
     title: string;
     date: string;
-    offset: IOffset;
+    offset?: IOffset;
     startTime: string;
     endTime: string;
+    location?: string;
 }
 
 export interface IOffset {

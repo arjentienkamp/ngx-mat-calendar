@@ -1,0 +1,13 @@
+<div class="container">
+    <mat-card>
+        <mat-card-content>
+            <ng-mat-calendar
+                [options]="calendarOptions"
+                [events]="events"
+                [(date)]="date">
+            </ng-mat-calendar>
+        </mat-card-content>
+    </mat-card>
+
+    {{ date }}
+</div>

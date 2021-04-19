@@ -1,28 +1,28 @@
 <div class="calendar">
     <div class="calendar__toolbar">
-        <app-button
+         <button
+            mat-stroked-button
             class="toolbar__button toolbar__button--today"
-            title="Today"
-            [color]="buttonTodayColor"
-            [type]="buttonTodayType"
-            (action)="setCalendarToday()">
-        </app-button>
+            color="primary"
+            (click)="setCalendarToday()">
+                Today
+        </button>
 
-        <app-button
+        <button
+            mat-icon-button
             class="toolbar__button"
-            icon="chevron_left"
-            [color]="buttonNavigationColor"
-            [type]="buttonNavigationType"
-            (action)="setCalendar(-7)">
-        </app-button>
+            color="primary"
+            (click)="setCalendar(-7)">
+            <mat-icon>chevron_left</mat-icon>
+        </button>
 
-        <app-button
+        <button
+            mat-icon-button
             class="toolbar__button"
-            icon="chevron_right"
-            [color]="buttonNavigationColor"
-            [type]="buttonNavigationType"
-            (action)="setCalendar(7)">
-        </app-button>
+            color="primary"
+            (click)="setCalendar(7)">
+            <mat-icon>chevron_right</mat-icon>
+        </button>
 
         <div class="toolbar__month">
             {{ selectedMonthAndYear }}
@@ -58,9 +58,9 @@
                     [event]="event"
                     class="calendar__item"
                     *ngFor="let event of activeLane.events; let i = index"
-                    [style.marginTop.px]="event.offset.offsetTop"
-                    [style.height.px]="event.offset.durationOffset"
-                    matTooltip="{{ event.title }} ({{ event.startTime }} - {{ event.endTime }})"
+                    [style.marginTop.px]="event.offset?.offsetTop"
+                    [style.height.px]="event.offset?.durationOffset"
+                    matTooltip="{{ event.title }} ({{ getTime(event.startTime) }} - {{ getTime(event.endTime) }})"
                     matTooltipPosition="right"
                     (click)="eventClick(event)">
                 </event-display>

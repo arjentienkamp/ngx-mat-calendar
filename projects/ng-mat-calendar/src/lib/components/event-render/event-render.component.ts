@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { IDayLaneEvent } from '../../models/Calendar';
+import { CalendarEvent } from '../../models/Calendar';
+import { FormattingService } from '../../services/formatting.service';
 
 @Component({
     // tslint:disable-next-line:component-selector
@@ -8,9 +9,16 @@ import { IDayLaneEvent } from '../../models/Calendar';
     styleUrls: ['./event-render.component.scss']
 })
 export class EventRenderComponent implements OnInit {
-    @Input() event!: IDayLaneEvent;
+    @Input() event!: CalendarEvent;
+    startTime = '';
+    endTime = '';
 
-    constructor() {}
+    constructor(
+        private formattingService: FormattingService
+    ) {}
 
-    ngOnInit(): void {}
+    ngOnInit(): void {
+        this.startTime = this.formattingService.getTime(this.event.startTime);
+        this.endTime = this.formattingService.getTime(this.event.endTime);
+    }
 }

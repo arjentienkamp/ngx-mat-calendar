@@ -1,4 +1,14 @@
-# NgMatCalendar
+# Angular Calendar / Timetable component
+
+This component displays a calendar/ timetable in your Angular project. 
+
+## Demo
+
+Live demo (link)
+
+GIF
+
+
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.2.
 

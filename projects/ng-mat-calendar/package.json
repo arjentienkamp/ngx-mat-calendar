@@ -3,7 +3,10 @@
   "version": "0.0.1",
   "peerDependencies": {
     "@angular/common": "^11.2.10",
-    "@angular/core": "^11.2.10"
+    "@angular/core": "^11.2.10",
+    "@angular/material": "^11.2.2",
+    "@angular/material-moment-adapter": "^11.2.8",
+    "moment": "^2.29.1"
   },
   "dependencies": {
     "tslib": "^2.0.0"

@@ -1,31 +1,16 @@
 import {
-    AfterViewInit,
     Component,
-    ComponentFactory,
-    ComponentFactoryResolver,
-    ComponentRef,
+    EventEmitter,
     Input,
-    OnDestroy,
     OnInit,
-    QueryList,
-    ViewChild,
-    ViewChildren,
-    ViewContainerRef
+    Output,
 } from '@angular/core';
 
-import { select, Store } from '@ngrx/store';
 import * as moment from 'moment';
-import ICalendar, { IDayLane, IDayLaneEvent, IOffset } from './models/Calendar';
-import { Days } from 'src/app/shared/models/Days';
-import { Times } from 'src/app/shared/models/Times';
-import { EventItem } from 'src/app/shared/store/models/calendar.model';
-import { selectEvents } from 'src/app/shared/store/selectors/calendar.selectors';
-import AppState from '../../app.state';
-import { selectDate } from 'src/app/shared/store/selectors/ui.selectors';
-import { ButtonType } from 'src/app/shared/components/button/ButtonType';
-import { Color } from 'src/app/shared/models/Color';
-import { SetUiDateAction } from 'src/app/shared/store/actions/ui.actions';
+import ICalendar, { Day, CalendarEvent, IOffset } from './models/Calendar';
+import { Times } from './models/Times';
 import { CalendarOptions } from './models/CalendarOptions';
+import { FormattingService } from './services/formatting.service';
 
 @Component({
     // tslint:disable-next-line:component-selector
@@ -35,86 +20,67 @@ import { CalendarOptions } from './models/CalendarOptions';
 })
 export class NgMatCalendarComponent implements OnInit {
     @Input() options: CalendarOptions = new CalendarOptions();
+    @Input() events: CalendarEvent[] = [];
 
-    pixelsPerHour = 0;
+    private selectedDate!: string;
+    @Input() get date(): string {
+        return this.selectedDate;
+    }
+    set date(value: string) {
+        this.selectedDate = value;
+        this.dateChange.emit(this.selectedDate);
+    }
+    @Output() dateChange: EventEmitter<string> = new EventEmitter();
 
-    events: EventItem[] = [];
-    days = Days;
+    pixelsPerHour = this.options.pixelsPerMinute * 60;
     times = Times;
-    dateFormat = 'DD-MM-YYYY';
-    today = moment().format(this.dateFormat);
-    selectedDate = '';
+    dateFormat = this.options.dateFormat;
     selectedMonthAndYear = '';
     calendar = {} as ICalendar;
 
-    buttonTodayType = ButtonType.matStrokedButton;
-    buttonNavigationType = ButtonType.matIconButton;
-    buttonTodayColor = Color.accent;
-    buttonNavigationColor = Color.accent;
-
-    // @ViewChildren('eventContainer', { read: ViewContainerRef }) eventContainer!: ViewContainerRef;
-    // componentRef!: ComponentRef<Component>;
-
-    // activatedViewContainerRef!: ViewContainerRef;
-    // @ViewChildren('eventContainers', { read: ViewContainerRef}) eventContainerHosts!: QueryList<ViewContainerRef>;
-
     constructor(
-        private store: Store<AppState>,
-        private resolver: ComponentFactoryResolver
-    ) {
-        this.store.pipe(select(selectEvents)).subscribe(events => {
-            this.events = events;
-            this.generateDayLanesForActiveWeek();
-        });
-
-        this.store.pipe(select(selectDate)).subscribe(selectedDate => {
-            this.selectedDate = moment(selectedDate).format('DD-MM-YYYY');
-            this.selectedMonthAndYear = moment(selectedDate).format('MMMM YYYY');
-        });
-    }
+        private formattingService: FormattingService
+    ) {}
 
     ngOnInit(): void {
-        this.pixelsPerHour = this.options.pixelsPerMinute * 60;
+        this.generateDayLanesForActiveWeek();
     }
 
     generateDayLanesForActiveWeek(): void {
+        if (this.selectedDate) {
+            this.selectedMonthAndYear = moment(this.selectedDate).format('MMMM YYYY');
+        }
+
         const eventsGroupedByDate = this.groupEventsByDate();
-        const emptyDayLanes = this.generateDayLanes(this.selectedDate);
+        const emptyDayLanes = this.generateDayLanes();
         const populatedEvents = this.populateEvents(eventsGroupedByDate);
         const populatedDayLanes = this.populateDayLanes(emptyDayLanes, populatedEvents);
 
         this.calendar = {
             activeDayLanes: populatedDayLanes
         };
-
-        console.log(this.calendar);
     }
 
     groupEventsByDate(): any {
         const groupedEvents = this.events.reduce((accumulator, item) => {
-            if (!item.start.date) {
-                accumulator[moment(item.start.dateTime).format(this.dateFormat)] =
-                accumulator[moment(item.start.dateTime).format(this.dateFormat)] || [];
-                accumulator[moment(item.start.dateTime).format(this.dateFormat)].push(item);
-            }
+            accumulator[moment(item.date).format(this.dateFormat)] =
+            accumulator[moment(item.date).format(this.dateFormat)] || [];
+            accumulator[moment(item.date).format(this.dateFormat)].push(item);
+
             return accumulator;
         }, Object.create(null));
 
         return groupedEvents;
     }
 
-    // @TODO model for Gcal event format
     populateEvents(eventsGroupedByDate: any): any {
         Object.keys(eventsGroupedByDate).forEach((key: any) => {
             eventsGroupedByDate[key] = eventsGroupedByDate[key].map((item: any, index: number) => {
                 const previousEvent = this.getPreviousEvent(eventsGroupedByDate[key], index);
 
-                const dayLaneEvent: IDayLaneEvent = {
-                    title: item.summary,
-                    date: moment(item.start.dateTime).format(this.dateFormat),
+                const dayLaneEvent: CalendarEvent = {
+                    ...item,
                     offset: this.calculatePixelsOffsetForEvent(item, previousEvent),
-                    startTime: moment(item.start.dateTime).format('HH:mm'),
-                    endTime: moment(item.end.dateTime).format('HH:mm')
                 };
 
                 return dayLaneEvent;
@@ -130,15 +96,15 @@ export class NgMatCalendarComponent implements OnInit {
         }
     }
 
-    generateDayLanes(selectedDate: string): IDayLane[] {
-        const selectedWeekStart = moment(selectedDate, this.dateFormat).startOf('week').isoWeekday(1);
+    generateDayLanes(): Day[] {
+        const selectedWeekStart = moment(this.selectedDate).startOf('week').isoWeekday(1);
         const dayLanes = [];
 
         for (let i = 0; i < 7; i++) {
             let date = selectedWeekStart;
             date = date.clone().add(i, 'days');
 
-            const lane: IDayLane = {
+            const lane: Day = {
                 date: date.format(this.dateFormat),
                 events: []
             };
@@ -149,11 +115,11 @@ export class NgMatCalendarComponent implements OnInit {
         return dayLanes;
     }
 
-    populateDayLanes(emptyDayLanes: any, eventsGroupedByDate: any): IDayLane[] {
-        const populatedDayLanes: IDayLane[] = emptyDayLanes;
+    populateDayLanes(emptyDayLanes: any, eventsGroupedByDate: any): Day[] {
+        const populatedDayLanes: Day[] = emptyDayLanes;
 
         Object.keys(eventsGroupedByDate).forEach((key: any) => {
-            const getLaneByKey = populatedDayLanes.find((dayLane: IDayLane) => dayLane.date === key);
+            const getLaneByKey = populatedDayLanes.find((dayLane: Day) => dayLane.date === key);
 
             if (getLaneByKey) {
                 getLaneByKey.events = eventsGroupedByDate[key];
@@ -172,12 +138,12 @@ export class NgMatCalendarComponent implements OnInit {
         let previousEventOffset = 0;
         let timeBetweenEvents = 0;
 
-        const startTime = moment(event.start.dateTime);
-        const endTime = moment(event.end.dateTime);
+        const startTime = moment(event.startTime);
+        const endTime = moment(event.endTime);
         const eventDuration = moment.duration(endTime.diff(startTime)).asMinutes();
 
         if (previousEvent !== undefined) {
-            const endTimePreviousEvent = moment(previousEvent.end.dateTime);
+            const endTimePreviousEvent = moment(previousEvent.endTime);
             timeBetweenEvents = moment.duration(endTimePreviousEvent.diff(startTime)).asMinutes();
             previousEventOffset = Math.abs(endTimePreviousEvent.hour() * 60 + endTimePreviousEvent.minute());
         }
@@ -214,15 +180,19 @@ export class NgMatCalendarComponent implements OnInit {
     }
 
     setCalendarToday(): void {
-        this.store.dispatch(new SetUiDateAction(this.today));
+        this.selectedDate = moment().format();
+        this.generateDayLanesForActiveWeek();
+        this.dateChange.emit(this.selectedDate);
     }
 
     setCalendar($offset: number): void {
-        const setDate = moment(this.selectedDate, this.dateFormat)
+        const setDate = moment(this.selectedDate)
             .add($offset, 'days')
-            .format(this.dateFormat);
+            .format();
 
-        this.store.dispatch(new SetUiDateAction(setDate));
+        this.selectedDate = setDate;
+        this.generateDayLanesForActiveWeek();
+        this.dateChange.emit(setDate);
     }
 
     getDayName(date: string): string {
@@ -233,7 +203,11 @@ export class NgMatCalendarComponent implements OnInit {
         return moment(date, this.dateFormat).format('D');
     }
 
-    eventClick(event: IDayLaneEvent): void {
+    getTime(date: string): string {
+        return this.formattingService.getTime(date);
+    }
+
+    eventClick(event: CalendarEvent): void {
         //
     }
 }

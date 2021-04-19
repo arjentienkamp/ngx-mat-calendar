@@ -8,7 +8,7 @@ import {
     ViewContainerRef
 } from '@angular/core';
 
-import { IDayLaneEvent } from '../../models/Calendar';
+import { CalendarEvent } from '../../models/Calendar';
 
 @Component({
     // tslint:disable-next-line:component-selector
@@ -17,7 +17,7 @@ import { IDayLaneEvent } from '../../models/Calendar';
 })
 export class EventDisplayComponent implements OnInit, OnDestroy {
     renderComponent: any;
-    @Input() event!: IDayLaneEvent;
+    @Input() event!: CalendarEvent;
     @Input() component!: any;
 
     @ViewChild('renderTarget', { read: ViewContainerRef, static: true }) renderTarget: any;
