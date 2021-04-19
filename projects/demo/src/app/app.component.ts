@@ -26,7 +26,8 @@ export class AppComponent {
 
         // this.calendarOptions = new CalendarOptions({
         //     pixelsPerMinute: 5,
-        //     renderComponent: EventRenderTestComponent
+        //     showSettings: false,
+        //     // renderComponent: EventRenderTestComponent
         // });
     }
 }

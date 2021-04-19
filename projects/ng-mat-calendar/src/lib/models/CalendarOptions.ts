@@ -1,4 +1,3 @@
-import * as moment from 'moment';
 import { EventRenderComponent } from '../components/event-render/event-render.component';
 
 export class CalendarOptions {
@@ -7,6 +6,7 @@ export class CalendarOptions {
     public timeFormat = 'HH:mm';
     public renderComponent = EventRenderComponent;
     public jumpToSpy = true;
+    public showSettings = true;
 
     constructor(init?: Partial<CalendarOptions>) {
         Object.assign(this, init);

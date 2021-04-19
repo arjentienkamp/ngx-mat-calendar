@@ -1,4 +1,4 @@
-export default interface ICalendar {
+export default interface Calendar {
     activeDayLanes: Day[];
 }
 
@@ -19,4 +19,9 @@ export interface CalendarEvent {
 export interface IOffset {
     offsetTop: number;
     durationOffset: number;
+}
+
+export interface DateInfo {
+    monthAndYear: string;
+    weeknumber: number;
 }

@@ -24,8 +24,20 @@
             <mat-icon>chevron_right</mat-icon>
         </button>
 
-        <div class="toolbar__month">
-            {{ selectedMonthAndYear }}
+        <div class="toolbar__meta">
+            <span class="toolbar__month">{{ selectedDateInfo.monthAndYear }}</span>
+            <span class="toolbar__week">Week {{ selectedDateInfo.weeknumber }}</span>
+        </div>
+
+        <div class="toolbar__right">
+            <button
+                *ngIf="showSettings"
+                mat-icon-button
+                class="toolbar__button"
+                color="primary"
+                (click)="toggleSettings()">
+                <mat-icon>settings</mat-icon>
+            </button>
         </div>
     </div>
 
