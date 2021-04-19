@@ -1,0 +1,31 @@
+@import 'projects/ng-mat-calendar/src/lib/styles/_styles';
+
+.event__header {
+    display: block;
+    text-align: left;
+    color: $color-600;
+    padding: $margin-xxs;
+    border-bottom: 1px solid lighten($color-100, 5);
+
+    @include text-overflow;
+}
+
+.event__metadata {
+    font-weight: 100;
+    color: $color-600;
+    padding: $margin-xxs;
+}
+
+.event__location {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: $margin-xxs;
+
+    mat-icon {
+        font-size: 16px;
+        height: 16px;
+        width: 16px;
+        margin-right: $margin-xxs;
+    }
+}

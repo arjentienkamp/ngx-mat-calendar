@@ -14,7 +14,7 @@ export class EventRenderComponent implements OnInit {
     endTime = '';
 
     constructor(
-        private formattingService: FormattingService
+        public formattingService: FormattingService
     ) {}
 
     ngOnInit(): void {

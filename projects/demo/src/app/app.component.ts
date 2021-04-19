@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import * as moment from 'moment';
 import { CalendarEvent } from 'projects/ng-mat-calendar/src/lib/models/Calendar';
 import { CalendarOptions } from 'projects/ng-mat-calendar/src/lib/models/CalendarOptions';
+import { EventRenderTestComponent } from './component/event-render-test/event-render-test.component';
 import { EventService } from './services/event.service';
 
 @Component({
@@ -26,12 +27,12 @@ export class AppComponent implements OnInit {
     ngOnInit(): void {
         this.calendarOptions = new CalendarOptions();
 
-        // this.calendarOptions = new CalendarOptions({
-        //     pixelsPerMinute: 5,
-        //     showSettings: false,
-        //     enableTooltip: false
-        //     // renderComponent: EventRenderTestComponent
-        // });
+        this.calendarOptions = new CalendarOptions({
+            // pixelsPerMinute: 5,
+            // showSettings: false,
+            // enableTooltip: false,
+            // renderComponent: EventRenderTestComponent
+        });
 
         console.log(this.calendarOptions);
     }

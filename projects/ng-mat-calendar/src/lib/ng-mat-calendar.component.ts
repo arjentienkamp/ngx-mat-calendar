@@ -19,17 +19,16 @@ import { FormattingService } from './services/formatting.service';
     styleUrls: ['./ng-mat-calendar.component.scss']
 })
 export class NgMatCalendarComponent implements OnInit {
+    @Input() events: CalendarEvent[] = [];
+
     private setOptions!: CalendarOptions;
     @Input() get options(): CalendarOptions {
         return this.setOptions;
     }
-
     set options(value: CalendarOptions) {
         console.log(value);
         this.setOptions = value;
     }
-
-    @Input() events: CalendarEvent[] = [];
 
     private selectedDate!: string;
     @Input() get date(): string {
@@ -78,7 +77,7 @@ export class NgMatCalendarComponent implements OnInit {
         const populatedDays = this.populateDayLanes(emptyDays, populatedEvents);
 
         this.calendar = {
-            activeDayLanes: populatedDays
+            days: populatedDays
         };
     }
 

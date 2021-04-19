@@ -1,5 +1,5 @@
 export default interface Calendar {
-    activeDayLanes: CalendarDay[];
+    days: CalendarDay[];
 }
 
 export interface CalendarDay {

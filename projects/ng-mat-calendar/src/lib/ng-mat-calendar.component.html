@@ -43,10 +43,10 @@
 
     <div class="calendar__content">
         <div class="calendar__days">
-            <div class="calendar__day" *ngFor="let activeLane of calendar.activeDayLanes;">
-                <div class="day__header" [ngClass]="{ 'day__header--today': isToday(activeLane.date) }">
-                    <span class="day-name">{{ getDayName(activeLane.date) }}</span> 
-                    <span class="day-number">{{ getDayNumber(activeLane.date) }}</span>
+            <div class="calendar__day" *ngFor="let day of calendar.days;">
+                <div class="day__header" [ngClass]="{ 'day__header--today': isToday(day.date) }">
+                    <span class="day-name">{{ getDayName(day.date) }}</span> 
+                    <span class="day-number">{{ getDayNumber(day.date) }}</span>
                 </div>
             </div>
         </div>
@@ -59,17 +59,17 @@
             </div>
 
             <div class="day__lane"
-                *ngFor="let activeLane of calendar.activeDayLanes;"
+                *ngFor="let day of calendar.days;"
                 [style.height.px]="calculateGrid().height"
-                [ngClass]="{ 'day__lane--today': isToday(activeLane.date) }">
+                [ngClass]="{ 'day__lane--today': isToday(day.date) }">
 
-                <div class="calendar__spy" *ngIf="isToday(activeLane.date)" [style.marginTop.px]="calculateSpy()"></div>
+                <div class="calendar__spy" *ngIf="isToday(day.date)" [style.marginTop.px]="calculateSpy()"></div>
                 
                 <event-display
                     [component]="options.renderComponent"
                     [event]="event"
                     class="calendar__item"
-                    *ngFor="let event of activeLane.events; let i = index"
+                    *ngFor="let event of day.events; let i = index"
                     [style.marginTop.px]="event.offset?.offsetTop"
                     [style.height.px]="event.offset?.durationOffset"
                     matTooltip="{{ event.title }} ({{ getTime(event.startTime) }} - {{ getTime(event.endTime) }})"
