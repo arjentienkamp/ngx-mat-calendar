@@ -1,8 +1,8 @@
 export default interface Calendar {
-    activeDayLanes: Day[];
+    activeDayLanes: CalendarDay[];
 }
 
-export interface Day {
+export interface CalendarDay {
     date: string;
     events: CalendarEvent[];
 }
@@ -10,13 +10,13 @@ export interface Day {
 export interface CalendarEvent {
     title: string;
     date: string;
-    offset?: IOffset;
+    offset?: CalendarEventOffset;
     startTime: string;
     endTime: string;
     location?: string;
 }
 
-export interface IOffset {
+export interface CalendarEventOffset {
     offsetTop: number;
     durationOffset: number;
 }

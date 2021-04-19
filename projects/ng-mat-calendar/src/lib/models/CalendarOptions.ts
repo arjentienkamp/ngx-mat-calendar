@@ -7,6 +7,7 @@ export class CalendarOptions {
     public renderComponent = EventRenderComponent;
     public jumpToSpy = true;
     public showSettings = true;
+    public enableTooltip = true;
 
     constructor(init?: Partial<CalendarOptions>) {
         Object.assign(this, init);

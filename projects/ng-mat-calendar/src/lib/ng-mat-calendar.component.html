@@ -1,4 +1,4 @@
-<div class="calendar">
+<div class="calendar" *ngIf="events && options">
     <div class="calendar__toolbar">
          <button
             mat-stroked-button
@@ -74,7 +74,8 @@
                     [style.height.px]="event.offset?.durationOffset"
                     matTooltip="{{ event.title }} ({{ getTime(event.startTime) }} - {{ getTime(event.endTime) }})"
                     matTooltipPosition="right"
-                    (click)="eventClick(event)">
+                    [matTooltipDisabled]="!enableTooltip"
+                    (click)="onEventClick(event)">
                 </event-display>
             </div>
         </div>

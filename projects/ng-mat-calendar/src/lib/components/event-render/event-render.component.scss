@@ -1,6 +1,6 @@
 @import '../../styles/_styles';
 
-.item__header {
+.event__header {
     display: block;
     text-align: left;
     color: $color-600;
@@ -10,8 +10,22 @@
     @include text-overflow;
 }
 
-.item__metadata {
+.event__metadata {
     font-weight: 100;
     color: $color-600;
     padding: $margin-xxs;
+}
+
+.event__location {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: $margin-xxs;
+
+    mat-icon {
+        font-size: 16px;
+        height: 16px;
+        width: 16px;
+        margin-right: $margin-xxs;
+    }
 }

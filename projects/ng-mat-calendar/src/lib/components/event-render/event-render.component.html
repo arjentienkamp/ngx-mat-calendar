@@ -1,9 +1,14 @@
 <div *ngIf="event">
-    <div class="item__header">
+    <div class="event__header">
         {{ event.title }}
     </div>
 
-    <div class="item__metadata">
+    <div class="event__metadata">
         {{ startTime }} - {{ endTime }}
+    </div>
+
+    <div class="event__location" *ngIf="event.location">
+        <mat-icon>place</mat-icon>
+        <span>{{ event.location }}</span>
     </div>
 </div>

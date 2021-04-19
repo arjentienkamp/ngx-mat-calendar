@@ -7,7 +7,7 @@ import {
 } from '@angular/core';
 
 import * as moment from 'moment';
-import Calendar, { Day, CalendarEvent, IOffset, DateInfo } from './models/Calendar';
+import Calendar, { CalendarDay, CalendarEvent, CalendarEventOffset, DateInfo } from './models/Calendar';
 import { Times } from './models/Times';
 import { CalendarOptions } from './models/CalendarOptions';
 import { FormattingService } from './services/formatting.service';
@@ -19,7 +19,16 @@ import { FormattingService } from './services/formatting.service';
     styleUrls: ['./ng-mat-calendar.component.scss']
 })
 export class NgMatCalendarComponent implements OnInit {
-    @Input() options: CalendarOptions = new CalendarOptions();
+    private setOptions!: CalendarOptions;
+    @Input() get options(): CalendarOptions {
+        return this.setOptions;
+    }
+
+    set options(value: CalendarOptions) {
+        console.log(value);
+        this.setOptions = value;
+    }
+
     @Input() events: CalendarEvent[] = [];
 
     private selectedDate!: string;
@@ -32,10 +41,13 @@ export class NgMatCalendarComponent implements OnInit {
     }
     @Output() dateChange: EventEmitter<string> = new EventEmitter();
 
+    @Output() eventClick: EventEmitter<CalendarEvent> = new EventEmitter();
+
     times = Times;
-    pixelsPerHour!: number;
+    pixelsPerHour = 0;
     showSettings!: boolean;
-    dateFormat = this.options.dateFormat;
+    enableTooltip!: boolean;
+    dateFormat!: string;
     selectedDateInfo = {} as DateInfo;
     calendar = {} as Calendar;
 
@@ -44,13 +56,14 @@ export class NgMatCalendarComponent implements OnInit {
     ) {}
 
     ngOnInit(): void {
-        this.generateCalendarView();
-        this.setOptions();
-    }
+        if (this.setOptions && this.events) {
+            this.pixelsPerHour = this.setOptions.pixelsPerMinute * 60;
+            this.showSettings = this.setOptions.showSettings;
+            this.enableTooltip = this.setOptions.enableTooltip;
+            this.dateFormat = this.setOptions.dateFormat;
 
-    setOptions(): void {
-        this.pixelsPerHour = this.options.pixelsPerMinute * 60;
-        this.showSettings = this.options.showSettings;
+            this.generateCalendarView();
+        }
     }
 
     generateCalendarView(): void {
@@ -104,7 +117,7 @@ export class NgMatCalendarComponent implements OnInit {
         }
     }
 
-    generateDayLanes(): Day[] {
+    generateDayLanes(): CalendarDay[] {
         const selectedWeekStart = moment(this.selectedDate).startOf('isoWeek').isoWeekday(1);
         const days = [];
 
@@ -112,7 +125,7 @@ export class NgMatCalendarComponent implements OnInit {
             let date = selectedWeekStart;
             date = date.clone().add(i, 'days');
 
-            const lane: Day = {
+            const lane: CalendarDay = {
                 date: date.format(this.dateFormat),
                 events: []
             };
@@ -123,11 +136,11 @@ export class NgMatCalendarComponent implements OnInit {
         return days;
     }
 
-    populateDayLanes(emptyDays: any, eventsGroupedByDate: any): Day[] {
-        const populatedDays: Day[] = emptyDays;
+    populateDayLanes(emptyDays: any, eventsGroupedByDate: any): CalendarDay[] {
+        const populatedDays: CalendarDay[] = emptyDays;
 
         Object.keys(eventsGroupedByDate).forEach((key: any) => {
-            const getDayByKey = populatedDays.find((day: Day) => day.date === key);
+            const getDayByKey = populatedDays.find((day: CalendarDay) => day.date === key);
 
             if (getDayByKey) {
                 getDayByKey.events = eventsGroupedByDate[key];
@@ -142,8 +155,8 @@ export class NgMatCalendarComponent implements OnInit {
     }
 
     // @TODO : use previouseventoffset so event can be relative positioned
-    calculatePixelsOffsetForEvent(event: any, previousEvent: any): IOffset {
-        let offset: IOffset = { offsetTop: 0, durationOffset: 0};
+    calculatePixelsOffsetForEvent(event: any, previousEvent: any): CalendarEventOffset {
+        let offset: CalendarEventOffset = { offsetTop: 0, durationOffset: 0};
         let previousEventOffset = 0;
         let timeBetweenEvents = 0;
 
@@ -169,7 +182,7 @@ export class NgMatCalendarComponent implements OnInit {
 
     calculateGrid(): any {
         const grid = {
-            height: 25 * 60 * this.options.pixelsPerMinute
+            height: 25 * this.pixelsPerHour
         };
 
         return grid;
@@ -216,8 +229,8 @@ export class NgMatCalendarComponent implements OnInit {
         return this.formattingService.getTime(date);
     }
 
-    eventClick(event: CalendarEvent): void {
-        //
+    onEventClick(event: CalendarEvent): void {
+        this.eventClick.emit(event);
     }
 
     toggleSettings(): void {
