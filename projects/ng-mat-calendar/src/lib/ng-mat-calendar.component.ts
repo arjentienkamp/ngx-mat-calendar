@@ -97,7 +97,7 @@ export class NgMatCalendarComponent implements OnInit {
     }
 
     generateDayLanes(): Day[] {
-        const selectedWeekStart = moment(this.selectedDate).startOf('week').isoWeekday(1);
+        const selectedWeekStart = moment(this.selectedDate).startOf('isoWeek').isoWeekday(1);
         const dayLanes = [];
 
         for (let i = 0; i < 7; i++) {
@@ -133,6 +133,7 @@ export class NgMatCalendarComponent implements OnInit {
         return date.isBetween(start, end, 'day', '[]');
     }
 
+    // @TODO : use previouseventoffset so event can be relative positioned
     calculatePixelsOffsetForEvent(event: any, previousEvent: any): IOffset {
         let offset: IOffset = { offsetTop: 0, durationOffset: 0};
         let previousEventOffset = 0;
