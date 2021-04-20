@@ -26,7 +26,6 @@ export class NgMatCalendarComponent implements OnInit {
         return this.setOptions;
     }
     set options(value: CalendarOptions) {
-        console.log(value);
         this.setOptions = value;
     }
 

@@ -8,6 +8,47 @@ Live demo (link)
 
 GIF
 
+## Features
+- Display a week calendar with your events
+- Fire a function on event click
+- Navigate between weeks, jump to today
+- Focus on current time on initialization
+- Use a custom component for rendering events
+
+## Installation and minimal setup
+
+```
+npm install 
+```
+
+Initiate default options:
+```
+this.calendarOptions = new CalendarOptions();
+```
+
+Or, change default options:
+```
+this.calendarOptions = new CalendarOptions({
+    enableTooltip: false
+    renderComponent: EventRenderTestComponent
+    // see CalendarOptions class for full list
+});
+
+```
+
+Add the component to the template:
+
+```
+<ng-mat-calendar
+    [options]="calendarOptions"
+    [events]="events"
+    (eventClick)="handleEventClick($event)"
+    [(date)]="date">
+</ng-mat-calendar>
+```
+
+
+
 
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.2.
