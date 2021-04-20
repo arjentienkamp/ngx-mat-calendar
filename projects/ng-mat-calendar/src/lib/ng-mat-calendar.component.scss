@@ -2,17 +2,23 @@
 
 :host(ng-mat-calendar) {
     flex: 1;
+    height: 100%;
 }
 
 .calendar {
+    position: relative;
     display: flex;
     flex-direction: column;
+    height: 100%;
 }
 
 .calendar__times {
+    position: relative;
+    top: -10px;
     display: flex;
     width: 80px;
     flex-direction: column;
+    
 
     color: $color-gray-medium;
     text-align: center;
@@ -74,9 +80,17 @@
 .calendar__content {
     flex: 1;
     flex-direction: column;
+    overflow: scroll;
+    margin-top: 100px;
 }
 
 .calendar__days {
+    position: absolute;
+    top: 56px;
+    left: 0;
+    bottom: 0;
+    right: 0;
+
     display: flex;
     flex-direction: row;
     margin-left: 79px;
@@ -85,11 +99,9 @@
 
 .calendar__lanes {
     display: flex;
-    flex-direction: row;
     flex: 1;
-
-    overflow: scroll;
-    max-height: calc(100vh - 195px);
+    flex-direction: row;
+    padding-top: 10px;
 
     .day__lane {
         display: flex;

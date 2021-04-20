@@ -41,18 +41,18 @@
         </div>
     </div>
 
-    <div class="calendar__content">
-        <div class="calendar__days">
-            <div class="calendar__day" *ngFor="let day of calendar.days;">
-                <div class="day__header" [ngClass]="{ 'day__header--today': isToday(day.date) }">
-                    <span class="day-name">{{ getDayName(day.date) }}</span> 
-                    <span class="day-number">{{ getDayNumber(day.date) }}</span>
-                </div>
+    <div class="calendar__days">
+        <div class="calendar__day" *ngFor="let day of calendar.days;">
+            <div class="day__header" [ngClass]="{ 'day__header--today': isToday(day.date) }">
+                <span class="day-name">{{ getDayName(day.date) }}</span> 
+                <span class="day-number">{{ getDayNumber(day.date) }}</span>
             </div>
         </div>
+    </div>
 
+    <div class="calendar__content">
         <div class="calendar__lanes">
-            <div class="calendar__times" [style.height.px]="calculateGrid().height">
+            <div class="calendar__times">
                 <div class="time-unit" *ngFor="let time of times;" [style.height.px]="pixelsPerHour">
                     {{ time.time }}
                 </div>
@@ -60,7 +60,7 @@
 
             <div class="day__lane"
                 *ngFor="let day of calendar.days;"
-                [style.height.px]="calculateGrid().height"
+                
                 [ngClass]="{ 'day__lane--today': isToday(day.date) }">
 
                 <div class="calendar__spy" *ngIf="isToday(day.date)" [style.marginTop.px]="calculateSpy()"></div>
