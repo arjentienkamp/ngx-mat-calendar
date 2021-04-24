@@ -265,6 +265,12 @@ export class NgMatCalendarComponent implements OnInit {
         return this.formattingService.getTime(date);
     }
 
+    getTooltip(event: CalendarEvent): string{
+        const location = event.location ? `@ ${event.location}` : '';
+
+        return `${event.title} (${this.getTime(event.startTime)} - ${this.getTime(event.endTime)}) ${location}`;
+    }
+
     onEventClick(event: CalendarEvent): void {
         this.eventClick.emit(event);
     }

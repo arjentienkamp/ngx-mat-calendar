@@ -72,7 +72,7 @@
                     *ngFor="let event of day.events; let i = index"
                     [style.marginTop.px]="event.offset?.offsetTop"
                     [style.height.px]="event.offset?.durationOffset"
-                    matTooltip="{{ event.title }} ({{ getTime(event.startTime) }} - {{ getTime(event.endTime) }})"
+                    [matTooltip]="getTooltip(event)"
                     matTooltipPosition="right"
                     [matTooltipDisabled]="!enableTooltip"
                     (click)="onEventClick(event)">

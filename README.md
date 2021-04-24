@@ -47,8 +47,11 @@ Add the component to the template:
 </ng-mat-calendar>
 ```
 
+When using a custom component for rendering the events, you can optionally extend the Event class to add more data to the event.
 
-
+```
+// example
+```
 
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.2.
