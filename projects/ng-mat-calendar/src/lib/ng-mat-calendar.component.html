@@ -54,7 +54,7 @@
 
     <div class="calendar__days">
         <div class="calendar__day" *ngFor="let day of calendar.days;">
-            <div class="day__header" [ngClass]="{ 'day__header--today': isToday(day.date) }">
+            <div class="day__header" [ngClass]="{ 'day__header--today ': isToday(day.date) }">
                 <span class="day-name">{{ getDayName(day.date) }}</span> 
                 <span class="day-number">{{ getDayNumber(day.date) }}</span>
             </div>

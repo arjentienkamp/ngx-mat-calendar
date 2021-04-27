@@ -55,3 +55,15 @@ When using a custom component for rendering the events, you can optionally exten
 // example
 ```
 
+## Inputs
+
+.. table
+property-description-type-default
+
+## Outputs
+
+.. table
+property-description-type
+
+## Todo
+

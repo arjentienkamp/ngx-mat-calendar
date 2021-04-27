@@ -45,6 +45,10 @@
         display: flex;
     }
 
+    .toolbar__button {
+        justify-content: center;
+    }
+
     .toolbar__button--today {
         margin-right: $margin-md;
     }
