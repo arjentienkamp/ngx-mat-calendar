@@ -6,11 +6,13 @@ import {
     Output,
 } from '@angular/core';
 
+import { FormBuilder, FormGroup } from '@angular/forms';
 import * as moment from 'moment';
 import Calendar, { CalendarDay, CalendarEvent, CalendarEventOffset, DateInfo } from './models/Calendar';
 import { Times } from './models/Times';
 import { CalendarOptions } from './models/CalendarOptions';
 import { FormattingService } from './services/formatting.service';
+
 
 @Component({
     // tslint:disable-next-line:component-selector
@@ -43,24 +45,32 @@ export class NgMatCalendarComponent implements OnInit {
 
     times = Times;
     pixelsPerHour = 0;
-    showSettings!: boolean;
+    enableDatePickerButton!: boolean;
     enableTooltip!: boolean;
+    showDatePicker = false;
     dateFormat!: string;
+    datePickerForm: FormGroup;
     selectedDateInfo = {} as DateInfo;
     calendar = {} as Calendar;
 
     constructor(
-        private formattingService: FormattingService
-    ) {}
+        private formattingService: FormattingService,
+        private formBuilder: FormBuilder
+    ) {
+        this.datePickerForm = this.formBuilder.group({
+            date: [''],
+        });
+    }
 
     ngOnInit(): void {
         if (this.setOptions && this.events) {
             this.pixelsPerHour = this.setOptions.pixelsPerMinute * 60;
-            this.showSettings = this.setOptions.showSettings;
+            this.enableDatePickerButton = this.setOptions.enableDatePickerButton;
             this.enableTooltip = this.setOptions.enableTooltip;
             this.dateFormat = this.setOptions.dateFormat;
 
             this.generateCalendarView();
+            this.handleDatepickerChanges();
         }
     }
 
@@ -243,10 +253,16 @@ export class NgMatCalendarComponent implements OnInit {
         this.dateChange.emit(this.selectedDate);
     }
 
-    setCalendar($offset: number): void {
-        const setDate = moment(this.selectedDate)
-            .add($offset, 'days')
+    setCalendar(offset?: number, date?: string): void {
+        let setDate = '';
+
+        if (offset) {
+            setDate = moment(this.selectedDate)
+            .add(offset, 'days')
             .format();
+        } else {
+            setDate = moment(date).format();
+        }
 
         this.selectedDate = setDate;
         this.generateCalendarView();
@@ -275,7 +291,15 @@ export class NgMatCalendarComponent implements OnInit {
         this.eventClick.emit(event);
     }
 
-    toggleSettings(): void {
-        //
+    toggleDatepicker(): void {
+        this.showDatePicker = !this.showDatePicker;
+    }
+
+    handleDatepickerChanges(): void {
+        const date = this.datePickerForm.get('date');
+
+        date?.valueChanges.subscribe((dateValue) => {
+            this.setCalendar(undefined, moment(dateValue, this.dateFormat).format());
+        });
     }
 }

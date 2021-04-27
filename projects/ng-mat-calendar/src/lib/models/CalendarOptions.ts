@@ -6,7 +6,7 @@ export class CalendarOptions {
     public timeFormat = 'HH:mm';
     public renderComponent = EventRenderComponent;
     public jumpToSpy = true;
-    public showSettings = true;
+    public enableDatePickerButton = true;
     public enableTooltip = true;
 
     constructor(init?: Partial<CalendarOptions>) {

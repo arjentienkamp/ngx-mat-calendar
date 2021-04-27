@@ -75,6 +75,10 @@
         flex: 1;
         justify-content: flex-end;
     }
+
+    .toolbar__datepicker {
+        display: flex;
+    }
 }
 
 .calendar__content {
