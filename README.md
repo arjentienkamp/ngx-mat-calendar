@@ -14,6 +14,8 @@ GIF
 - Navigate between weeks, jump to today
 - Focus on current time on initialization
 - Use a custom component for rendering events
+- Uses colors of your Material theme
+- Locale can be set
 
 ## Installation and minimal setup
 
