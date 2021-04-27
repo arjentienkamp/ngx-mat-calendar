@@ -300,6 +300,8 @@ export class NgMatCalendarComponent implements OnInit {
 
         date?.valueChanges.subscribe((dateValue) => {
             this.setCalendar(undefined, moment(dateValue, this.dateFormat).format());
+
+            this.showDatePicker = false;
         });
     }
 }

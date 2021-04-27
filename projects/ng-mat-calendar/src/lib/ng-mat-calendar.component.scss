@@ -77,7 +77,16 @@
     }
 
     .toolbar__datepicker {
-        display: flex;
+        position: absolute;
+        right: 60px;
+
+        .mat-form-field {
+            font-size: 12px;
+        }
+
+        .mat-form-field-wrapper {
+            padding-bottom: 0;
+        }
     }
 }
 
