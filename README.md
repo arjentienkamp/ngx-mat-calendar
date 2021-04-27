@@ -42,10 +42,10 @@ Add the component to the template:
 
 ```
 <ng-mat-calendar
-    [options]="calendarOptions"                 // the options
-    [events]="events"                           // array of events (i.e from API or other datasource)
-    (eventClick)="handleEventClick($event)"     // emits when event is clicked
-    [(date)]="date">                            // the date for initiating the calendar / emits date on date change
+    [options]="calendarOptions"
+    [events]="events"
+    (eventClick)="handleEventClick($event)"
+    [(date)]="date">
 </ng-mat-calendar>
 ```
 
@@ -57,13 +57,18 @@ When using a custom component for rendering the events, you can optionally exten
 
 ## Inputs
 
-.. table
-property-description-type-default
+| Property        | Description                                         | Type              | Required |
+|-----------------|-----------------------------------------------------|-------------------|----------|
+| options         | options have to be passed here                      | CalendarOptions   | true     |
+| events          | array of events (i.e from API or other datasource)  | CalendarEvent[]   | true     |
+| date            | the date for initiating the calendar                | string            | true     |
 
 ## Outputs
 
-.. table
-property-description-type
+| Property        | Description                                         | Type                          |
+|-----------------|-----------------------------------------------------|-------------------------------|
+| eventClick      | emits when event is clicked                         | EventEmitter<CalendarEvent>   |
+| date            | emits date on date change                           | EventEmitter<string>          |
 
 ## Todo
 
