@@ -8,12 +8,11 @@ import {
 
 import { FormBuilder, FormGroup } from '@angular/forms';
 import * as moment from 'moment';
-import Calendar, { CalendarDay, CalendarEvent, CalendarEventOffset, DateInfo } from './models/Calendar';
+import Calendar, { CalendarDay, CalendarEvent, CalendarEventOffset } from './models/Calendar';
 import { Times } from './models/Times';
 import { CalendarOptions } from './models/CalendarOptions';
 import { FormattingService } from './services/formatting.service';
 import { DateAdapter } from '@angular/material/core';
-
 
 @Component({
     // tslint:disable-next-line:component-selector
@@ -41,7 +40,6 @@ export class NgMatCalendarComponent implements OnInit {
         this.dateChange.emit(this.selectedDate);
     }
     @Output() dateChange: EventEmitter<string> = new EventEmitter();
-
     @Output() eventClick: EventEmitter<CalendarEvent> = new EventEmitter();
 
     times = Times;
@@ -51,7 +49,6 @@ export class NgMatCalendarComponent implements OnInit {
     showDatePicker = false;
     dateFormat!: string;
     datePickerForm: FormGroup;
-    selectedDateInfo = {} as DateInfo;
     calendar = {} as Calendar;
 
     constructor(
@@ -80,18 +77,17 @@ export class NgMatCalendarComponent implements OnInit {
 
     generateCalendarView(): void {
         if (this.selectedDate) {
-            this.selectedDateInfo.monthAndYear = moment(this.selectedDate).format('MMMM YYYY');
-            this.selectedDateInfo.weeknumber = moment(this.selectedDate).week();
+            const eventsGroupedByDate = this.groupEventsByDate();
+            const emptyDays = this.generateDays();
+            const populatedEvents = this.populateEvents(eventsGroupedByDate);
+            const populatedDays = this.populateDays(emptyDays, populatedEvents);
+
+            this.calendar = {
+                days: populatedDays,
+                monthAndYear: moment(this.selectedDate).format('MMMM YYYY'),
+                weeknumber: moment(this.selectedDate).week()
+            };
         }
-
-        const eventsGroupedByDate = this.groupEventsByDate();
-        const emptyDays = this.generateDays();
-        const populatedEvents = this.populateEvents(eventsGroupedByDate);
-        const populatedDays = this.populateDays(emptyDays, populatedEvents);
-
-        this.calendar = {
-            days: populatedDays
-        };
     }
 
     groupEventsByDate(): CalendarEvent[] {
@@ -115,7 +111,6 @@ export class NgMatCalendarComponent implements OnInit {
                  nextDayEvents.events = [];
             } else {
                 eventsGroupedByDate[key].unshift(nextDayEvents.events[0]);
-                console.log(eventsGroupedByDate[key], nextDayEvents.events);
             }
 
             eventsGroupedByDate[key] = eventsGroupedByDate[key].map((item: any, index: number) => {

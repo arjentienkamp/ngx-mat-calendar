@@ -61,7 +61,7 @@ When using a custom component for rendering the events, you can optionally exten
 |-----------------|-----------------------------------------------------|-------------------|----------|
 | options         | options have to be passed here                      | CalendarOptions   | true     |
 | events          | array of events (i.e from API or other datasource)  | CalendarEvent[]   | true     |
-| date            | the date for initiating the calendar                | string            | true     |
+| date            | the date for initiating the calendar                | string (ISO date string)  | true     |
 
 ## Outputs
 
@@ -71,4 +71,4 @@ When using a custom component for rendering the events, you can optionally exten
 | date            | emits date on date change                           | EventEmitter<string>          |
 
 ## Todo
-
+- Month view

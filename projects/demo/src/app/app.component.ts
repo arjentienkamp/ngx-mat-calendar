@@ -17,8 +17,7 @@ export class AppComponent implements OnInit {
 
     constructor(
         private eventService: EventService
-    )
-    {
+    ) {
         this.eventService.getEvents().subscribe((events: CalendarEvent[]) => {
             this.events = events;
         });
@@ -28,7 +27,7 @@ export class AppComponent implements OnInit {
         this.calendarOptions = new CalendarOptions({
             // locale: 'es',
             // pixelsPerMinute: 2,
-            // showSettings: false,
+            // enableDatePickerButton: false,
             // enableTooltip: false,
             // renderComponent: EventRenderTestComponent
         });

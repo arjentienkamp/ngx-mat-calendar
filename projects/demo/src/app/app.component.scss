@@ -1,10 +1,9 @@
 .container {
     height: 100%;
+    padding: 1rem;
 
     .mat-card {
         height: 100%;
-        max-height: calc(100vh - 100px);
-        margin: 1rem;
         background-color: #FFF;
     }
 

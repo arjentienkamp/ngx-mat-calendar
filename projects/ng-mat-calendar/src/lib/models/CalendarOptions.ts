@@ -1,14 +1,14 @@
 import { EventRenderComponent } from '../components/event-render/event-render.component';
 
 export class CalendarOptions {
-    public pixelsPerMinute = 1.3;
-    public dateFormat = 'DD-MM-YYYY';
-    public timeFormat = 'HH:mm';
-    public renderComponent = EventRenderComponent;
-    public jumpToSpy = true;
-    public enableDatePickerButton = true;
-    public enableTooltip = true;
-    public locale = 'nl';
+    pixelsPerMinute = 1.3;
+    dateFormat = 'DD-MM-YYYY';
+    timeFormat = 'HH:mm';
+    renderComponent = EventRenderComponent;
+    jumpToSpy = true;
+    enableDatePickerButton = true;
+    enableTooltip = true;
+    locale = 'nl';
 
     constructor(init?: Partial<CalendarOptions>) {
         Object.assign(this, init);

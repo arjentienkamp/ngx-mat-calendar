@@ -1,5 +1,7 @@
 export default interface Calendar {
     days: CalendarDay[];
+    monthAndYear: string;
+    weeknumber: number;
 }
 
 export interface CalendarDay {
@@ -19,9 +21,4 @@ export interface CalendarEvent {
 export interface CalendarEventOffset {
     offsetTop: number;
     durationOffset: number;
-}
-
-export interface DateInfo {
-    monthAndYear: string;
-    weeknumber: number;
 }
