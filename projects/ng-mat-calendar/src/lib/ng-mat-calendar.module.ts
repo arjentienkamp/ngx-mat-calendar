@@ -8,7 +8,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { MatNativeDateModule } from '@angular/material/core';
+import { DateAdapter, MatNativeDateModule } from '@angular/material/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
@@ -17,6 +17,7 @@ import { EventDisplayComponent } from './components/event-display/event-display.
 import { EventRenderComponent } from './components/event-render/event-render.component';
 import { FormattingService } from './services/formatting.service';
 import { MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/material-moment-adapter';
+import { LocaleDateAdapter } from './other/DateAdapter';
 
 @NgModule({
     declarations: [
@@ -50,6 +51,9 @@ import { MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/material-moment-adapte
             useValue: {
                 useUtc: true
             }
+        }, {
+            provide: DateAdapter,
+            useClass: LocaleDateAdapter
         }
     ],
     bootstrap: []

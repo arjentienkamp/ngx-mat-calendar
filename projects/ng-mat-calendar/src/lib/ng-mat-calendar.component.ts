@@ -12,6 +12,7 @@ import Calendar, { CalendarDay, CalendarEvent, CalendarEventOffset, DateInfo } f
 import { Times } from './models/Times';
 import { CalendarOptions } from './models/CalendarOptions';
 import { FormattingService } from './services/formatting.service';
+import { DateAdapter } from '@angular/material/core';
 
 
 @Component({
@@ -55,7 +56,8 @@ export class NgMatCalendarComponent implements OnInit {
 
     constructor(
         private formattingService: FormattingService,
-        private formBuilder: FormBuilder
+        private formBuilder: FormBuilder,
+        private dateAdapter: DateAdapter<Date>
     ) {
         this.datePickerForm = this.formBuilder.group({
             date: [''],
@@ -68,6 +70,8 @@ export class NgMatCalendarComponent implements OnInit {
             this.enableDatePickerButton = this.setOptions.enableDatePickerButton;
             this.enableTooltip = this.setOptions.enableTooltip;
             this.dateFormat = this.setOptions.dateFormat;
+
+            this.dateAdapter.setLocale(this.setOptions.locale);
 
             this.generateCalendarView();
             this.handleDatepickerChanges();
@@ -251,6 +255,7 @@ export class NgMatCalendarComponent implements OnInit {
         this.selectedDate = moment().format();
         this.generateCalendarView();
         this.dateChange.emit(this.selectedDate);
+        this.showDatePicker = false;
     }
 
     setCalendar(offset?: number, date?: string): void {
@@ -267,6 +272,7 @@ export class NgMatCalendarComponent implements OnInit {
         this.selectedDate = setDate;
         this.generateCalendarView();
         this.dateChange.emit(setDate);
+        this.showDatePicker = false;
     }
 
     getDayName(date: string): string {
@@ -300,8 +306,6 @@ export class NgMatCalendarComponent implements OnInit {
 
         date?.valueChanges.subscribe((dateValue) => {
             this.setCalendar(undefined, moment(dateValue, this.dateFormat).format());
-
-            this.showDatePicker = false;
         });
     }
 }

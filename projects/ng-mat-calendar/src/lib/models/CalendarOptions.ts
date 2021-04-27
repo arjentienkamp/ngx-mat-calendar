@@ -8,6 +8,7 @@ export class CalendarOptions {
     public jumpToSpy = true;
     public enableDatePickerButton = true;
     public enableTooltip = true;
+    public locale = 'nl';
 
     constructor(init?: Partial<CalendarOptions>) {
         Object.assign(this, init);

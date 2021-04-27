@@ -26,6 +26,7 @@ export class AppComponent implements OnInit {
 
     ngOnInit(): void {
         this.calendarOptions = new CalendarOptions({
+            // locale: 'es',
             // pixelsPerMinute: 2,
             // showSettings: false,
             // enableTooltip: false,
