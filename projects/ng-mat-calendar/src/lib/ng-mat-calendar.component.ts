@@ -3,6 +3,7 @@ import {
     DoCheck,
     EventEmitter,
     Input,
+    IterableDiffers,
     OnInit,
     Output,
 } from '@angular/core';
@@ -23,6 +24,7 @@ import { DateAdapter } from '@angular/material/core';
 })
 export class NgMatCalendarComponent implements OnInit, DoCheck {
     @Input() events: CalendarEvent[] = [];
+    private differ: IterableDiffers;
 
     private setOptions!: CalendarOptions;
     @Input() get options(): CalendarOptions {
@@ -51,15 +53,19 @@ export class NgMatCalendarComponent implements OnInit, DoCheck {
     dateFormat!: string;
     datePickerForm: FormGroup;
     calendar = {} as Calendar;
+    iterableDiffer = [];
 
     constructor(
         private formattingService: FormattingService,
         private formBuilder: FormBuilder,
-        private dateAdapter: DateAdapter<Date>
+        private dateAdapter: DateAdapter<Date>,
+        private iterableDiffers: IterableDiffers
     ) {
         this.datePickerForm = this.formBuilder.group({
             date: [''],
         });
+
+        this.differ = iterableDiffers;
     }
 
     ngOnInit(): void {
@@ -77,7 +83,7 @@ export class NgMatCalendarComponent implements OnInit, DoCheck {
     }
 
     ngDoCheck(): void {
-        const changes = this.events;
+        const changes = this.differ.find(this.events);
 
         if (changes) {
             this.generateCalendarView();
