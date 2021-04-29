@@ -5,7 +5,8 @@
                 [options]="calendarOptions"
                 [events]="events"
                 (eventClick)="handleEventClick($event)"
-                [(date)]="date">
+                [(date)]="date"
+                (dateChange)="handleDateChange()">
             </ng-mat-calendar>
         </mat-card-content>
     </mat-card>

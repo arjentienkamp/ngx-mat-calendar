@@ -17,11 +17,7 @@ export class AppComponent implements OnInit {
 
     constructor(
         private eventService: EventService
-    ) {
-        this.eventService.getEvents().subscribe((events: CalendarEvent[]) => {
-            this.events = events;
-        });
-    }
+    ) {}
 
     ngOnInit(): void {
         this.calendarOptions = new CalendarOptions({
@@ -32,7 +28,19 @@ export class AppComponent implements OnInit {
             // renderComponent: EventRenderTestComponent
         });
 
+        this.getEvents(this.date);
+
         console.log(this.calendarOptions);
+    }
+
+    getEvents(date: string): void {
+        this.eventService.getEvents(date).subscribe((events: CalendarEvent[]) => {
+            this.events = events; console.log(events);
+        });
+    }
+
+    handleDateChange(): void {
+        this.getEvents(this.date);
     }
 
     handleEventClick(event: CalendarEvent): void {

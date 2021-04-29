@@ -1,5 +1,6 @@
 import {
     Component,
+    DoCheck,
     EventEmitter,
     Input,
     OnInit,
@@ -20,7 +21,7 @@ import { DateAdapter } from '@angular/material/core';
     templateUrl: './ng-mat-calendar.component.html',
     styleUrls: ['./ng-mat-calendar.component.scss']
 })
-export class NgMatCalendarComponent implements OnInit {
+export class NgMatCalendarComponent implements OnInit, DoCheck {
     @Input() events: CalendarEvent[] = [];
 
     private setOptions!: CalendarOptions;
@@ -72,6 +73,14 @@ export class NgMatCalendarComponent implements OnInit {
 
             this.generateCalendarView();
             this.handleDatepickerChanges();
+        }
+    }
+
+    ngDoCheck(): void {
+        const changes = this.events;
+
+        if (changes) {
+            this.generateCalendarView();
         }
     }
 
@@ -160,12 +169,12 @@ export class NgMatCalendarComponent implements OnInit {
             let date = selectedWeekStart;
             date = date.clone().add(i, 'days');
 
-            const lane: CalendarDay = {
+            const day: CalendarDay = {
                 date: date.format(this.dateFormat),
                 events: []
             };
 
-            days.push(lane);
+            days.push(day);
         }
 
         return days;
@@ -211,6 +220,7 @@ export class NgMatCalendarComponent implements OnInit {
 
         if (previousEvent !== undefined) {
             const endTimePreviousEvent = moment(previousEvent.endTime);
+
             timeBetweenEvents = moment.duration(endTimePreviousEvent.diff(startTime)).asMinutes();
             previousEventOffset = Math.abs(endTimePreviousEvent.hour() * 60 + endTimePreviousEvent.minute());
         }
