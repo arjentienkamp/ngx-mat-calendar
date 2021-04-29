@@ -7,7 +7,6 @@ export class CalendarOptions {
     renderComponent = EventRenderComponent;
     jumpToSpy = true;
     enableDatePickerButton = true;
-    enableTooltip = true;
     locale = 'nl';
 
     constructor(init?: Partial<CalendarOptions>) {

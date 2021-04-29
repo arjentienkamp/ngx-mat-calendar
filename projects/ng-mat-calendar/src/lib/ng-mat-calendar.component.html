@@ -83,9 +83,6 @@
                     *ngFor="let event of day.events; let i = index"
                     [style.marginTop.px]="event.offset?.offsetTop"
                     [style.height.px]="event.offset?.durationOffset"
-                    [matTooltip]="getTooltip(event)"
-                    matTooltipPosition="right"
-                    [matTooltipDisabled]="!enableTooltip"
                     (click)="onEventClick(event)">
                 </event-display>
             </div>

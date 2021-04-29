@@ -48,7 +48,6 @@ export class NgMatCalendarComponent implements OnInit, DoCheck {
     times = Times;
     pixelsPerHour = 0;
     enableDatePickerButton!: boolean;
-    enableTooltip!: boolean;
     showDatePicker = false;
     dateFormat!: string;
     datePickerForm: FormGroup;
@@ -72,7 +71,6 @@ export class NgMatCalendarComponent implements OnInit, DoCheck {
         if (this.setOptions && this.events) {
             this.pixelsPerHour = this.setOptions.pixelsPerMinute * 60;
             this.enableDatePickerButton = this.setOptions.enableDatePickerButton;
-            this.enableTooltip = this.setOptions.enableTooltip;
             this.dateFormat = this.setOptions.dateFormat;
 
             this.dateAdapter.setLocale(this.setOptions.locale);
@@ -296,12 +294,6 @@ export class NgMatCalendarComponent implements OnInit, DoCheck {
 
     getTime(date: string): string {
         return this.formattingService.getTime(date);
-    }
-
-    getTooltip(event: CalendarEvent): string{
-        const location = event.location ? `@ ${event.location}` : '';
-
-        return `${event.title} (${this.getTime(event.startTime)} - ${this.getTime(event.endTime)}) ${location}`;
     }
 
     onEventClick(event: CalendarEvent): void {
