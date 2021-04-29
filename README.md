@@ -68,7 +68,8 @@ When using a custom component for rendering the events, you can optionally exten
 | Property        | Description                                         | Type                          |
 |-----------------|-----------------------------------------------------|-------------------------------|
 | eventClick      | emits when event is clicked                         | EventEmitter<CalendarEvent>   |
-| date            | emits date on date change                           | EventEmitter<string>          |
+| date            |                                                     |                               |
+| dateChange      | emits on date change                                | EventEmitter<string>          |
 
 ## Todo
 - Month view
