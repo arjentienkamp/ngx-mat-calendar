@@ -13,7 +13,7 @@ import { EventService } from './services/event.service';
 export class AppComponent implements OnInit {
     events: CalendarEvent[] = [];
     calendarOptions!: CalendarOptions;
-    date = moment().add(0, 'days').format();
+    date = new Date();
 
     constructor(
         private eventService: EventService
@@ -33,9 +33,11 @@ export class AppComponent implements OnInit {
         console.log(this.calendarOptions);
     }
 
-    getEvents(date: string): void {
+    getEvents(date: Date): void {
         this.eventService.getEvents(date).subscribe((events: CalendarEvent[]) => {
-            this.events = events; console.log(events);
+            this.events = events;
+
+            console.log(events);
         });
     }
 

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { DummyEvents } from './dummy-events';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { CalendarEvent } from 'projects/ng-mat-calendar/src/lib/models/Calendar';
-import * as moment from 'moment';
+import { add, endOfWeek, getTime, isDate, set, startOfWeek, toDate } from 'date-fns';
 
 @Injectable({
   providedIn: 'root'
@@ -10,12 +10,12 @@ import * as moment from 'moment';
 export class EventService {
     events: BehaviorSubject<CalendarEvent[]> = new BehaviorSubject(DummyEvents);
 
-    generateRandomDate(start: any, end: any): moment.Moment {
-        const startTime = +moment(start);
-        const endTime = +moment(end);
+    generateRandomDate(start: Date, end: Date): Date {
+        const startTime = getTime(start);
+        const endTime = getTime(end);
         const randomNumber = (to: number, from: number) => Math.floor(Math.random() * (to - from) + from);
 
-        return moment(randomNumber(endTime, startTime));
+        return toDate(randomNumber(endTime, startTime));
     }
 
     generateRandomNumber(min: number, max: number): number {
@@ -28,24 +28,19 @@ export class EventService {
         return minutes[Math.floor(Math.random() * minutes.length)];
     }
 
-    getEvents(date: string): Observable<CalendarEvent[]> {
-        const startOfWeek = moment(date).startOf('isoWeek').isoWeekday(1);
-        const endOfWeek = moment(date).endOf('isoWeek');
+    getEvents(date: Date): Observable<CalendarEvent[]> {
+        const weekStart = startOfWeek(date, { weekStartsOn: 1 });
+        const weekEnd = endOfWeek(date, { weekStartsOn: 1 });
 
         DummyEvents.forEach((event) => {
-          const randomStartDate = this.generateRandomDate(startOfWeek, endOfWeek)
-            .set('hour', this.generateRandomNumber(7, 22))
-            .set('minutes', this.getRandomMinutes())
-            .toISOString();
+            const randomStartDate = this.generateRandomDate(weekStart, weekEnd);
+            set(randomStartDate, { hours: this.generateRandomNumber(15, 22), minutes: this.getRandomMinutes()});
 
-          const randomEndDate = moment(randomStartDate)
-            .add(this.generateRandomNumber(2, 5), 'hours')
-            .add(this.getRandomMinutes(), 'minutes')
-            .toISOString();
+            const randomEndDate = add(randomStartDate, { hours: this.generateRandomNumber(2, 9), minutes: this.getRandomMinutes()});
 
-          event.date = randomStartDate;
-          event.startTime = randomStartDate;
-          event.endTime = randomEndDate;
+            event.date = randomStartDate;
+            event.startTime = randomStartDate;
+            event.endTime = randomEndDate;
         });
 
         return this.events.asObservable();

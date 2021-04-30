@@ -1,20 +1,20 @@
 export default interface Calendar {
     days: CalendarDay[];
     monthAndYear: string;
-    weeknumber: number;
+    weeknumber: string;
 }
 
 export interface CalendarDay {
-    date: string;
+    date: Date;
     events: CalendarEvent[];
 }
 
 export interface CalendarEvent {
     title: string;
-    date: string;
+    date: Date;
     offset?: CalendarEventOffset;
-    startTime: string;
-    endTime: string;
+    startTime: Date;
+    endTime: Date;
     location?: string;
 }
 

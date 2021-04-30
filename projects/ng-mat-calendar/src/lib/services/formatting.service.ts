@@ -1,8 +1,7 @@
-import * as moment from 'moment';
+import { format } from 'date-fns';
 
 export class FormattingService {
-
-    public getTime(date: string): string {
-        return moment(date).format('HH:mm');
+    public getTime(date: Date): string {
+        return format(date, 'HH:mm');
     }
 }

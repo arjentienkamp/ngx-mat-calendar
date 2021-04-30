@@ -8,8 +8,20 @@ import {
     Output,
 } from '@angular/core';
 
+import {
+    format,
+    add,
+    isSameDay,
+    startOfWeek,
+    isToday,
+    endOfDay,
+    intervalToDuration,
+    getHours,
+    getMinutes,
+    toDate
+} from 'date-fns';
+
 import { FormBuilder, FormGroup } from '@angular/forms';
-import * as moment from 'moment';
 import Calendar, { CalendarDay, CalendarEvent, CalendarEventOffset } from './models/Calendar';
 import { Times } from './models/Times';
 import { CalendarOptions } from './models/CalendarOptions';
@@ -34,15 +46,15 @@ export class NgMatCalendarComponent implements OnInit, DoCheck {
         this.setOptions = value;
     }
 
-    private selectedDate!: string;
-    @Input() get date(): string {
-        return this.selectedDate;
+    private selectedDate!: Date;
+    @Input() get date(): Date {
+        return new Date(this.selectedDate);
     }
-    set date(value: string) {
-        this.selectedDate = value;
+    set date(value: Date) {
+        this.selectedDate = new Date(value);
         this.dateChange.emit(this.selectedDate);
     }
-    @Output() dateChange: EventEmitter<string> = new EventEmitter();
+    @Output() dateChange: EventEmitter<Date> = new EventEmitter();
     @Output() eventClick: EventEmitter<CalendarEvent> = new EventEmitter();
 
     times = Times;
@@ -90,66 +102,41 @@ export class NgMatCalendarComponent implements OnInit, DoCheck {
 
     generateCalendarView(): void {
         if (this.selectedDate) {
-            const eventsGroupedByDate = this.groupEventsByDate();
-            const emptyDays = this.generateDays();
-            const populatedEvents = this.populateEvents(eventsGroupedByDate);
-            const populatedDays = this.populateDays(emptyDays, populatedEvents);
-
             this.calendar = {
-                days: populatedDays,
-                monthAndYear: moment(this.selectedDate).format('MMMM YYYY'),
-                weeknumber: moment(this.selectedDate).week()
+                days: [],
+                monthAndYear: format(this.selectedDate, 'MMMM yyyy'),
+                weeknumber: format(this.selectedDate, 'I')
             };
+
+            const emptyDays = this.generateDays();
+            this.populateDays(emptyDays);
+
+            console.log(this.calendar);
         }
     }
 
-    groupEventsByDate(): CalendarEvent[] {
-        const groupedEvents = this.events.reduce((accumulator, item) => {
-            accumulator[moment(item.date).format(this.dateFormat)] =
-            accumulator[moment(item.date).format(this.dateFormat)] || [];
-            accumulator[moment(item.date).format(this.dateFormat)].push(item);
+    populateDays(emptyDays: any): void {
+        const populatedDays: CalendarDay[] = emptyDays;
 
-            return accumulator;
-        }, Object.create(null));
-
-        return groupedEvents;
-    }
-
-    populateEvents(eventsGroupedByDate: any): CalendarEvent[] {
-        const nextDayEvents = { key: '', events: [] as CalendarEvent[] };
-
-        Object.keys(eventsGroupedByDate).forEach((key: any) => {
-            if (nextDayEvents.key !== key) {
-                 nextDayEvents.key = '';
-                 nextDayEvents.events = [];
-            } else {
-                eventsGroupedByDate[key].unshift(nextDayEvents.events[0]);
-            }
-
-            eventsGroupedByDate[key] = eventsGroupedByDate[key].map((item: any, index: number) => {
-                const previousEvent = this.getPreviousEvent(eventsGroupedByDate[key], index);
-
-                const event: CalendarEvent = {
-                    ...item,
-                    offset: this.calculatePixelsOffsetForEvent(item, previousEvent)
-                };
-
-                if (!this.isSameDay(item)) {
-                    const nextDayEvent: CalendarEvent = {
-                        ...item,
-                        startTime: moment(item.startTime).add(1, 'days').startOf('day').format(),
-                        offset: { offsetTop: 0, durationOffset: 0 },
-                    };
-
-                    nextDayEvents.key = this.getNextDayKey(eventsGroupedByDate, key);
-                    nextDayEvents.events.push(nextDayEvent);
-                }
-
-                return event;
+        populatedDays.forEach(day => {
+            day.events = this.events.filter((event: CalendarEvent) => {
+                return isSameDay(new Date(day.date), new Date(event.startTime)) ||
+                    isSameDay(new Date(day.date), new Date(event.endTime));
+            }).map((event: CalendarEvent) => {
+                return this.populateEvents(event, day);
             });
         });
 
-        return eventsGroupedByDate;
+        this.calendar.days = populatedDays;
+    }
+
+    populateEvents(event: CalendarEvent, day: CalendarDay): CalendarEvent {
+        const populatedEvent = {
+            ...event,
+            offset: this.calculatePixelsOffsetForEvent(event, day)
+        };
+
+        return populatedEvent;
     }
 
     getNextDayKey(eventsGroupedByDate: any, key: string): string {
@@ -166,15 +153,15 @@ export class NgMatCalendarComponent implements OnInit, DoCheck {
     }
 
     generateDays(): CalendarDay[] {
-        const selectedWeekStart = moment(this.selectedDate).startOf('isoWeek').isoWeekday(1);
+        const selectedWeekStart = startOfWeek(this.selectedDate, { weekStartsOn: 1});
         const days = [];
 
         for (let i = 0; i < 7; i++) {
-            let date = selectedWeekStart;
-            date = date.clone().add(i, 'days');
+            let date = new Date(selectedWeekStart);
+            date = add(date, { days: i });
 
             const day: CalendarDay = {
-                date: date.format(this.dateFormat),
+                date,
                 events: []
             };
 
@@ -184,56 +171,28 @@ export class NgMatCalendarComponent implements OnInit, DoCheck {
         return days;
     }
 
-    populateDays(emptyDays: any, eventsGroupedByDate: any): CalendarDay[] {
-        const populatedDays: CalendarDay[] = emptyDays;
+    calculatePixelsOffsetForEvent(event: CalendarEvent, day: CalendarDay): CalendarEventOffset {
+        let offset: CalendarEventOffset = { offsetTop: 0, durationOffset: 0 };
 
-        Object.keys(eventsGroupedByDate).forEach((key: any) => {
-            const getDayByKey = populatedDays.find((day: CalendarDay) => day.date === key);
+        const startTime = event.startTime;
+        const endTime = isSameDay(event.startTime, event.endTime) ?
+            event.endTime :
+            endOfDay(event.startTime);
 
-            if (getDayByKey) {
-                getDayByKey.events = eventsGroupedByDate[key];
-            }
+        const eventDuration = intervalToDuration({
+            start: startTime,
+            end: endTime
         });
 
-        return populatedDays;
-    }
+        eventDuration.hours = eventDuration.hours || 0;
+        eventDuration.minutes = eventDuration.minutes || 0;
 
-    isDateBetween(date: moment.Moment, start: moment.Moment, end: moment.Moment): boolean {
-        return date.isBetween(start, end, 'day', '[]');
-    }
-
-    isSameDay(event: CalendarEvent): boolean {
-        const startTime = event.startTime;
-        const endTime = event.endTime;
-
-        return moment(startTime).isSame(endTime, 'day');
-    }
-
-    // @TODO : use previouseventoffset so event can be relative positioned
-    calculatePixelsOffsetForEvent(event: any, previousEvent: any): CalendarEventOffset {
-        let offset: CalendarEventOffset = { offsetTop: 0, durationOffset: 0 };
-        let previousEventOffset = 0;
-        let timeBetweenEvents = 0;
-
-        const startTime = moment(event.startTime);
-        const endTime = this.isSameDay(event) ?
-            moment(event.endTime) :
-            moment(event.endTime).subtract(1, 'days').endOf('day');
-
-        const eventDuration = moment.duration(endTime.diff(startTime)).asMinutes();
-
-        if (previousEvent !== undefined) {
-            const endTimePreviousEvent = moment(previousEvent.endTime);
-
-            timeBetweenEvents = moment.duration(endTimePreviousEvent.diff(startTime)).asMinutes();
-            previousEventOffset = Math.abs(endTimePreviousEvent.hour() * 60 + endTimePreviousEvent.minute());
-        }
-
-        const offsetInMinutes = Math.abs(startTime.hour() * 60 + startTime.minute());
+        const offsetInMinutes = !isSameDay(event.startTime, event.endTime) && isSameDay(event.endTime, day.date) ?
+            0 : Math.abs(getHours(startTime)) * 60 + getMinutes(startTime);
 
         offset =  {
             offsetTop: offsetInMinutes * this.options.pixelsPerMinute,
-            durationOffset: eventDuration * this.options.pixelsPerMinute
+            durationOffset: (eventDuration.hours * 60 + eventDuration.minutes) * this.options.pixelsPerMinute
         };
 
         return offset;
@@ -248,51 +207,43 @@ export class NgMatCalendarComponent implements OnInit, DoCheck {
     }
 
     calculateSpy(): any {
-        const now = moment();
+        const now = new Date();
 
-        return (now.hour() * 60 + now.minute()) * this.options.pixelsPerMinute;
+        return (getHours(now) * 60 + getMinutes(now)) * this.options.pixelsPerMinute;
     }
 
-    isToday(date: string): boolean {
-        const today = moment().startOf('day');
-        const momentDate = moment(date, this.dateFormat);
-
-        return momentDate.isSame(today, 'd');
+    isToday(date: Date): boolean {
+        return isToday(date);
     }
 
     setCalendarToday(): void {
-        this.selectedDate = moment().format();
+        this.selectedDate = new Date();
         this.generateCalendarView();
         this.dateChange.emit(this.selectedDate);
         this.showDatePicker = false;
     }
 
-    setCalendar(offset?: number, date?: string): void {
-        let setDate = '';
-
+    setCalendar(offset?: number, date?: Date): void {
         if (offset) {
-            setDate = moment(this.selectedDate)
-            .add(offset, 'days')
-            .format();
+            this.selectedDate = add(this.selectedDate, { days: offset });
         } else {
-            setDate = moment(date).format();
+            this.selectedDate = date || new Date();
         }
 
-        this.selectedDate = setDate;
         this.generateCalendarView();
-        this.dateChange.emit(setDate);
+        this.dateChange.emit(this.selectedDate);
         this.showDatePicker = false;
     }
 
-    getDayName(date: string): string {
-        return moment(date, this.dateFormat).format('ddd');
+    getDayName(date: Date): string {
+        return format(date, 'E');
     }
 
-    getDayNumber(date: string): string {
-        return moment(date, this.dateFormat).format('D');
+    getDayNumber(date: Date): string {
+        return format(date, 'd');
     }
 
-    getTime(date: string): string {
+    getTime(date: Date): string {
         return this.formattingService.getTime(date);
     }
 
@@ -308,7 +259,7 @@ export class NgMatCalendarComponent implements OnInit, DoCheck {
         const date = this.datePickerForm.get('date');
 
         date?.valueChanges.subscribe((dateValue) => {
-            this.setCalendar(undefined, moment(dateValue, this.dateFormat).format());
+            this.setCalendar(undefined, toDate(dateValue));
         });
     }
 }
