@@ -8,7 +8,7 @@ import {
     ViewContainerRef
 } from '@angular/core';
 
-import { CalendarEvent } from '../../models/Calendar';
+import { CalendarEvent } from '../../models/CalendarEvent';
 
 @Component({
     // tslint:disable-next-line:component-selector

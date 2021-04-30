@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { CalendarEvent } from '../../models/Calendar';
+import { CalendarEvent } from '../../models/CalendarEvent';
 import { FormattingService } from '../../services/formatting.service';
 
 @Component({

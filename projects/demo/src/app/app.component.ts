@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { add } from 'date-fns';
-import { CalendarEvent } from 'projects/ng-mat-calendar/src/lib/models/Calendar';
+import { CalendarEvent } from 'projects/ng-mat-calendar/src/lib/models/CalendarEvent';
 import { CalendarOptions } from 'projects/ng-mat-calendar/src/lib/models/CalendarOptions';
 import { EventRenderTestComponent } from './component/event-render-test/event-render-test.component';
 import { EventService } from './services/event.service';

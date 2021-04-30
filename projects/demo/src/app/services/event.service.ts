@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { DummyEvents } from './dummy-events';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { CalendarEvent } from 'projects/ng-mat-calendar/src/lib/models/Calendar';
-import { add, endOfWeek, getTime, isDate, set, startOfWeek, toDate } from 'date-fns';
+import { add, endOfWeek, getTime, set, startOfWeek, toDate } from 'date-fns';
+import { CalendarEvent } from 'projects/ng-mat-calendar/src/lib/models/CalendarEvent';
 
 @Injectable({
   providedIn: 'root'

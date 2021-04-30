@@ -23,12 +23,13 @@ import {
 } from 'date-fns';
 
 import { FormBuilder, FormGroup } from '@angular/forms';
-import Calendar, { CalendarDay, CalendarEvent, CalendarEventOffset } from './models/Calendar';
+import Calendar, { CalendarDay } from './models/Calendar';
 import { Times } from './models/Times';
 import { CalendarOptions } from './models/CalendarOptions';
 import { FormattingService } from './services/formatting.service';
 import { DateAdapter } from '@angular/material/core';
 import { MatCalendarCellClassFunction } from '@angular/material/datepicker';
+import { CalendarEvent, CalendarEventOffset } from './models/CalendarEvent';
 
 @Component({
     // tslint:disable-next-line:component-selector
@@ -133,10 +134,10 @@ export class NgMatCalendarComponent implements OnInit, DoCheck {
     }
 
     populateEvents(event: CalendarEvent, day: CalendarDay): CalendarEvent {
-        const populatedEvent = {
+        const populatedEvent = new CalendarEvent({
             ...event,
             offset: this.calculatePixelsOffsetForEvent(event, day)
-        };
+        });
 
         return populatedEvent;
     }

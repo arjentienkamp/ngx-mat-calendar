@@ -1,3 +1,5 @@
+import { colors } from 'projects/ng-mat-calendar/src/lib/models/Colors';
+
 export const DummyEvents = [
     {
         title: 'Drinks with colleagues',
@@ -15,6 +17,7 @@ export const DummyEvents = [
         date: new Date(),
         startTime: new Date(),
         endTime: new Date(),
+        color: colors.pink
     }, {
         title: 'Workout with Peter',
         date: new Date(),
