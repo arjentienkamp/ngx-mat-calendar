@@ -73,4 +73,4 @@ When using a custom component for rendering the events, you can optionally exten
 
 ## Todo
 - Month view
-- Phase out MomentJS
+- Day view

@@ -1,6 +1,3 @@
 @import './variables.scss';
 @import './mixins.scss';
-
-* {
-    box-sizing: border-box;
-}
+@import './global.scss';

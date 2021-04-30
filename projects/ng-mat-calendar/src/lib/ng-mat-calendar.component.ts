@@ -28,6 +28,7 @@ import { Times } from './models/Times';
 import { CalendarOptions } from './models/CalendarOptions';
 import { FormattingService } from './services/formatting.service';
 import { DateAdapter } from '@angular/material/core';
+import { MatCalendarCellClassFunction } from '@angular/material/datepicker';
 
 @Component({
     // tslint:disable-next-line:component-selector
@@ -263,8 +264,16 @@ export class NgMatCalendarComponent implements OnInit, DoCheck {
         this.eventClick.emit(event);
     }
 
-    toggleDatepicker(): void {
+    toggleDatePicker(): void {
         this.showDatePicker = !this.showDatePicker;
+    }
+
+    dateClass: MatCalendarCellClassFunction<Date> = (cellDate, view) => {
+        if (view === 'month') {
+            return isSameDay(cellDate, this.selectedDate) ? 'datepicker--today' : '';
+        }
+
+        return '';
     }
 
     handleDatepickerChanges(): void {
