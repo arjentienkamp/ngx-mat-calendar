@@ -1,4 +1,17 @@
 <div class="container">
+    <mat-card class="toolbar">
+        <div>Demo toolbar</div>
+
+        <div>
+            <button
+            mat-stroked-button
+            color="primary"
+            (click)="changeDateFromParent()">
+                Change date
+        </button>
+        </div>
+    </mat-card>
+
     <mat-card>
         <mat-card-content>
             <ng-mat-calendar

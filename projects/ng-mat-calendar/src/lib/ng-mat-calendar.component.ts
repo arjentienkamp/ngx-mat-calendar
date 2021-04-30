@@ -18,7 +18,8 @@ import {
     intervalToDuration,
     getHours,
     getMinutes,
-    toDate
+    toDate,
+    startOfDay
 } from 'date-fns';
 
 import { FormBuilder, FormGroup } from '@angular/forms';
@@ -48,10 +49,10 @@ export class NgMatCalendarComponent implements OnInit, DoCheck {
 
     private selectedDate!: Date;
     @Input() get date(): Date {
-        return new Date(this.selectedDate);
+        return this.selectedDate;
     }
     set date(value: Date) {
-        this.selectedDate = new Date(value);
+        this.selectedDate = value;
         this.dateChange.emit(this.selectedDate);
     }
     @Output() dateChange: EventEmitter<Date> = new EventEmitter();
@@ -179,20 +180,31 @@ export class NgMatCalendarComponent implements OnInit, DoCheck {
             event.endTime :
             endOfDay(event.startTime);
 
-        const eventDuration = intervalToDuration({
+        const eventDurationFromStartTime = intervalToDuration({
             start: startTime,
             end: endTime
         });
 
-        eventDuration.hours = eventDuration.hours || 0;
-        eventDuration.minutes = eventDuration.minutes || 0;
+        const eventDurationFromMidnight = intervalToDuration({
+            start: startOfDay(day.date),
+            end: event.endTime
+        });
+
+        eventDurationFromStartTime.hours = eventDurationFromStartTime.hours || 0;
+        eventDurationFromStartTime.minutes = eventDurationFromStartTime.minutes || 0;
+        eventDurationFromMidnight.hours = eventDurationFromMidnight.hours || 0;
+        eventDurationFromMidnight.minutes = eventDurationFromMidnight.minutes || 0;
 
         const offsetInMinutes = !isSameDay(event.startTime, event.endTime) && isSameDay(event.endTime, day.date) ?
             0 : Math.abs(getHours(startTime)) * 60 + getMinutes(startTime);
 
+        const durationOffset = !isSameDay(event.startTime, event.endTime) && isSameDay(event.endTime, day.date) ?
+            eventDurationFromMidnight.hours * 60 + eventDurationFromMidnight.minutes :
+            eventDurationFromStartTime.hours * 60 + eventDurationFromStartTime.minutes;
+
         offset =  {
             offsetTop: offsetInMinutes * this.options.pixelsPerMinute,
-            durationOffset: (eventDuration.hours * 60 + eventDuration.minutes) * this.options.pixelsPerMinute
+            durationOffset: durationOffset * this.options.pixelsPerMinute
         };
 
         return offset;
@@ -226,8 +238,8 @@ export class NgMatCalendarComponent implements OnInit, DoCheck {
     setCalendar(offset?: number, date?: Date): void {
         if (offset) {
             this.selectedDate = add(this.selectedDate, { days: offset });
-        } else {
-            this.selectedDate = date || new Date();
+        } else if (date) {
+            this.selectedDate = date;
         }
 
         this.generateCalendarView();

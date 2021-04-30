@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import * as moment from 'moment';
+import { add } from 'date-fns';
 import { CalendarEvent } from 'projects/ng-mat-calendar/src/lib/models/Calendar';
 import { CalendarOptions } from 'projects/ng-mat-calendar/src/lib/models/CalendarOptions';
 import { EventRenderTestComponent } from './component/event-render-test/event-render-test.component';
@@ -39,6 +39,10 @@ export class AppComponent implements OnInit {
 
             console.log(events);
         });
+    }
+
+    changeDateFromParent(): void {
+        this.date = add(this.date, { days: 25});
     }
 
     handleDateChange(): void {
