@@ -81,7 +81,8 @@
                     [event]="event"
                     class="calendar__item"
                     *ngFor="let event of day.events; let i = index"
-                    [style.backgroundColor]="event.color"
+                    [style.width]="getEventWidth(event)"
+                    [style.marginLeft]="getEventOverlapOffset(event)"
                     [style.marginTop.px]="event.offset?.offsetTop"
                     [style.height.px]="event.offset?.durationOffset"
                     (click)="onEventClick(event)">

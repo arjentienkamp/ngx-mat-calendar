@@ -1,5 +1,17 @@
 @import '../../styles/_styles';
 
+:host(event-render) {
+    display: flex;
+    flex-direction: column;
+    min-height: 58px;
+    height: 100%;
+}
+
+.event {
+    height: 100%;
+    border-radius: 4px;
+}
+
 .event__header {
     display: block;
     text-align: left;
