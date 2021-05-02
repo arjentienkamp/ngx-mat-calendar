@@ -8,7 +8,14 @@
             color="primary"
             (click)="changeDateFromParent()">
                 Change date
-        </button>
+            </button>
+
+            <mat-checkbox
+                class="toolbar__checkbox"
+                [checked]="compact"
+                (change)="onCompactChange()">
+                Compact
+            </mat-checkbox>
         </div>
     </mat-card>
 

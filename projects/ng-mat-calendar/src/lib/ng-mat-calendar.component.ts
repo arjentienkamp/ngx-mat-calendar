@@ -4,6 +4,8 @@ import {
     EventEmitter,
     Input,
     IterableDiffers,
+    KeyValueDiffer,
+    KeyValueDiffers,
     OnInit,
     Output,
 } from '@angular/core';
@@ -43,7 +45,7 @@ import { Views } from './models/Views';
 })
 export class NgMatCalendarComponent implements OnInit, DoCheck {
     @Input() events: CalendarEvent[] = [];
-    private differ: IterableDiffers;
+    private differEvents: IterableDiffers;
 
     private setOptions!: CalendarOptions;
     @Input() get options(): CalendarOptions {
@@ -52,6 +54,8 @@ export class NgMatCalendarComponent implements OnInit, DoCheck {
     set options(value: CalendarOptions) {
         this.setOptions = value;
     }
+    private differOptions: KeyValueDiffer<any, any>;
+
 
     private selectedDate!: Date;
     @Input() get date(): Date {
@@ -79,19 +83,25 @@ export class NgMatCalendarComponent implements OnInit, DoCheck {
         private formattingService: FormattingService,
         private formBuilder: FormBuilder,
         private dateAdapter: DateAdapter<Date>,
-        private iterableDiffers: IterableDiffers
+        private iterableDiffers: IterableDiffers,
+        private keyValueDiffers: KeyValueDiffers
     ) {
         this.datePickerForm = this.formBuilder.group({
             date: [''],
         });
 
-        this.differ = iterableDiffers;
+        this.differEvents = iterableDiffers;
+        this.differOptions = keyValueDiffers.find(CalendarOptions).create();
         this.views = Views;
     }
 
     ngOnInit(): void {
+        this.initCalendar();
+    }
+
+    initCalendar(): void {
         if (this.setOptions && this.events) {
-            this.pixelsPerHour = this.setOptions.pixelsPerMinute * 60;
+            this.pixelsPerHour = this.setOptions.getPixelsPerMinute * 60;
             this.enableDatePickerButton = this.setOptions.enableDatePickerButton;
             this.dateFormat = this.setOptions.dateFormat;
 
@@ -103,10 +113,16 @@ export class NgMatCalendarComponent implements OnInit, DoCheck {
     }
 
     ngDoCheck(): void {
-        const changes = this.differ.find(this.events);
+        const eventChanges = this.differEvents.find(this.events);
 
-        if (changes) {
+        if (eventChanges) {
             this.generateCalendarView();
+        }
+
+        const optionsChanges = this.differOptions.diff(this.setOptions);
+
+        if (optionsChanges) {
+            this.initCalendar();
         }
     }
 
@@ -275,8 +291,8 @@ export class NgMatCalendarComponent implements OnInit, DoCheck {
 
         grid = {
             ...grid,
-            offsetTop: offsetInMinutes * this.options.pixelsPerMinute,
-            durationOffset: durationOffset * this.options.pixelsPerMinute
+            offsetTop: offsetInMinutes * this.options.getPixelsPerMinute,
+            durationOffset: durationOffset * this.options.getPixelsPerMinute
         };
 
         return grid;
@@ -293,7 +309,7 @@ export class NgMatCalendarComponent implements OnInit, DoCheck {
     calculateSpy(): any {
         const now = new Date();
 
-        return (getHours(now) * 60 + getMinutes(now)) * this.options.pixelsPerMinute;
+        return (getHours(now) * 60 + getMinutes(now)) * this.options.getPixelsPerMinute;
     }
 
     isToday(date: Date): boolean {

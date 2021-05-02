@@ -14,13 +14,19 @@ export class AppComponent implements OnInit {
     events: CalendarEvent[] = [];
     calendarOptions!: CalendarOptions;
     date = new Date();
+    compact = false;
 
     constructor(
         private eventService: EventService
     ) {}
 
     ngOnInit(): void {
+        this.initCalendar();
+    }
+
+    initCalendar(): void {
         this.calendarOptions = new CalendarOptions({
+            compact: this.compact,
             // locale: 'es',
             // pixelsPerMinute: 2,
             // enableDatePickerButton: false,
@@ -29,7 +35,6 @@ export class AppComponent implements OnInit {
         });
 
         this.getEvents(this.date);
-
         console.log(this.calendarOptions);
     }
 
@@ -43,6 +48,11 @@ export class AppComponent implements OnInit {
 
     changeDateFromParent(): void {
         this.date = add(this.date, { days: 25});
+    }
+
+    onCompactChange(): void {
+        this.compact = !this.compact;
+        this.initCalendar();
     }
 
     handleDateChange(): void {

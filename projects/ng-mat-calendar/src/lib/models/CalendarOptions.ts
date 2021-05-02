@@ -8,16 +8,17 @@ export class CalendarOptions {
     jumpToSpy = true;
     enableDatePickerButton = true;
     locale = 'nl';
+    compact = false;
 
     constructor(init?: Partial<CalendarOptions>) {
         Object.assign(this, init);
     }
 
-    // get getPixelsPerMinute(): number {
-    //     return this.pixelsPerMinute;
-    // }
+    get getPixelsPerMinute(): number {
+        if (this.compact) {
+            return this.pixelsPerMinute / 2;
+        }
 
-    // public get getTimeFormat(): string {
-    //     return this.timeFormat;
-    // }
+        return this.pixelsPerMinute;
+    }
 }

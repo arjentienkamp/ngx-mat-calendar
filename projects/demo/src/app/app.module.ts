@@ -7,9 +7,17 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 import { NgMatCalendarModule } from 'projects/ng-mat-calendar/src/lib/ng-mat-calendar.module';
 import { EventRenderTestComponent } from './component/event-render-test/event-render-test.component';
+
+const MaterialModules = [
+    MatCardModule,
+    MatButtonModule,
+    MatIconModule,
+    MatCheckboxModule
+];
 
 @NgModule({
     declarations: [
@@ -20,9 +28,7 @@ import { EventRenderTestComponent } from './component/event-render-test/event-re
         BrowserModule,
         NgMatCalendarModule,
         BrowserAnimationsModule,
-        MatCardModule,
-        MatButtonModule,
-        MatIconModule
+        ...MaterialModules
     ],
     entryComponents: [
         EventRenderTestComponent

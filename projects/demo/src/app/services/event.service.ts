@@ -29,14 +29,14 @@ export class EventService {
     }
 
     getEvents(date: Date): Observable<CalendarEvent[]> {
-        const weekStart = startOfWeek(date, { weekStartsOn: 4 });
+        const weekStart = startOfWeek(date, { weekStartsOn: 1 });
         const weekEnd = endOfWeek(date, { weekStartsOn: 1 });
 
         DummyEvents.forEach((event) => {
             const randomStartDate = this.generateRandomDate(weekStart, weekEnd);
             set(randomStartDate, { hours: this.generateRandomNumber(15, 22), minutes: this.getRandomMinutes()});
 
-            const randomEndDate = add(randomStartDate, { hours: this.generateRandomNumber(2, 9), minutes: this.getRandomMinutes()});
+            const randomEndDate = add(randomStartDate, { hours: this.generateRandomNumber(2, 7), minutes: this.getRandomMinutes()});
 
             event.date = randomStartDate;
             event.startTime = randomStartDate;
