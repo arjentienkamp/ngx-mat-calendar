@@ -39,6 +39,7 @@ export const DummyEvents = [
         date: new Date(),
         startTime: new Date(),
         endTime: new Date(),
+        color: colors.green
     }, {
         title: 'Lunch with Jane',
         location: 'Happy Sofia',
@@ -50,5 +51,6 @@ export const DummyEvents = [
         date: new Date(),
         startTime: new Date(),
         endTime: new Date(),
+        color: colors.blue
     }
 ];

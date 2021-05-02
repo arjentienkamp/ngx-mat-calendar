@@ -334,6 +334,14 @@ export class NgMatCalendarComponent implements OnInit, DoCheck {
         return this.formattingService.getTime(date);
     }
 
+    getCellHeight(time: any): number {
+        if (time.isEnd) {
+            return 20;
+        }
+
+        return this.pixelsPerHour;
+    }
+
     onViewChange(view: any): void {
         this.selectedView = view;
     }

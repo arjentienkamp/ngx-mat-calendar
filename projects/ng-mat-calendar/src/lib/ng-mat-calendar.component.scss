@@ -32,7 +32,7 @@
     border-right: 1px solid $color-gray-light;
 }
 
-.time-unit {
+.time-cell {
     display: flex;
     justify-content: center;
 }
@@ -142,11 +142,31 @@
 
         &:hover {
             background-color: $color-gray-lightest;
+
+            .time-grid__cell {
+                border-top-color: darken($color-gray-lightest, 10%)
+            }
+        }
+
+        .time-grid {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+        }
+
+        .time-grid__cell {
+            border-top: 1px dotted $color-gray-light;
+            width: 100%;
         }
     }
 
     .day__lane--today {
         background-color: $color-bluish-light;
+
+        .time-grid__cell {
+            border-top-color: darken($color-bluish-light, 10%);
+        }
     }
 }
 

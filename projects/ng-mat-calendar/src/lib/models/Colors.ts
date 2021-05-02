@@ -1,6 +1,6 @@
 export enum colors {
     grey = '#cfd8dc',
-    blue = 'blue',
+    blue = '#b3e5fc',
     pink = '#ffc1e3',
-    red = 'red'
+    green = '#c8e6c9'
 }
