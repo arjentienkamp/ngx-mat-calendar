@@ -70,7 +70,7 @@
             </div>
 
             <div class="day__lane"
-                *ngFor="let day of calendar.days;"
+                *ngFor="let day of calendar.days; let i = index;"
                 
                 [ngClass]="{ 'day__lane--today': isToday(day.date) }">
 
@@ -81,10 +81,10 @@
                     [event]="event"
                     class="calendar__item"
                     *ngFor="let event of day.events; let i = index"
-                    [style.width]="getEventWidth(event)"
-                    [style.marginLeft]="getEventOverlapOffset(event)"
-                    [style.marginTop.px]="event.offset?.offsetTop"
-                    [style.height.px]="event.offset?.durationOffset"
+                    [style.width.%]="event.grid?.width"
+                    [style.marginLeft.%]="event.grid?.offsetLeft"
+                    [style.marginTop.px]="event.grid?.offsetTop"
+                    [style.height.px]="event.grid?.durationOffset"
                     (click)="onEventClick(event)">
                 </event-display>
             </div>

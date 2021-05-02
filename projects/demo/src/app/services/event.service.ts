@@ -29,7 +29,7 @@ export class EventService {
     }
 
     getEvents(date: Date): Observable<CalendarEvent[]> {
-        const weekStart = startOfWeek(date, { weekStartsOn: 1 });
+        const weekStart = startOfWeek(date, { weekStartsOn: 4 });
         const weekEnd = endOfWeek(date, { weekStartsOn: 1 });
 
         DummyEvents.forEach((event) => {

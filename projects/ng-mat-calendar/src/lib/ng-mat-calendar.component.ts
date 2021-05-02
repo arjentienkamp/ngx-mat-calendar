@@ -25,12 +25,13 @@ import {
 
 import { FormBuilder, FormGroup } from '@angular/forms';
 import Calendar, { CalendarDay } from './models/Calendar';
+import { v4 as uuidv4 } from 'uuid';
 import { Times } from './models/Times';
 import { CalendarOptions } from './models/CalendarOptions';
 import { FormattingService } from './services/formatting.service';
 import { DateAdapter } from '@angular/material/core';
 import { MatCalendarCellClassFunction } from '@angular/material/datepicker';
-import { CalendarEvent, CalendarEventOffset } from './models/CalendarEvent';
+import { CalendarEvent, CalendarEventGrid } from './models/CalendarEvent';
 
 @Component({
     // tslint:disable-next-line:component-selector
@@ -128,9 +129,11 @@ export class NgMatCalendarComponent implements OnInit, DoCheck {
                     isSameDay(new Date(day.date), new Date(event.endTime));
             }).map((event: CalendarEvent) => {
                 return this.populateEvents(event, day);
-            }).map((event: CalendarEvent, index, events) => {
-                return this.detectOverlappingEvents(event, events);
+            }).sort((a: CalendarEvent, b: CalendarEvent) => {
+                return a.startTime.getTime() - b.startTime.getTime();
             });
+
+            day = this.createEventGroups(day);
         });
 
         this.calendar.days = populatedDays;
@@ -139,33 +142,80 @@ export class NgMatCalendarComponent implements OnInit, DoCheck {
     populateEvents(event: CalendarEvent, day: CalendarDay): CalendarEvent {
         const populatedEvent = new CalendarEvent({
             ...event,
-            offset: this.calculatePixelsOffsetForEvent(event, day)
+            grid: this.calculatePixelsOffsetForEvent(event, day)
         });
 
         return populatedEvent;
     }
 
-    detectOverlappingEvents(event: CalendarEvent, events: CalendarEvent[]): CalendarEvent {
-        const isOverlapping = events.filter((compareEvent: CalendarEvent) => {
-            const doesOverlap = areIntervalsOverlapping(
+    createEventGroups(day: CalendarDay): CalendarDay {
+        day.events.map((event: CalendarEvent) => {
+            const uuid = this.generateUniqueId();
+            let eventGroup: CalendarEvent[] = [];
+
+            if (event.grid) {
+                eventGroup = this.getOverlappingEvents(event, day.events, event.grid.eventGroups);
+
+                eventGroup.map((overlapEvent: CalendarEvent) => {
+                    if (overlapEvent.grid) {
+                        overlapEvent.grid.eventGroups.push(uuid);
+                        overlapEvent.grid.eventsInGroup = eventGroup.length;
+                    }
+
+                    if (!day.eventGroups.includes(uuid)) {
+                        day.eventGroups.push(uuid);
+                    }
+                });
+
+            }
+        });
+
+        this.setEventSizes(day);
+
+        return day;
+    }
+
+    setEventSizes(day: CalendarDay): void {
+        day.eventGroups.forEach(eventGroup => {
+            const eventGroupEvents = day.events.filter((event: CalendarEvent) => {
+                return event.grid?.eventGroups.includes(eventGroup);
+            });
+
+            console.log(eventGroupEvents);
+
+            let index = 0;
+            eventGroupEvents.forEach((event: CalendarEvent) => {
+                if (event.grid) {
+                    event.grid.width = 100 / (eventGroupEvents.length);
+                    event.grid.offsetLeft = event.grid.width * index;
+                }
+
+                index++;
+            });
+        });
+    }
+
+    getOverlappingEvents(event: CalendarEvent, events: CalendarEvent[], eventGroups: string[]): CalendarEvent[] {
+        return events.filter((compareEvent: CalendarEvent) => {
+            const eventsDoOverlap = areIntervalsOverlapping(
                 { start: event.startTime, end: event.endTime },
                 { start: compareEvent.startTime, end: compareEvent.endTime },
                 { inclusive: true }
             );
 
-            return doesOverlap && event !== compareEvent;
+            let isAlreadyInEventGroup = false;
+            if (compareEvent.grid) {
+                isAlreadyInEventGroup = compareEvent.grid.eventGroups.some((eventGroup: string) => {
+                    return eventGroups.includes(eventGroup);
+                });
+            }
+
+            return eventsDoOverlap && !isAlreadyInEventGroup;
         });
+    }
 
-        const eventIndex = events.findIndex((compareEvent) => {
-            return event === compareEvent;
-        });
-
-        if (isOverlapping && event.offset) {
-            event.offset.overLappingEvents = isOverlapping.length;
-            event.offset.overlapIndex = eventIndex;
-        }
-
-        return event;
+    generateUniqueId(): string {
+        return uuidv4();
     }
 
     generateDays(): CalendarDay[] {
@@ -178,6 +228,7 @@ export class NgMatCalendarComponent implements OnInit, DoCheck {
 
             const day: CalendarDay = {
                 date,
+                eventGroups: [],
                 events: []
             };
 
@@ -187,8 +238,8 @@ export class NgMatCalendarComponent implements OnInit, DoCheck {
         return days;
     }
 
-    calculatePixelsOffsetForEvent(event: CalendarEvent, day: CalendarDay): CalendarEventOffset {
-        let offset = new CalendarEventOffset();
+    calculatePixelsOffsetForEvent(event: CalendarEvent, day: CalendarDay): CalendarEventGrid {
+        let grid = new CalendarEventGrid();
 
         const startTime = event.startTime;
         const endTime = isSameDay(event.startTime, event.endTime) ?
@@ -217,13 +268,13 @@ export class NgMatCalendarComponent implements OnInit, DoCheck {
             eventDurationFromMidnight.hours * 60 + eventDurationFromMidnight.minutes :
             eventDurationFromStartTime.hours * 60 + eventDurationFromStartTime.minutes;
 
-        offset =  {
-            ...offset,
+        grid = {
+            ...grid,
             offsetTop: offsetInMinutes * this.options.pixelsPerMinute,
             durationOffset: durationOffset * this.options.pixelsPerMinute
         };
 
-        return offset;
+        return grid;
     }
 
     calculateGrid(): any {
@@ -276,27 +327,6 @@ export class NgMatCalendarComponent implements OnInit, DoCheck {
 
     getTime(date: Date): string {
         return this.formattingService.getTime(date);
-    }
-
-    getEventWidth(event: CalendarEvent): string {
-        const overLappingEvents = event.offset?.overLappingEvents;
-        let percentage = 100;
-
-        if (overLappingEvents && overLappingEvents > 0) {
-            percentage = 100 / (overLappingEvents + 1);
-        }
-        return `${percentage}%`;
-    }
-
-    getEventOverlapOffset(event: CalendarEvent): string {
-        const overlapIndex = event.offset?.overLappingEvents ? event.offset?.overlapIndex : 0;
-        let offset = 0;
-
-        if (overlapIndex) {
-            offset = 100 / (overlapIndex + 1);
-        }
-
-        return `${offset}%`;
     }
 
     onEventClick(event: CalendarEvent): void {

@@ -207,12 +207,12 @@
     left: 0;
 
     padding: $radius-sm;
-    
+    border-radius: 4px;
     width: 100%;
     transition: $transition-md;
 
     &:hover {
-        background-color: darken($color-100, 10%);
+        opacity: .75;
         cursor: pointer;
     }
 }

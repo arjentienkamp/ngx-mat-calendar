@@ -34,5 +34,21 @@ export const DummyEvents = [
         date: new Date(),
         startTime: new Date(),
         endTime: new Date()
+    }, {
+        title: 'Car repair appointment',
+        date: new Date(),
+        startTime: new Date(),
+        endTime: new Date(),
+    }, {
+        title: 'Lunch with Jane',
+        location: 'Happy Sofia',
+        date: new Date(),
+        startTime: new Date(),
+        endTime: new Date()
+    }, {
+        title: 'Promotion party',
+        date: new Date(),
+        startTime: new Date(),
+        endTime: new Date(),
     }
 ];

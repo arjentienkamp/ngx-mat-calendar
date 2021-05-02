@@ -7,7 +7,7 @@ export class CalendarEvent {
     endTime = new Date();
 
     color?: any = colors.grey;
-    offset?: CalendarEventOffset = new CalendarEventOffset();
+    grid?: CalendarEventGrid = new CalendarEventGrid();
     location?: string;
 
     constructor(init?: Partial<CalendarEvent>) {
@@ -15,9 +15,11 @@ export class CalendarEvent {
     }
 }
 
-export class CalendarEventOffset {
+export class CalendarEventGrid {
     offsetTop = 0;
+    offsetLeft = 0;
+    width = 100;
     durationOffset = 0;
-    overLappingEvents = 0;
-    overlapIndex = 0;
+    eventsInGroup = 0;
+    eventGroups: string[] = [];
 }

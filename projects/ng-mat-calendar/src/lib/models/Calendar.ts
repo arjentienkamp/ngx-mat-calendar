@@ -8,5 +8,6 @@ export default interface Calendar {
 
 export interface CalendarDay {
     date: Date;
+    eventGroups: string[];
     events: CalendarEvent[];
 }
