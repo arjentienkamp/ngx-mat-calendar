@@ -30,6 +30,16 @@
         </div>
 
         <div class="toolbar__right">
+            <mat-button-toggle-group
+                name="view"
+                #view="matButtonToggleGroup"
+                [value]="selectedView"
+                (change)="onViewChange(view.value)"
+                aria-label="view"
+                class="toolbar__view-switch">
+                <mat-button-toggle *ngFor="let view of views" [value]="view.name">{{ view.name }}</mat-button-toggle>
+            </mat-button-toggle-group>
+            
             <div class="toolbar__datepicker" *ngIf="showDatePicker && enableDatePickerButton">
                 <div [formGroup]="datePickerForm" *ngIf="datePickerForm">
                     <mat-form-field appearance="fill">
@@ -52,42 +62,52 @@
         </div>
     </div>
 
-    <div class="calendar__days">
-        <div class="calendar__day" *ngFor="let day of calendar.days;">
-            <div class="day__header" [ngClass]="{ 'day__header--today ': isToday(day.date) }">
-                <span class="day-name">{{ getDayName(day.date) }}</span> 
-                <span class="day-number">{{ getDayNumber(day.date) }}</span>
+    <div class="view view--day" *ngIf="selectedView === 'Day'">
+        Day view
+    </div>
+
+    <div class="view view--week" *ngIf="selectedView === 'Week'">
+        <div class="calendar__days">
+            <div class="calendar__day" *ngFor="let day of calendar.days;">
+                <div class="day__header" [ngClass]="{ 'day__header--today ': isToday(day.date) }">
+                    <span class="day-name">{{ getDayName(day.date) }}</span> 
+                    <span class="day-number">{{ getDayNumber(day.date) }}</span>
+                </div>
+            </div>
+        </div> 
+    
+        <div class="calendar__content calendar__content--week" *ngIf="selectedView === 'Week'">
+            <div class="calendar__lanes">
+                <div class="calendar__times">
+                    <div class="time-unit" *ngFor="let time of times;" [style.height.px]="pixelsPerHour">
+                        {{ time.time }}
+                    </div>
+                </div>
+    
+                <div class="day__lane"
+                    *ngFor="let day of calendar.days; let i = index;"
+                    
+                    [ngClass]="{ 'day__lane--today': isToday(day.date) }">
+    
+                    <div class="calendar__spy" *ngIf="isToday(day.date)" [style.marginTop.px]="calculateSpy()"></div>
+                    
+                    <event-display
+                        [component]="options.renderComponent"
+                        [event]="event"
+                        class="calendar__item"
+                        *ngFor="let event of day.events; let i = index"
+                        [style.width.%]="event.grid?.width"
+                        [style.marginLeft.%]="event.grid?.offsetLeft"
+                        [style.marginTop.px]="event.grid?.offsetTop"
+                        [style.height.px]="event.grid?.durationOffset"
+                        (click)="onEventClick(event)">
+                    </event-display>
+                </div>
             </div>
         </div>
     </div>
 
-    <div class="calendar__content">
-        <div class="calendar__lanes">
-            <div class="calendar__times">
-                <div class="time-unit" *ngFor="let time of times;" [style.height.px]="pixelsPerHour">
-                    {{ time.time }}
-                </div>
-            </div>
-
-            <div class="day__lane"
-                *ngFor="let day of calendar.days; let i = index;"
-                
-                [ngClass]="{ 'day__lane--today': isToday(day.date) }">
-
-                <div class="calendar__spy" *ngIf="isToday(day.date)" [style.marginTop.px]="calculateSpy()"></div>
-                
-                <event-display
-                    [component]="options.renderComponent"
-                    [event]="event"
-                    class="calendar__item"
-                    *ngFor="let event of day.events; let i = index"
-                    [style.width.%]="event.grid?.width"
-                    [style.marginLeft.%]="event.grid?.offsetLeft"
-                    [style.marginTop.px]="event.grid?.offsetTop"
-                    [style.height.px]="event.grid?.durationOffset"
-                    (click)="onEventClick(event)">
-                </event-display>
-            </div>
-        </div>
+    <div class="view view--month" *ngIf="selectedView === 'Month'">
+        Month view
     </div>
 </div>

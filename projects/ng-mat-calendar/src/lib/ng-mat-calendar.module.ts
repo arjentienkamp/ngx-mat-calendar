@@ -8,6 +8,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { DateAdapter, MatNativeDateModule } from '@angular/material/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -19,6 +20,18 @@ import { FormattingService } from './services/formatting.service';
 import { MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/material-moment-adapter';
 import { LocaleDateAdapter } from './other/DateAdapter';
 
+const MaterialModules = [
+    MatCardModule,
+    MatButtonModule,
+    MatTooltipModule,
+    MatIconModule,
+    MatNativeDateModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatDatepickerModule,
+    MatButtonToggleModule
+];
+
 @NgModule({
     declarations: [
         NgMatCalendarComponent,
@@ -29,14 +42,7 @@ import { LocaleDateAdapter } from './other/DateAdapter';
         BrowserModule,
         FormsModule,
         ReactiveFormsModule,
-        MatCardModule,
-        MatButtonModule,
-        MatTooltipModule,
-        MatIconModule,
-        MatNativeDateModule,
-        MatFormFieldModule,
-        MatInputModule,
-        MatDatepickerModule
+        ...MaterialModules
     ],
     exports: [
         NgMatCalendarComponent

@@ -12,6 +12,12 @@
     height: 100%;
 }
 
+.view {
+    display: flex;
+    height: 100%;
+    overflow: hidden;
+}
+
 .calendar__times {
     position: relative;
     top: -10px;
@@ -77,6 +83,7 @@
     .toolbar__right {
         flex: 1;
         justify-content: flex-end;
+        align-items: center;
     }
 
     .toolbar__datepicker {
@@ -91,6 +98,11 @@
             padding-bottom: 0;
         }
     }
+
+    .toolbar__view-switch {
+        margin-right: 1rem;
+        align-items: center;
+    }
 }
 
 .calendar__content {
@@ -102,7 +114,7 @@
 
 .calendar__days {
     position: absolute;
-    top: 56px;
+    top: 65px;
     left: 0;
     bottom: 0;
     right: 0;

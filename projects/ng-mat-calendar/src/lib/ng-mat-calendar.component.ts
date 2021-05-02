@@ -26,12 +26,14 @@ import {
 import { FormBuilder, FormGroup } from '@angular/forms';
 import Calendar, { CalendarDay } from './models/Calendar';
 import { v4 as uuidv4 } from 'uuid';
-import { Times } from './models/Times';
 import { CalendarOptions } from './models/CalendarOptions';
 import { FormattingService } from './services/formatting.service';
 import { DateAdapter } from '@angular/material/core';
 import { MatCalendarCellClassFunction } from '@angular/material/datepicker';
 import { CalendarEvent, CalendarEventGrid } from './models/CalendarEvent';
+
+import { Times } from './models/Times';
+import { Views } from './models/Views';
 
 @Component({
     // tslint:disable-next-line:component-selector
@@ -62,6 +64,8 @@ export class NgMatCalendarComponent implements OnInit, DoCheck {
     @Output() dateChange: EventEmitter<Date> = new EventEmitter();
     @Output() eventClick: EventEmitter<CalendarEvent> = new EventEmitter();
 
+    views: any[];
+    selectedView = 'Week';
     times = Times;
     pixelsPerHour = 0;
     enableDatePickerButton!: boolean;
@@ -82,6 +86,7 @@ export class NgMatCalendarComponent implements OnInit, DoCheck {
         });
 
         this.differ = iterableDiffers;
+        this.views = Views;
     }
 
     ngOnInit(): void {
@@ -327,6 +332,10 @@ export class NgMatCalendarComponent implements OnInit, DoCheck {
 
     getTime(date: Date): string {
         return this.formattingService.getTime(date);
+    }
+
+    onViewChange(view: any): void {
+        this.selectedView = view;
     }
 
     onEventClick(event: CalendarEvent): void {
