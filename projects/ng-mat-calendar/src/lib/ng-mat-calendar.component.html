@@ -39,24 +39,19 @@
                 class="toolbar__view-switch">
                 <mat-button-toggle *ngFor="let view of views" [value]="view.name">{{ view.name }}</mat-button-toggle>
             </mat-button-toggle-group>
-            
-            <div class="toolbar__datepicker" *ngIf="showDatePicker && enableDatePickerButton">
-                <div [formGroup]="datePickerForm" *ngIf="datePickerForm">
-                    <mat-form-field appearance="fill">
-                        <mat-label>Choose a date</mat-label>
-                        <input matInput [matDatepicker]="picker" formControlName="date">
-                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                        <mat-datepicker [dateClass]="dateClass" #picker></mat-datepicker>
-                    </mat-form-field>
+
+            <mat-menu #datePickerMenu="matMenu">
+                <div (click)="$event.stopPropagation()">
+                    <mat-calendar (selectedChange)="onDatePickerChange($event)"></mat-calendar>
                 </div>
-            </div>
+            </mat-menu>
 
             <button
+                [matMenuTriggerFor]="datePickerMenu"
                 *ngIf="enableDatePickerButton"
                 mat-icon-button
                 class="toolbar__button"
-                color="primary"
-                (click)="toggleDatePicker()">
+                color="primary">
                 <mat-icon>calendar_today</mat-icon>
             </button>
         </div>
@@ -92,7 +87,7 @@
                         <div class="time-grid__cell" *ngFor="let time of times;" [style.height.px]="getCellHeight(time)"></div>
                     </div> 
     
-                    <div class="calendar__spy" *ngIf="isToday(day.date)" [style.marginTop.px]="calculateSpy()"></div>
+                    <div class="calendar__marker" #marker *ngIf="isToday(day.date)" [style.marginTop.px]="markerPosition"></div>
                     
                     <event-display
                         [component]="options.renderComponent"

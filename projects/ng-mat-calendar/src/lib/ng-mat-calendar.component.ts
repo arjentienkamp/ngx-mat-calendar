@@ -6,8 +6,10 @@ import {
     IterableDiffers,
     KeyValueDiffer,
     KeyValueDiffers,
+    OnDestroy,
     OnInit,
     Output,
+    ViewChild
 } from '@angular/core';
 
 import {
@@ -25,13 +27,15 @@ import {
     areIntervalsOverlapping
 } from 'date-fns';
 
-import { FormBuilder, FormGroup } from '@angular/forms';
-import Calendar, { CalendarDay } from './models/Calendar';
 import { v4 as uuidv4 } from 'uuid';
-import { CalendarOptions } from './models/CalendarOptions';
 import { FormattingService } from './services/formatting.service';
 import { DateAdapter } from '@angular/material/core';
 import { MatCalendarCellClassFunction } from '@angular/material/datepicker';
+import { MatMenuTrigger } from '@angular/material/menu';
+import { interval } from 'rxjs';
+
+import Calendar, { CalendarDay } from './models/Calendar';
+import { CalendarOptions } from './models/CalendarOptions';
 import { CalendarEvent, CalendarEventGrid } from './models/CalendarEvent';
 
 import { Times } from './models/Times';
@@ -43,7 +47,7 @@ import { Views } from './models/Views';
     templateUrl: './ng-mat-calendar.component.html',
     styleUrls: ['./ng-mat-calendar.component.scss']
 })
-export class NgMatCalendarComponent implements OnInit, DoCheck {
+export class NgMatCalendarComponent implements OnInit, OnDestroy, DoCheck {
     @Input() events: CalendarEvent[] = [];
     private differEvents: IterableDiffers;
 
@@ -68,28 +72,26 @@ export class NgMatCalendarComponent implements OnInit, DoCheck {
     @Output() dateChange: EventEmitter<Date> = new EventEmitter();
     @Output() eventClick: EventEmitter<CalendarEvent> = new EventEmitter();
 
+    @ViewChild(MatMenuTrigger) datePickerMenu!: MatMenuTrigger;
+
     views: any[];
     selectedView = 'Week';
     times = Times;
     pixelsPerHour = 0;
     enableDatePickerButton!: boolean;
-    showDatePicker = false;
     dateFormat!: string;
-    datePickerForm: FormGroup;
+    markerSubscription: any;
+    markerPosition = 0;
+    markerInterval = 600000;
     calendar = {} as Calendar;
     iterableDiffer = [];
 
     constructor(
         private formattingService: FormattingService,
-        private formBuilder: FormBuilder,
         private dateAdapter: DateAdapter<Date>,
         private iterableDiffers: IterableDiffers,
         private keyValueDiffers: KeyValueDiffers
     ) {
-        this.datePickerForm = this.formBuilder.group({
-            date: [''],
-        });
-
         this.differEvents = iterableDiffers;
         this.differOptions = keyValueDiffers.find(CalendarOptions).create();
         this.views = Views;
@@ -97,6 +99,10 @@ export class NgMatCalendarComponent implements OnInit, DoCheck {
 
     ngOnInit(): void {
         this.initCalendar();
+
+        this.markerSubscription = interval(this.markerInterval).subscribe(() => {
+            this.markerPosition = this.calculateMarkerPosition();
+        });
     }
 
     initCalendar(): void {
@@ -108,7 +114,7 @@ export class NgMatCalendarComponent implements OnInit, DoCheck {
             this.dateAdapter.setLocale(this.setOptions.locale);
 
             this.generateCalendarView();
-            this.handleDatepickerChanges();
+            this.markerPosition = this.calculateMarkerPosition();
         }
     }
 
@@ -202,14 +208,14 @@ export class NgMatCalendarComponent implements OnInit, DoCheck {
                 return event.grid?.eventGroups.includes(eventGroup);
             });
 
-            console.log(eventGroupEvents);
-
             let index = 0;
             eventGroupEvents.forEach((event: CalendarEvent) => {
                 if (event.grid) {
                     event.grid.width = 100 / (eventGroupEvents.length);
                     event.grid.offsetLeft = event.grid.width * index;
                 }
+
+                // check if already has a width/offsetLeft to determine if it's in eventgroup A or B
 
                 index++;
             });
@@ -306,10 +312,11 @@ export class NgMatCalendarComponent implements OnInit, DoCheck {
         return grid;
     }
 
-    calculateSpy(): any {
+    calculateMarkerPosition(): number {
         const now = new Date();
+        const offsetTop = (getHours(now) * 60 + getMinutes(now)) * this.options.getPixelsPerMinute;
 
-        return (getHours(now) * 60 + getMinutes(now)) * this.options.getPixelsPerMinute;
+        return offsetTop;
     }
 
     isToday(date: Date): boolean {
@@ -335,7 +342,6 @@ export class NgMatCalendarComponent implements OnInit, DoCheck {
     handleCalendarSet(): void {
         this.generateCalendarView();
         this.dateChange.emit(this.selectedDate);
-        this.showDatePicker = false;
     }
 
     getDayName(date: Date): string {
@@ -366,10 +372,6 @@ export class NgMatCalendarComponent implements OnInit, DoCheck {
         this.eventClick.emit(event);
     }
 
-    toggleDatePicker(): void {
-        this.showDatePicker = !this.showDatePicker;
-    }
-
     dateClass: MatCalendarCellClassFunction<Date> = (cellDate, view) => {
         if (view === 'month') {
             return isSameDay(cellDate, this.selectedDate) ? 'datepicker--today' : '';
@@ -378,11 +380,12 @@ export class NgMatCalendarComponent implements OnInit, DoCheck {
         return '';
     }
 
-    handleDatepickerChanges(): void {
-        const date = this.datePickerForm.get('date');
+    onDatePickerChange(date: any): void {
+        this.setCalendar(undefined, toDate(date));
+        this.datePickerMenu.closeMenu();
+    }
 
-        date?.valueChanges.subscribe((dateValue) => {
-            this.setCalendar(undefined, toDate(dateValue));
-        });
+    ngOnDestroy(): void {
+        this.markerSubscription.unsubscribe();
     }
 }

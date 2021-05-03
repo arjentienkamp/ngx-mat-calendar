@@ -40,4 +40,11 @@
         width: 16px;
         margin-right: $margin-xxs;
     }
+
+    span {
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        max-width: 100%;
+        overflow: hidden;
+    }
 }

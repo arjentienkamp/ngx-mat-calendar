@@ -13,6 +13,7 @@ import { DateAdapter, MatNativeDateModule } from '@angular/material/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatMenuModule } from '@angular/material/menu';
 
 import { EventDisplayComponent } from './components/event-display/event-display.component';
 import { EventRenderComponent } from './components/event-render/event-render.component';
@@ -29,7 +30,8 @@ const MaterialModules = [
     MatFormFieldModule,
     MatInputModule,
     MatDatepickerModule,
-    MatButtonToggleModule
+    MatButtonToggleModule,
+    MatMenuModule
 ];
 
 @NgModule({
