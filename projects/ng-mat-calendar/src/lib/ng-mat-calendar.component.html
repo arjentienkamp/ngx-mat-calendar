@@ -61,49 +61,13 @@
         Day view
     </div>
 
-    <div class="view view--week" *ngIf="selectedView === 'Week'">
-        <div class="calendar__days">
-            <div class="calendar__day" *ngFor="let day of calendar.days;">
-                <div class="day__header" [ngClass]="{ 'day__header--today ': isToday(day.date) }">
-                    <span class="day-name">{{ getDayName(day.date) }}</span> 
-                    <span class="day-number">{{ getDayNumber(day.date) }}</span>
-                </div>
-            </div>
-        </div> 
-    
-        <div class="calendar__content calendar__content--week" *ngIf="selectedView === 'Week'">
-            <div class="calendar__lanes">
-                <div class="calendar__times">
-                    <div class="time-cell" *ngFor="let time of times;" [style.height.px]="getCellHeight(time)">
-                        {{ time.time }}
-                    </div>
-                </div>
-    
-                <div class="day__lane"
-                    *ngFor="let day of calendar.days; let i = index;"
-                    [ngClass]="{ 'day__lane--today': isToday(day.date) }">
-
-                    <div class="time-grid">
-                        <div class="time-grid__cell" *ngFor="let time of times;" [style.height.px]="getCellHeight(time)"></div>
-                    </div> 
-    
-                    <div class="calendar__marker" #marker *ngIf="isToday(day.date)" [style.marginTop.px]="markerPosition"></div>
-                    
-                    <event-display
-                        [component]="options.renderComponent"
-                        [event]="event"
-                        class="calendar__item"
-                        *ngFor="let event of day.events; let i = index"
-                        [style.width.%]="event.grid?.width"
-                        [style.marginLeft.%]="event.grid?.offsetLeft"
-                        [style.marginTop.px]="event.grid?.offsetTop"
-                        [style.height.px]="event.grid?.durationOffset"
-                        (click)="onEventClick(event)">
-                    </event-display>
-                </div>
-            </div>
-        </div>
-    </div>
+    <week-view
+        *ngIf="selectedView === 'Week'"
+        [events]="events"
+        [date]="selectedDate"
+        [options]="options"
+        (eventClick)="onEventClick($event)">
+    </week-view>
 
     <div class="view view--month" *ngIf="selectedView === 'Month'">
         Month view

@@ -13,11 +13,13 @@ import { CalendarEvent } from '../../models/CalendarEvent';
 @Component({
     // tslint:disable-next-line:component-selector
     selector: 'event-display',
-    template: `<ng-template #renderTarget></ng-template>`
+    template: `<ng-template #renderTarget></ng-template>`,
+    styleUrls: ['./event-display.component.scss']
 })
 export class EventDisplayComponent implements OnInit, OnDestroy {
     renderComponent: any;
     @Input() event!: CalendarEvent;
+    @Input() date!: Date;
     @Input() component!: any;
 
     @ViewChild('renderTarget', { read: ViewContainerRef, static: true }) renderTarget: any;
@@ -42,5 +44,6 @@ export class EventDisplayComponent implements OnInit, OnDestroy {
         const componentFactory = this.resolver.resolveComponentFactory(this.component);
         this.renderComponent = this.renderTarget.createComponent(componentFactory);
         this.renderComponent.instance.event = this.event;
+        this.renderComponent.instance.date = this.date;
     }
 }

@@ -15,8 +15,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatMenuModule } from '@angular/material/menu';
 
-import { EventDisplayComponent } from './components/event-display/event-display.component';
-import { EventRenderComponent } from './components/event-render/event-render.component';
+import { WeekViewModule } from './components/week-view/week-view.module';
+
 import { FormattingService } from './services/formatting.service';
 import { MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/material-moment-adapter';
 import { LocaleDateAdapter } from './other/DateAdapter';
@@ -36,21 +36,17 @@ const MaterialModules = [
 
 @NgModule({
     declarations: [
-        NgMatCalendarComponent,
-        EventDisplayComponent,
-        EventRenderComponent
+        NgMatCalendarComponent
     ],
     imports: [
         BrowserModule,
         FormsModule,
         ReactiveFormsModule,
+        WeekViewModule,
         ...MaterialModules
     ],
     exports: [
         NgMatCalendarComponent
-    ],
-    entryComponents: [
-        EventRenderComponent
     ],
     providers: [
         FormattingService,

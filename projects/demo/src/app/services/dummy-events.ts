@@ -1,6 +1,7 @@
+import { CalendarEvent } from 'projects/ng-mat-calendar/src/lib/models/CalendarEvent';
 import { colors } from 'projects/ng-mat-calendar/src/lib/models/Colors';
 
-export const DummyEvents = [
+export const DummyEvents: CalendarEvent[] = [
     {
         title: 'Drinks with colleagues',
         location: 'Beer Garden Bar',

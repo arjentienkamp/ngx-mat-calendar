@@ -1,0 +1,164 @@
+@import '../../styles/styles';
+
+.calendar__times {
+    position: relative;
+    top: -10px;
+    display: flex;
+    width: 80px;
+    flex-direction: column;
+
+    color: $color-gray-medium;
+    text-align: center;
+
+    border-left: 1px solid $color-gray-light;
+    border-right: 1px solid $color-gray-light;
+}
+
+.time-cell {
+    display: flex;
+    justify-content: center;
+}
+
+.calendar__content {
+    flex: 1;
+    flex-direction: column;
+    overflow: scroll;
+    margin-top: 100px;
+}
+
+.calendar__days {
+    position: absolute;
+    top: 65px;
+    left: 0;
+    bottom: 0;
+    right: 0;
+
+    display: flex;
+    flex-direction: row;
+    margin-left: 79px;
+    border-left: 1px solid $color-gray-light;
+}
+
+.calendar__lanes {
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    padding-top: 10px;
+
+    .day__lane {
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        flex: 1;
+        padding: 0 $margin-xs;
+        border-right: 1px solid $color-gray-light;
+        transition: $transition-md;
+
+        &:hover {
+            background-color: $color-gray-lightest;
+
+            .time-grid__cell {
+                border-top-color: darken($color-gray-lightest, 10%)
+            }
+        }
+
+        .time-grid {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+        }
+
+        .time-grid__cell {
+            border-top: 1px dotted $color-gray-light;
+            width: 100%;
+        }
+    }
+
+    .day__lane--today {
+        background-color: $color-bluish-light;
+
+        .time-grid__cell {
+            border-top-color: darken($color-bluish-light, 10%);
+        }
+    }
+}
+
+.calendar__day {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+
+    border-right: 1px solid $color-gray-light;
+    padding-right: $margin-xs;
+    margin-left: $margin-xs;
+
+    .day__header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: $color-gray-medium;
+
+        .day-name {
+            margin-bottom: $margin-xs;
+        }
+    
+        .day-number {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: $margin-xs;
+
+            width: 40px;
+            height: 40px;
+            border-radius: 20px;
+            background-color: $color-gray-light;
+            color: $color-gray-darker;
+        }
+    }
+
+    .day__header--today {
+        .day-number {
+            background-color: $brand-primary;
+            color: $color-lightest;
+        }
+    }
+}
+
+.calendar__marker {
+    position: relative;
+    z-index: 1;
+    border: 1px solid $color-focus;
+    width: calc(100% + 1rem);
+    left: -.5rem;
+
+    &:before {
+        content: '';
+        display: block;
+        position: absolute;
+        width: 10px;
+        background-color: $color-focus;
+        height: 10px;
+        border-radius: 10px;
+        top: -5px;
+        left: -7px;
+    }
+}
+
+.calendar__item {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    position: absolute;
+    left: 0;
+
+    padding: $radius-sm;
+    border-radius: 4px;
+    width: 100%;
+    transition: $transition-md;
+
+    &:hover {
+        opacity: .75;
+        cursor: pointer;
+    }
+}

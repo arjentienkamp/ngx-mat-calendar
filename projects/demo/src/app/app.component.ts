@@ -41,8 +41,6 @@ export class AppComponent implements OnInit {
     getEvents(date: Date): void {
         this.eventService.getEvents(date).subscribe((events: CalendarEvent[]) => {
             this.events = events;
-
-            console.log(events);
         });
     }
 
@@ -59,7 +57,7 @@ export class AppComponent implements OnInit {
         this.getEvents(this.date);
     }
 
-    handleEventClick(event: CalendarEvent): void {
+    handleEventClick(event: Event): void {
         console.log(event);
     }
 }
