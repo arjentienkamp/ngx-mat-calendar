@@ -1,4 +1,4 @@
-import { EventRenderComponent } from '../components/event-render/event-render.component';
+import { EventRenderComponent } from '../components/render-components/event-render/event-render.component';
 
 export class CalendarOptions {
     pixelsPerMinute = 1.3;
@@ -9,6 +9,7 @@ export class CalendarOptions {
     enableDatePickerButton = true;
     locale = 'nl';
     compact = false;
+    view = 'Week'; // make default based on view enum
 
     constructor(init?: Partial<CalendarOptions>) {
         Object.assign(this, init);

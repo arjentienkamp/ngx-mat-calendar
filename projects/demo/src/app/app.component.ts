@@ -57,7 +57,7 @@ export class AppComponent implements OnInit {
         this.getEvents(this.date);
     }
 
-    handleEventClick(event: Event): void {
+    handleEventClick(event: CalendarEvent): void {
         console.log(event);
     }
 }

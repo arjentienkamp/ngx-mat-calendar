@@ -15,7 +15,9 @@ import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatMenuModule } from '@angular/material/menu';
 
+import { DayViewModule } from './components/day-view/day-view.module';
 import { WeekViewModule } from './components/week-view/week-view.module';
+import { MonthViewModule } from './components/month-view/month-view.module';
 
 import { FormattingService } from './services/formatting.service';
 import { MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/material-moment-adapter';
@@ -34,6 +36,12 @@ const MaterialModules = [
     MatMenuModule
 ];
 
+const ViewModules = [
+    DayViewModule,
+    WeekViewModule,
+    MonthViewModule
+];
+
 @NgModule({
     declarations: [
         NgMatCalendarComponent
@@ -42,7 +50,7 @@ const MaterialModules = [
         BrowserModule,
         FormsModule,
         ReactiveFormsModule,
-        WeekViewModule,
+        ...ViewModules,
         ...MaterialModules
     ],
     exports: [

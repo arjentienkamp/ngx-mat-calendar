@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { WeekViewComponent } from './week-view.component';
-import { RenderComponentsModule } from '../render-components/render-components.module';
-
 import { MatIconModule } from '@angular/material/icon';
+
+import { EventDisplayComponent } from '../render-components/event-display/event-display.component';
+import { EventRenderComponent } from '../render-components/event-render/event-render.component';
 
 import { FormattingService } from '../../services/formatting.service';
 
@@ -14,20 +14,20 @@ const MaterialModules = [
 
 @NgModule({
     declarations: [
-        WeekViewComponent
+        EventDisplayComponent,
+        EventRenderComponent
     ],
     imports: [
         BrowserModule,
-        RenderComponentsModule,
         ...MaterialModules
     ],
     exports: [
-        WeekViewComponent
+        EventDisplayComponent,
+        EventRenderComponent
     ],
-    entryComponents: [],
     providers: [
         FormattingService
     ],
     bootstrap: []
 })
-export class WeekViewModule { }
+export class RenderComponentsModule { }

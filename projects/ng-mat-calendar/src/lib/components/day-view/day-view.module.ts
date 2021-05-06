@@ -1,8 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { WeekViewComponent } from './week-view.component';
-import { RenderComponentsModule } from '../render-components/render-components.module';
+import { DayViewComponent } from './day-view.component';
 
 import { MatIconModule } from '@angular/material/icon';
 
@@ -14,15 +13,14 @@ const MaterialModules = [
 
 @NgModule({
     declarations: [
-        WeekViewComponent
+        DayViewComponent
     ],
     imports: [
         BrowserModule,
-        RenderComponentsModule,
         ...MaterialModules
     ],
     exports: [
-        WeekViewComponent
+        DayViewComponent
     ],
     entryComponents: [],
     providers: [
@@ -30,4 +28,4 @@ const MaterialModules = [
     ],
     bootstrap: []
 })
-export class WeekViewModule { }
+export class DayViewModule { }

@@ -22,7 +22,7 @@ import { MatMenuTrigger } from '@angular/material/menu';
 
 import Calendar from './models/Calendar';
 import { CalendarOptions } from './models/CalendarOptions';
-import { CalendarEvent, CalendarEventGrid } from './models/CalendarEvent';
+import { CalendarEvent } from './models/CalendarEvent';
 
 import { Views } from './models/Views';
 

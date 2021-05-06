@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import isSameDay from 'date-fns/isSameDay';
-import { CalendarEvent } from '../../models/CalendarEvent';
-import { FormattingService } from '../../services/formatting.service';
+import { CalendarEvent } from '../../../models/CalendarEvent';
+import { FormattingService } from '../../../services/formatting.service';
 
 @Component({
     // tslint:disable-next-line:component-selector
