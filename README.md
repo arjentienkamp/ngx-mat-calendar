@@ -1,24 +1,26 @@
-# Angular Calendar / Timetable component
+# Angular Calendar component
 
-This component displays a calendar/ timetable in your Angular (Material) project. 
+This component displays a calendar / timetable in your Angular (Material) project. 
 
 ## Demo
-
 Live demo (link)
 
 GIF
 
 ## Features
-- Display a week calendar with your events
-- Fire a function on event click
+- Display a day/week/month calendar with your events
+- Call a function on event click
 - Navigate between weeks, jump to today
 - Focus on current time on initialization
 - Use a custom component for rendering events
 - Uses colors of your Material theme
 - Locale can be set
 
-## Installation and minimal setup
+## Requirements
+- Angular 11+ (tested on Angular 11) + Typescript
+- Angular Material Theme within your app (https://material.angular.io)
 
+## Installation and minimal setup
 ```
 npm install ...
 ```
@@ -56,7 +58,6 @@ When using a custom component for rendering the events, you can optionally exten
 ```
 
 ## Inputs
-
 | Property        | Description                                         | Type              | Required |
 |-----------------|-----------------------------------------------------|-------------------|----------|
 | options         | options have to be passed here                      | CalendarOptions   | true     |
@@ -64,7 +65,6 @@ When using a custom component for rendering the events, you can optionally exten
 | date            | the date for initiating the calendar                | string (ISO date string)  | true     |
 
 ## Outputs
-
 | Property        | Description                                         | Type                          |
 |-----------------|-----------------------------------------------------|-------------------------------|
 | eventClick      | emits when event is clicked                         | EventEmitter<CalendarEvent>   |
@@ -72,5 +72,7 @@ When using a custom component for rendering the events, you can optionally exten
 | dateChange      | emits on date change                                | EventEmitter<string>          |
 
 ## Todo
-- Month view
-- Day view
+- ...
+
+## License
+...
