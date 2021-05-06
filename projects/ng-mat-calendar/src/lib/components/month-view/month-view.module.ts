@@ -3,29 +3,18 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { MonthViewComponent } from './month-view.component';
 
-import { MatIconModule } from '@angular/material/icon';
-
-import { FormattingService } from '../../services/formatting.service';
-
-const MaterialModules = [
-    MatIconModule
-];
-
 @NgModule({
     declarations: [
         MonthViewComponent
     ],
     imports: [
-        BrowserModule,
-        ...MaterialModules
+        BrowserModule
     ],
     exports: [
         MonthViewComponent
     ],
     entryComponents: [],
-    providers: [
-        FormattingService
-    ],
+    providers: [],
     bootstrap: []
 })
 export class MonthViewModule { }

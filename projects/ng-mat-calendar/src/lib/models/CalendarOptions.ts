@@ -1,4 +1,4 @@
-import { EventRenderComponent } from '../components/render-components/event-render/event-render.component';
+import { EventRenderComponent } from '../components/shared/event-render/event-render.component';
 
 export class CalendarOptions {
     pixelsPerMinute = 1.3;

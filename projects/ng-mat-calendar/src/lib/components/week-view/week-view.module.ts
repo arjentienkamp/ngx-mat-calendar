@@ -2,15 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { WeekViewComponent } from './week-view.component';
-import { RenderComponentsModule } from '../render-components/render-components.module';
-
-import { MatIconModule } from '@angular/material/icon';
-
-import { FormattingService } from '../../services/formatting.service';
-
-const MaterialModules = [
-    MatIconModule
-];
+import { SharedComponentsModule } from '../shared/shared-components.module';
 
 @NgModule({
     declarations: [
@@ -18,16 +10,13 @@ const MaterialModules = [
     ],
     imports: [
         BrowserModule,
-        RenderComponentsModule,
-        ...MaterialModules
+        SharedComponentsModule
     ],
     exports: [
         WeekViewComponent
     ],
     entryComponents: [],
-    providers: [
-        FormattingService
-    ],
+    providers: [],
     bootstrap: []
 })
 export class WeekViewModule { }

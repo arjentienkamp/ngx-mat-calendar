@@ -3,10 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { MatIconModule } from '@angular/material/icon';
 
-import { EventDisplayComponent } from '../render-components/event-display/event-display.component';
-import { EventRenderComponent } from '../render-components/event-render/event-render.component';
-
-import { FormattingService } from '../../services/formatting.service';
+import { EventDisplayComponent } from './event-display/event-display.component';
+import { EventRenderComponent } from './event-render/event-render.component';
 
 const MaterialModules = [
     MatIconModule
@@ -25,9 +23,7 @@ const MaterialModules = [
         EventDisplayComponent,
         EventRenderComponent
     ],
-    providers: [
-        FormattingService
-    ],
+    providers: [],
     bootstrap: []
 })
-export class RenderComponentsModule { }
+export class SharedComponentsModule { }

@@ -3,29 +3,18 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { DayViewComponent } from './day-view.component';
 
-import { MatIconModule } from '@angular/material/icon';
-
-import { FormattingService } from '../../services/formatting.service';
-
-const MaterialModules = [
-    MatIconModule
-];
-
 @NgModule({
     declarations: [
         DayViewComponent
     ],
     imports: [
-        BrowserModule,
-        ...MaterialModules
+        BrowserModule
     ],
     exports: [
         DayViewComponent
     ],
     entryComponents: [],
-    providers: [
-        FormattingService
-    ],
+    providers: [],
     bootstrap: []
 })
 export class DayViewModule { }

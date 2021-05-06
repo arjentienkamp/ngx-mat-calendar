@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { EventRenderComponent } from 'projects/ng-mat-calendar/src/lib/components/render-components/event-render/event-render.component';
+import { EventRenderComponent } from 'projects/ng-mat-calendar/src/lib/components/shared/event-render/event-render.component';
 import { CalendarEvent } from 'projects/ng-mat-calendar/src/lib/models/CalendarEvent';
 import { FormattingService } from 'projects/ng-mat-calendar/src/lib/services/formatting.service';
 
