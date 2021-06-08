@@ -58,6 +58,7 @@ export class NgMatCalendarComponent implements OnInit, DoCheck {
     selectedView = 'Week';
     enableDatePickerButton!: boolean;
     calendar = {} as Calendar;
+    today = format(new Date(), 'EEEE, d MMMM');
 
     constructor(
         private dateAdapter: DateAdapter<Date>,

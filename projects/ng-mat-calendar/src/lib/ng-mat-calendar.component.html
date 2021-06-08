@@ -4,6 +4,7 @@
             mat-stroked-button
             class="toolbar__button toolbar__button--today"
             color="primary"
+            [matTooltip]="today"
             (click)="setCalendarToday()">
                 Today
         </button>
@@ -48,6 +49,7 @@
 
             <button
                 [matMenuTriggerFor]="datePickerMenu"
+                matTooltip="Pick a date"
                 *ngIf="enableDatePickerButton"
                 mat-icon-button
                 class="toolbar__button"
