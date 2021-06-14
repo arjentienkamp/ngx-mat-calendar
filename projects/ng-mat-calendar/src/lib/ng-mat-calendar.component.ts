@@ -2,6 +2,7 @@ import {
     Component,
     DoCheck,
     EventEmitter,
+    HostListener,
     Input,
     KeyValueDiffer,
     KeyValueDiffers,
@@ -59,6 +60,11 @@ export class NgMatCalendarComponent implements OnInit, DoCheck {
     enableDatePickerButton!: boolean;
     calendar = {} as Calendar;
     today = format(new Date(), 'EEEE, d MMMM');
+
+    @HostListener('window:keydown', ['$event'])
+    onKeyDown(event: KeyboardEvent): void {
+        this.handleKeyboardEvents(event);
+    }
 
     constructor(
         private dateAdapter: DateAdapter<Date>,
@@ -134,5 +140,24 @@ export class NgMatCalendarComponent implements OnInit, DoCheck {
     onDatePickerChange(date: any): void {
         this.setCalendar(undefined, toDate(date));
         this.datePickerMenu.closeMenu();
+    }
+
+    handleKeyboardEvents(event: KeyboardEvent): void {
+        switch (event.key) {
+            case 'd':
+                this.selectedView = 'Day';
+                break;
+
+            case 'w':
+                this.selectedView = 'Week';
+                break;
+
+            case 'm':
+                this.selectedView = 'Month';
+                break;
+
+            default:
+                break;
+        }
     }
 }
