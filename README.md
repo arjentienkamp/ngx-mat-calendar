@@ -15,6 +15,7 @@ GIF
 - Use a custom component for rendering events
 - Uses colors of your Material theme
 - Locale can be set
+- Keyboard shortcuts
 
 ## Requirements
 - Angular 11+ (tested on Angular 11) + Typescript
