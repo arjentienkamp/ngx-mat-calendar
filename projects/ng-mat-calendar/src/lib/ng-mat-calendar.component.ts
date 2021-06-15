@@ -29,7 +29,6 @@ import { Views } from './models/Views';
 import { Periods } from './models/Times';
 
 @Component({
-    // tslint:disable-next-line:component-selector
     selector: 'ng-mat-calendar',
     templateUrl: './ng-mat-calendar.component.html',
     styleUrls: ['./ng-mat-calendar.component.scss']

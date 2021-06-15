@@ -7,7 +7,7 @@
       "projectType": "library",
       "root": "projects/ng-mat-calendar",
       "sourceRoot": "projects/ng-mat-calendar/src",
-      "prefix": "lib",
+      "prefix": "",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:ng-packagr",

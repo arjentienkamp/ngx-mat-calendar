@@ -21,7 +21,6 @@ import { getHours, getMinutes } from 'date-fns';
 import { interval } from 'rxjs';
 
 @Component({
-    // tslint:disable-next-line:component-selector
     selector: 'day-view',
     templateUrl: './day-view.component.html',
     styleUrls: ['./day-view.component.scss']

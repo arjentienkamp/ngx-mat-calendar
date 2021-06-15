@@ -34,7 +34,6 @@ import { FormattingService } from '../../services/formatting.service';
 import { CalendarOptions } from '../../models/CalendarOptions';
 
 @Component({
-    // tslint:disable-next-line:component-selector
     selector: 'week-view',
     templateUrl: './week-view.component.html',
     styleUrls: ['./week-view.component.scss']
