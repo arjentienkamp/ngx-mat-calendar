@@ -1,1 +1,39 @@
-Day view
+<div class="calendar__days">
+    <div class="calendar__day">
+        <div class="day__header" [ngClass]="{ 'day__header--today ': isToday(selectedDate) }">
+            <span class="day-name">{{ getDayName(selectedDate) }}</span> 
+            <span class="day-number">{{ getDayNumber(selectedDate) }}</span>
+        </div>
+    </div>
+</div> 
+
+<div class="calendar__content">
+    <div class="calendar__lanes">
+        <div class="calendar__times">
+            <div class="time-cell" *ngFor="let time of times;" [style.height.px]="getCellHeight(time)">
+                {{ time.time }}
+            </div>
+        </div>
+
+        <div class="day__lane" [ngClass]="{ 'day__lane--today': isToday(selectedDate) }">
+
+            <div class="time-grid">
+                <div class="time-grid__cell" *ngFor="let time of times;" [style.height.px]="getCellHeight(time)"></div>
+            </div> 
+
+            <div class="calendar__marker" #marker *ngIf="isToday(selectedDate)" [style.marginTop.px]="markerPosition"></div>
+
+            <!-- full day events loop-->
+            
+            <event-display
+                [component]="options.renderComponent"
+                [event]="event"
+                [date]="selectedDate"
+                class="calendar__item"
+                *ngFor="let event of dayview.events; let i = index"
+                [style.height.px]="event.grid?.durationOffset"
+                (click)="onEventClick(event)">
+            </event-display>
+        </div>
+    </div>
+</div>

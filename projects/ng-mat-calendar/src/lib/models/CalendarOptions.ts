@@ -9,6 +9,7 @@ export class CalendarOptions {
     enableDatePickerButton = true;
     locale = 'nl';
     compact = false;
+    markerInterval = 600000;
     view = 'Week'; // make default based on view enum
 
     constructor(init?: Partial<CalendarOptions>) {

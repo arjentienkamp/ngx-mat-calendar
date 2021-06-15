@@ -1,5 +1,5 @@
 export const Views = [
-    { name: 'Day' },
-    { name: 'Week' },
-    { name: 'Month' }
+    { name: 'Day', keyboardShortcut: 'd' },
+    { name: 'Week', keyboardShortcut: 'w' },
+    { name: 'Month', keyboardShortcut: 'm' }
 ];

@@ -1,0 +1,81 @@
+@import '../../styles/styles';
+
+.calendar__times {
+    position: relative;
+    top: -10px;
+    display: flex;
+    width: 80px;
+    flex-direction: column;
+
+    color: $color-gray-medium;
+    text-align: center;
+
+    border-left: 1px solid $color-gray-light;
+    border-right: 1px solid $color-gray-light;
+}
+
+.time-cell {
+    display: flex;
+    justify-content: center;
+}
+
+.calendar__content {
+    flex: 1;
+    flex-direction: column;
+    overflow: scroll;
+    margin-top: 100px;
+}
+
+.calendar__days {
+    position: absolute;
+    top: 65px;
+    left: 0;
+    bottom: 0;
+    right: 0;
+
+    display: flex;
+    flex-direction: row;
+    margin-left: 79px;
+    border-left: 1px solid $color-gray-light;
+}
+
+.calendar__day {
+    display: flex;
+    flex: 1;
+    justify-content: flex-start;
+
+    border-right: 1px solid $color-gray-light;
+    padding-right: $margin-xs;
+    margin-left: $margin-xs;
+
+    .day__header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: $color-gray-medium;
+
+        .day-name {
+            margin-bottom: $margin-xs;
+        }
+    
+        .day-number {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: $margin-xs;
+
+            width: 40px;
+            height: 40px;
+            border-radius: 20px;
+            background-color: $color-gray-light;
+            color: $color-gray-darker;
+        }
+    }
+
+    .day__header--today {
+        .day-number {
+            background-color: $brand-primary;
+            color: $color-lightest;
+        }
+    }
+}

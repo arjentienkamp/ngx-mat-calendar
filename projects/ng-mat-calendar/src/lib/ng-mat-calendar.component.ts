@@ -156,6 +156,10 @@ export class NgMatCalendarComponent implements OnInit, DoCheck {
                 this.selectedView = 'Month';
                 break;
 
+            case 't':
+                // today
+                break;
+
             default:
                 break;
         }

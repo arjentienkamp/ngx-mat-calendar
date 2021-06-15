@@ -14,3 +14,7 @@ export interface CalendarDay {
 export interface WeekView {
     days: CalendarDay[];
 }
+
+export interface DayView {
+    events: CalendarEvent[];
+}

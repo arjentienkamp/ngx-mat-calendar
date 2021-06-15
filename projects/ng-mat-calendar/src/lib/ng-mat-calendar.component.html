@@ -60,7 +60,11 @@
     </div>
 
     <day-view
-        *ngIf="selectedView === 'Day'">
+        *ngIf="selectedView === 'Day'"
+        [events]="events"
+        [date]="selectedDate"
+        [options]="options"
+        (eventClick)="onEventClick($event)">
     </day-view>
 
     <week-view

@@ -20,7 +20,6 @@ import {
     getMinutes,
     intervalToDuration,
     isSameDay,
-    isToday,
     startOfDay,
     startOfWeek
 } from 'date-fns';
@@ -62,7 +61,6 @@ export class WeekViewComponent implements OnInit, DoCheck, OnDestroy {
     pixelsPerHour = 0;
     markerSubscription: any;
     markerPosition = 0;
-    markerInterval = 600000;
     weekview = {} as WeekView;
     iterableDiffer = [];
 
@@ -78,7 +76,7 @@ export class WeekViewComponent implements OnInit, DoCheck, OnDestroy {
     ngOnInit(): void {
         this.initWeekView();
 
-        this.markerSubscription = interval(this.markerInterval).subscribe(() => {
+        this.markerSubscription = interval(this.options.markerInterval).subscribe(() => {
             this.markerPosition = this.calculateMarkerPosition();
         });
     }
@@ -292,15 +290,15 @@ export class WeekViewComponent implements OnInit, DoCheck, OnDestroy {
     }
 
     isToday(date: Date): boolean {
-        return isToday(date);
+        return this.formattingService.isToday(date);
     }
 
     getDayName(date: Date): string {
-        return format(date, 'E');
+        return this.formattingService.getDayName(date);
     }
 
     getDayNumber(date: Date): string {
-        return format(date, 'd');
+        return this.formattingService.getDayNumber(date);
     }
 
     getTime(date: Date): string {

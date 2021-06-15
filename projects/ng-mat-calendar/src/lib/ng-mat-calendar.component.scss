@@ -12,7 +12,9 @@
     height: 100%;
 }
 
-week-view {
+day-view,
+week-view,
+month-view {
     display: flex;
     height: 100%;
     overflow: hidden;
@@ -84,4 +86,8 @@ week-view {
         margin-right: 1rem;
         align-items: center;
     }
+}
+
+mat-calendar {
+    padding: 0 $margin-sm;
 }
