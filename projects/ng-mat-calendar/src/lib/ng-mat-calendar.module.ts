@@ -19,7 +19,11 @@ import { DayViewModule } from './components/day-view/day-view.module';
 import { WeekViewModule } from './components/week-view/week-view.module';
 import { MonthViewModule } from './components/month-view/month-view.module';
 
+import { EnumToArrayPipe } from './pipes/enumToArray';
+import { Capitalize } from './pipes/capitalize';
+
 import { FormattingService } from './services/formatting.service';
+
 import { MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/material-moment-adapter';
 import { LocaleDateAdapter } from './other/DateAdapter';
 
@@ -42,9 +46,15 @@ const ViewModules = [
     MonthViewModule
 ];
 
+const Pipes = [
+    Capitalize,
+    EnumToArrayPipe
+];
+
 @NgModule({
     declarations: [
-        NgMatCalendarComponent
+        NgMatCalendarComponent,
+        ...Pipes
     ],
     imports: [
         BrowserModule,

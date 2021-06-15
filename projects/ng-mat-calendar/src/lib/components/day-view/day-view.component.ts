@@ -89,7 +89,7 @@ export class DayViewComponent implements OnInit, DoCheck, OnDestroy {
 
     generateDayView(): void {
         if (this.selectedDate) {
-            this.dayview = { // @TODO: new class instance
+            this.dayview = {
                 events: [],
             };
 

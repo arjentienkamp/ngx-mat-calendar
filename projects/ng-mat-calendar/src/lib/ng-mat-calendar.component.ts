@@ -26,6 +26,7 @@ import { CalendarOptions } from './models/CalendarOptions';
 import { CalendarEvent } from './models/CalendarEvent';
 
 import { Views } from './models/Views';
+import { Periods } from './models/Times';
 
 @Component({
     // tslint:disable-next-line:component-selector
@@ -55,8 +56,8 @@ export class NgMatCalendarComponent implements OnInit, DoCheck {
     @ViewChild(MatMenuTrigger) datePickerMenu!: MatMenuTrigger;
 
     differ: any;
-    views: any[];
-    selectedView = 'Week';
+    views = Views;
+    selectedView = Views.week;
     enableDatePickerButton!: boolean;
     calendar = {} as Calendar;
     today = format(new Date(), 'EEEE, d MMMM');
@@ -71,7 +72,6 @@ export class NgMatCalendarComponent implements OnInit, DoCheck {
         private keyValueDiffers: KeyValueDiffers
     ) {
         this.differOptions = keyValueDiffers.find(CalendarOptions).create();
-        this.views = Views;
     }
 
     ngOnInit(): void {
@@ -114,14 +114,21 @@ export class NgMatCalendarComponent implements OnInit, DoCheck {
         this.handleCalendarSet();
     }
 
-    setCalendar(offset?: number, date?: Date): void {
-        if (offset) {
-            this.selectedDate = add(this.selectedDate, { days: offset });
-        } else if (date) {
-            this.selectedDate = date;
-        }
+    setCalendarOffset(direction: string): void {
+        const offset = Periods[this.selectedView];
+
+        this.selectedDate = add(this.selectedDate, {
+            [offset]: direction === 'prev' ? -1 : 1
+        });
 
         this.handleCalendarSet();
+    }
+
+    setCalendar(date: Date): void {
+        if (date) {
+            this.selectedDate = date;
+            this.handleCalendarSet();
+        }
     }
 
     handleCalendarSet(): void {
@@ -138,22 +145,22 @@ export class NgMatCalendarComponent implements OnInit, DoCheck {
     }
 
     onDatePickerChange(date: any): void {
-        this.setCalendar(undefined, toDate(date));
+        this.setCalendar(toDate(date));
         this.datePickerMenu.closeMenu();
     }
 
     handleKeyboardEvents(event: KeyboardEvent): void {
         switch (event.key) {
             case 'd':
-                this.selectedView = 'Day';
+                this.selectedView = Views.day;
                 break;
 
             case 'w':
-                this.selectedView = 'Week';
+                this.selectedView = Views.week;
                 break;
 
             case 'm':
-                this.selectedView = 'Month';
+                this.selectedView = Views.month;
                 break;
 
             case 't':

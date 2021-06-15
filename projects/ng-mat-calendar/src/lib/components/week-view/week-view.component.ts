@@ -106,7 +106,7 @@ export class WeekViewComponent implements OnInit, DoCheck, OnDestroy {
 
     generateWeekView(): void {
         if (this.selectedDate) {
-            this.weekview = { // @TODO: new class instance
+            this.weekview = {
                 days: [],
             };
 

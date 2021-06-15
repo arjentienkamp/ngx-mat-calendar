@@ -1,5 +1,5 @@
-export const Views = [
-    { name: 'Day', keyboardShortcut: 'd' },
-    { name: 'Week', keyboardShortcut: 'w' },
-    { name: 'Month', keyboardShortcut: 'm' }
-];
+export enum Views {
+    day = 'day',
+    week = 'week',
+    month = 'month'
+}

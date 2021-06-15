@@ -13,7 +13,7 @@
             mat-icon-button
             class="toolbar__button"
             color="primary"
-            (click)="setCalendar(-7)">
+            (click)="setCalendarOffset('prev')">
             <mat-icon>chevron_left</mat-icon>
         </button>
 
@@ -21,7 +21,7 @@
             mat-icon-button
             class="toolbar__button"
             color="primary"
-            (click)="setCalendar(7)">
+            (click)="setCalendarOffset('next')">
             <mat-icon>chevron_right</mat-icon>
         </button>
 
@@ -38,7 +38,7 @@
                 (change)="onViewChange(view.value)"
                 aria-label="view"
                 class="toolbar__view-switch">
-                <mat-button-toggle *ngFor="let view of views" [value]="view.name">{{ view.name }}</mat-button-toggle>
+                <mat-button-toggle *ngFor="let view of views | enumToArray" [value]="view">{{ view | capitalize }}</mat-button-toggle>
             </mat-button-toggle-group>
 
             <mat-menu #datePickerMenu="matMenu">
@@ -60,7 +60,7 @@
     </div>
 
     <day-view
-        *ngIf="selectedView === 'Day'"
+        *ngIf="selectedView === 'day'"
         [events]="events"
         [date]="selectedDate"
         [options]="options"
@@ -68,7 +68,7 @@
     </day-view>
 
     <week-view
-        *ngIf="selectedView === 'Week'"
+        *ngIf="selectedView === 'week'"
         [events]="events"
         [date]="selectedDate"
         [options]="options"
@@ -76,6 +76,6 @@
     </week-view>
 
     <month-view
-        *ngIf="selectedView === 'Month'">
+        *ngIf="selectedView === 'month'">
     </month-view>
 </div>

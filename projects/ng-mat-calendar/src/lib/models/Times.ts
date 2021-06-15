@@ -25,3 +25,9 @@ export const Times = [
     { time: '23:00' },
     { time: '00:00', isEnd: true }
 ];
+
+export enum Periods {
+    day = 'days',
+    week = 'weeks',
+    month = 'months'
+}
