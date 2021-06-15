@@ -23,7 +23,7 @@
                 <div class="time-grid__cell" *ngFor="let time of times;" [style.height.px]="getCellHeight(time)"></div>
             </div> 
 
-            <div class="calendar__marker" #marker *ngIf="isToday(day.date)" [style.marginTop.px]="markerPosition"></div>
+            <div class="calendar__marker" *ngIf="isToday(day.date)" [style.marginTop.px]="markerPosition"></div>
             
             <event-display
                 [component]="options.renderComponent"

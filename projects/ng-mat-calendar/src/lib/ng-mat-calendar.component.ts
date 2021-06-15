@@ -57,7 +57,7 @@ export class NgMatCalendarComponent implements OnInit, DoCheck {
 
     differ: any;
     views = Views;
-    selectedView = Views.week;
+    selectedView = this.options.view;
     enableDatePickerButton!: boolean;
     calendar = {} as Calendar;
     today = format(new Date(), 'EEEE, d MMMM');
@@ -164,7 +164,7 @@ export class NgMatCalendarComponent implements OnInit, DoCheck {
                 break;
 
             case 't':
-                // today
+                this.setCalendarToday();
                 break;
 
             default:

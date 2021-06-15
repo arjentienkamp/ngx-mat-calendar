@@ -1,4 +1,5 @@
 import { EventRenderComponent } from '../components/shared/event-render/event-render.component';
+import { Views } from './Views';
 
 export class CalendarOptions {
     pixelsPerMinute = 1.3;
@@ -10,7 +11,7 @@ export class CalendarOptions {
     locale = 'nl';
     compact = false;
     markerInterval = 600000;
-    view = 'Week'; // make default based on view enum
+    view = Views.week;
 
     constructor(init?: Partial<CalendarOptions>) {
         Object.assign(this, init);

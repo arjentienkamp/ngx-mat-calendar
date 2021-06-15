@@ -84,6 +84,9 @@ export class DayViewComponent implements OnInit, DoCheck, OnDestroy {
     initDayView(): void {
         if (this.options && this.events) {
             this.pixelsPerHour = this.options.getPixelsPerMinute * 60;
+
+            this.generateDayView();
+            this.markerPosition = this.calculateMarkerPosition();
         }
     }
 
