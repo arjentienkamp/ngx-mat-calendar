@@ -22,8 +22,6 @@
             </div> 
 
             <div class="calendar__marker" *ngIf="isToday(selectedDate)" [style.marginTop.px]="markerPosition"></div>
-
-            <!-- full day events loop-->
             
             <event-display
                 [component]="options.renderComponent"
@@ -31,6 +29,9 @@
                 [date]="selectedDate"
                 class="calendar__item"
                 *ngFor="let event of dayview.events; let i = index"
+                [style.width.%]="event.grid?.width"
+                [style.marginLeft.%]="event.grid?.offsetLeft"
+                [style.marginTop.px]="event.grid?.offsetTop"
                 [style.height.px]="event.grid?.durationOffset"
                 (click)="onEventClick(event)">
             </event-display>

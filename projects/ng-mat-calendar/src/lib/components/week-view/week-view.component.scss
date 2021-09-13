@@ -144,21 +144,3 @@
         left: -7px;
     }
 }
-
-.calendar__item {
-    display: flex;
-    flex: 1;
-    flex-direction: column;
-    position: absolute;
-    left: 0;
-
-    padding: $radius-sm;
-    border-radius: 4px;
-    width: 100%;
-    transition: $transition-md;
-
-    &:hover {
-        opacity: .75;
-        cursor: pointer;
-    }
-}
