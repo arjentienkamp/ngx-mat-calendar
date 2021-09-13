@@ -11,14 +11,16 @@ import {
     Output
 } from '@angular/core';
 
-import { DayView } from '../../models/Calendar';
-import { CalendarEvent } from '../../models/CalendarEvent';
+import { CalendarDay, DayView } from '../../models/Calendar';
+import { CalendarEvent, CalendarEventGrid } from '../../models/CalendarEvent';
 
+import { v4 as uuidv4 } from 'uuid';
 import { Times } from '../../models/Times';
 import { FormattingService } from '../../services/formatting.service';
 import { CalendarOptions } from '../../models/CalendarOptions';
-import { getHours, getMinutes } from 'date-fns';
+import { areIntervalsOverlapping, endOfDay, getHours, getMinutes, intervalToDuration, isSameDay, startOfDay } from 'date-fns';
 import { interval } from 'rxjs';
+import { Certificate } from 'crypto';
 
 @Component({
     selector: 'day-view',
@@ -91,18 +93,167 @@ export class DayViewComponent implements OnInit, DoCheck, OnDestroy {
 
     generateDayView(): void {
         if (this.selectedDate) {
+            const date = new Date(this.selectedDate);
+
             this.dayview = {
+                date,
+                eventGroups: [],
                 events: [],
             };
 
-            this.populateDayView();
+            const emptyDay = this.generateDays();
+            this.populateDayView(emptyDay);
 
-            console.log(this.dayview);
+            console.log(this.dayview, this.events);
         }
     }
 
-    populateDayView(): void {
+    populateDayView(emptyDay: CalendarDay): void {
+        const populatedDay: CalendarDay = emptyDay;
 
+        const events = this.events.filter((event: CalendarEvent) => {
+                return isSameDay(new Date(populatedDay.date), new Date(event.startTime)) ||
+                    isSameDay(new Date(populatedDay.date), new Date(event.endTime));
+            }).map((event: CalendarEvent) => {
+                return this.populateEvents(event, populatedDay);
+            }).sort((a: CalendarEvent, b: CalendarEvent) => {
+                return a.startTime.getTime() - b.startTime.getTime();
+            });
+
+        populatedDay.events = events;
+
+        this.dayview = this.createEventGroups(populatedDay);
+    }
+
+    populateEvents(event: CalendarEvent, day: CalendarDay): CalendarEvent {
+        const populatedEvent = new CalendarEvent({
+            ...event,
+            grid: this.calculatePixelsOffsetForEvent(event, day)
+        });
+
+        return populatedEvent;
+    }
+
+    createEventGroups(day: CalendarDay): CalendarDay {
+        day.events.map((event: CalendarEvent) => {
+            const uuid = this.generateUniqueId();
+            let eventGroup: CalendarEvent[] = [];
+
+            if (event.grid) {
+                eventGroup = this.getOverlappingEvents(event, day.events, event.grid.eventGroups);
+
+                eventGroup.map((overlapEvent: CalendarEvent) => {
+                    if (overlapEvent.grid) {
+                        overlapEvent.grid.eventGroups.push(uuid);
+                        overlapEvent.grid.eventsInGroup = eventGroup.length;
+                    }
+
+                    if (!day.eventGroups.includes(uuid)) {
+                        day.eventGroups.push(uuid);
+                    }
+                });
+            }
+        });
+
+        this.setEventSizes(day);
+
+        return day;
+    }
+
+    setEventSizes(day: CalendarDay): void { // combine for day/week/month-view
+        day.eventGroups.forEach(eventGroup => {
+            const eventGroupEvents = day.events.filter((event: CalendarEvent) => {
+                return event.grid?.eventGroups.includes(eventGroup);
+            });
+
+            let index = 0;
+            eventGroupEvents.forEach((event: CalendarEvent) => {
+                if (event.grid) {
+                    event.grid.width = 100 / (eventGroupEvents.length);
+                    event.grid.offsetLeft = event.grid.width * index;
+                }
+
+                // check if already has a width/offsetLeft to determine if it's in eventgroup A or B
+
+                index++;
+            });
+        });
+    }
+
+    // combine for day/week/month-view
+    getOverlappingEvents(event: CalendarEvent, events: CalendarEvent[], eventGroups: string[]): CalendarEvent[] {
+        return events.filter((compareEvent: CalendarEvent) => {
+            const eventsDoOverlap = areIntervalsOverlapping(
+                { start: event.startTime, end: event.endTime },
+                { start: compareEvent.startTime, end: compareEvent.endTime },
+                { inclusive: true }
+            );
+
+            let isAlreadyInEventGroup = false;
+            if (compareEvent.grid) {
+                isAlreadyInEventGroup = compareEvent.grid.eventGroups.some((eventGroup: string) => {
+                    return eventGroups.includes(eventGroup);
+                });
+            }
+
+            return eventsDoOverlap && !isAlreadyInEventGroup;
+        });
+    }
+
+
+    calculatePixelsOffsetForEvent(event: CalendarEvent, day: CalendarDay): CalendarEventGrid {
+        let grid = new CalendarEventGrid();
+
+        const startTime = event.startTime;
+        const endTime = isSameDay(event.startTime, event.endTime) ?
+            event.endTime :
+            endOfDay(event.startTime);
+
+        const eventDurationFromStartTime = intervalToDuration({
+            start: startTime,
+            end: endTime
+        });
+
+        const eventDurationFromMidnight = intervalToDuration({
+            start: startOfDay(day.date),
+            end: event.endTime
+        });
+
+        eventDurationFromStartTime.hours = eventDurationFromStartTime.hours || 0;
+        eventDurationFromStartTime.minutes = eventDurationFromStartTime.minutes || 0;
+        eventDurationFromMidnight.hours = eventDurationFromMidnight.hours || 0;
+        eventDurationFromMidnight.minutes = eventDurationFromMidnight.minutes || 0;
+
+        const offsetInMinutes = !isSameDay(event.startTime, event.endTime) && isSameDay(event.endTime, day.date) ?
+            0 : Math.abs(getHours(startTime)) * 60 + getMinutes(startTime);
+
+        const durationOffset = !isSameDay(event.startTime, event.endTime) && isSameDay(event.endTime, day.date) ?
+            eventDurationFromMidnight.hours * 60 + eventDurationFromMidnight.minutes :
+            eventDurationFromStartTime.hours * 60 + eventDurationFromStartTime.minutes;
+
+        grid = {
+            ...grid,
+            offsetTop: offsetInMinutes * this.options.getPixelsPerMinute,
+            durationOffset: durationOffset * this.options.getPixelsPerMinute
+        };
+
+        return grid;
+    }
+
+    generateDays(): CalendarDay {
+        const date = new Date(this.selectedDate);
+
+        const day: CalendarDay = {
+            date,
+            eventGroups: [],
+            events: []
+        };
+
+        return day;
+    }
+
+    generateUniqueId(): string { // move to utility service or class
+        return uuidv4();
     }
 
     getCellHeight(time: any): number {

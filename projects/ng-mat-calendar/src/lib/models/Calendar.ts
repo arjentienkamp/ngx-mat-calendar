@@ -16,5 +16,7 @@ export interface WeekView {
 }
 
 export interface DayView {
+    date: Date;
+    eventGroups: string[];
     events: CalendarEvent[];
 }

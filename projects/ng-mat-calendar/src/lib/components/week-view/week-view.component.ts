@@ -15,7 +15,6 @@ import {
     add,
     areIntervalsOverlapping,
     endOfDay,
-    format,
     getHours,
     getMinutes,
     intervalToDuration,
@@ -110,13 +109,11 @@ export class WeekViewComponent implements OnInit, DoCheck, OnDestroy {
             };
 
             const emptyDays = this.generateDays();
-            this.populateDays(emptyDays);
-
-            console.log(this.weekview);
+            this.populateWeekView(emptyDays);
         }
     }
 
-    populateDays(emptyDays: any): void {
+    populateWeekView(emptyDays: CalendarDay[]): void {
         const populatedDays: CalendarDay[] = emptyDays;
 
         populatedDays.forEach(day => {
@@ -162,7 +159,6 @@ export class WeekViewComponent implements OnInit, DoCheck, OnDestroy {
                         day.eventGroups.push(uuid);
                     }
                 });
-
             }
         });
 
@@ -215,7 +211,7 @@ export class WeekViewComponent implements OnInit, DoCheck, OnDestroy {
     }
 
     generateDays(): CalendarDay[] {
-        const selectedWeekStart = startOfWeek(this.selectedDate, { weekStartsOn: 1});
+        const selectedWeekStart = startOfWeek(this.selectedDate, { weekStartsOn: 1 });
         const days = [];
 
         for (let i = 0; i < 7; i++) {
