@@ -16,6 +16,7 @@ export class AppComponent implements OnInit {
     calendarOptions!: CalendarOptions;
     date = new Date();
     compact = false;
+    addButton = true;
 
     constructor(
         private eventService: EventService
@@ -28,10 +29,10 @@ export class AppComponent implements OnInit {
     initCalendar(): void {
         this.calendarOptions = new CalendarOptions({
             compact: this.compact,
+            enableAddEventButton: this.addButton,
             // locale: 'es',
             // pixelsPerMinute: 2,
             // enableDatePickerButton: false,
-            // enableAddEventButton: false,
             // enableTooltip: false,
             // renderComponent: EventRenderTestComponent,
             // view: Views.month
@@ -53,6 +54,11 @@ export class AppComponent implements OnInit {
 
     onCompactChange(): void {
         this.compact = !this.compact;
+        this.initCalendar();
+    }
+
+    onAddButtonChange(): void {
+        this.addButton = !this.addButton;
         this.initCalendar();
     }
 
