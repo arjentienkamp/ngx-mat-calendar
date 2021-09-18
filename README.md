@@ -9,13 +9,14 @@ GIF
 
 ## Features
 - Display a day/week/month calendar with your events
-- Call a function on event click
 - Navigate between weeks, jump to today
 - Focus on current time on initialization
 - Use a custom component for rendering events
 - Uses colors of your Material theme
 - Locale can be set
 - Keyboard shortcuts
+- Call a function on event click
+- Call a function on add button click
 
 ## Requirements
 - Angular 11+ (tested on Angular 11) + Typescript
