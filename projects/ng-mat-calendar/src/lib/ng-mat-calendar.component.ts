@@ -51,6 +51,7 @@ export class NgMatCalendarComponent implements OnInit, DoCheck {
 
     @Output() dateChange: EventEmitter<Date> = new EventEmitter();
     @Output() eventClick: EventEmitter<CalendarEvent> = new EventEmitter();
+    @Output() addButtonClick: EventEmitter<any> = new EventEmitter();
 
     @ViewChild(MatMenuTrigger) datePickerMenu!: MatMenuTrigger;
 
@@ -141,6 +142,10 @@ export class NgMatCalendarComponent implements OnInit, DoCheck {
 
     onEventClick(event: CalendarEvent): void {
         this.eventClick.emit(event);
+    }
+
+    onAddButtonClick(): void {
+        this.addButtonClick.emit();
     }
 
     onDatePickerChange(date: any): void {

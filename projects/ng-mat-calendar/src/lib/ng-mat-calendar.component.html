@@ -78,4 +78,13 @@
     <month-view
         *ngIf="selectedView === 'month'">
     </month-view>
+
+    <button
+        class="calendar__add-button"
+        *ngIf="options.enableAddEventButton"
+        mat-mini-fab
+        color="primary"
+        (click)="onAddButtonClick()">
+        <mat-icon>add</mat-icon>
+    </button>
 </div>

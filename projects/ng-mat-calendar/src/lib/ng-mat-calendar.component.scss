@@ -88,6 +88,14 @@ month-view {
     }
 }
 
+.calendar__add-button {
+    position: absolute;
+    right: -$margin-xs;
+    bottom: -$margin-xs;
+    width: 60px;
+    height: 60px;
+}
+
 mat-calendar {
     padding: 0 $margin-sm;
 }

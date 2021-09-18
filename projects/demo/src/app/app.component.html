@@ -26,7 +26,8 @@
                 [events]="events"
                 (eventClick)="handleEventClick($event)"
                 [(date)]="date"
-                (dateChange)="handleDateChange()">
+                (dateChange)="handleDateChange()"
+                (addButtonClick)="handleAddButtonClick()">
             </ng-mat-calendar>
         </mat-card-content>
     </mat-card>

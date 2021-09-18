@@ -8,6 +8,7 @@ export class CalendarOptions {
     renderComponent = EventRenderComponent;
     jumpToSpy = true;
     enableDatePickerButton = true;
+    enableAddEventButton = true;
     locale = 'nl';
     compact = false;
     markerInterval = 600000;

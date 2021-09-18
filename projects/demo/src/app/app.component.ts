@@ -31,6 +31,7 @@ export class AppComponent implements OnInit {
             // locale: 'es',
             // pixelsPerMinute: 2,
             // enableDatePickerButton: false,
+            // enableAddEventButton: false,
             // enableTooltip: false,
             // renderComponent: EventRenderTestComponent,
             // view: Views.month
@@ -61,5 +62,9 @@ export class AppComponent implements OnInit {
 
     handleEventClick(event: CalendarEvent): void {
         console.log(event);
+    }
+
+    handleAddButtonClick(): void {
+        console.log('Add button clicked!');
     }
 }
