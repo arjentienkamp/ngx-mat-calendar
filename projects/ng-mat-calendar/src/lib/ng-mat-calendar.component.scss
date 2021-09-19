@@ -90,6 +90,7 @@ month-view {
 
 .calendar__add-button {
     position: absolute;
+    z-index: 1;
     right: -$margin-xs;
     bottom: -$margin-xs;
     width: 80px;
