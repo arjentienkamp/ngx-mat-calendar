@@ -72,7 +72,8 @@
         [events]="events"
         [date]="selectedDate"
         [options]="options"
-        (eventClick)="onEventClick($event)">
+        (eventClick)="onEventClick($event)"
+        (changeToDayView)="changeToDayView($event)">
     </week-view>
 
     <month-view

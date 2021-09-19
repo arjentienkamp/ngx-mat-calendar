@@ -20,7 +20,6 @@ import { FormattingService } from '../../services/formatting.service';
 import { CalendarOptions } from '../../models/CalendarOptions';
 import { areIntervalsOverlapping, endOfDay, getHours, getMinutes, intervalToDuration, isSameDay, startOfDay } from 'date-fns';
 import { interval } from 'rxjs';
-import { Certificate } from 'crypto';
 
 @Component({
     selector: 'day-view',

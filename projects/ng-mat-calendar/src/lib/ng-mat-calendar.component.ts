@@ -140,6 +140,11 @@ export class NgMatCalendarComponent implements OnInit, DoCheck {
         this.selectedView = view;
     }
 
+    changeToDayView(date: Date): void {
+        this.selectedView = Views.day;
+        this.setCalendar(date);
+    }
+
     onEventClick(event: CalendarEvent): void {
         this.eventClick.emit(event);
     }
