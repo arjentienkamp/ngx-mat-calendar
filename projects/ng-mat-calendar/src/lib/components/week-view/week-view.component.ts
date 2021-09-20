@@ -2,9 +2,7 @@ import {
     Component,
     DoCheck,
     EventEmitter,
-    Input,
     IterableDiffers,
-    KeyValueDiffer,
     KeyValueDiffers,
     OnDestroy,
     OnInit,
@@ -13,67 +11,37 @@ import {
 
 import {
     add,
-    endOfDay,
-    getHours,
-    getMinutes,
-    intervalToDuration,
     isSameDay,
-    startOfDay,
     startOfWeek
 } from 'date-fns';
 
+import { BaseViewComponent } from '../../models/BaseView';
 import { CalendarDay, WeekView } from '../../models/Calendar';
-import { CalendarEvent, CalendarEventGrid } from '../../models/CalendarEvent';
+import { CalendarEvent } from '../../models/CalendarEvent';
 
-import { Times } from '../../models/Times';
 import { interval } from 'rxjs';
 import { FormattingService } from '../../services/formatting.service';
-import { CalendarService } from '../../services/calendar.service';
-import { CalendarOptions } from '../../models/CalendarOptions';
 
 @Component({
     selector: 'week-view',
     templateUrl: './week-view.component.html',
     styleUrls: ['./week-view.component.scss']
 })
-export class WeekViewComponent implements OnInit, DoCheck, OnDestroy {
-    @Input() events: CalendarEvent[] = [];
-    private differEvents: IterableDiffers;
-
-    public selectedDate!: Date;
-    @Input() get date(): Date {
-        return this.selectedDate;
-    }
-    set date(value: Date) {
-        this.selectedDate = value;
-        this.initWeekView();
-    }
-
-    @Input() options: CalendarOptions = new CalendarOptions();
-    private differOptions: KeyValueDiffer<any, any>;
-
-    @Output() eventClick: EventEmitter<CalendarEvent> = new EventEmitter();
+export class WeekViewComponent extends BaseViewComponent implements OnInit, DoCheck, OnDestroy {
     @Output() changeToDayView: EventEmitter<Date> = new EventEmitter();
 
-    times = Times;
-    pixelsPerHour = 0;
-    markerSubscription: any;
-    markerPosition = 0;
     weekview = {} as WeekView;
-    iterableDiffer = [];
 
     constructor(
-        private formattingService: FormattingService,
-        private calendarService: CalendarService,
-        private iterableDiffers: IterableDiffers,
-        private keyValueDiffers: KeyValueDiffers
+        formattingService: FormattingService,
+        iterableDiffers: IterableDiffers,
+        keyValueDiffers: KeyValueDiffers
     ) {
-        this.differEvents = iterableDiffers;
-        this.differOptions = keyValueDiffers.find(CalendarOptions).create();
+        super(formattingService, iterableDiffers, keyValueDiffers);
     }
 
     ngOnInit(): void {
-        this.initWeekView();
+        this.initView();
 
         this.markerSubscription = interval(this.options.markerInterval).subscribe(() => {
             this.markerPosition = this.calculateMarkerPosition();
@@ -84,26 +52,26 @@ export class WeekViewComponent implements OnInit, DoCheck, OnDestroy {
         const eventChanges = this.differEvents.find(this.events);
 
         if (eventChanges) {
-            this.generateWeekView();
+            this.generateView();
         }
 
         const optionsChanges = this.differOptions.diff(this.options);
 
         if (optionsChanges) {
-            this.initWeekView();
+            this.initView();
         }
     }
 
-    initWeekView(): void {
+    initView(): void {
         if (this.options && this.events) {
             this.pixelsPerHour = this.options.getPixelsPerMinute * 60;
 
-            this.generateWeekView();
+            this.generateView();
             this.markerPosition = this.calculateMarkerPosition();
         }
     }
 
-    generateWeekView(): void {
+    generateView(): void {
         if (this.selectedDate) {
             this.weekview = {
                 days: [],
@@ -127,19 +95,10 @@ export class WeekViewComponent implements OnInit, DoCheck, OnDestroy {
                 return a.startTime.getTime() - b.startTime.getTime();
             });
 
-            day = this.calendarService.createEventGroups(day);
+            day = this.createEventGroups(day);
         });
 
         this.weekview.days = populatedDays;
-    }
-
-    populateEvents(event: CalendarEvent, day: CalendarDay): CalendarEvent {
-        const populatedEvent = new CalendarEvent({
-            ...event,
-            grid: this.calculatePixelsOffsetForEvent(event, day)
-        });
-
-        return populatedEvent;
     }
 
     generateDays(): CalendarDay[] {
@@ -162,93 +121,7 @@ export class WeekViewComponent implements OnInit, DoCheck, OnDestroy {
         return days;
     }
 
-    calculatePixelsOffsetForEvent(event: CalendarEvent, day: CalendarDay): CalendarEventGrid {
-        let grid = new CalendarEventGrid();
-
-        const startTime = event.startTime;
-        const endTime = isSameDay(event.startTime, event.endTime) ?
-            event.endTime :
-            endOfDay(event.startTime);
-
-        const eventDurationFromStartTime = intervalToDuration({
-            start: startTime,
-            end: endTime
-        });
-
-        const eventDurationFromMidnight = intervalToDuration({
-            start: startOfDay(day.date),
-            end: event.endTime
-        });
-
-        eventDurationFromStartTime.hours = eventDurationFromStartTime.hours || 0;
-        eventDurationFromStartTime.minutes = eventDurationFromStartTime.minutes || 0;
-        eventDurationFromMidnight.hours = eventDurationFromMidnight.hours || 0;
-        eventDurationFromMidnight.minutes = eventDurationFromMidnight.minutes || 0;
-
-        const offsetInMinutes = !isSameDay(event.startTime, event.endTime) && isSameDay(event.endTime, day.date) ?
-            0 : Math.abs(getHours(startTime)) * 60 + getMinutes(startTime);
-
-        const durationOffset = !isSameDay(event.startTime, event.endTime) && isSameDay(event.endTime, day.date) ?
-            eventDurationFromMidnight.hours * 60 + eventDurationFromMidnight.minutes :
-            eventDurationFromStartTime.hours * 60 + eventDurationFromStartTime.minutes;
-
-        grid = {
-            ...grid,
-            offsetTop: offsetInMinutes * this.options.getPixelsPerMinute,
-            durationOffset: durationOffset * this.options.getPixelsPerMinute
-        };
-
-        return grid;
-    }
-
-    calculateGrid(): any {
-        const grid = {
-            height: 24 * this.pixelsPerHour
-        };
-
-        return grid;
-    }
-
-    calculateMarkerPosition(): number {
-        const now = new Date();
-        const offsetTop = (getHours(now) * 60 + getMinutes(now)) * this.options.getPixelsPerMinute;
-
-        return offsetTop;
-    }
-
-    isToday(date: Date): boolean {
-        return this.formattingService.isToday(date);
-    }
-
-    getDayName(date: Date): string {
-        return this.formattingService.getDayName(date);
-    }
-
-    getDayNumber(date: Date): string {
-        return this.formattingService.getDayNumber(date);
-    }
-
-    getTime(date: Date): string {
-        return this.formattingService.getTime(date);
-    }
-
-    getCellHeight(time: any): number {
-        if (time.isEnd) {
-            return 20;
-        }
-
-        return this.pixelsPerHour;
-    }
-
-    onEventClick(event: CalendarEvent): void {
-        this.eventClick.emit(event);
-    }
-
     navigateToDayView(date: Date): void {
         this.changeToDayView.emit(date);
-    }
-
-    ngOnDestroy(): void {
-        this.markerSubscription.unsubscribe();
     }
 }

@@ -1,5 +1,9 @@
+import { Injectable } from '@angular/core';
 import { format, isToday } from 'date-fns';
 
+@Injectable({
+    providedIn: 'root'
+})
 export class FormattingService {
     public getTime(date: Date): string {
         return format(date, 'HH:mm');
