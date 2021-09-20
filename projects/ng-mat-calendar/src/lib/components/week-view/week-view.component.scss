@@ -1,44 +1,5 @@
 @import '../../styles/styles';
 
-.calendar__times {
-    position: relative;
-    top: -10px;
-    display: flex;
-    width: 80px;
-    flex-direction: column;
-
-    color: $color-gray-medium;
-    text-align: center;
-
-    border-left: 1px solid $color-gray-light;
-    border-right: 1px solid $color-gray-light;
-}
-
-.time-cell {
-    display: flex;
-    justify-content: center;
-}
-
-.calendar__content {
-    flex: 1;
-    flex-direction: column;
-    overflow: scroll;
-    margin-top: 100px;
-}
-
-.calendar__days {
-    position: absolute;
-    top: 65px;
-    left: 0;
-    bottom: 0;
-    right: 0;
-
-    display: flex;
-    flex-direction: row;
-    margin-left: 79px;
-    border-left: 1px solid $color-gray-light;
-}
-
 .calendar__lanes {
     display: flex;
     flex: 1;
@@ -129,25 +90,5 @@
             background-color: $brand-primary;
             color: $color-lightest;
         }
-    }
-}
-
-.calendar__marker {
-    position: relative;
-    z-index: 1;
-    border: 1px solid $color-focus;
-    width: calc(100% + 1rem);
-    left: -.5rem;
-
-    &:before {
-        content: '';
-        display: block;
-        position: absolute;
-        width: 10px;
-        background-color: $color-focus;
-        height: 10px;
-        border-radius: 10px;
-        top: -5px;
-        left: -7px;
     }
 }
