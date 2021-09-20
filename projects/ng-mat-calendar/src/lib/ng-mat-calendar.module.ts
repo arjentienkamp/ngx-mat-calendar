@@ -26,6 +26,7 @@ import { FormattingService } from './services/formatting.service';
 
 import { MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/material-moment-adapter';
 import { LocaleDateAdapter } from './other/DateAdapter';
+import { CalendarService } from './services/calendar.service';
 
 const MaterialModules = [
     MatCardModule,
@@ -68,6 +69,7 @@ const Pipes = [
     ],
     providers: [
         FormattingService,
+        CalendarService,
         {
             provide: MAT_MOMENT_DATE_ADAPTER_OPTIONS,
             useValue: {

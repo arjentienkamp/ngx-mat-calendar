@@ -14,11 +14,11 @@ import {
 import { CalendarDay, DayView } from '../../models/Calendar';
 import { CalendarEvent, CalendarEventGrid } from '../../models/CalendarEvent';
 
-import { v4 as uuidv4 } from 'uuid';
 import { Times } from '../../models/Times';
 import { FormattingService } from '../../services/formatting.service';
+import { CalendarService } from '../../services/calendar.service';
 import { CalendarOptions } from '../../models/CalendarOptions';
-import { areIntervalsOverlapping, endOfDay, getHours, getMinutes, intervalToDuration, isSameDay, startOfDay } from 'date-fns';
+import { endOfDay, getHours, getMinutes, intervalToDuration, isSameDay, startOfDay } from 'date-fns';
 import { interval } from 'rxjs';
 
 @Component({
@@ -52,6 +52,7 @@ export class DayViewComponent implements OnInit, DoCheck, OnDestroy {
 
     constructor(
         private formattingService: FormattingService,
+        private calendarService: CalendarService,
         private iterableDiffers: IterableDiffers,
         private keyValueDiffers: KeyValueDiffers
     ) {
@@ -121,7 +122,7 @@ export class DayViewComponent implements OnInit, DoCheck, OnDestroy {
 
         populatedDay.events = events;
 
-        this.dayview = this.createEventGroups(populatedDay);
+        this.dayview = this.calendarService.createEventGroups(populatedDay);
     }
 
     populateEvents(event: CalendarEvent, day: CalendarDay): CalendarEvent {
@@ -132,73 +133,6 @@ export class DayViewComponent implements OnInit, DoCheck, OnDestroy {
 
         return populatedEvent;
     }
-
-    createEventGroups(day: CalendarDay): CalendarDay {
-        day.events.map((event: CalendarEvent) => {
-            const uuid = this.generateUniqueId();
-            let eventGroup: CalendarEvent[] = [];
-
-            if (event.grid) {
-                eventGroup = this.getOverlappingEvents(event, day.events, event.grid.eventGroups);
-
-                eventGroup.map((overlapEvent: CalendarEvent) => {
-                    if (overlapEvent.grid) {
-                        overlapEvent.grid.eventGroups.push(uuid);
-                        overlapEvent.grid.eventsInGroup = eventGroup.length;
-                    }
-
-                    if (!day.eventGroups.includes(uuid)) {
-                        day.eventGroups.push(uuid);
-                    }
-                });
-            }
-        });
-
-        this.setEventSizes(day);
-
-        return day;
-    }
-
-    setEventSizes(day: CalendarDay): void { // combine for day/week/month-view
-        day.eventGroups.forEach(eventGroup => {
-            const eventGroupEvents = day.events.filter((event: CalendarEvent) => {
-                return event.grid?.eventGroups.includes(eventGroup);
-            });
-
-            let index = 0;
-            eventGroupEvents.forEach((event: CalendarEvent) => {
-                if (event.grid) {
-                    event.grid.width = 100 / (eventGroupEvents.length);
-                    event.grid.offsetLeft = event.grid.width * index;
-                }
-
-                // check if already has a width/offsetLeft to determine if it's in eventgroup A or B
-
-                index++;
-            });
-        });
-    }
-
-    // combine for day/week/month-view
-    getOverlappingEvents(event: CalendarEvent, events: CalendarEvent[], eventGroups: string[]): CalendarEvent[] {
-        return events.filter((compareEvent: CalendarEvent) => {
-            const eventsDoOverlap = areIntervalsOverlapping(
-                { start: event.startTime, end: event.endTime },
-                { start: compareEvent.startTime, end: compareEvent.endTime },
-                { inclusive: true }
-            );
-
-            let isAlreadyInEventGroup = false;
-            if (compareEvent.grid) {
-                isAlreadyInEventGroup = compareEvent.grid.eventGroups.some((eventGroup: string) => {
-                    return eventGroups.includes(eventGroup);
-                });
-            }
-
-            return eventsDoOverlap && !isAlreadyInEventGroup;
-        });
-    }
-
 
     calculatePixelsOffsetForEvent(event: CalendarEvent, day: CalendarDay): CalendarEventGrid {
         let grid = new CalendarEventGrid();
@@ -249,10 +183,6 @@ export class DayViewComponent implements OnInit, DoCheck, OnDestroy {
         };
 
         return day;
-    }
-
-    generateUniqueId(): string { // move to utility service or class
-        return uuidv4();
     }
 
     getCellHeight(time: any): number {

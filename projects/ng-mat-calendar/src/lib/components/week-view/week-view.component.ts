@@ -13,7 +13,6 @@ import {
 
 import {
     add,
-    areIntervalsOverlapping,
     endOfDay,
     getHours,
     getMinutes,
@@ -26,10 +25,10 @@ import {
 import { CalendarDay, WeekView } from '../../models/Calendar';
 import { CalendarEvent, CalendarEventGrid } from '../../models/CalendarEvent';
 
-import { v4 as uuidv4 } from 'uuid';
 import { Times } from '../../models/Times';
 import { interval } from 'rxjs';
 import { FormattingService } from '../../services/formatting.service';
+import { CalendarService } from '../../services/calendar.service';
 import { CalendarOptions } from '../../models/CalendarOptions';
 
 @Component({
@@ -65,6 +64,7 @@ export class WeekViewComponent implements OnInit, DoCheck, OnDestroy {
 
     constructor(
         private formattingService: FormattingService,
+        private calendarService: CalendarService,
         private iterableDiffers: IterableDiffers,
         private keyValueDiffers: KeyValueDiffers
     ) {
@@ -127,7 +127,7 @@ export class WeekViewComponent implements OnInit, DoCheck, OnDestroy {
                 return a.startTime.getTime() - b.startTime.getTime();
             });
 
-            day = this.createEventGroups(day);
+            day = this.calendarService.createEventGroups(day);
         });
 
         this.weekview.days = populatedDays;
@@ -140,75 +140,6 @@ export class WeekViewComponent implements OnInit, DoCheck, OnDestroy {
         });
 
         return populatedEvent;
-    }
-
-    createEventGroups(day: CalendarDay): CalendarDay {
-        day.events.map((event: CalendarEvent) => {
-            const uuid = this.generateUniqueId();
-            let eventGroup: CalendarEvent[] = [];
-
-            if (event.grid) {
-                eventGroup = this.getOverlappingEvents(event, day.events, event.grid.eventGroups);
-
-                eventGroup.map((overlapEvent: CalendarEvent) => {
-                    if (overlapEvent.grid) {
-                        overlapEvent.grid.eventGroups.push(uuid);
-                        overlapEvent.grid.eventsInGroup = eventGroup.length;
-                    }
-
-                    if (!day.eventGroups.includes(uuid)) {
-                        day.eventGroups.push(uuid);
-                    }
-                });
-            }
-        });
-
-        this.setEventSizes(day);
-
-        return day;
-    }
-
-    setEventSizes(day: CalendarDay): void {
-        day.eventGroups.forEach(eventGroup => {
-            const eventGroupEvents = day.events.filter((event: CalendarEvent) => {
-                return event.grid?.eventGroups.includes(eventGroup);
-            });
-
-            let index = 0;
-            eventGroupEvents.forEach((event: CalendarEvent) => {
-                if (event.grid) {
-                    event.grid.width = 100 / (eventGroupEvents.length);
-                    event.grid.offsetLeft = event.grid.width * index;
-                }
-
-                // check if already has a width/offsetLeft to determine if it's in eventgroup A or B
-
-                index++;
-            });
-        });
-    }
-
-    getOverlappingEvents(event: CalendarEvent, events: CalendarEvent[], eventGroups: string[]): CalendarEvent[] {
-        return events.filter((compareEvent: CalendarEvent) => {
-            const eventsDoOverlap = areIntervalsOverlapping(
-                { start: event.startTime, end: event.endTime },
-                { start: compareEvent.startTime, end: compareEvent.endTime },
-                { inclusive: true }
-            );
-
-            let isAlreadyInEventGroup = false;
-            if (compareEvent.grid) {
-                isAlreadyInEventGroup = compareEvent.grid.eventGroups.some((eventGroup: string) => {
-                    return eventGroups.includes(eventGroup);
-                });
-            }
-
-            return eventsDoOverlap && !isAlreadyInEventGroup;
-        });
-    }
-
-    generateUniqueId(): string {
-        return uuidv4();
     }
 
     generateDays(): CalendarDay[] {
