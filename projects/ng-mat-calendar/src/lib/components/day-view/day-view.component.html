@@ -28,7 +28,7 @@
                 [event]="event"
                 [date]="selectedDate"
                 class="calendar__item"
-                *ngFor="let event of dayview.events; let i = index"
+                *ngFor="let event of dayView.events; let i = index"
                 [style.width.%]="event.grid?.width"
                 [style.marginLeft.%]="event.grid?.offsetLeft"
                 [style.marginTop.px]="event.grid?.offsetTop"

@@ -25,10 +25,10 @@ import { interval } from 'rxjs';
     templateUrl: './week-view.component.html',
     styleUrls: ['./week-view.component.scss']
 })
-export class WeekViewComponent extends BaseViewComponent implements OnInit, DoCheck, OnDestroy {
+export class WeekViewComponent extends BaseViewComponent implements OnInit, DoCheck {
     @Output() changeToDayView: EventEmitter<Date> = new EventEmitter();
 
-    weekview = {} as WeekView;
+    weekView = {} as WeekView;
 
     constructor(
         iterableDiffers: IterableDiffers,
@@ -70,7 +70,7 @@ export class WeekViewComponent extends BaseViewComponent implements OnInit, DoCh
 
     generateView(): void {
         if (this.selectedDate) {
-            this.weekview = {
+            this.weekView = {
                 days: [],
             };
 
@@ -95,7 +95,7 @@ export class WeekViewComponent extends BaseViewComponent implements OnInit, DoCh
             day = this.createEventGroups(day);
         });
 
-        this.weekview.days = populatedDays;
+        this.weekView.days = populatedDays;
     }
 
     generateDays(): CalendarDay[] {

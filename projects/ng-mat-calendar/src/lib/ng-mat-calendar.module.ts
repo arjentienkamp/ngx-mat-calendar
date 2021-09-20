@@ -22,8 +22,6 @@ import { MonthViewModule } from './components/month-view/month-view.module';
 import { EnumToArrayPipe } from './pipes/enumToArray';
 import { Capitalize } from './pipes/capitalize';
 
-import { FormattingService } from './services/formatting.service';
-
 import { MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/material-moment-adapter';
 import { LocaleDateAdapter } from './other/DateAdapter';
 
@@ -67,7 +65,6 @@ const Pipes = [
         NgMatCalendarComponent
     ],
     providers: [
-        FormattingService,
         {
             provide: MAT_MOMENT_DATE_ADAPTER_OPTIONS,
             useValue: {

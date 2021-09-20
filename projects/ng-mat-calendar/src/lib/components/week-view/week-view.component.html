@@ -1,5 +1,5 @@
 <div class="calendar__days">
-    <div class="calendar__day" *ngFor="let day of weekview.days;">
+    <div class="calendar__day" *ngFor="let day of weekView.days;">
         <div class="day__header" [ngClass]="{ 'day__header--today ': isToday(day.date) }">
             <span class="day-name">{{ getDayName(day.date) }}</span> 
             <span class="day-number" (click)="navigateToDayView(day.date)">{{ getDayNumber(day.date) }}</span>
@@ -16,7 +16,7 @@
         </div>
 
         <div class="day__lane"
-            *ngFor="let day of weekview.days; let i = index;"
+            *ngFor="let day of weekView.days; let i = index;"
             [ngClass]="{ 'day__lane--today': isToday(day.date) }">
 
             <div class="time-grid">

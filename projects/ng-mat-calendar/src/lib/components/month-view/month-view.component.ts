@@ -1,42 +1,36 @@
 import {
     Component,
     DoCheck,
-    OnDestroy,
+    IterableDiffers,
+    KeyValueDiffers,
     OnInit
 } from '@angular/core';
 
-import { CalendarDay, WeekView } from '../../models/Calendar';
-import { CalendarEvent, CalendarEventGrid } from '../../models/CalendarEvent';
-
-import { v4 as uuidv4 } from 'uuid';
-import { Times } from '../../models/Times';
-import { interval } from 'rxjs';
-import { FormattingService } from '../../services/formatting.service';
-import { CalendarOptions } from '../../models/CalendarOptions';
+import { MonthView } from '../../models/Calendar';
+import { BaseViewComponent } from '../shared/base-view/base-view.component';
 
 @Component({
     selector: 'month-view',
     templateUrl: './month-view.component.html',
     styleUrls: ['./month-view.component.scss']
 })
-export class MonthViewComponent implements OnInit, DoCheck, OnDestroy {
-    constructor() {}
+export class MonthViewComponent extends BaseViewComponent implements OnInit, DoCheck {
+    monthView = {} as MonthView;
+
+    constructor(
+        iterableDiffers: IterableDiffers,
+        keyValueDiffers: KeyValueDiffers
+    ) {
+        super(iterableDiffers, keyValueDiffers);
+    }
 
     ngOnInit(): void {
-        this.initMonthView();
+        this.initView();
     }
 
     ngDoCheck(): void {}
 
-    initMonthView(): void {}
+    initView(): void {}
 
-    generateMonthView(): void {}
-
-    onEventClick(event: CalendarEvent): void {
-        // this.eventClick.emit(event);
-    }
-
-    ngOnDestroy(): void {
-        // this.markerSubscription.unsubscribe();
-    }
+    generateView(): void {}
 }

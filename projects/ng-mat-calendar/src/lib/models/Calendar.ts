@@ -11,12 +11,16 @@ export interface CalendarDay {
     events: CalendarEvent[];
 }
 
-export interface WeekView {
-    days: CalendarDay[];
-}
-
 export interface DayView {
     date: Date;
     eventGroups: string[];
     events: CalendarEvent[];
+}
+
+export interface WeekView {
+    days: CalendarDay[];
+}
+
+export interface MonthView {
+    days: CalendarDay[];
 }

@@ -3,7 +3,6 @@ import {
     DoCheck,
     IterableDiffers,
     KeyValueDiffers,
-    OnDestroy,
     OnInit
 } from '@angular/core';
 
@@ -19,8 +18,8 @@ import { interval } from 'rxjs';
     templateUrl: './day-view.component.html',
     styleUrls: ['./day-view.component.scss']
 })
-export class DayViewComponent extends BaseViewComponent implements OnInit, DoCheck, OnDestroy {
-    dayview = {} as DayView;
+export class DayViewComponent extends BaseViewComponent implements OnInit, DoCheck {
+    dayView = {} as DayView;
 
     constructor(
         iterableDiffers: IterableDiffers,
@@ -64,7 +63,7 @@ export class DayViewComponent extends BaseViewComponent implements OnInit, DoChe
         if (this.selectedDate) {
             const date = new Date(this.selectedDate);
 
-            this.dayview = {
+            this.dayView = {
                 date,
                 eventGroups: [],
                 events: [],
@@ -73,7 +72,7 @@ export class DayViewComponent extends BaseViewComponent implements OnInit, DoChe
             const emptyDay = this.generateDays();
             this.populateDayView(emptyDay);
 
-            console.log(this.dayview, this.events);
+            console.log(this.dayView, this.events);
         }
     }
 
@@ -91,7 +90,7 @@ export class DayViewComponent extends BaseViewComponent implements OnInit, DoChe
 
         populatedDay.events = events;
 
-        this.dayview = this.createEventGroups(populatedDay);
+        this.dayView = this.createEventGroups(populatedDay);
     }
 
     generateDays(): CalendarDay {

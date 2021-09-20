@@ -1,7 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { EventRenderComponent } from 'projects/ng-mat-calendar/src/lib/components/shared/event-render/event-render.component';
 import { CalendarEvent } from 'projects/ng-mat-calendar/src/lib/models/CalendarEvent';
-import { FormattingService } from 'projects/ng-mat-calendar/src/lib/services/formatting.service';
 
 @Component({
     // tslint:disable-next-line:component-selector
@@ -10,18 +9,16 @@ import { FormattingService } from 'projects/ng-mat-calendar/src/lib/services/for
     styleUrls: ['./event-render-test.component.scss']
 })
 export class EventRenderTestComponent extends EventRenderComponent implements OnInit {
-    @Input() event!: CalendarEvent;
-    startTime = '';
-    endTime = '';
+    // @Input() event!: CalendarEvent;
+    // startTime = this.event.startTime;
+    // endTime = '';
 
-    constructor(
-        formattingService: FormattingService
-    ) {
-        super(formattingService);
-    }
+    // constructor(startTime: Date) {
+    //     super(startTime);
+    // }
 
-    ngOnInit(): void {
-        this.startTime = this.formattingService.getTime(this.event.startTime);
-        this.endTime = this.formattingService.getTime(this.event.endTime);
-    }
+    // ngOnInit(): void {
+    //     this.startTime = this.formattingService.getTime(this.event.startTime);
+    //     this.endTime = this.formattingService.getTime(this.event.endTime);
+    // }
 }
