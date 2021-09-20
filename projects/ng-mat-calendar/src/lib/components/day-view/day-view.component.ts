@@ -7,11 +7,10 @@ import {
     OnInit
 } from '@angular/core';
 
-import { BaseViewComponent } from '../../models/BaseView';
+import { BaseViewComponent } from '../shared/base-view/base-view.component';
 import { CalendarDay, DayView } from '../../models/Calendar';
 import { CalendarEvent } from '../../models/CalendarEvent';
 
-import { FormattingService } from '../../services/formatting.service';
 import { isSameDay } from 'date-fns';
 import { interval } from 'rxjs';
 
@@ -24,11 +23,10 @@ export class DayViewComponent extends BaseViewComponent implements OnInit, DoChe
     dayview = {} as DayView;
 
     constructor(
-        formattingService: FormattingService,
         iterableDiffers: IterableDiffers,
         keyValueDiffers: KeyValueDiffers
     ) {
-        super(formattingService, iterableDiffers, keyValueDiffers);
+        super(iterableDiffers, keyValueDiffers);
     }
 
     ngOnInit(): void {

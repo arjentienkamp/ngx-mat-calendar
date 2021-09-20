@@ -1,11 +1,32 @@
-import { Component, EventEmitter, Input, IterableDiffers, KeyValueDiffer, KeyValueDiffers, OnDestroy, Output } from '@angular/core';
-import { CalendarDay } from '../models/Calendar';
-import { CalendarEvent, CalendarEventGrid } from '../models/CalendarEvent';
+import {
+    Component,
+    EventEmitter,
+    Input,
+    IterableDiffers,
+    KeyValueDiffer,
+    KeyValueDiffers,
+    OnDestroy,
+    Output
+} from '@angular/core';
+
+import {
+    areIntervalsOverlapping,
+    endOfDay,
+    format,
+    getHours,
+    getMinutes,
+    intervalToDuration,
+    isSameDay,
+    isToday,
+    startOfDay
+} from 'date-fns';
+
+import { CalendarDay } from '../../../models/Calendar';
+import { CalendarEvent, CalendarEventGrid } from '../../../models/CalendarEvent';
 import { v4 as uuidv4 } from 'uuid';
-import { areIntervalsOverlapping, endOfDay, getHours, getMinutes, intervalToDuration, isSameDay, startOfDay } from 'date-fns';
-import { CalendarOptions } from '../models/CalendarOptions';
-import { FormattingService } from '../services/formatting.service';
-import { Times } from './Times';
+import { CalendarOptions } from '../../../models/CalendarOptions';
+
+import { Times } from '../../../models/Times';
 
 @Component({
     template: ''
@@ -34,7 +55,6 @@ export class BaseViewComponent implements OnDestroy {
     markerSubscription: any;
 
     constructor(
-        public formattingService: FormattingService,
         public iterableDiffers: IterableDiffers,
         public keyValueDiffers: KeyValueDiffers
     ) {
@@ -171,19 +191,19 @@ export class BaseViewComponent implements OnDestroy {
     }
 
     public isToday(date: Date): boolean {
-        return this.formattingService.isToday(date);
+        return isToday(date);
     }
 
     public getDayName(date: Date): string {
-        return this.formattingService.getDayName(date);
+        return format(date, 'E');
     }
 
     public getDayNumber(date: Date): string {
-        return this.formattingService.getDayNumber(date);
+        return format(date, 'd');
     }
 
     public getTime(date: Date): string {
-        return this.formattingService.getTime(date);
+        return format(date, 'HH:mm');
     }
 
     public onEventClick(event: CalendarEvent): void {
