@@ -25,6 +25,8 @@ import { Capitalize } from './pipes/capitalize';
 import { MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/material-moment-adapter';
 import { LocaleDateAdapter } from './other/DateAdapter';
 
+import { FormattingService } from './services/formatting.service';
+
 const MaterialModules = [
     MatCardModule,
     MatButtonModule,
@@ -65,6 +67,7 @@ const Pipes = [
         NgMatCalendarComponent
     ],
     providers: [
+        FormattingService,
         {
             provide: MAT_MOMENT_DATE_ADAPTER_OPTIONS,
             useValue: {

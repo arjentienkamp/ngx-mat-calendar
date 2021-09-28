@@ -15,10 +15,11 @@ import {
     startOfWeek
 } from 'date-fns';
 
+import { interval } from 'rxjs';
 import { BaseViewComponent } from '../shared/base-view/base-view.component';
 import { CalendarDay, WeekView } from '../../models/Calendar';
 import { CalendarEvent } from '../../models/CalendarEvent';
-import { interval } from 'rxjs';
+import { FormattingService } from '../../services/formatting.service';
 
 @Component({
     selector: 'week-view',
@@ -31,10 +32,11 @@ export class WeekViewComponent extends BaseViewComponent implements OnInit, DoCh
     weekView = {} as WeekView;
 
     constructor(
+        formattingService: FormattingService,
         iterableDiffers: IterableDiffers,
         keyValueDiffers: KeyValueDiffers
     ) {
-        super(iterableDiffers, keyValueDiffers);
+        super(formattingService, iterableDiffers, keyValueDiffers);
     }
 
     ngOnInit(): void {

@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { format, isSameDay } from 'date-fns';
 import { CalendarEvent } from '../../../models/CalendarEvent';
+import { FormattingService } from '../../../services/formatting.service';
 
 @Component({
     // tslint:disable-next-line:component-selector
@@ -15,14 +16,16 @@ export class EventRenderComponent implements OnInit {
     startTime = '';
     endTime = '';
     isSameDay = false;
-    eventEndsToday = false;
+    endsToday = false;
 
-    constructor() {}
+    constructor(
+        public formattingService: FormattingService,
+    ) {}
 
     ngOnInit(): void {
-        this.startTime = format(this.event.startTime, 'HH:mm');
-        this.endTime = format(this.event.endTime, 'HH:mm');
+        this.startTime = this.formattingService.getTime(this.event.startTime);
+        this.endTime = this.formattingService.getTime(this.event.endTime);
         this.isSameDay = isSameDay(this.event.startTime, this.event.endTime);
-        this.eventEndsToday = isSameDay(this.date, this.event.endTime);
+        this.endsToday = isSameDay(this.date, this.event.endTime);
     }
 }

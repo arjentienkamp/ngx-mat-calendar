@@ -12,12 +12,10 @@ import {
 import {
     areIntervalsOverlapping,
     endOfDay,
-    format,
     getHours,
     getMinutes,
     intervalToDuration,
     isSameDay,
-    isToday,
     startOfDay
 } from 'date-fns';
 
@@ -27,6 +25,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { CalendarOptions } from '../../../models/CalendarOptions';
 
 import { Times } from '../../../models/Times';
+import { FormattingService } from '../../../services/formatting.service';
 
 @Component({
     template: ''
@@ -55,6 +54,7 @@ export class BaseViewComponent implements OnDestroy {
     markerSubscription: any;
 
     constructor(
+        public formattingService: FormattingService,
         public iterableDiffers: IterableDiffers,
         public keyValueDiffers: KeyValueDiffers
     ) {
@@ -191,19 +191,19 @@ export class BaseViewComponent implements OnDestroy {
     }
 
     public isToday(date: Date): boolean {
-        return isToday(date);
+        return this.formattingService.isToday(date);
     }
 
     public getDayName(date: Date): string {
-        return format(date, 'E');
+        return this.formattingService.getDayName(date);
     }
 
     public getDayNumber(date: Date): string {
-        return format(date, 'd');
+        return this.formattingService.getDayNumber(date);
     }
 
     public getTime(date: Date): string {
-        return format(date, 'HH:mm');
+        return this.formattingService.getTime(date);
     }
 
     public onEventClick(event: CalendarEvent): void {

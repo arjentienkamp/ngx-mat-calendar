@@ -7,6 +7,7 @@ import {
 } from '@angular/core';
 
 import { MonthView } from '../../models/Calendar';
+import { FormattingService } from '../../services/formatting.service';
 import { BaseViewComponent } from '../shared/base-view/base-view.component';
 
 @Component({
@@ -18,10 +19,11 @@ export class MonthViewComponent extends BaseViewComponent implements OnInit, DoC
     monthView = {} as MonthView;
 
     constructor(
+        formattingService: FormattingService,
         iterableDiffers: IterableDiffers,
         keyValueDiffers: KeyValueDiffers
     ) {
-        super(iterableDiffers, keyValueDiffers);
+        super(formattingService, iterableDiffers, keyValueDiffers);
     }
 
     ngOnInit(): void {
