@@ -30,7 +30,7 @@ import { FormattingService } from '../../../services/formatting.service';
 @Component({
     template: ''
 })
-export class BaseViewComponent implements OnDestroy {
+export abstract class BaseViewComponent implements OnDestroy {
     @Input() events: CalendarEvent[] = [];
     public differEvents: IterableDiffers;
 
@@ -53,10 +53,10 @@ export class BaseViewComponent implements OnDestroy {
     markerPosition = 0;
     markerSubscription: any;
 
-    constructor(
-        public formattingService: FormattingService,
-        public iterableDiffers: IterableDiffers,
-        public keyValueDiffers: KeyValueDiffers
+    protected constructor(
+        protected formattingService: FormattingService,
+        protected iterableDiffers: IterableDiffers,
+        protected keyValueDiffers: KeyValueDiffers
     ) {
         this.differEvents = iterableDiffers;
         this.differOptions = keyValueDiffers.find(CalendarOptions).create();
