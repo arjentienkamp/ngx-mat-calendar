@@ -1,12 +1,9 @@
 import {
     Component,
     DoCheck,
-    EventEmitter,
     IterableDiffers,
     KeyValueDiffers,
-    OnDestroy,
     OnInit,
-    Output
 } from '@angular/core';
 
 import {
@@ -27,8 +24,6 @@ import { FormattingService } from '../../services/formatting.service';
     styleUrls: ['./week-view.component.scss']
 })
 export class WeekViewComponent extends BaseViewComponent implements OnInit, DoCheck {
-    @Output() changeToDayView: EventEmitter<Date> = new EventEmitter();
-
     weekView = {} as WeekView;
 
     constructor(
@@ -118,9 +113,5 @@ export class WeekViewComponent extends BaseViewComponent implements OnInit, DoCh
         }
 
         return days;
-    }
-
-    navigateToDayView(date: Date): void {
-        this.changeToDayView.emit(date);
     }
 }

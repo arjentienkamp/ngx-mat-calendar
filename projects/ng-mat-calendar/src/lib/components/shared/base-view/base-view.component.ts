@@ -47,6 +47,7 @@ export abstract class BaseViewComponent implements OnDestroy {
     public differOptions: KeyValueDiffer<any, any>;
 
     @Output() eventClick: EventEmitter<CalendarEvent> = new EventEmitter();
+    @Output() changeToDayView: EventEmitter<Date> = new EventEmitter();
 
     times = Times;
     pixelsPerHour = 0;
@@ -208,6 +209,10 @@ export abstract class BaseViewComponent implements OnDestroy {
 
     public onEventClick(event: CalendarEvent): void {
         this.eventClick.emit(event);
+    }
+
+    public navigateToDayView(date: Date): void {
+        this.changeToDayView.emit(date);
     }
 
     ngOnDestroy(): void {

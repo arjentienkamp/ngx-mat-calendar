@@ -77,7 +77,8 @@
     </week-view>
 
     <month-view
-        *ngIf="selectedView === 'month'">
+        *ngIf="selectedView === 'month'"
+        (changeToDayView)="changeToDayView($event)">
     </month-view>
 
     <button
