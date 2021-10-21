@@ -7,6 +7,7 @@ import {
 } from '@angular/core';
 
 import { MonthView } from '../../models/Calendar';
+import { daysOfWeek } from '../../models/Times';
 import { FormattingService } from '../../services/formatting.service';
 import { BaseViewComponent } from '../shared/base-view/base-view.component';
 
@@ -17,6 +18,8 @@ import { BaseViewComponent } from '../shared/base-view/base-view.component';
 })
 export class MonthViewComponent extends BaseViewComponent implements OnInit, DoCheck {
     monthView = {} as MonthView;
+
+    daysOfWeek = daysOfWeek;
 
     constructor(
         formattingService: FormattingService,

@@ -1,3 +1,15 @@
-Month view
-
 <!-- @TODO: click on day date to navigate to day view -->
+
+<div class="calendar__days">
+    <div class="calendar__day" *ngFor="let day of daysOfWeek;">
+        <div class="day__header">
+            <span class="day-name">{{ day.title }}</span>
+        </div>
+    </div>
+</div> 
+
+<div class="calendar__content">
+    <div class="calendar__lanes">
+        ...
+    </div>
+</div>

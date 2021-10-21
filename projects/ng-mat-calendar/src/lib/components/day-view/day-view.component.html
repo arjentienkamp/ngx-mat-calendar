@@ -10,15 +10,15 @@
 <div class="calendar__content">
     <div class="calendar__lanes">
         <div class="calendar__times">
-            <div class="time-cell" *ngFor="let time of times;" [style.height.px]="getCellHeight(time)">
-                {{ time.time }}
+            <div class="time-cell" *ngFor="let hour of hoursOfDay;" [style.height.px]="getCellHeight(hour)">
+                {{ hour.title }}
             </div>
         </div>
 
         <div class="day__lane" [ngClass]="{ 'day__lane--today': isToday(selectedDate) }">
 
             <div class="time-grid">
-                <div class="time-grid__cell" *ngFor="let time of times;" [style.height.px]="getCellHeight(time)"></div>
+                <div class="time-grid__cell" *ngFor="let hour of hoursOfDay;" [style.height.px]="getCellHeight(hour)"></div>
             </div> 
 
             <div class="calendar__marker" *ngIf="isToday(selectedDate)" [style.marginTop.px]="markerPosition"></div>

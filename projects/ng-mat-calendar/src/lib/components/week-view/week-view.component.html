@@ -10,8 +10,8 @@
 <div class="calendar__content">
     <div class="calendar__lanes">
         <div class="calendar__times">
-            <div class="time-cell" *ngFor="let time of times;" [style.height.px]="getCellHeight(time)">
-                {{ time.time }}
+            <div class="time-cell" *ngFor="let hour of hoursOfDay;" [style.height.px]="getCellHeight(hour)">
+                {{ hour.title }}
             </div>
         </div>
 
@@ -20,7 +20,7 @@
             [ngClass]="{ 'day__lane--today': isToday(day.date) }">
 
             <div class="time-grid">
-                <div class="time-grid__cell" *ngFor="let time of times;" [style.height.px]="getCellHeight(time)"></div>
+                <div class="time-grid__cell" *ngFor="let hour of hoursOfDay;" [style.height.px]="getCellHeight(hour)"></div>
             </div> 
 
             <div class="calendar__marker" *ngIf="isToday(day.date)" [style.marginTop.px]="markerPosition"></div>

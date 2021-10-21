@@ -24,7 +24,7 @@ import { CalendarEvent, CalendarEventGrid } from '../../../models/CalendarEvent'
 import { v4 as uuidv4 } from 'uuid';
 import { CalendarOptions } from '../../../models/CalendarOptions';
 
-import { Times } from '../../../models/Times';
+import { hoursOfDay } from '../../../models/Times';
 import { FormattingService } from '../../../services/formatting.service';
 
 @Component({
@@ -49,7 +49,7 @@ export abstract class BaseViewComponent implements OnDestroy {
     @Output() eventClick: EventEmitter<CalendarEvent> = new EventEmitter();
     @Output() changeToDayView: EventEmitter<Date> = new EventEmitter();
 
-    times = Times;
+    hoursOfDay = hoursOfDay;
     pixelsPerHour = 0;
     markerPosition = 0;
     markerSubscription: any;
