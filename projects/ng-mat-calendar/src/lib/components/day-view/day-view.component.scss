@@ -1,46 +1,5 @@
 @import '../../styles/styles';
 
-.calendar__day {
-    display: flex;
-    flex: 1;
-    justify-content: flex-start;
-
-    border-right: 1px solid $color-gray-light;
-    padding-right: $margin-xs;
-    margin-left: $margin-xs;
-
-    .day__header {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        color: $color-gray-medium;
-
-        .day-name {
-            margin-bottom: $margin-xs;
-        }
-    
-        .day-number {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-bottom: $margin-xs;
-
-            width: 40px;
-            height: 40px;
-            border-radius: 20px;
-            background-color: $color-gray-light;
-            color: $color-gray-darker;
-        }
-    }
-
-    .day__header--today {
-        .day-number {
-            background-color: $brand-primary;
-            color: $color-lightest;
-        }
-    }
-}
-
 .calendar__lanes {
     display: flex;
     flex: 1;
