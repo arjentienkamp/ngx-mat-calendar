@@ -78,6 +78,9 @@
 
     <month-view
         *ngIf="selectedView === 'month'"
+        [events]="events"
+        [date]="selectedDate"
+        [options]="options"
         (changeToDayView)="changeToDayView($event)">
     </month-view>
 

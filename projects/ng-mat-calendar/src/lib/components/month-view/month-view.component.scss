@@ -1,6 +1,35 @@
 @import '../../styles/styles';
 
+.calendar__content {
+    display: flex;
+    margin-left: 20px;
+    margin-top: 40px;
+}
+
+.calendar__days {
+    height: 40px;
+    margin-left: 20px;
+}
+
 .calendar__day {
     .day__header {
+    }
+}
+
+.calendar__blocks {
+    display: flex;
+    flex: 1;
+    flex-wrap: wrap;
+    flex-direction: row;
+    padding-top: 10px;
+
+    .day__block {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        width: calc(100% / 7);
+
+        border-right: 1px solid $color-gray-light;
+        border-bottom: 1px solid $color-gray-light;
     }
 }

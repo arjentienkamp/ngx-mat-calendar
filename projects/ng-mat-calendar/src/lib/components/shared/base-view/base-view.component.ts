@@ -216,6 +216,8 @@ export abstract class BaseViewComponent implements OnDestroy {
     }
 
     ngOnDestroy(): void {
-        this.markerSubscription.unsubscribe();
+        if (this.markerSubscription) {
+            this.markerSubscription.unsubscribe();
+        }
     }
 }

@@ -11,7 +11,9 @@
 <div class="calendar__content">
     <div class="calendar__blocks">
         <!-- Flexbox 7 on a row -->
-        ...
+        <div class="day__block" *ngFor="let day of monthView.days">
+            ...
+        </div>
         <!-- Loop of blocks per day (like GCal), including date and class if current day -->
     </div>
 </div>
