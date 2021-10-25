@@ -9,7 +9,8 @@ import {
 import {
     add,
     isSameDay,
-    startOfMonth
+    startOfMonth,
+    sub
 } from 'date-fns';
 
 import { CalendarDay, MonthView } from '../../models/Calendar';
@@ -40,7 +41,19 @@ export class MonthViewComponent extends BaseViewComponent implements OnInit, DoC
         this.initView();
     }
 
-    ngDoCheck(): void {}
+    ngDoCheck(): void {
+        const eventChanges = this.differEvents.find(this.events);
+
+        if (eventChanges) {
+            this.generateView();
+        }
+
+        const optionsChanges = this.differOptions.diff(this.options);
+
+        if (optionsChanges) {
+            this.initView();
+        }
+    }
 
     initView(): void {
         if (this.options && this.events) {
@@ -79,7 +92,8 @@ export class MonthViewComponent extends BaseViewComponent implements OnInit, DoC
     }
 
     generateDays(): CalendarDay[] {
-        const selectedMonthStart = startOfMonth(this.selectedDate);
+        const dayOfWeek = add(startOfMonth(this.selectedDate), { days: 7 }).getDay();
+        const selectedMonthStart = sub(startOfMonth(this.selectedDate), { days: dayOfWeek - 1 });
         const days = [];
 
         for (let i = 0; i < 35; i++) {
