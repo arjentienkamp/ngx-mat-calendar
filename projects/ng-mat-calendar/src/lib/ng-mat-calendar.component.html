@@ -27,7 +27,7 @@
 
         <div class="toolbar__meta">
             <span class="toolbar__month">{{ calendar.monthAndYear }}</span>
-            <span class="toolbar__week">Week {{ calendar.weeknumber }}</span>
+            <span class="toolbar__week" *ngIf="!getSelectedView('month')">Week {{ calendar.weeknumber }}</span>
         </div>
 
         <div class="toolbar__right">
@@ -60,7 +60,7 @@
     </div>
 
     <day-view
-        *ngIf="selectedView === 'day'"
+        *ngIf="getSelectedView('day')"
         [events]="events"
         [date]="selectedDate"
         [options]="options"
@@ -68,7 +68,7 @@
     </day-view>
 
     <week-view
-        *ngIf="selectedView === 'week'"
+        *ngIf="getSelectedView('week')"
         [events]="events"
         [date]="selectedDate"
         [options]="options"
@@ -77,7 +77,7 @@
     </week-view>
 
     <month-view
-        *ngIf="selectedView === 'month'"
+        *ngIf="getSelectedView('month')"
         [events]="events"
         [date]="selectedDate"
         [options]="options"
