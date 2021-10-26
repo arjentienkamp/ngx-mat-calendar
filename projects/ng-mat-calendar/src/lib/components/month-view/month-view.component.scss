@@ -12,8 +12,9 @@
     margin-left: 20px;
 }
 
-.calendar__day {
+.calendar__days {
     .day__header {
+        flex: 1;
     }
 }
 
@@ -53,7 +54,8 @@
             opacity: .5;
         }
 
-        .is-today {
+        &.is-today {
+            padding-top: $margin-xxs;
             background-color: $color-bluish-light;
 
             .day__block-date {
