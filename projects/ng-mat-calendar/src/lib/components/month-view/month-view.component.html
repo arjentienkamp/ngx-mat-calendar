@@ -12,7 +12,9 @@
     <div class="calendar__blocks">
         <!-- Flexbox 7 on a row -->
         <div class="day__block" *ngFor="let day of monthView.days">
-            <span class="day__block-date">{{ getDayNumber(day.date) }}</span>
+            <div class="day__block-content" [class.not-current-month]="!isCurrentMonth(day.date)" [class.is-today]="isToday(day.date)">
+                <span class="day__block-date">{{ getDayNumber(day.date) }}</span>
+            </div>
         </div>
         <!-- Loop of blocks per day (like GCal), including date and class if current day -->
     </div>

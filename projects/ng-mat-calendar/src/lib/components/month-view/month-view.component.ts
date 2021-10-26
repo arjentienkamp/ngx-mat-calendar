@@ -9,6 +9,7 @@ import {
 import {
     add,
     isSameDay,
+    isSameMonth,
     startOfMonth,
     sub
 } from 'date-fns';
@@ -110,5 +111,9 @@ export class MonthViewComponent extends BaseViewComponent implements OnInit, DoC
         }
 
         return days;
+    }
+
+    isCurrentMonth(date: Date): boolean {
+        return isSameMonth(date, this.selectedDate);
     }
 }

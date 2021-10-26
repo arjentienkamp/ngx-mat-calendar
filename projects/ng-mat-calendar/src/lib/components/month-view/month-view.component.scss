@@ -3,7 +3,8 @@
 .calendar__content {
     display: flex;
     margin-left: 20px;
-    margin-top: 40px;
+    margin-top: 29px;
+    border-left: 1px solid $color-gray-light;
 }
 
 .calendar__days {
@@ -32,8 +33,34 @@
         border-right: 1px solid $color-gray-light;
         border-bottom: 1px solid $color-gray-light;
 
+        .day__block-content {
+            justify-content: center;
+            display: flex;   
+        }
+
         .day__block-date {
-            
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            width: 25px;
+            height: 25px;
+            color: $color-gray-darker;
+            font-size: $font-size-xs;
+        }
+
+        .not-current-month {
+            opacity: .5;
+        }
+
+        .is-today {
+            background-color: $color-bluish-light;
+
+            .day__block-date {
+                border-radius: 100%;
+                background: $color-gray-darker;
+                color: $color-lightest;
+            }
         }
     }
 }
