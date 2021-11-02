@@ -3,16 +3,14 @@
 .calendar__content {
     display: flex;
     margin-left: 20px;
-    margin-top: 29px;
+    margin-top: 15px;
     border-left: 1px solid $color-gray-light;
 }
 
 .calendar__days {
-    height: 40px;
+    height: $margin-lg;
     margin-left: 20px;
-}
 
-.calendar__days {
     .day__header {
         flex: 1;
     }
@@ -23,13 +21,14 @@
     flex: 1;
     flex-wrap: wrap;
     flex-direction: row;
-    padding-top: 10px;
+    padding-top: $margin-xs;
 
     .day__block {
         position: relative;
         display: flex;
         flex-direction: column;
         width: calc(100% / 7);
+        padding-top: $margin-xs;
 
         border-right: 1px solid $color-gray-light;
         border-bottom: 1px solid $color-gray-light;
@@ -51,11 +50,10 @@
         }
 
         .not-current-month {
-            opacity: .5;
+            opacity: .25;
         }
 
         &.is-today {
-            padding-top: $margin-xxs;
             background-color: $color-bluish-light;
 
             .day__block-date {

@@ -1,6 +1,6 @@
 # Angular Calendar component
 
-This component displays a calendar / timetable in your Angular (Material) project. 
+This component displays a calendar in your Angular (Material) project. 
 
 ## Demo
 Live demo (link)
