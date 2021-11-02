@@ -39,7 +39,7 @@ export class NgMatCalendarComponent implements OnInit, DoCheck {
     @Input() options: CalendarOptions = new CalendarOptions();
     private differOptions: KeyValueDiffer<any, any>;
 
-    public selectedDate!: Date;
+    public selectedDate: Date;
     @Input() get date(): Date {
         return this.selectedDate;
     }
@@ -53,7 +53,7 @@ export class NgMatCalendarComponent implements OnInit, DoCheck {
     @Output() eventClick: EventEmitter<CalendarEvent> = new EventEmitter();
     @Output() addButtonClick: EventEmitter<any> = new EventEmitter();
 
-    @ViewChild(MatMenuTrigger) datePickerMenu!: MatMenuTrigger;
+    @ViewChild(MatMenuTrigger) datePickerMenu: MatMenuTrigger;
 
     differ: any;
     views = Views;

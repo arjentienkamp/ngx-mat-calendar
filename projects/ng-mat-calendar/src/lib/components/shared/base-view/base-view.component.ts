@@ -34,7 +34,7 @@ export abstract class BaseViewComponent implements OnDestroy {
     @Input() events: CalendarEvent[] = [];
     public differEvents: IterableDiffers;
 
-    public selectedDate!: Date;
+    public selectedDate: Date;
     @Input() get date(): Date {
         return this.selectedDate;
     }

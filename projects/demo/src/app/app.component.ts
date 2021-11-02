@@ -13,7 +13,7 @@ import { EventService } from './services/event.service';
 })
 export class AppComponent implements OnInit {
     events: CalendarEvent[] = [];
-    calendarOptions!: CalendarOptions;
+    calendarOptions: CalendarOptions;
     date = new Date();
     compact = false;
     addButton = true;

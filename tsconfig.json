@@ -11,6 +11,7 @@
     "sourceMap": true,
     "declaration": false,
     "downlevelIteration": true,
+    "strictPropertyInitialization": false,
     "paths": {
       "ng-mat-calendar": [
         "dist/ng-mat-calendar/ng-mat-calendar",
@@ -31,6 +32,6 @@
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": true,
     "strictInputAccessModifiers": true,
-    "strictTemplates": true
+    "strictTemplates": true,
   }
 }
