@@ -38,7 +38,9 @@
                 (change)="onViewChange(view.value)"
                 aria-label="view"
                 class="toolbar__view-switch">
-                <mat-button-toggle *ngFor="let view of views | enumToArray" [value]="view">{{ view | capitalize }}</mat-button-toggle>
+                <mat-button-toggle value="day">Day</mat-button-toggle>
+                <mat-button-toggle value="week">Week</mat-button-toggle>
+                <mat-button-toggle value="month">Month</mat-button-toggle>
             </mat-button-toggle-group>
 
             <mat-menu #datePickerMenu="matMenu">
@@ -63,7 +65,7 @@
         *ngIf="getSelectedView('day')"
         [events]="events"
         [date]="selectedDate"
-        [options]="options"
+        [options$]="options$"
         (eventClick)="onEventClick($event)">
     </day-view>
 
@@ -71,7 +73,7 @@
         *ngIf="getSelectedView('week')"
         [events]="events"
         [date]="selectedDate"
-        [options]="options"
+        [options$]="options$"
         (eventClick)="onEventClick($event)"
         (changeToDayView)="changeToDayView($event)">
     </week-view>
@@ -80,7 +82,7 @@
         *ngIf="getSelectedView('month')"
         [events]="events"
         [date]="selectedDate"
-        [options]="options"
+        [options$]="options$"
         (changeToDayView)="changeToDayView($event)">
     </month-view>
 

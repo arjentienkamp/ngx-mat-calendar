@@ -3,6 +3,7 @@ import { add } from 'date-fns';
 import { CalendarEvent } from 'projects/ng-mat-calendar/src/lib/models/CalendarEvent';
 import { CalendarOptions } from 'projects/ng-mat-calendar/src/lib/models/CalendarOptions';
 import { Views } from 'projects/ng-mat-calendar/src/lib/models/Views';
+import { Observable, Subject } from 'rxjs';
 import { EventRenderTestComponent } from './component/event-render-test/event-render-test.component';
 import { EventService } from './services/event.service';
 
@@ -12,8 +13,8 @@ import { EventService } from './services/event.service';
     styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-    events: CalendarEvent[] = [];
-    calendarOptions: CalendarOptions;
+    events$ = new Subject<CalendarEvent[]>();
+    calendarOptions$ = new Subject<CalendarOptions>();
     date = new Date();
     compact = false;
     addButton = true;
@@ -27,7 +28,7 @@ export class AppComponent implements OnInit {
     }
 
     initCalendar(): void {
-        this.calendarOptions = new CalendarOptions({
+        const calendarOptions = new CalendarOptions({
             compact: this.compact,
             enableAddEventButton: this.addButton,
             // locale: 'es',
@@ -38,13 +39,18 @@ export class AppComponent implements OnInit {
             // view: Views.month
         });
 
+        setTimeout(() => {
+            this.calendarOptions$.next(calendarOptions);
+        }, 100);
+
         this.getEvents(this.date);
-        console.log(this.calendarOptions);
     }
 
     getEvents(date: Date): void {
         this.eventService.getEvents(date).subscribe((events: CalendarEvent[]) => {
-            this.events = events;
+            setTimeout(() => {
+                this.events$.next(events);
+            }, 100);
         });
     }
 

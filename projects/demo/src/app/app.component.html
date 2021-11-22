@@ -29,8 +29,8 @@
     <mat-card>
         <mat-card-content>
             <ng-mat-calendar
-                [options]="calendarOptions"
-                [events]="events"
+                [options$]="calendarOptions$"
+                [events$]="events$"
                 (eventClick)="handleEventClick($event)"
                 [(date)]="date"
                 (dateChange)="handleDateChange()"

@@ -6,6 +6,7 @@ import {
     KeyValueDiffer,
     KeyValueDiffers,
     OnDestroy,
+    OnInit,
     Output
 } from '@angular/core';
 
@@ -26,11 +27,13 @@ import { CalendarOptions } from '../../../models/CalendarOptions';
 
 import { hoursOfDay } from '../../../models/Times';
 import { FormattingService } from '../../../services/formatting.service';
+import { interval, Observable, Subscription } from 'rxjs';
+import { tap } from 'rxjs/internal/operators/tap';
 
 @Component({
     template: ''
 })
-export abstract class BaseViewComponent implements OnDestroy {
+export abstract class BaseViewComponent implements OnInit, OnDestroy {
     @Input() events: CalendarEvent[] = [];
     public differEvents: IterableDiffers;
 
@@ -43,12 +46,14 @@ export abstract class BaseViewComponent implements OnDestroy {
         // this.initView();
     }
 
-    @Input() options: CalendarOptions = new CalendarOptions();
-    public differOptions: KeyValueDiffer<any, any>;
+    @Input() options$: Observable<CalendarOptions>;
 
     @Output() eventClick: EventEmitter<CalendarEvent> = new EventEmitter();
     @Output() changeToDayView: EventEmitter<Date> = new EventEmitter();
 
+    protected subscriptions$: Subscription = new Subscription();
+
+    options: CalendarOptions = new CalendarOptions();
     hoursOfDay = hoursOfDay;
     pixelsPerHour = 0;
     markerPosition = 0;
@@ -60,7 +65,27 @@ export abstract class BaseViewComponent implements OnDestroy {
         protected keyValueDiffers: KeyValueDiffers
     ) {
         this.differEvents = iterableDiffers;
-        this.differOptions = keyValueDiffers.find(CalendarOptions).create();
+    }
+
+    ngOnInit(): void {
+        this.subscriptions$.add(
+            this.options$.pipe(
+                tap((options) => {
+                    this.options = options;
+                    console.log('base', options);
+                })
+            ).subscribe()
+        );
+
+        this.subscriptions$.add(
+            interval(60000).pipe(
+                tap(() => {
+                    this.markerPosition = this.calculateMarkerPosition();
+                })
+            ).subscribe()
+        );
+
+        console.log(this.subscriptions$);
     }
 
     public createEventGroups(day: CalendarDay): CalendarDay {

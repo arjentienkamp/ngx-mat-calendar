@@ -11,7 +11,6 @@ import { CalendarDay, DayView } from '../../models/Calendar';
 import { CalendarEvent } from '../../models/CalendarEvent';
 
 import { isSameDay } from 'date-fns';
-import { interval } from 'rxjs';
 import { FormattingService } from '../../services/formatting.service';
 
 @Component({
@@ -32,10 +31,6 @@ export class DayViewComponent extends BaseViewComponent implements OnInit, DoChe
 
     ngOnInit(): void {
         this.initView();
-
-        this.markerSubscription = interval(this.options.markerInterval).subscribe(() => {
-            this.markerPosition = this.calculateMarkerPosition();
-        });
     }
 
     ngDoCheck(): void {
@@ -44,12 +39,6 @@ export class DayViewComponent extends BaseViewComponent implements OnInit, DoChe
         if (eventChanges) {
             this.generateView();
         }
-
-        const optionsChanges = this.differOptions.diff(this.options);
-
-        if (optionsChanges) {
-            this.initView();
-        }
     }
 
     initView(): void {
@@ -57,7 +46,6 @@ export class DayViewComponent extends BaseViewComponent implements OnInit, DoChe
             this.pixelsPerHour = this.options.getPixelsPerMinute * 60;
 
             this.generateView();
-            this.markerPosition = this.calculateMarkerPosition();
         }
     }
 

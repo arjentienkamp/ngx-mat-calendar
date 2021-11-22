@@ -48,12 +48,6 @@ export class MonthViewComponent extends BaseViewComponent implements OnInit, DoC
         if (eventChanges) {
             this.generateView();
         }
-
-        const optionsChanges = this.differOptions.diff(this.options);
-
-        if (optionsChanges) {
-            this.initView();
-        }
     }
 
     initView(): void {

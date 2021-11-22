@@ -12,7 +12,6 @@ import {
     startOfWeek
 } from 'date-fns';
 
-import { interval } from 'rxjs';
 import { BaseViewComponent } from '../shared/base-view/base-view.component';
 import { CalendarDay, WeekView } from '../../models/Calendar';
 import { CalendarEvent } from '../../models/CalendarEvent';
@@ -35,11 +34,9 @@ export class WeekViewComponent extends BaseViewComponent implements OnInit, DoCh
     }
 
     ngOnInit(): void {
-        this.initView();
+        super.ngOnInit();
 
-        this.markerSubscription = interval(this.options.markerInterval).subscribe(() => {
-            this.markerPosition = this.calculateMarkerPosition();
-        });
+        this.initView();
     }
 
     ngDoCheck(): void {
@@ -48,12 +45,6 @@ export class WeekViewComponent extends BaseViewComponent implements OnInit, DoCh
         if (eventChanges) {
             this.generateView();
         }
-
-        const optionsChanges = this.differOptions.diff(this.options);
-
-        if (optionsChanges) {
-            this.initView();
-        }
     }
 
     initView(): void {
@@ -61,7 +52,6 @@ export class WeekViewComponent extends BaseViewComponent implements OnInit, DoCh
             this.pixelsPerHour = this.options.getPixelsPerMinute * 60;
 
             this.generateView();
-            this.markerPosition = this.calculateMarkerPosition();
         }
     }
 

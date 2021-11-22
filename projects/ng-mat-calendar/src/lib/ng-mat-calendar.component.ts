@@ -25,19 +25,19 @@ import Calendar from './models/Calendar';
 import { CalendarOptions } from './models/CalendarOptions';
 import { CalendarEvent } from './models/CalendarEvent';
 
-import { Views } from './models/Views';
+import { DAY, WEEK, MONTH, Views } from './models/Views';
 import { Periods } from './models/Times';
+import { Observable, Subscription } from 'rxjs';
+import { tap } from 'rxjs/operators';
 
 @Component({
     selector: 'ng-mat-calendar',
     templateUrl: './ng-mat-calendar.component.html',
     styleUrls: ['./ng-mat-calendar.component.scss']
 })
-export class NgMatCalendarComponent implements OnInit, DoCheck {
-    @Input() events: CalendarEvent[] = [];
-
-    @Input() options: CalendarOptions = new CalendarOptions();
-    private differOptions: KeyValueDiffer<any, any>;
+export class NgMatCalendarComponent implements OnInit {
+    @Input() options$: Observable<CalendarOptions>;
+    @Input() events$: Observable<CalendarEvent[]>;
 
     public selectedDate: Date;
     @Input() get date(): Date {
@@ -55,9 +55,13 @@ export class NgMatCalendarComponent implements OnInit, DoCheck {
 
     @ViewChild(MatMenuTrigger) datePickerMenu: MatMenuTrigger;
 
+    protected subscriptions$: Subscription = new Subscription();
+
     differ: any;
-    views = Views;
-    selectedView = this.options.view;
+    views: Views;
+    options: CalendarOptions;
+    events: CalendarEvent[];
+    selectedView: Views;
     enableDatePickerButton!: boolean;
     calendar = {} as Calendar;
     today = format(new Date(), 'EEEE, d MMMM');
@@ -68,26 +72,33 @@ export class NgMatCalendarComponent implements OnInit, DoCheck {
     }
 
     constructor(
-        private dateAdapter: DateAdapter<Date>,
-        private keyValueDiffers: KeyValueDiffers
-    ) {
-        this.differOptions = keyValueDiffers.find(CalendarOptions).create();
-    }
+        private dateAdapter: DateAdapter<Date>
+    ) {}
 
     ngOnInit(): void {
-        this.initCalendar();
-    }
+        this.subscriptions$.add(
+            this.options$.pipe(
+                tap((options) => {
+                    this.options = options;
+                    this.selectedView = options.view;
+                    console.log('options changed');
+                    this.initCalendar();
+                })
+            ).subscribe()
+        );
 
-    ngDoCheck(): void {
-        const optionsChanges = this.differOptions.diff(this.options);
-
-        if (optionsChanges) {
-            this.initCalendar();
-        }
+        this.subscriptions$.add(
+            this.events$.pipe(
+                tap((events) => {
+                    this.events = events;
+                    console.log('events changed');
+                })
+            ).subscribe()
+        );
     }
 
     initCalendar(): void {
-        if (this.options && this.events) {
+        if (this.options) {
             this.enableDatePickerButton = this.options.enableDatePickerButton;
 
             this.dateAdapter.setLocale(this.options.locale);
@@ -141,7 +152,7 @@ export class NgMatCalendarComponent implements OnInit, DoCheck {
     }
 
     changeToDayView(date: Date): void {
-        this.selectedView = Views.day;
+        this.selectedView = DAY;
         this.setCalendar(date);
     }
 
@@ -165,15 +176,15 @@ export class NgMatCalendarComponent implements OnInit, DoCheck {
     handleKeyboardEvents(event: KeyboardEvent): void {
         switch (event.key) {
             case 'd':
-                this.selectedView = Views.day;
+                this.selectedView = DAY;
                 break;
 
             case 'w':
-                this.selectedView = Views.week;
+                this.selectedView = WEEK;
                 break;
 
             case 'm':
-                this.selectedView = Views.month;
+                this.selectedView = MONTH;
                 break;
 
             case 't':

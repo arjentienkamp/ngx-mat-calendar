@@ -1,5 +1,5 @@
 import { EventRenderComponent } from '../components/shared/event-render/event-render.component';
-import { Views } from './Views';
+import { Views, WEEK } from './Views';
 
 export class CalendarOptions {
     pixelsPerMinute = 1.3;
@@ -11,8 +11,7 @@ export class CalendarOptions {
     enableAddEventButton = true;
     locale = 'nl';
     compact = false;
-    markerInterval = 600000;
-    view = Views.week;
+    view: Views = WEEK;
 
     constructor(init?: Partial<CalendarOptions>) {
         Object.assign(this, init);
