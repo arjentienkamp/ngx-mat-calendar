@@ -34,7 +34,9 @@ import { tap } from 'rxjs/internal/operators/tap';
     template: ''
 })
 export abstract class BaseViewComponent implements OnInit, OnDestroy {
+    @Input() options$: Observable<CalendarOptions>;
     @Input() events: CalendarEvent[] = [];
+
     public differEvents: IterableDiffers;
 
     public selectedDate: Date;
@@ -45,8 +47,6 @@ export abstract class BaseViewComponent implements OnInit, OnDestroy {
         this.selectedDate = value;
         // this.initView();
     }
-
-    @Input() options$: Observable<CalendarOptions>;
 
     @Output() eventClick: EventEmitter<CalendarEvent> = new EventEmitter();
     @Output() changeToDayView: EventEmitter<Date> = new EventEmitter();
@@ -68,6 +68,8 @@ export abstract class BaseViewComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit(): void {
+        this.markerPosition = this.calculateMarkerPosition();
+
         this.subscriptions$.add(
             this.options$.pipe(
                 tap((options) => {
@@ -84,8 +86,6 @@ export abstract class BaseViewComponent implements OnInit, OnDestroy {
                 })
             ).subscribe()
         );
-
-        console.log(this.subscriptions$);
     }
 
     public createEventGroups(day: CalendarDay): CalendarDay {
@@ -241,8 +241,6 @@ export abstract class BaseViewComponent implements OnInit, OnDestroy {
     }
 
     ngOnDestroy(): void {
-        if (this.markerSubscription) {
-            this.markerSubscription.unsubscribe();
-        }
+       this.subscriptions$.unsubscribe();
     }
 }

@@ -1,11 +1,9 @@
 import {
     Component,
-    DoCheck,
     EventEmitter,
     HostListener,
     Input,
-    KeyValueDiffer,
-    KeyValueDiffers,
+    OnDestroy,
     OnInit,
     Output,
     ViewChild
@@ -35,7 +33,7 @@ import { tap } from 'rxjs/operators';
     templateUrl: './ng-mat-calendar.component.html',
     styleUrls: ['./ng-mat-calendar.component.scss']
 })
-export class NgMatCalendarComponent implements OnInit {
+export class NgMatCalendarComponent implements OnInit, OnDestroy {
     @Input() options$: Observable<CalendarOptions>;
     @Input() events$: Observable<CalendarEvent[]>;
 
@@ -62,7 +60,7 @@ export class NgMatCalendarComponent implements OnInit {
     options: CalendarOptions;
     events: CalendarEvent[];
     selectedView: Views;
-    enableDatePickerButton!: boolean;
+    enableDatePickerButton: boolean;
     calendar = {} as Calendar;
     today = format(new Date(), 'EEEE, d MMMM');
 
@@ -100,9 +98,7 @@ export class NgMatCalendarComponent implements OnInit {
     initCalendar(): void {
         if (this.options) {
             this.enableDatePickerButton = this.options.enableDatePickerButton;
-
             this.dateAdapter.setLocale(this.options.locale);
-
             this.generateCalendar();
         }
     }
@@ -194,5 +190,9 @@ export class NgMatCalendarComponent implements OnInit {
             default:
                 break;
         }
+    }
+
+    ngOnDestroy(): void {
+        this.subscriptions$.unsubscribe();
     }
 }
