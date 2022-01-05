@@ -42,6 +42,8 @@ export class DayViewComponent extends BaseViewComponent implements OnInit, DoChe
     }
 
     initView(): void {
+        this.markerPosition = this.calculateMarkerPosition();
+
         if (this.options && this.events) {
             this.pixelsPerHour = this.options.getPixelsPerMinute * 60;
 

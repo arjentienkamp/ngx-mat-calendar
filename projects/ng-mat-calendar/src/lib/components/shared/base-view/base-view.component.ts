@@ -3,7 +3,6 @@ import {
     EventEmitter,
     Input,
     IterableDiffers,
-    KeyValueDiffer,
     KeyValueDiffers,
     OnDestroy,
     OnInit,
@@ -52,12 +51,11 @@ export abstract class BaseViewComponent implements OnInit, OnDestroy {
     @Output() changeToDayView: EventEmitter<Date> = new EventEmitter();
 
     protected subscriptions$: Subscription = new Subscription();
+    public markerPosition = 0;
 
     options: CalendarOptions = new CalendarOptions();
     hoursOfDay = hoursOfDay;
     pixelsPerHour = 0;
-    markerPosition = 0;
-    markerSubscription: any;
 
     protected constructor(
         protected formattingService: FormattingService,
