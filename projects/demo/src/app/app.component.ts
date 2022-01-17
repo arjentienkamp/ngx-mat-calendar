@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { add } from 'date-fns';
 import { CalendarEvent } from 'projects/ng-mat-calendar/src/lib/models/CalendarEvent';
 import { CalendarOptions } from 'projects/ng-mat-calendar/src/lib/models/CalendarOptions';
-import { Views } from 'projects/ng-mat-calendar/src/lib/models/Views';
-import { Observable, Subject } from 'rxjs';
+import { of, Subject } from 'rxjs';
 import { EventRenderTestComponent } from './component/event-render-test/event-render-test.component';
 import { EventService } from './services/event.service';
 
@@ -15,6 +14,7 @@ import { EventService } from './services/event.service';
 export class AppComponent implements OnInit {
     events$ = new Subject<CalendarEvent[]>();
     calendarOptions$ = new Subject<CalendarOptions>();
+    date$ = new Subject<Date>();
     date = new Date();
     compact = false;
     addButton = true;
@@ -41,6 +41,7 @@ export class AppComponent implements OnInit {
 
         setTimeout(() => {
             this.calendarOptions$.next(calendarOptions);
+            this.date$.next(this.date);
         }, 100);
 
         this.getEvents(this.date);
@@ -68,8 +69,8 @@ export class AppComponent implements OnInit {
         this.initCalendar();
     }
 
-    handleDateChange(): void {
-        this.getEvents(this.date);
+    handleDateChange(date: Date): void {
+        this.getEvents(date);
     }
 
     handleEventClick(event: CalendarEvent): void {

@@ -63,16 +63,16 @@
 
     <day-view
         *ngIf="getSelectedView('day')"
-        [events]="events"
-        [date]="selectedDate"
+        [events$]="events$"
+        [selectedDate$]="selectedDate$"
         [options$]="options$"
         (eventClick)="onEventClick($event)">
     </day-view>
 
     <week-view
         *ngIf="getSelectedView('week')"
-        [events]="events"
-        [date]="selectedDate"
+        [events$]="events$"
+        [selectedDate$]="selectedDate$"
         [options$]="options$"
         (eventClick)="onEventClick($event)"
         (changeToDayView)="changeToDayView($event)">
@@ -80,8 +80,8 @@
 
     <month-view
         *ngIf="getSelectedView('month')"
-        [events]="events"
-        [date]="selectedDate"
+        [events$]="events$"
+        [selectedDate$]="selectedDate$"
         [options$]="options$"
         (changeToDayView)="changeToDayView($event)">
     </month-view>

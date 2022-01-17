@@ -16,35 +16,34 @@ import { BaseViewComponent } from '../shared/base-view/base-view.component';
 import { CalendarDay, WeekView } from '../../models/Calendar';
 import { CalendarEvent } from '../../models/CalendarEvent';
 import { FormattingService } from '../../services/formatting.service';
+import { tap } from 'rxjs/operators';
 
 @Component({
     selector: 'week-view',
     templateUrl: './week-view.component.html',
     styleUrls: ['./week-view.component.scss']
 })
-export class WeekViewComponent extends BaseViewComponent implements OnInit, DoCheck {
+export class WeekViewComponent extends BaseViewComponent implements OnInit {
     weekView = {} as WeekView;
 
     constructor(
-        formattingService: FormattingService,
-        iterableDiffers: IterableDiffers,
-        keyValueDiffers: KeyValueDiffers
+        formattingService: FormattingService
     ) {
-        super(formattingService, iterableDiffers, keyValueDiffers);
+        super(formattingService);
     }
 
     ngOnInit(): void {
         super.ngOnInit();
-
         this.initView();
-    }
 
-    ngDoCheck(): void {
-        const eventChanges = this.differEvents.find(this.events);
-
-        if (eventChanges) {
-            this.generateView();
-        }
+        this.subscriptions$.add(
+            this.events$.pipe(
+                tap(events => {
+                    this.events = events;
+                    this.generateView();
+                })
+            ).subscribe()
+        );
     }
 
     initView(): void {

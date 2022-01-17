@@ -31,9 +31,9 @@
             <ng-mat-calendar
                 [options$]="calendarOptions$"
                 [events$]="events$"
+                [selectedDate$]="date$"
                 (eventClick)="handleEventClick($event)"
-                [(date)]="date"
-                (dateChange)="handleDateChange()"
+                (dateChange)="handleDateChange($event)"
                 (addButtonClick)="handleAddButtonClick()">
             </ng-mat-calendar>
         </mat-card-content>

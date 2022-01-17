@@ -12,33 +12,34 @@ import { CalendarEvent } from '../../models/CalendarEvent';
 
 import { isSameDay } from 'date-fns';
 import { FormattingService } from '../../services/formatting.service';
+import { tap } from 'rxjs/operators';
 
 @Component({
     selector: 'day-view',
     templateUrl: './day-view.component.html',
     styleUrls: ['./day-view.component.scss']
 })
-export class DayViewComponent extends BaseViewComponent implements OnInit, DoCheck {
+export class DayViewComponent extends BaseViewComponent implements OnInit {
     dayView = {} as DayView;
 
     constructor(
-        formattingService: FormattingService,
-        iterableDiffers: IterableDiffers,
-        keyValueDiffers: KeyValueDiffers
+        formattingService: FormattingService
     ) {
-        super(formattingService, iterableDiffers, keyValueDiffers);
+        super(formattingService);
     }
 
     ngOnInit(): void {
+        super.ngOnInit();
         this.initView();
-    }
 
-    ngDoCheck(): void {
-        const eventChanges = this.differEvents.find(this.events);
-
-        if (eventChanges) {
-            this.generateView();
-        }
+        this.subscriptions$.add(
+            this.events$.pipe(
+                tap(events => {
+                    this.events = events;
+                    this.generateView();
+                })
+            ).subscribe()
+        );
     }
 
     initView(): void {

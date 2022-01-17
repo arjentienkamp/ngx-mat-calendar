@@ -13,6 +13,7 @@ import {
     startOfMonth,
     sub
 } from 'date-fns';
+import { tap } from 'rxjs/operators';
 
 import { CalendarDay, MonthView } from '../../models/Calendar';
 import { CalendarEvent } from '../../models/CalendarEvent';
@@ -25,29 +26,29 @@ import { BaseViewComponent } from '../shared/base-view/base-view.component';
     templateUrl: './month-view.component.html',
     styleUrls: ['./month-view.component.scss']
 })
-export class MonthViewComponent extends BaseViewComponent implements OnInit, DoCheck {
+export class MonthViewComponent extends BaseViewComponent implements OnInit {
     monthView = {} as MonthView;
 
     daysOfWeek = daysOfWeek;
 
     constructor(
-        formattingService: FormattingService,
-        iterableDiffers: IterableDiffers,
-        keyValueDiffers: KeyValueDiffers
+        formattingService: FormattingService
     ) {
-        super(formattingService, iterableDiffers, keyValueDiffers);
+        super(formattingService);
     }
 
     ngOnInit(): void {
+        super.ngOnInit();
         this.initView();
-    }
 
-    ngDoCheck(): void {
-        const eventChanges = this.differEvents.find(this.events);
-
-        if (eventChanges) {
-            this.generateView();
-        }
+        this.subscriptions$.add(
+            this.events$.pipe(
+                tap(events => {
+                    this.events = events;
+                    this.generateView();
+                })
+            ).subscribe()
+        );
     }
 
     initView(): void {

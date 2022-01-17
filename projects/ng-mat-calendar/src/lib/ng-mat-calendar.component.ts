@@ -25,7 +25,7 @@ import { CalendarEvent } from './models/CalendarEvent';
 
 import { DAY, WEEK, MONTH, Views } from './models/Views';
 import { Periods } from './models/Times';
-import { Observable, Subscription } from 'rxjs';
+import { BehaviorSubject, Observable, Subscription } from 'rxjs';
 import { tap } from 'rxjs/operators';
 
 @Component({
@@ -36,16 +36,7 @@ import { tap } from 'rxjs/operators';
 export class NgMatCalendarComponent implements OnInit, OnDestroy {
     @Input() options$: Observable<CalendarOptions>;
     @Input() events$: Observable<CalendarEvent[]>;
-
-    public selectedDate: Date;
-    @Input() get date(): Date {
-        return this.selectedDate;
-    }
-    set date(value: Date) {
-        this.selectedDate = value;
-        this.initCalendar();
-        this.dateChange.emit(this.selectedDate);
-    }
+    @Input() selectedDate$: BehaviorSubject<Date>;
 
     @Output() dateChange: EventEmitter<Date> = new EventEmitter();
     @Output() eventClick: EventEmitter<CalendarEvent> = new EventEmitter();
@@ -53,13 +44,14 @@ export class NgMatCalendarComponent implements OnInit, OnDestroy {
 
     @ViewChild(MatMenuTrigger) datePickerMenu: MatMenuTrigger;
 
-    protected subscriptions$: Subscription = new Subscription();
+    private subscriptions$: Subscription = new Subscription();
 
     differ: any;
     views: Views;
     options: CalendarOptions;
     events: CalendarEvent[];
     selectedView: Views;
+    selectedDate: Date;
     enableDatePickerButton: boolean;
     calendar = {} as Calendar;
     today = format(new Date(), 'EEEE, d MMMM');
@@ -93,6 +85,16 @@ export class NgMatCalendarComponent implements OnInit, OnDestroy {
                 })
             ).subscribe()
         );
+
+        this.subscriptions$.add(
+            this.selectedDate$.pipe(
+                tap(selectedDate => {
+                    this.selectedDate = selectedDate;
+                    this.initCalendar();
+                    this.dateChange.emit(this.selectedDate);
+                })
+            ).subscribe()
+        );
     }
 
     initCalendar(): void {
@@ -118,6 +120,7 @@ export class NgMatCalendarComponent implements OnInit, OnDestroy {
 
     setCalendarToday(): void {
         this.selectedDate = new Date();
+        this.selectedDate$.next(this.selectedDate);
         this.handleCalendarSet();
     }
 
@@ -128,12 +131,14 @@ export class NgMatCalendarComponent implements OnInit, OnDestroy {
             [offset]: direction === 'prev' ? -1 : 1
         });
 
+        this.selectedDate$.next(this.selectedDate);
         this.handleCalendarSet();
     }
 
     setCalendar(date: Date): void {
         if (date) {
             this.selectedDate = date;
+            this.selectedDate$.next(date);
             this.handleCalendarSet();
         }
     }
