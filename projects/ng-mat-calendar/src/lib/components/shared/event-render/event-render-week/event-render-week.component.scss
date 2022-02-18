@@ -1,0 +1,74 @@
+@import '../../../../styles/_styles';
+
+:host(event-render) {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.event {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.event__header {
+    display: flex;
+    text-align: left;
+    color: $color-600;
+    padding: $margin-xxs;
+    border-bottom: 1px solid rgba($color-lightest, .5);
+
+    p {
+        @include text-overflow;
+        margin-bottom: 0;
+    }
+}
+
+.event__metadata {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    font-weight: 100;
+    color: $color-600;
+    padding: $margin-xxs;
+
+    p {
+        margin-bottom: $margin-xxs;
+    }
+}
+
+.event__location {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    mat-icon {
+        font-size: 16px;
+        height: 16px;
+        width: 16px;
+        margin-right: $margin-xxs;
+    }
+
+    span {
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        max-width: 100%;
+        overflow: hidden;
+    }
+}
+
+// .event__multiday {
+//     position: relative;
+//     display: flex;
+//     justify-content: center;
+
+//     &:before {
+//         font-family: "Material Icons";
+//         content: '\e176';
+//         color: rgba($color-darkest, .5);
+//     }
+// }

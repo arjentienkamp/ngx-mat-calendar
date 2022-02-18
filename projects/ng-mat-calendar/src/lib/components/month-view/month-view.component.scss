@@ -62,5 +62,9 @@
                 color: $color-lightest;
             }
         }
+
+        .calendar__item {
+            position: relative;
+        }
     }
 }

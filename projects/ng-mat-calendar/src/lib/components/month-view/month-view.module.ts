@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { SharedComponentsModule } from '../shared/shared-components.module';
 import { MonthViewComponent } from './month-view.component';
 
 @NgModule({
@@ -8,7 +8,8 @@ import { MonthViewComponent } from './month-view.component';
         MonthViewComponent
     ],
     imports: [
-        BrowserModule
+        BrowserModule,
+        SharedComponentsModule
     ],
     exports: [
         MonthViewComponent

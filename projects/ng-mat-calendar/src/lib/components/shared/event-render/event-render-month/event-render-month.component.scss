@@ -1,0 +1,32 @@
+@import '../../../../styles/styles';
+
+:host(event-render) {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.event {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+    font-size: 12px;
+}
+
+.event__header {
+    display: flex;
+    text-align: left;
+    color: $color-600;
+    padding: $margin-xxs;
+
+    p.metadata {
+        margin-right: $margin-xs;
+        margin-bottom: 0;
+    }
+
+    p.title {
+        @include text-overflow;
+        margin-bottom: 0;
+    }
+}

@@ -15,6 +15,15 @@
             <div class="day__block-content" [class.not-current-month]="!isCurrentMonth(day.date)">
                 <span class="day__block-date">{{ getDayNumber(day.date) }}</span>
             </div>
+
+            <event-display
+                *ngFor="let event of day.events; let i = index"
+                class="calendar__item"
+                [component]="options.renderComponent.month"
+                [event]="event"
+                [date]="day.date"            
+                (click)="onEventClick(event)">
+            </event-display>
         </div>
         <!-- Loop of blocks per day (like GCal), including date and class if current day -->
     </div>

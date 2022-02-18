@@ -1,20 +1,6 @@
-import {
-    Component,
-    DoCheck,
-    IterableDiffers,
-    KeyValueDiffers,
-    OnInit
-} from '@angular/core';
-
-import {
-    add,
-    isSameDay,
-    isSameMonth,
-    startOfMonth,
-    sub
-} from 'date-fns';
+import { Component, OnInit } from '@angular/core';
+import { add, isSameDay, isSameMonth, startOfMonth, sub } from 'date-fns';
 import { tap } from 'rxjs/operators';
-
 import { CalendarDay, MonthView } from '../../models/Calendar';
 import { CalendarEvent } from '../../models/CalendarEvent';
 import { daysOfWeek } from '../../models/Times';

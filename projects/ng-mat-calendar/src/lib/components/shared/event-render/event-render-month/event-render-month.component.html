@@ -1,0 +1,8 @@
+<div *ngIf="event" class="event">
+    <div class="event__header">
+        <p class="metadata">{{ startTime }}</p>
+        <p class="title">{{ event.title }}</p>
+    </div>
+
+    <div class="event__multiday" *ngIf="!isSameDay && !endsToday"></div>
+</div>

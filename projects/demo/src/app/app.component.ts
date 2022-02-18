@@ -5,7 +5,7 @@ import { CalendarOptions } from 'projects/ng-mat-calendar/src/lib/models/Calenda
 import { MONTH } from 'projects/ng-mat-calendar/src/lib/models/Views';
 import { BehaviorSubject, Subscription } from 'rxjs';
 import { switchMap, tap } from 'rxjs/operators';
-import { EventRenderTestComponent } from './component/event-render-test/event-render-test.component';
+// import { EventRenderTestComponent } from './component/event-render-test/event-render-test.component';
 import { EventService } from './services/event.service';
 
 @Component({

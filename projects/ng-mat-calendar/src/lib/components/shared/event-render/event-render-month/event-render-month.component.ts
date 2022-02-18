@@ -1,15 +1,15 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { format, isSameDay } from 'date-fns';
-import { CalendarEvent } from '../../../models/CalendarEvent';
-import { FormattingService } from '../../../services/formatting.service';
+import { isSameDay } from 'date-fns';
+import { CalendarEvent } from '../../../../models/CalendarEvent';
+import { FormattingService } from '../../../../services/formatting.service';
 
 @Component({
     // tslint:disable-next-line:component-selector
-    selector: 'event-render',
-    templateUrl: './event-render.component.html',
-    styleUrls: ['./event-render.component.scss']
+    selector: 'event-render-month',
+    templateUrl: './event-render-month.component.html',
+    styleUrls: ['./event-render-month.component.scss']
 })
-export class EventRenderComponent implements OnInit {
+export class EventRenderMonthComponent implements OnInit {
     @Input() event!: CalendarEvent;
     @Input() date!: Date;
 

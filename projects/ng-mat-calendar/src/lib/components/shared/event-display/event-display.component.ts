@@ -1,13 +1,4 @@
-import {
-    Component,
-    ComponentFactoryResolver,
-    Input,
-    OnDestroy,
-    OnInit,
-    ViewChild,
-    ViewContainerRef
-} from '@angular/core';
-
+import { Component, ComponentFactoryResolver, Input, OnDestroy, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
 import { CalendarEvent } from '../../../models/CalendarEvent';
 
 @Component({

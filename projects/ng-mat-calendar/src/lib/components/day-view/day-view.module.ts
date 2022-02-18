@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { DayViewComponent } from './day-view.component';
 import { SharedComponentsModule } from '../shared/shared-components.module';
 

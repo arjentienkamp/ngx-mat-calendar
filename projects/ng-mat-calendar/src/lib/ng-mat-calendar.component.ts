@@ -1,28 +1,10 @@
-import {
-    Component,
-    EventEmitter,
-    HostListener,
-    Input,
-    OnDestroy,
-    OnInit,
-    Output,
-    ViewChild
-} from '@angular/core';
-
-import {
-    format,
-    add,
-    isToday,
-    toDate,
-} from 'date-fns';
-
+import { Component, EventEmitter, HostListener, Input, OnDestroy, OnInit, Output, ViewChild } from '@angular/core';
+import { format, add, isToday, toDate } from 'date-fns';
 import { DateAdapter } from '@angular/material/core';
 import { MatMenuTrigger } from '@angular/material/menu';
-
 import Calendar from './models/Calendar';
 import { CalendarOptions } from './models/CalendarOptions';
 import { CalendarEvent } from './models/CalendarEvent';
-
 import { DAY, WEEK, MONTH, Views } from './models/Views';
 import { Periods } from './models/Times';
 import { BehaviorSubject, Observable, Subscription } from 'rxjs';

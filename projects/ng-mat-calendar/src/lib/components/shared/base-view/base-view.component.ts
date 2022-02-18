@@ -1,29 +1,9 @@
-import {
-    Component,
-    EventEmitter,
-    Input,
-    IterableDiffers,
-    KeyValueDiffers,
-    OnDestroy,
-    OnInit,
-    Output
-} from '@angular/core';
-
-import {
-    areIntervalsOverlapping,
-    endOfDay,
-    getHours,
-    getMinutes,
-    intervalToDuration,
-    isSameDay,
-    startOfDay
-} from 'date-fns';
-
+import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
+import { areIntervalsOverlapping, endOfDay, getHours, getMinutes, intervalToDuration, isSameDay, startOfDay } from 'date-fns';
 import { CalendarDay } from '../../../models/Calendar';
 import { CalendarEvent, CalendarEventGrid } from '../../../models/CalendarEvent';
 import { v4 as uuidv4 } from 'uuid';
 import { CalendarOptions } from '../../../models/CalendarOptions';
-
 import { hoursOfDay } from '../../../models/Times';
 import { FormattingService } from '../../../services/formatting.service';
 import { interval, Observable, Subscription } from 'rxjs';
