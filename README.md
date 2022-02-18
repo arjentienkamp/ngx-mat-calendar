@@ -46,10 +46,12 @@ Add the component to the template:
 
 ```
 <ng-mat-calendar
-    [options]="calendarOptions"
-    [events]="events"
+    [options$]="calendarOptions$"
+    [events$]="events$"
+    [selectedDate$]="date$"
     (eventClick)="handleEventClick($event)"
-    [(date)]="date">
+    (dateChange)="handleDateChange($event)"
+    (addButtonClick)="handleAddButtonClick()">
 </ng-mat-calendar>
 ```
 
@@ -62,16 +64,16 @@ When using a custom component for rendering the events, you can optionally exten
 ## Inputs
 | Property        | Description                                         | Type              | Required |
 |-----------------|-----------------------------------------------------|-------------------|----------|
-| options         | options have to be passed here                      | CalendarOptions   | true     |
-| events          | array of events (i.e from API or other datasource)  | CalendarEvent[]   | true     |
-| date            | the date for initiating the calendar                | string (ISO date string)  | true     |
+| options$        | options have to be passed here                      | Observable<CalendarOptions>   | true     |
+| events$         | array of events (i.e from API or other datasource)  | Observable<CalendarEvent[]>   | true     |
+| selectedDate$   | the date for initiating the calendar                | Observable<Date> | true     |
 
 ## Outputs
 | Property        | Description                                         | Type                          |
 |-----------------|-----------------------------------------------------|-------------------------------|
 | eventClick      | emits when event is clicked                         | EventEmitter<CalendarEvent>   |
-| date            |                                                     |                               |
-| dateChange      | emits on date change                                | EventEmitter<string>          |
+| dateChange      | emits on date change                                | EventEmitter<Date>            |
+| addButtonClick  | emits on add button click                           | EventEmitter<any>             |
 
 ## Todo
 - ...
