@@ -21,10 +21,14 @@
     color: $color-600;
     padding: $margin-xxs;
 
-    &.allDay {
+    &.all-day {
         border-radius: $radius-sm;
         width: 100%;
         overflow: hidden;
+    }
+
+    &.past-event {
+        opacity: .7;
     }
 
     .event-color {

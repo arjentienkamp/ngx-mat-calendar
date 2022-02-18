@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { isSameDay } from 'date-fns';
+import { isBefore, isSameDay } from 'date-fns';
 import { CalendarEvent } from '../../../../models/CalendarEvent';
 import { FormattingService } from '../../../../services/formatting.service';
 
@@ -27,5 +27,9 @@ export class EventRenderMonthComponent implements OnInit {
         this.endTime = this.formattingService.getTime(this.event.endTime);
         this.isSameDay = isSameDay(this.event.startTime, this.event.endTime);
         this.endsToday = isSameDay(this.date, this.event.endTime);
+    }
+
+    isPastEvent(event: CalendarEvent): boolean {
+        return isBefore(event.date, new Date());
     }
 }

@@ -3,7 +3,8 @@
         class="even__line"
         matTooltip="{{ event.title }} ({{ startTime }} - {{ endTime }})"
         [ngStyle]="{'backgroundColor' : event.allDay ? event.color : '' }"
-        [class.all-day]="event.allDay">
+        [class.all-day]="event.allDay"
+        [class.past-event]="isPastEvent(event)">
         <span class="event-color" *ngIf="!event.allDay" [style.backgroundColor]="event.color"></span>
         <p class="metadata" *ngIf="!event.allDay">{{ startTime }}</p>
         <p class="title">{{ event.title }}</p>
