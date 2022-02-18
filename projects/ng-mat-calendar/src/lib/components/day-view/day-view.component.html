@@ -16,7 +16,6 @@
         </div>
 
         <div class="day__lane" [ngClass]="{ 'day__lane--today': isToday(selectedDate) }">
-
             <div class="time-grid">
                 <div class="time-grid__cell" *ngFor="let hour of hoursOfDay;" [style.height.px]="getCellHeight(hour)"></div>
             </div> 

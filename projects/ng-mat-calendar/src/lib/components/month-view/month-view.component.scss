@@ -2,17 +2,31 @@
 
 .calendar__content {
     display: flex;
-    margin-left: 20px;
+    margin-left: 4px;
     margin-top: 15px;
     border-left: 1px solid $color-gray-light;
 }
 
 .calendar__days {
     height: $margin-lg;
-    margin-left: 20px;
+    margin-left: 38px;
 
     .day__header {
         flex: 1;
+    }
+}
+
+.calendar__weeknumbers {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding-top: $margin-lg;
+    text-align: center;
+    width: 22px;
+    margin-right: 12px;
+
+    .week-number-cell {
+        color: $color-gray-medium;
     }
 }
 

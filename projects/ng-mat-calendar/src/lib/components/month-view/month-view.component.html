@@ -7,6 +7,12 @@
         </div>
     </div>
 </div> 
+<!-- *ngFor="let hour of hoursOfDay;" [style.height.px]="getCellHeight(hour)" -->
+<div class="calendar__weeknumbers">
+    <div class="week-number-cell" *ngFor="let weekNumber of weekNumbers;">
+        {{ weekNumber }}
+    </div>
+</div>
 
 <div class="calendar__content" #calendarContentElement>
     <div class="calendar__blocks">

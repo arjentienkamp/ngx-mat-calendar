@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { add, isSameDay, isSameMonth, startOfMonth, sub } from 'date-fns';
+import { add, eachWeekOfInterval, endOfMonth, getWeek, isSameDay, isSameMonth, startOfMonth, startOfWeek, sub, subWeeks } from 'date-fns';
 import { tap } from 'rxjs/operators';
 import { CalendarDay, MonthView } from '../../models/Calendar';
 import { CalendarEvent } from '../../models/CalendarEvent';
@@ -16,6 +16,7 @@ export class MonthViewComponent extends BaseViewComponent implements OnInit {
     monthView = {} as MonthView;
     daysOfWeek = daysOfWeek;
     calendarDayHeight = 0;
+    weekNumbers: number[] = [];
 
     constructor(
         formattingService: FormattingService
@@ -45,7 +46,20 @@ export class MonthViewComponent extends BaseViewComponent implements OnInit {
 
             const emptyDays = this.generateDays();
             this.populateMonthView(emptyDays);
+            this.getWeekNumbers();
         }
+    }
+
+    getWeekNumbers(): void {
+        const weeksOfMonth = eachWeekOfInterval({
+            start: startOfMonth(this.selectedDate),
+            end: endOfMonth(this.selectedDate)
+        });
+
+        this.weekNumbers = [];
+        weeksOfMonth.forEach(week => {
+            this.weekNumbers.push(getWeek(week, { weekStartsOn: 1 }));
+        });
     }
 
     populateMonthView(emptyDays: CalendarDay[]): void {
