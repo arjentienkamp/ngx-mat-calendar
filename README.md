@@ -64,9 +64,9 @@ When using a custom component for rendering the events, you can optionally exten
 ## Inputs
 | Property        | Description                                         | Type              | Required |
 |-----------------|-----------------------------------------------------|-------------------|----------|
-| options$        | options have to be passed here                      | Observable<CalendarOptions>   | true     |
-| events$         | array of events (i.e from API or other datasource)  | Observable<CalendarEvent[]>   | true     |
-| selectedDate$   | the date for initiating the calendar                | Observable<Date> | true     |
+| options$        | options have to be passed here                      | Observable <CalendarOptions>   | true     |
+| events$         | array of events (i.e from API or other datasource)  | Observable <CalendarEvent[]>   | true     |
+| selectedDate$   | the date for initiating the calendar                | Observable <Date> | true     |
 
 ## Outputs
 | Property        | Description                                         | Type                          |
