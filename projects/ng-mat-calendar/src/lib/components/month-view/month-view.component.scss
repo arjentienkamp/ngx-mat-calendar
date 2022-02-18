@@ -48,12 +48,17 @@
             height: 25px;
             color: $color-gray-darker;
             font-size: $font-size-xs;
+
+            &:hover {
+                cursor: pointer;
+            }
         }
 
         .day__events {
             position: absolute;
             overflow: hidden;
             top: $margin-xl;
+            width: 100%;
         }
 
         .not-current-month {

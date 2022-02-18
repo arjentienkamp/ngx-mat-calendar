@@ -14,11 +14,25 @@
     font-size: 12px;
 }
 
-.event__header {
+.even__line {
     display: flex;
+    align-items: center;
     text-align: left;
     color: $color-600;
     padding: $margin-xxs;
+
+    &.allDay {
+        border-radius: $radius-sm;
+        width: 100%;
+        overflow: hidden;
+    }
+
+    .event-color {
+        min-width: 10px;
+        height: 10px;
+        border-radius: 10px;
+        margin-right: $margin-xs;
+    }
 
     p.metadata {
         margin-right: $margin-xs;

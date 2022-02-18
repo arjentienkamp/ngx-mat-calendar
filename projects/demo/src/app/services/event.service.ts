@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { DummyEvents } from './dummy-events';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { add, endOfWeek, getTime, set, startOfWeek, toDate } from 'date-fns';
+import { add, endOfMonth, getTime, set, startOfMonth, toDate } from 'date-fns';
 import { CalendarEvent } from 'projects/ng-mat-calendar/src/lib/models/CalendarEvent';
 
 @Injectable({
@@ -29,11 +29,11 @@ export class EventService {
     }
 
     getEvents(date: Date): Observable<CalendarEvent[]> {
-        const weekStart = startOfWeek(date, { weekStartsOn: 1 });
-        const weekEnd = endOfWeek(date, { weekStartsOn: 1 });
+        const monthStart = startOfMonth(date);
+        const monthEnd = endOfMonth(date);
 
         DummyEvents.forEach((event) => {
-            const randomStartDate = this.generateRandomDate(weekStart, weekEnd);
+            const randomStartDate = this.generateRandomDate(monthStart, monthEnd);
             set(randomStartDate, { hours: this.generateRandomNumber(15, 22), minutes: this.getRandomMinutes()});
 
             const randomEndDate = add(randomStartDate, { hours: this.generateRandomNumber(2, 7), minutes: this.getRandomMinutes()});

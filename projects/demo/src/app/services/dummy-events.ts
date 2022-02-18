@@ -18,6 +18,7 @@ export const DummyEvents: CalendarEvent[] = [
         date: new Date(),
         startTime: new Date(),
         endTime: new Date(),
+        allDay: true,
         color: colors.pink
     }, {
         title: 'Workout with Peter',
@@ -40,6 +41,7 @@ export const DummyEvents: CalendarEvent[] = [
         date: new Date(),
         startTime: new Date(),
         endTime: new Date(),
+        allDay: true,
         color: colors.green
     }, {
         title: 'Lunch with Jane',

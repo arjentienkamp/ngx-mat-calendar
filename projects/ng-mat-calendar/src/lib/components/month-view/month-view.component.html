@@ -16,7 +16,7 @@
             #calendarDayElement
             [class.is-today]="isToday(day.date)">
             <div class="day__block-content" [class.not-current-month]="!isCurrentMonth(day.date)">
-                <span class="day__block-date">{{ getDayNumber(day.date) }}</span>
+                <span class="day__block-date" (click)="navigateToDayView(day.date)">{{ getDayNumber(day.date) }}</span>
             </div>
 
             <div class="day__events">
