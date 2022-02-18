@@ -83,6 +83,7 @@
         [events$]="events$"
         [selectedDate$]="selectedDate$"
         [options$]="options$"
+        (eventClick)="onEventClick($event)"
         (changeToDayView)="changeToDayView($event)">
     </month-view>
 

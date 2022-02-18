@@ -8,23 +8,27 @@
     </div>
 </div> 
 
-<div class="calendar__content">
+<div class="calendar__content" #calendarContentElement>
     <div class="calendar__blocks">
-        <!-- Flexbox 7 on a row -->
-        <div class="day__block" *ngFor="let day of monthView.days" [class.is-today]="isToday(day.date)">
+        <div 
+            *ngFor="let day of monthView.days" 
+            class="day__block"
+            #calendarDayElement
+            [class.is-today]="isToday(day.date)">
             <div class="day__block-content" [class.not-current-month]="!isCurrentMonth(day.date)">
                 <span class="day__block-date">{{ getDayNumber(day.date) }}</span>
             </div>
 
-            <event-display
-                *ngFor="let event of day.events; let i = index"
-                class="calendar__item"
-                [component]="options.renderComponent.month"
-                [event]="event"
-                [date]="day.date"            
-                (click)="onEventClick(event)">
-            </event-display>
+            <div class="day__events">
+                <event-display
+                    *ngFor="let event of day.events; let i = index"
+                    class="calendar__item"
+                    [component]="options.renderComponent.month"
+                    [event]="event"
+                    [date]="day.date"      
+                    (click)="onEventClick(event)">
+                </event-display>
+            </div>
         </div>
-        <!-- Loop of blocks per day (like GCal), including date and class if current day -->
     </div>
 </div>

@@ -29,6 +29,7 @@
         flex-direction: column;
         width: calc(100% / 7);
         padding-top: $margin-xs;
+        overflow: hidden;
 
         border-right: 1px solid $color-gray-light;
         border-bottom: 1px solid $color-gray-light;
@@ -49,6 +50,12 @@
             font-size: $font-size-xs;
         }
 
+        .day__events {
+            position: absolute;
+            overflow: hidden;
+            top: $margin-xl;
+        }
+
         .not-current-month {
             opacity: .25;
         }
@@ -65,6 +72,7 @@
 
         .calendar__item {
             position: relative;
+            padding: 0 2px;
         }
     }
 }

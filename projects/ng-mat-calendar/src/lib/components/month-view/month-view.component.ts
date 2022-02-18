@@ -14,8 +14,8 @@ import { BaseViewComponent } from '../shared/base-view/base-view.component';
 })
 export class MonthViewComponent extends BaseViewComponent implements OnInit {
     monthView = {} as MonthView;
-
     daysOfWeek = daysOfWeek;
+    calendarDayHeight = 0;
 
     constructor(
         formattingService: FormattingService
