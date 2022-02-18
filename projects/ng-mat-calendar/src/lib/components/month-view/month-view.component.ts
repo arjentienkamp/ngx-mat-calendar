@@ -39,7 +39,7 @@ export class MonthViewComponent extends BaseViewComponent implements OnInit {
 
     ngOnInit(): void {
         super.ngOnInit();
-        this.initView();
+        this.generateView();
 
         this.subscriptions$.add(
             this.events$.pipe(
@@ -49,12 +49,6 @@ export class MonthViewComponent extends BaseViewComponent implements OnInit {
                 })
             ).subscribe()
         );
-    }
-
-    initView(): void {
-        if (this.options && this.events) {
-            this.generateView();
-        }
     }
 
     generateView(): void {

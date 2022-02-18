@@ -43,7 +43,7 @@ export abstract class BaseViewComponent implements OnInit, OnDestroy {
     protected subscriptions$: Subscription = new Subscription();
     public markerPosition = 0;
 
-    options: CalendarOptions = new CalendarOptions();
+    options: CalendarOptions;
     hoursOfDay = hoursOfDay;
     pixelsPerHour = 0;
     selectedDate = new Date();
@@ -55,13 +55,13 @@ export abstract class BaseViewComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit(): void {
-        this.markerPosition = this.calculateMarkerPosition();
-
         this.subscriptions$.add(
             this.options$.pipe(
                 tap((options) => {
                     this.options = options;
-                    console.log('base', options);
+                    this.markerPosition = this.calculateMarkerPosition();
+                    this.pixelsPerHour = this.options.getPixelsPerMinute * 60;
+                    console.log(this.options);
                 })
             ).subscribe()
         );

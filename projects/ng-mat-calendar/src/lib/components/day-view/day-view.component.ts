@@ -30,7 +30,7 @@ export class DayViewComponent extends BaseViewComponent implements OnInit {
 
     ngOnInit(): void {
         super.ngOnInit();
-        this.initView();
+        this.generateView();
 
         this.subscriptions$.add(
             this.events$.pipe(
@@ -40,16 +40,6 @@ export class DayViewComponent extends BaseViewComponent implements OnInit {
                 })
             ).subscribe()
         );
-    }
-
-    initView(): void {
-        this.markerPosition = this.calculateMarkerPosition();
-
-        if (this.options && this.events) {
-            this.pixelsPerHour = this.options.getPixelsPerMinute * 60;
-
-            this.generateView();
-        }
     }
 
     generateView(): void {

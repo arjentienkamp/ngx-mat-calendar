@@ -91,7 +91,10 @@ export class NgMatCalendarComponent implements OnInit, OnDestroy {
                 tap(selectedDate => {
                     this.selectedDate = selectedDate;
                     this.initCalendar();
-                    this.dateChange.emit(this.selectedDate);
+
+                    if (this.selectedDate !== selectedDate) {
+                        this.dateChange.emit(this.selectedDate);
+                    }
                 })
             ).subscribe()
         );
@@ -157,7 +160,7 @@ export class NgMatCalendarComponent implements OnInit, OnDestroy {
         this.setCalendar(date);
     }
 
-    getSelectedView(view: any): boolean {
+    getSelectedView(view: Views): boolean {
         return this.selectedView === view;
     }
 
