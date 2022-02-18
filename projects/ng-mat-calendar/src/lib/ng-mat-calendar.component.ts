@@ -35,6 +35,7 @@ export class NgMatCalendarComponent implements OnInit, OnDestroy {
     selectedView: Views;
     selectedDate: Date;
     enableDatePickerButton: boolean;
+    enableViewToggle: boolean;
     calendar = {} as Calendar;
     today = format(new Date(), 'EEEE, d MMMM');
 
@@ -85,6 +86,7 @@ export class NgMatCalendarComponent implements OnInit, OnDestroy {
     initCalendar(): void {
         if (this.options) {
             this.enableDatePickerButton = this.options.enableDatePickerButton;
+            this.enableViewToggle = this.options.enableViewToggle;
             this.dateAdapter.setLocale(this.options.locale);
             this.generateCalendar();
         }

@@ -10,8 +10,8 @@ import { FormattingService } from '../../../../services/formatting.service';
     styleUrls: ['./event-render-month.component.scss']
 })
 export class EventRenderMonthComponent implements OnInit {
-    @Input() event!: CalendarEvent;
-    @Input() date!: Date;
+    @Input() event: CalendarEvent;
+    @Input() date: Date;
 
     startTime = '';
     endTime = '';

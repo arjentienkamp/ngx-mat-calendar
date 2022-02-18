@@ -15,6 +15,7 @@ export class CalendarOptions {
     jumpToSpy = true;
     enableDatePickerButton = true;
     enableAddEventButton = true;
+    enableViewToggle = true;
     locale = 'nl';
     compact = false;
     view: Views = WEEK;

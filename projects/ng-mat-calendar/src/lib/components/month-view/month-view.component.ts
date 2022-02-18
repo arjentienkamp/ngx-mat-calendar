@@ -59,6 +59,8 @@ export class MonthViewComponent extends BaseViewComponent implements OnInit {
                 return this.populateEvents(event, day);
             }).sort((a: CalendarEvent, b: CalendarEvent) => {
                 return a.startTime.getTime() - b.startTime.getTime();
+            }).sort(event => {
+                return event.allDay ? -1 : 1;
             });
 
             day = this.createEventGroups(day);

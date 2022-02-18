@@ -32,6 +32,7 @@
 
         <div class="toolbar__right">
             <mat-button-toggle-group
+                *ngIf="enableViewToggle"
                 name="view"
                 #view="matButtonToggleGroup"
                 [value]="selectedView"

@@ -23,6 +23,20 @@
                 (change)="onAddButtonChange()">
                 Add button
             </mat-checkbox>
+
+            <mat-checkbox
+                class="toolbar__checkbox"
+                [checked]="viewToggle"
+                (change)="onViewToggleChange()">
+                View toggle
+            </mat-checkbox>
+
+            <mat-checkbox
+                class="toolbar__checkbox"
+                [checked]="enableDatePickerButton"
+                (change)="onDatePickerButtonChange()">
+                Datepicker
+            </mat-checkbox>
         </div>
     </mat-card>
 

@@ -25,6 +25,7 @@
         border-radius: $radius-sm;
         width: 100%;
         overflow: hidden;
+        margin-top: $margin-xxs;
     }
 
     &.past-event {

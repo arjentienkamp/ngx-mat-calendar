@@ -20,6 +20,8 @@ export class AppComponent implements OnInit, OnDestroy {
     date = new Date();
     compact = false;
     addButton = true;
+    viewToggle = true;
+    enableDatePickerButton = true;
     subscriptions: Subscription = new Subscription();
 
     constructor(
@@ -34,6 +36,8 @@ export class AppComponent implements OnInit, OnDestroy {
         const calendarOptions = new CalendarOptions({
             compact: this.compact,
             enableAddEventButton: this.addButton,
+            enableViewToggle: this.viewToggle,
+            enableDatePickerButton: this.enableDatePickerButton,
             // locale: 'es',
             // pixelsPerMinute: 2,
             // enableDatePickerButton: false,
@@ -64,6 +68,16 @@ export class AppComponent implements OnInit, OnDestroy {
 
     onAddButtonChange(): void {
         this.addButton = !this.addButton;
+        this.initCalendar();
+    }
+
+    onViewToggleChange(): void {
+        this.viewToggle = !this.viewToggle;
+        this.initCalendar();
+    }
+
+    onDatePickerButtonChange(): void {
+        this.enableDatePickerButton = !this.enableDatePickerButton;
         this.initCalendar();
     }
 
