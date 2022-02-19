@@ -39,6 +39,10 @@
     .day__lane--today {
         background-color: $color-bluish-light;
 
+        &:hover {
+            background-color: $color-bluish-light;
+        }
+
         .time-grid__cell {
             border-top-color: darken($color-bluish-light, 10%);
         }

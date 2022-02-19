@@ -14,14 +14,7 @@
         padding: 0 $margin-xs;
         border-right: 1px solid $color-gray-light;
         transition: $transition-md;
-
-        &:hover {
-            background-color: $color-gray-lightest;
-
-            .time-grid__cell {
-                border-top-color: darken($color-gray-lightest, 10%)
-            }
-        }
+        background-color: $color-gray-lightest;
 
         .time-grid {
             position: absolute;
@@ -32,6 +25,7 @@
 
         .time-grid__cell {
             border-top: 1px dotted $color-gray-light;
+            border-top-color: darken($color-gray-lightest, 10%);
             width: 100%;
         }
     }

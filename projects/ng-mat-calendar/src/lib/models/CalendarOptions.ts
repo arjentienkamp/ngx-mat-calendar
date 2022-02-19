@@ -1,7 +1,7 @@
 import { EventRenderDayComponent } from '../components/shared/event-render/event-render-day/event-render-day.component';
 import { EventRenderMonthComponent } from '../components/shared/event-render/event-render-month/event-render-month.component';
 import { EventRenderWeekComponent } from '../components/shared/event-render/event-render-week/event-render-week.component';
-import { Views, WEEK } from './Views';
+import { MONTH, Views } from './Views';
 
 export class CalendarOptions {
     pixelsPerMinute = 1.3;
@@ -18,7 +18,7 @@ export class CalendarOptions {
     enableViewToggle = true;
     locale = 'nl';
     compact = false;
-    view: Views = WEEK;
+    view: Views = MONTH;
 
     constructor(init?: Partial<CalendarOptions>) {
         Object.assign(this, init);
