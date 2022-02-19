@@ -1,5 +1,5 @@
 import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
-import { add, eachWeekOfInterval, endOfMonth, getWeek, isSameDay, isSameMonth, startOfMonth, startOfWeek, sub, subWeeks } from 'date-fns';
+import { add, eachWeekOfInterval, endOfMonth, getWeek, isSameDay, isSameMonth, startOfMonth, sub } from 'date-fns';
 import { fromEvent, interval, Subject } from 'rxjs';
 import { takeUntil, tap, throttle } from 'rxjs/operators';
 import { CalendarDay, MonthView } from '../../models/Calendar';
@@ -123,7 +123,7 @@ export class MonthViewComponent extends BaseViewComponent implements OnInit, OnD
     }
 
     handleScroll(e: WheelEvent): void {
-        e.deltaY > 0 ? this.setCalendarOffset.emit(PREVIOUS) : this.setCalendarOffset.emit(NEXT);
+        e.deltaY > 0 ? this.setCalendarOffset.emit(NEXT) : this.setCalendarOffset.emit(PREVIOUS);
     }
 
     ngOnDestroy(): void {
