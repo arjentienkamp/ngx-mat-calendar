@@ -9,6 +9,7 @@ import { DAY, WEEK, MONTH, Views } from './models/Views';
 import { Periods } from './models/Times';
 import { BehaviorSubject, Observable, Subscription } from 'rxjs';
 import { tap } from 'rxjs/operators';
+import { PREVIOUS } from './models/Directions';
 
 @Component({
     selector: 'ng-mat-calendar',
@@ -115,7 +116,7 @@ export class NgMatCalendarComponent implements OnInit, OnDestroy {
         const offset = Periods[this.selectedView];
 
         this.selectedDate = add(this.selectedDate, {
-            [offset]: direction === 'prev' ? -1 : 1
+            [offset]: direction === PREVIOUS ? -1 : 1
         });
 
         this.selectedDate$.next(this.selectedDate);

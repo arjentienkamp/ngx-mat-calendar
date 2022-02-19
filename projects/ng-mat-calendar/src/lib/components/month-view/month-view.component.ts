@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
 import { add, eachWeekOfInterval, endOfMonth, getWeek, isSameDay, isSameMonth, startOfMonth, startOfWeek, sub, subWeeks } from 'date-fns';
-import { tap } from 'rxjs/operators';
+import { fromEvent, interval, Subject } from 'rxjs';
+import { takeUntil, tap, throttle } from 'rxjs/operators';
 import { CalendarDay, MonthView } from '../../models/Calendar';
 import { CalendarEvent } from '../../models/CalendarEvent';
+import { NEXT, PREVIOUS } from '../../models/Directions';
 import { daysOfWeek } from '../../models/Times';
 import { FormattingService } from '../../services/formatting.service';
 import { BaseViewComponent } from '../shared/base-view/base-view.component';
@@ -12,16 +14,28 @@ import { BaseViewComponent } from '../shared/base-view/base-view.component';
     templateUrl: './month-view.component.html',
     styleUrls: ['./month-view.component.scss']
 })
-export class MonthViewComponent extends BaseViewComponent implements OnInit {
+export class MonthViewComponent extends BaseViewComponent implements OnInit, OnDestroy {
+    @Output() setCalendarOffset: EventEmitter<string> = new EventEmitter();
+
     monthView = {} as MonthView;
     daysOfWeek = daysOfWeek;
     calendarDayHeight = 0;
     weekNumbers: number[] = [];
 
+    scrollListener = new Subject();
+    scrollListener$ = this.scrollListener.asObservable();
+
     constructor(
         formattingService: FormattingService
     ) {
         super(formattingService);
+
+        fromEvent(window, 'wheel')
+            .pipe(
+                takeUntil(this.scrollListener$),
+                throttle(e => interval(1000))
+            )
+            .subscribe((e: any) => this.handleScroll(e));
     }
 
     ngOnInit(): void {
@@ -106,5 +120,13 @@ export class MonthViewComponent extends BaseViewComponent implements OnInit {
 
     isCurrentMonth(date: Date): boolean {
         return isSameMonth(date, this.selectedDate);
+    }
+
+    handleScroll(e: WheelEvent): void {
+        e.deltaY > 0 ? this.setCalendarOffset.emit(PREVIOUS) : this.setCalendarOffset.emit(NEXT);
+    }
+
+    ngOnDestroy(): void {
+        this.scrollListener.next();
     }
 }
