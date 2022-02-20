@@ -19,6 +19,9 @@ import { Capitalize } from './pipes/capitalize';
 import { MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/material-moment-adapter';
 import { LocaleDateAdapter } from './other/DateAdapter';
 import { FormattingService } from './services/formatting.service';
+import { KeyboardShortcutDialogComponent } from './components/dialogs/keyboard-shortcut-dialog/keyboard-shortcut-dialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatDividerModule } from '@angular/material/divider';
 
 const MaterialModules = [
     MatCardModule,
@@ -30,7 +33,9 @@ const MaterialModules = [
     MatInputModule,
     MatDatepickerModule,
     MatButtonToggleModule,
-    MatMenuModule
+    MatMenuModule,
+    MatDialogModule,
+    MatDividerModule
 ];
 
 const ViewModules = [
@@ -46,6 +51,7 @@ const Pipes = [
 @NgModule({
     declarations: [
         NgMatCalendarComponent,
+        KeyboardShortcutDialogComponent,
         ...Pipes
     ],
     imports: [
@@ -56,7 +62,8 @@ const Pipes = [
         ...MaterialModules
     ],
     exports: [
-        NgMatCalendarComponent
+        NgMatCalendarComponent,
+        KeyboardShortcutDialogComponent
     ],
     providers: [
         FormattingService,

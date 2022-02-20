@@ -16,6 +16,7 @@ export class CalendarOptions {
     enableDatePickerButton = true;
     enableAddEventButton = true;
     enableViewToggle = true;
+    enableKeyboardShortcutDialog = true;
     locale = 'nl';
     compact = false;
     view: Views = MONTH;

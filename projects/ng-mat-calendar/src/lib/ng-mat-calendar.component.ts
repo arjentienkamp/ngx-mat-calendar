@@ -10,6 +10,8 @@ import { Periods } from './models/Times';
 import { BehaviorSubject, Observable, Subscription } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { PREVIOUS } from './models/Directions';
+import { MatDialog } from '@angular/material/dialog';
+import { KeyboardShortcutDialogComponent } from './components/dialogs/keyboard-shortcut-dialog/keyboard-shortcut-dialog.component';
 
 @Component({
     selector: 'ng-mat-calendar',
@@ -37,6 +39,7 @@ export class NgMatCalendarComponent implements OnInit, OnDestroy {
     selectedDate: Date;
     enableDatePickerButton: boolean;
     enableViewToggle: boolean;
+    enableKeyboardShortcutDialog: boolean;
     calendar = {} as Calendar;
     today = format(new Date(), 'EEEE, d MMMM');
 
@@ -46,7 +49,8 @@ export class NgMatCalendarComponent implements OnInit, OnDestroy {
     }
 
     constructor(
-        private dateAdapter: DateAdapter<Date>
+        private dateAdapter: DateAdapter<Date>,
+        private dialog: MatDialog
     ) {}
 
     ngOnInit(): void {
@@ -88,6 +92,7 @@ export class NgMatCalendarComponent implements OnInit, OnDestroy {
         if (this.options) {
             this.enableDatePickerButton = this.options.enableDatePickerButton;
             this.enableViewToggle = this.options.enableViewToggle;
+            this.enableKeyboardShortcutDialog = this.options.enableKeyboardShortcutDialog;
             this.dateAdapter.setLocale(this.options.locale);
             this.generateCalendar();
         }
@@ -160,6 +165,10 @@ export class NgMatCalendarComponent implements OnInit, OnDestroy {
     onDatePickerChange(date: any): void {
         this.setCalendar(toDate(date));
         this.datePickerMenu.closeMenu();
+    }
+
+    showKeyboardShortcutDialog(): void {
+        const dialogRef = this.dialog.open(KeyboardShortcutDialogComponent);
     }
 
     handleKeyboardEvents(event: KeyboardEvent): void {

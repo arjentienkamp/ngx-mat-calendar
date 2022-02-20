@@ -31,6 +31,16 @@
         </div>
 
         <div class="toolbar__right">
+            <button
+                *ngIf="enableKeyboardShortcutDialog"
+                mat-icon-button
+                matTooltip="Keyboard shortcuts"
+                class="toolbar__button--keyboard-shortcut"
+                color="primary"
+                (click)="showKeyboardShortcutDialog()">
+                <mat-icon>keyboard</mat-icon>
+            </button>
+
             <mat-button-toggle-group
                 *ngIf="enableViewToggle"
                 name="view"

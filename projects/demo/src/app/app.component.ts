@@ -38,6 +38,7 @@ export class AppComponent implements OnInit, OnDestroy {
             enableAddEventButton: this.addButton,
             enableViewToggle: this.viewToggle,
             enableDatePickerButton: this.enableDatePickerButton,
+            // enableKeyboardShortcutDialog: false,
             // locale: 'es',
             // pixelsPerMinute: 2,
             // enableDatePickerButton: false,
