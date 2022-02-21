@@ -62,7 +62,7 @@ export abstract class BaseViewComponent implements OnInit, OnDestroy {
         );
     }
 
-    public createEventGroups(day: CalendarDay): CalendarDay {
+    protected createEventGroups(day: CalendarDay): CalendarDay {
         day.events.map((event: CalendarEvent) => {
             const uuid = uuidv4();
             let eventGroup: CalendarEvent[] = [];
@@ -88,7 +88,7 @@ export abstract class BaseViewComponent implements OnInit, OnDestroy {
         return day;
     }
 
-    public populateEvents(event: CalendarEvent, day: CalendarDay): CalendarEvent {
+    protected populateEvents(event: CalendarEvent, day: CalendarDay): CalendarEvent {
         const populatedEvent = new CalendarEvent({
             ...event,
             grid: this.calculatePixelsOffsetForEvent(event, day)
@@ -116,7 +116,7 @@ export abstract class BaseViewComponent implements OnInit, OnDestroy {
         });
     }
 
-    private setEventSizes(day: CalendarDay): void {
+    protected setEventSizes(day: CalendarDay): void {
         day.eventGroups.forEach(eventGroup => {
             const eventGroupEvents = day.events.filter((event: CalendarEvent) => {
                 return event.grid?.eventGroups.includes(eventGroup);
@@ -136,7 +136,7 @@ export abstract class BaseViewComponent implements OnInit, OnDestroy {
         });
     }
 
-    private calculatePixelsOffsetForEvent(event: CalendarEvent, day: CalendarDay): CalendarEventGrid {
+    protected calculatePixelsOffsetForEvent(event: CalendarEvent, day: CalendarDay): CalendarEventGrid {
         let grid = new CalendarEventGrid();
 
         const startTime = event.startTime;
@@ -183,7 +183,7 @@ export abstract class BaseViewComponent implements OnInit, OnDestroy {
         return this.pixelsPerHour;
     }
 
-    public calculateMarkerPosition(): number {
+    protected calculateMarkerPosition(): number {
         const now = new Date();
         const offsetTop = (getHours(now) * 60 + getMinutes(now)) * this.options.getPixelsPerMinute;
 
@@ -212,6 +212,18 @@ export abstract class BaseViewComponent implements OnInit, OnDestroy {
 
     public navigateToDayView(date: Date): void {
         this.changeToDayView.emit(date);
+    }
+
+    protected sortByTime(a: CalendarEvent, b: CalendarEvent): number {
+        return a.startTime.getTime() - b.startTime.getTime();
+    }
+
+    protected sortByAllDay(event: CalendarEvent): number {
+        return event.allDay ? -1 : 1;
+    }
+
+    protected isSameDay(date: Date, startTime: Date, endTime: Date): boolean {
+        return isSameDay(new Date(date), new Date(startTime)) || isSameDay(new Date(date), new Date(endTime));
     }
 
     ngOnDestroy(): void {

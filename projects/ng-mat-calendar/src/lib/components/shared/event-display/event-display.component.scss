@@ -1,3 +1,8 @@
 :host(event-display) {
     overflow: hidden;
 }
+
+event-render-day,
+event-render-week {
+    height: 100%;
+}

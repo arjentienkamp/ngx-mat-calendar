@@ -53,12 +53,11 @@ export class DayViewComponent extends BaseViewComponent implements OnInit {
         const populatedDay: CalendarDay = emptyDay;
 
         const events = this.events.filter((event: CalendarEvent) => {
-                return isSameDay(new Date(populatedDay.date), new Date(event.startTime)) ||
-                    isSameDay(new Date(populatedDay.date), new Date(event.endTime));
+            return this.isSameDay(populatedDay.date, event.startTime, event.endTime);
             }).map((event: CalendarEvent) => {
                 return this.populateEvents(event, populatedDay);
             }).sort((a: CalendarEvent, b: CalendarEvent) => {
-                return a.startTime.getTime() - b.startTime.getTime();
+                return this.sortByTime(a, b);
             });
 
         populatedDay.events = events;

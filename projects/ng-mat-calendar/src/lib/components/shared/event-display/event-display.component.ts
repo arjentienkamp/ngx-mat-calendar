@@ -1,11 +1,12 @@
-import { Component, ComponentFactoryResolver, Input, OnDestroy, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
+import { Component, ComponentFactoryResolver, Input, OnDestroy, OnInit, ViewChild, ViewContainerRef, ViewEncapsulation } from '@angular/core';
 import { CalendarEvent } from '../../../models/CalendarEvent';
 
 @Component({
     // tslint:disable-next-line:component-selector
     selector: 'event-display',
     template: `<ng-template #renderTarget></ng-template>`,
-    styleUrls: ['./event-display.component.scss']
+    styleUrls: ['./event-display.component.scss'],
+    encapsulation: ViewEncapsulation.None
 })
 export class EventDisplayComponent implements OnInit, OnDestroy {
     renderComponent: any;

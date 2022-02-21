@@ -81,14 +81,13 @@ export class MonthViewComponent extends BaseViewComponent implements OnInit, OnD
 
         populatedDays.forEach(day => {
             day.events = this.events.filter((event: CalendarEvent) => {
-                return isSameDay(new Date(day.date), new Date(event.startTime)) ||
-                    isSameDay(new Date(day.date), new Date(event.endTime));
+                return this.isSameDay(day.date, event.startTime, event.endTime);
             }).map((event: CalendarEvent) => {
                 return this.populateEvents(event, day);
             }).sort((a: CalendarEvent, b: CalendarEvent) => {
-                return a.startTime.getTime() - b.startTime.getTime();
+                return this.sortByTime(a, b);
             }).sort(event => {
-                return event.allDay ? -1 : 1;
+                return this.sortByAllDay(event);
             });
 
             day = this.createEventGroups(day);
