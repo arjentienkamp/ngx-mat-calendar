@@ -41,7 +41,6 @@ export abstract class BaseViewComponent implements OnInit, OnDestroy {
                     this.options = options;
                     this.markerPosition = this.calculateMarkerPosition();
                     this.pixelsPerHour = this.options.getPixelsPerMinute * 60;
-                    console.log(this.options);
                 })
             ).subscribe()
         );

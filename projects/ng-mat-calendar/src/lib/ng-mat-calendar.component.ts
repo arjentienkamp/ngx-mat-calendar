@@ -59,7 +59,6 @@ export class NgMatCalendarComponent implements OnInit, OnDestroy {
                 tap((options) => {
                     this.options = options;
                     this.selectedView = options.view;
-                    console.log('options changed');
                     this.initCalendar();
                 })
             ).subscribe()
@@ -69,7 +68,6 @@ export class NgMatCalendarComponent implements OnInit, OnDestroy {
             this.events$.pipe(
                 tap((events) => {
                     this.events = events;
-                    console.log('events changed');
                 })
             ).subscribe()
         );

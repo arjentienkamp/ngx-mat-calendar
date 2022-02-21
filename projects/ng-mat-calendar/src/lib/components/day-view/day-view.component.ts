@@ -46,8 +46,6 @@ export class DayViewComponent extends BaseViewComponent implements OnInit {
 
             const emptyDay = this.generateDays();
             this.populateDayView(emptyDay);
-
-            console.log(this.dayView, this.events);
         }
     }
 
