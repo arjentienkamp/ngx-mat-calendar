@@ -22,6 +22,7 @@ import { FormattingService } from './services/formatting.service';
 import { KeyboardShortcutDialogComponent } from './components/dialogs/keyboard-shortcut-dialog/keyboard-shortcut-dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatDividerModule } from '@angular/material/divider';
+import { MatSelectModule } from '@angular/material/select';
 
 const MaterialModules = [
     MatCardModule,
@@ -32,7 +33,7 @@ const MaterialModules = [
     MatFormFieldModule,
     MatInputModule,
     MatDatepickerModule,
-    MatButtonToggleModule,
+    MatSelectModule,
     MatMenuModule,
     MatDialogModule,
     MatDividerModule

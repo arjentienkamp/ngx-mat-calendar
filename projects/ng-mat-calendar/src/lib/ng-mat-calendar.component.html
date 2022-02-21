@@ -11,7 +11,7 @@
 
         <button
             mat-icon-button
-            class="toolbar__button"
+            class="toolbar__button toolbar__button--navigate"
             color="primary"
             (click)="setCalendarOffset('prev')">
             <mat-icon>chevron_left</mat-icon>
@@ -19,7 +19,7 @@
 
         <button
             mat-icon-button
-            class="toolbar__button"
+            class="toolbar__button toolbar__button--navigate"
             color="primary"
             (click)="setCalendarOffset('next')">
             <mat-icon>chevron_right</mat-icon>
@@ -35,24 +35,25 @@
                 *ngIf="enableKeyboardShortcutDialog"
                 mat-icon-button
                 matTooltip="Keyboard shortcuts"
-                class="toolbar__button--keyboard-shortcut"
+                class="toolbar__button toolbar__button--keyboard-shortcut"
                 color="primary"
                 (click)="showKeyboardShortcutDialog()">
                 <mat-icon>keyboard</mat-icon>
             </button>
 
-            <mat-button-toggle-group
+            <mat-form-field
                 *ngIf="enableViewToggle"
-                name="view"
-                #view="matButtonToggleGroup"
-                [value]="selectedView"
-                (change)="onViewChange(view.value)"
-                aria-label="view"
+                appearance="outline"
                 class="toolbar__view-switch">
-                <mat-button-toggle value="day">Day</mat-button-toggle>
-                <mat-button-toggle value="week">Week</mat-button-toggle>
-                <mat-button-toggle value="month">Month</mat-button-toggle>
-            </mat-button-toggle-group>
+                <mat-select
+                    [value]="selectedView"
+                    (selectionChange)="onViewChange(view.value)"
+                    #view>
+                    <mat-option value="day">Day</mat-option>
+                    <mat-option value="week">Week</mat-option>
+                    <mat-option value="month">Month</mat-option>
+                </mat-select>
+            </mat-form-field>
 
             <mat-menu #datePickerMenu="matMenu">
                 <div (click)="$event.stopPropagation()">

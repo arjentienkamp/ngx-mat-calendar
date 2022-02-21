@@ -35,14 +35,16 @@ month-view {
 
     .toolbar__button {
         justify-content: center;
+        margin-left: $margin-md;
     }
 
     .toolbar__button--today {
+        margin-left: 0;
         margin-right: $margin-md;
     }
 
-    .toolbar__button--keyboard-shortcut {
-        margin-right: $margin-md;
+    .toolbar__button--navigate {
+        margin-left: 0;
     }
 
     .toolbar__meta {
@@ -86,9 +88,23 @@ month-view {
         }
     }
 
-    .toolbar__view-switch {
-        margin-right: 1rem;
+    mat-form-field.toolbar__view-switch {
+        margin-left: $margin-md;
         align-items: center;
+
+        .mat-form-field-wrapper {
+            margin: 0;
+            padding: 0;
+        }
+
+        .mat-form-field-infix {
+            padding: $margin-xxs 0 $margin-xs 0;
+            width: 90px;
+        }
+
+        .mat-select-arrow {
+            margin-top: $margin-xxs;
+        }
     }
 }
 
