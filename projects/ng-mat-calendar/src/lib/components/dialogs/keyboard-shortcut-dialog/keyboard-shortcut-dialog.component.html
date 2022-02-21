@@ -22,4 +22,18 @@
             <span class="keyboard-shortcut">m</span>
         </span>
     </div>
+
+    <div class="content-row">
+        <span>Go to today</span>
+        <span>
+            <span class="keyboard-shortcut">t</span>
+        </span>
+    </div>
+
+    <div class="content-row" *ngIf="options.enableAddEventButton">
+        <span>Add event</span>
+        <span>
+            <span class="keyboard-shortcut">n</span>
+        </span>
+    </div>
 </mat-dialog-content>

@@ -168,7 +168,9 @@ export class NgMatCalendarComponent implements OnInit, OnDestroy {
     }
 
     showKeyboardShortcutDialog(): void {
-        const dialogRef = this.dialog.open(KeyboardShortcutDialogComponent);
+        const dialogRef = this.dialog.open(KeyboardShortcutDialogComponent, {
+            data: { options: this.options }
+        });
     }
 
     handleKeyboardEvents(event: KeyboardEvent): void {
@@ -187,6 +189,10 @@ export class NgMatCalendarComponent implements OnInit, OnDestroy {
 
             case 't':
                 this.setCalendarToday();
+                break;
+
+            case 'n':
+                this.addButtonClick.emit();
                 break;
 
             default:
