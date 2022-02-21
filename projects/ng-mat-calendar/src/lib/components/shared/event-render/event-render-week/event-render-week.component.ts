@@ -4,7 +4,6 @@ import { CalendarEvent } from '../../../../models/CalendarEvent';
 import { FormattingService } from '../../../../services/formatting.service';
 
 @Component({
-    // tslint:disable-next-line:component-selector
     selector: 'event-render-week',
     templateUrl: './event-render-week.component.html',
     styleUrls: ['./event-render-week.component.scss']

@@ -1,5 +1,5 @@
 import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
-import { add, eachWeekOfInterval, endOfMonth, getWeek, isSameDay, isSameMonth, startOfMonth, sub } from 'date-fns';
+import { add, eachWeekOfInterval, endOfMonth, getWeek, isSameMonth, startOfMonth, sub } from 'date-fns';
 import { fromEvent, interval, Subject } from 'rxjs';
 import { takeUntil, tap, throttle } from 'rxjs/operators';
 import { CalendarDay, MonthView } from '../../models/Calendar';

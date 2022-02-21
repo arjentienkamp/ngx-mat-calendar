@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { add, isSameDay, startOfWeek } from 'date-fns';
+import { add, startOfWeek } from 'date-fns';
 import { BaseViewComponent } from '../shared/base-view/base-view.component';
 import { CalendarDay, WeekView } from '../../models/Calendar';
 import { CalendarEvent } from '../../models/CalendarEvent';

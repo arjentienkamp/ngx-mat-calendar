@@ -2,7 +2,6 @@ import { Component, ComponentFactoryResolver, Input, OnDestroy, OnInit, ViewChil
 import { CalendarEvent } from '../../../models/CalendarEvent';
 
 @Component({
-    // tslint:disable-next-line:component-selector
     selector: 'event-display',
     template: `<ng-template #renderTarget></ng-template>`,
     styleUrls: ['./event-display.component.scss'],

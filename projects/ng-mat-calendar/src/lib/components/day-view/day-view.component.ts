@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { BaseViewComponent } from '../shared/base-view/base-view.component';
 import { CalendarDay, DayView } from '../../models/Calendar';
 import { CalendarEvent } from '../../models/CalendarEvent';
-import { isSameDay } from 'date-fns';
 import { FormattingService } from '../../services/formatting.service';
 import { tap } from 'rxjs/operators';
 

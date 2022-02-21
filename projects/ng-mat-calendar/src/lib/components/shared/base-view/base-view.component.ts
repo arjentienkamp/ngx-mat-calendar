@@ -116,7 +116,7 @@ export abstract class BaseViewComponent implements OnInit, OnDestroy {
         });
     }
 
-    protected setEventSizes(day: CalendarDay): void {
+    private setEventSizes(day: CalendarDay): void {
         day.eventGroups.forEach(eventGroup => {
             const eventGroupEvents = day.events.filter((event: CalendarEvent) => {
                 return event.grid?.eventGroups.includes(eventGroup);
@@ -136,7 +136,7 @@ export abstract class BaseViewComponent implements OnInit, OnDestroy {
         });
     }
 
-    protected calculatePixelsOffsetForEvent(event: CalendarEvent, day: CalendarDay): CalendarEventGrid {
+    private calculatePixelsOffsetForEvent(event: CalendarEvent, day: CalendarDay): CalendarEventGrid {
         let grid = new CalendarEventGrid();
 
         const startTime = event.startTime;
