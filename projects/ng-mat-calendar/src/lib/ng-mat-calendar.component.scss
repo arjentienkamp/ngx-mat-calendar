@@ -128,3 +128,16 @@ month-view {
 mat-calendar {
     padding: 0 $margin-sm;
 }
+
+
+.cdk-overlay-pane.hidden-events-overlay {
+    width: calc(100% / 7 - 13px);
+    margin-left: -1px;
+    background-color: $color-lightest;
+    border-top: 0;
+    border-radius: 0 0 $radius-md $radius-md;
+
+    .is-today & {
+        background-color: $color-bluish-light;
+    }
+}

@@ -1,5 +1,3 @@
-<!-- @TODO: click on day date to navigate to day view -->
-
 <div class="calendar__days">
     <div class="calendar__day" *ngFor="let day of daysOfWeek;">
         <div class="day__header">
@@ -47,9 +45,10 @@
 
         <ng-template
             cdkConnectedOverlay
+            cdkConnectedOverlayPanelClass="hidden-events-overlay"
             [cdkConnectedOverlayOrigin]="hiddenEventsTriggerOrigin"
             [cdkConnectedOverlayOpen]="showHiddenEvents">
             ...
-        </ng-template>
+        </ng-template>       
     </div>
 </div>
