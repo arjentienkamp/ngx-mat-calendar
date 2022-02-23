@@ -1,5 +1,5 @@
 import {
-    AfterViewInit, ChangeDetectorRef, Component, ElementRef, EventEmitter,
+    Component, ElementRef, EventEmitter,
     HostListener, OnDestroy, OnInit, Output, QueryList, ViewChild, ViewChildren
 } from '@angular/core';
 import { add, eachWeekOfInterval, endOfMonth, getWeek, isSameMonth, startOfMonth, sub } from 'date-fns';
@@ -37,8 +37,7 @@ export class MonthViewComponent extends BaseViewComponent implements OnInit, OnD
     }
 
     constructor(
-        formattingService: FormattingService,
-        private changeDetectorRef: ChangeDetectorRef
+        formattingService: FormattingService
     ) {
         super(formattingService);
 

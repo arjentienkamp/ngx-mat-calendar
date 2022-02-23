@@ -36,7 +36,7 @@
 
                 <div
                     class="hidden-events-trigger"
-                    *ngIf="day.eventCount && maxEventsVisible > 0 && day.eventCount > maxEventsVisible"
+                    *ngIf="day.eventCount && maxEventsVisible > 0 && day.eventCount >= maxEventsVisible"
                     (click)="toggleHiddenEvents(trigger)"
                     cdkOverlayOrigin
                     #trigger="cdkOverlayOrigin">
