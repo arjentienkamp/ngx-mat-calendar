@@ -26,7 +26,7 @@
             <div class="calendar__marker" *ngIf="isToday(day.date)" [style.marginTop.px]="markerPosition"></div>
             
             <event-display
-                *ngFor="let event of day.events; let i = index"
+                *ngFor="let event of day.events"
                 class="calendar__item"
                 [component]="options.renderComponent.week"
                 [event]="event"

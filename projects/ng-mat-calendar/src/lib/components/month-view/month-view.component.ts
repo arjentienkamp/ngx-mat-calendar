@@ -1,6 +1,6 @@
 import {
     AfterViewInit, ChangeDetectorRef, Component, ElementRef, EventEmitter,
-    HostListener, OnDestroy, OnInit, Output, QueryList, ViewChildren
+    HostListener, OnDestroy, OnInit, Output, QueryList, ViewChild, ViewChildren
 } from '@angular/core';
 import { add, eachWeekOfInterval, endOfMonth, getWeek, isSameMonth, startOfMonth, sub } from 'date-fns';
 import { fromEvent, interval, Subject } from 'rxjs';
@@ -17,7 +17,7 @@ import { BaseViewComponent } from '../shared/base-view/base-view.component';
     templateUrl: './month-view.component.html',
     styleUrls: ['./month-view.component.scss']
 })
-export class MonthViewComponent extends BaseViewComponent implements OnInit, AfterViewInit, OnDestroy {
+export class MonthViewComponent extends BaseViewComponent implements OnInit, OnDestroy {
     @Output() setCalendarOffset: EventEmitter<string> = new EventEmitter();
 
     monthView = {} as MonthView;
@@ -31,7 +31,7 @@ export class MonthViewComponent extends BaseViewComponent implements OnInit, Aft
     scrollListener = new Subject();
     scrollListener$ = this.scrollListener.asObservable();
 
-    @ViewChildren('calendarDayElement') calendarDayElement: QueryList<ElementRef>;
+    @ViewChild('calendarDayElement', {read: ElementRef, static: true}) calendarDayElement: ElementRef;
     @HostListener('window:resize', ['$event']) onResize(): void {
         this.calculateMaxEventsPerDay();
     }
@@ -53,6 +53,7 @@ export class MonthViewComponent extends BaseViewComponent implements OnInit, Aft
     ngOnInit(): void {
         super.ngOnInit();
         this.generateView();
+        this.listenToElementChanges();
 
         this.subscriptions$.add(
             this.events$.pipe(
@@ -62,6 +63,22 @@ export class MonthViewComponent extends BaseViewComponent implements OnInit, Aft
                 })
             ).subscribe()
         );
+
+        this.subscriptions$.add(
+            this.selectedDate$.pipe(
+                tap(() => {
+                    this.closeHiddenEvents();
+                })
+            ).subscribe()
+        );
+    }
+
+    listenToElementChanges(): void {
+        const observer = new MutationObserver( list => {
+            this.calculateMaxEventsPerDay();
+        });
+
+        observer.observe(this.calendarDayElement.nativeElement, { childList: true });
     }
 
     generateView(): void {
@@ -73,6 +90,8 @@ export class MonthViewComponent extends BaseViewComponent implements OnInit, Aft
             const emptyDays = this.generateDays();
             this.populateMonthView(emptyDays);
             this.getWeekNumbers();
+
+            this.calculateMaxEventsPerDay();
         }
     }
 
@@ -143,15 +162,13 @@ export class MonthViewComponent extends BaseViewComponent implements OnInit, Aft
         this.showHiddenEvents = !this.showHiddenEvents;
     }
 
-    calculateMaxEventsPerDay(): void {
-        const dayBlockHeight = this.calendarDayElement.first.nativeElement.getBoundingClientRect().height;
-
-        this.maxEventsVisible = Math.floor((dayBlockHeight - 25) / 30);
+    closeHiddenEvents(): void {
+        this.showHiddenEvents = false;
     }
 
-    ngAfterViewInit(): void {
-        this.calculateMaxEventsPerDay();
-        this.changeDetectorRef.detectChanges();
+    calculateMaxEventsPerDay(): void {
+        const dayBlockHeight = this.calendarDayElement.nativeElement.children[0]?.getBoundingClientRect().height;
+        this.maxEventsVisible = Math.floor((dayBlockHeight - 25) / 30);
     }
 
     ngOnDestroy(): void {

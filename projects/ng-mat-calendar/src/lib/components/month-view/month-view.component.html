@@ -14,12 +14,11 @@
     </div>
 </div>
 
-<div class="calendar__content" #calendarContentElement>
-    <div class="calendar__blocks">
+<div class="calendar__content">
+    <div class="calendar__blocks" #calendarDayElement>
         <div 
             *ngFor="let day of monthView.days" 
             class="day__block"
-            #calendarDayElement
             [class.is-today]="isToday(day.date)">
             <div class="day__block-content" [class.not-current-month]="!isCurrentMonth(day.date)">
                 <span class="day__block-date" (click)="navigateToDayView(day.date)">{{ getDayNumber(day.date) }}</span>

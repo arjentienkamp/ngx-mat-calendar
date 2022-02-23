@@ -25,16 +25,16 @@ export class EventDisplayComponent implements OnInit, OnDestroy {
         }
     }
 
-    ngOnDestroy(): void {
-        if (this.renderComponent) {
-            this.renderComponent.destroy();
-        }
-    }
-
     createRenderComponent(): void {
         const componentFactory = this.resolver.resolveComponentFactory(this.component);
         this.renderComponent = this.renderTarget.createComponent(componentFactory);
         this.renderComponent.instance.event = this.event;
         this.renderComponent.instance.date = this.date;
+    }
+
+    ngOnDestroy(): void {
+        if (this.renderComponent) {
+            this.renderComponent.destroy();
+        }
     }
 }
