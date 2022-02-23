@@ -6,8 +6,8 @@
             <span class="day-name">{{ day.title }}</span>
         </div>
     </div>
-</div> 
-<!-- *ngFor="let hour of hoursOfDay;" [style.height.px]="getCellHeight(hour)" -->
+</div>
+
 <div class="calendar__weeknumbers">
     <div class="week-number-cell" *ngFor="let weekNumber of weekNumbers;">
         {{ weekNumber }}
@@ -27,14 +27,30 @@
 
             <div class="day__events">
                 <event-display
-                    *ngFor="let event of day.events; let i = index"
+                    *ngFor="let event of day.events | limitPipe: maxEventsVisible - 1"
                     class="calendar__item"
                     [component]="options.renderComponent.month"
                     [event]="event"
                     [date]="day.date"      
                     (click)="onEventClick(event)">
                 </event-display>
+
+                <div
+                    class="hidden-events-trigger"
+                    *ngIf="day.eventCount && maxEventsVisible > 0 && day.eventCount > maxEventsVisible"
+                    (click)="toggleHiddenEvents(trigger)"
+                    cdkOverlayOrigin
+                    #trigger="cdkOverlayOrigin">
+                    {{ day.eventCount - maxEventsVisible + 1 }} more
+                </div>
             </div>
         </div>
+
+        <ng-template
+            cdkConnectedOverlay
+            [cdkConnectedOverlayOrigin]="hiddenEventsTriggerOrigin"
+            [cdkConnectedOverlayOpen]="showHiddenEvents">
+            ...
+        </ng-template>
     </div>
 </div>

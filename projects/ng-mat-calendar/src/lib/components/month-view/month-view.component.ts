@@ -1,4 +1,7 @@
-import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
+import {
+    AfterViewInit, ChangeDetectorRef, Component, ElementRef, EventEmitter,
+    HostListener, OnDestroy, OnInit, Output, QueryList, ViewChildren
+} from '@angular/core';
 import { add, eachWeekOfInterval, endOfMonth, getWeek, isSameMonth, startOfMonth, sub } from 'date-fns';
 import { fromEvent, interval, Subject } from 'rxjs';
 import { takeUntil, tap, throttle } from 'rxjs/operators';
@@ -14,19 +17,28 @@ import { BaseViewComponent } from '../shared/base-view/base-view.component';
     templateUrl: './month-view.component.html',
     styleUrls: ['./month-view.component.scss']
 })
-export class MonthViewComponent extends BaseViewComponent implements OnInit, OnDestroy {
+export class MonthViewComponent extends BaseViewComponent implements OnInit, AfterViewInit, OnDestroy {
     @Output() setCalendarOffset: EventEmitter<string> = new EventEmitter();
 
     monthView = {} as MonthView;
     daysOfWeek = daysOfWeek;
-    calendarDayHeight = 0;
+    dayBlockHeight = 0;
     weekNumbers: number[] = [];
+    showHiddenEvents = false;
+    hiddenEventsTriggerOrigin: any;
+    maxEventsVisible = 0;
 
     scrollListener = new Subject();
     scrollListener$ = this.scrollListener.asObservable();
 
+    @ViewChildren('calendarDayElement') calendarDayElement: QueryList<ElementRef>;
+    @HostListener('window:resize', ['$event']) onResize(): void {
+        this.calculateMaxEventsPerDay();
+    }
+
     constructor(
-        formattingService: FormattingService
+        formattingService: FormattingService,
+        private changeDetectorRef: ChangeDetectorRef
     ) {
         super(formattingService);
 
@@ -91,6 +103,7 @@ export class MonthViewComponent extends BaseViewComponent implements OnInit, OnD
             });
 
             day = this.createEventGroups(day);
+            day.eventCount = day.events.length;
         });
 
         this.monthView.days = populatedDays;
@@ -123,6 +136,22 @@ export class MonthViewComponent extends BaseViewComponent implements OnInit, OnD
 
     handleScroll(e: WheelEvent): void {
         e.deltaY > 0 ? this.setCalendarOffset.emit(NEXT) : this.setCalendarOffset.emit(PREVIOUS);
+    }
+
+    toggleHiddenEvents(hiddenEventsTriggerOrigin: any): void {
+        this.hiddenEventsTriggerOrigin = hiddenEventsTriggerOrigin;
+        this.showHiddenEvents = !this.showHiddenEvents;
+    }
+
+    calculateMaxEventsPerDay(): void {
+        const dayBlockHeight = this.calendarDayElement.first.nativeElement.getBoundingClientRect().height;
+
+        this.maxEventsVisible = Math.floor((dayBlockHeight - 25) / 30);
+    }
+
+    ngAfterViewInit(): void {
+        this.calculateMaxEventsPerDay();
+        this.changeDetectorRef.detectChanges();
     }
 
     ngOnDestroy(): void {

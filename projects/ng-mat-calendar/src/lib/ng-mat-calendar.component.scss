@@ -20,6 +20,10 @@ month-view {
     overflow: hidden;
 }
 
+[hidden] {
+    display: none;
+}
+
 .calendar__toolbar {
     display: flex;
     flex-direction: row;  

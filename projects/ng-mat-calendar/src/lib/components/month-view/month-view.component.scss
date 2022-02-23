@@ -95,3 +95,14 @@
         }
     }
 }
+
+.hidden-events-trigger {
+    font-size: 12px;
+    padding: 0 $margin-xs;
+    font-weight: 600;
+
+    &:hover {
+        cursor: pointer;
+        opacity: .7;
+    }
+}

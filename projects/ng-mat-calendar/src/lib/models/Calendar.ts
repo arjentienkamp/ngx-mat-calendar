@@ -9,6 +9,7 @@ export interface CalendarDay {
     date: Date;
     eventGroups: string[];
     events: CalendarEvent[];
+    eventCount?: number;
 }
 
 export interface DayView {

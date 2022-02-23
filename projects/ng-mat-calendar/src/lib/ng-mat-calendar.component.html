@@ -91,7 +91,7 @@
     </week-view>
 
     <month-view
-        *ngIf="getSelectedView('month')"
+        [hidden]="!getSelectedView('month')"
         [events$]="events$"
         [selectedDate$]="selectedDate$"
         [options$]="options$"

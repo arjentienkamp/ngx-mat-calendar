@@ -80,5 +80,25 @@ export const DummyEvents: CalendarEvent[] = [
         startTime: new Date(),
         endTime: new Date(),
         color: colors.pink
+    }, {
+        title: 'Travel home',
+        date: new Date(),
+        startTime: new Date(),
+        endTime: new Date(),
+        color: colors.blue
+    }, {
+        title: 'Order new shoes',
+        date: new Date(),
+        startTime: new Date(),
+        endTime: new Date(),
+        color: colors.pink,
+        allDay: true
+    }, {
+        title: 'Book restaurant',
+        date: new Date(),
+        startTime: new Date(),
+        endTime: new Date(),
+        color: colors.green,
+        allDay: true
     }
 ];

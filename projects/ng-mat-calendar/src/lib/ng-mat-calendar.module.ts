@@ -6,7 +6,6 @@ import { MatCardModule } from '@angular/material/card';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { DateAdapter, MatNativeDateModule } from '@angular/material/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -15,7 +14,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { DayViewModule } from './components/day-view/day-view.module';
 import { WeekViewModule } from './components/week-view/week-view.module';
 import { MonthViewModule } from './components/month-view/month-view.module';
-import { Capitalize } from './pipes/capitalize';
+import { CapitalizePipe } from './pipes/capitalize.pipe';
 import { MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/material-moment-adapter';
 import { LocaleDateAdapter } from './other/DateAdapter';
 import { FormattingService } from './services/formatting.service';
@@ -46,7 +45,7 @@ const ViewModules = [
 ];
 
 const Pipes = [
-    Capitalize
+    CapitalizePipe
 ];
 
 @NgModule({
