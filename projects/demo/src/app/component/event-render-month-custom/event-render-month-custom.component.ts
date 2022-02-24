@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { isBefore, isSameDay } from 'date-fns';
+import { CalendarEvent } from 'projects/ngx-mat-calendar/src/lib/models/CalendarEvent';
 import { FormattingService } from 'projects/ngx-mat-calendar/src/lib/services/formatting.service';
-import { CalendarEventCustom } from '../../models/CalendarEventCustom';
 
 @Component({
     // tslint:disable-next-line:component-selector
@@ -10,7 +10,7 @@ import { CalendarEventCustom } from '../../models/CalendarEventCustom';
     styleUrls: ['./event-render-month-custom.component.scss']
 })
 export class EventRenderMonthCustomComponent implements OnInit {
-    @Input() event: CalendarEventCustom;
+    @Input() event: CalendarEvent;
     @Input() date: Date;
 
     startTime: string;

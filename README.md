@@ -12,7 +12,6 @@ Live demo (link)
 - Navigate between days/weeks/months, jump to today
 - Use a custom component for rendering events
 - Uses colors of your Material theme
-- Locale can be set
 - Keyboard shortcuts
 - Call a function on event click
 - Call a function on add button click
@@ -35,8 +34,7 @@ Or, change default options:
 ```
 this.calendarOptions = new CalendarOptions({
     enableAddEventButton: false,
-    view: WEEK,
-    renderComponent.month: EventRenderTestComponent
+    view: WEEK
     // see CalendarOptions class for full list
 });
 ```
@@ -52,12 +50,6 @@ Add the component to the template:
     (dateChange)="handleDateChange($event)"
     (addButtonClick)="handleAddButtonClick()">
 </ngx-mat-calendar>
-```
-
-When using a custom component for rendering the events, you can optionally extend the Event class to add more data to the event.
-
-```
-// example
 ```
 
 ## Inputs
@@ -76,6 +68,8 @@ When using a custom component for rendering the events, you can optionally exten
 
 ## Todo
 - Cypress tests
+- CalendarEvent class extendable for custom render component
+- Localization
 
 ## License
 GNU General Public License - Arjen Tienkamp

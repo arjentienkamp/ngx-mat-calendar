@@ -45,7 +45,7 @@ export class AppComponent implements OnInit, OnDestroy {
             // view: WEEK
         });
 
-        calendarOptions.renderComponent.month = EventRenderMonthCustomComponent;
+        // calendarOptions.renderComponent.month = EventRenderMonthCustomComponent;
 
         this.calendarOptions$.next(calendarOptions);
         this.date$.next(this.date);

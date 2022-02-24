@@ -1,6 +1,7 @@
 import { EventRenderDayComponent } from '../components/shared/event-render/event-render-day/event-render-day.component';
 import { EventRenderMonthComponent } from '../components/shared/event-render/event-render-month/event-render-month.component';
 import { EventRenderWeekComponent } from '../components/shared/event-render/event-render-week/event-render-week.component';
+import { CalendarEvent } from './CalendarEvent';
 import { MONTH, Views } from './Views';
 
 export class CalendarOptions {
@@ -12,6 +13,7 @@ export class CalendarOptions {
         week: EventRenderWeekComponent,
         month: EventRenderMonthComponent
     };
+    calendarEventType = typeof CalendarEvent;
     jumpToSpy = true;
     enableDatePickerButton = true;
     enableAddEventButton = true;
