@@ -17,7 +17,7 @@ Live demo (link)
 - Call a function on add button click
 
 ## Requirements
-- Angular 11+ (tested on Angular 11) + Typescript
+- Angular 13+ (tested on Angular 13) + Typescript
 - Angular Material Theme within your app (https://material.angular.io)
 
 ## Installation and minimal setup
