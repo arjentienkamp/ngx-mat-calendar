@@ -10,6 +10,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 
 import { NgMatCalendarModule } from 'projects/ng-mat-calendar/src/lib/ng-mat-calendar.module';
+import { HttpClientModule } from '@angular/common/http';
 // import { EventRenderTestComponent } from './component/event-render-test/event-render-test.component';
 
 const MaterialModules = [
@@ -28,6 +29,7 @@ const MaterialModules = [
         BrowserModule,
         NgMatCalendarModule,
         BrowserAnimationsModule,
+        HttpClientModule,
         ...MaterialModules
     ],
     entryComponents: [

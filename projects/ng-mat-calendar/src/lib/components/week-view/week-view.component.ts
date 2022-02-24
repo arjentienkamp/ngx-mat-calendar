@@ -37,10 +37,6 @@ export class WeekViewComponent extends BaseViewComponent implements OnInit {
 
     generateView(): void {
         if (this.selectedDate) {
-            this.weekView = {
-                days: [],
-            };
-
             const emptyDays = this.generateDays();
             this.populateWeekView(emptyDays);
         }

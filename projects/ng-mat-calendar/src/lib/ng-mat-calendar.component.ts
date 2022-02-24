@@ -1,5 +1,5 @@
 import { Component, EventEmitter, HostListener, Input, OnDestroy, OnInit, Output, ViewChild, ViewEncapsulation } from '@angular/core';
-import { format, add, isToday, toDate } from 'date-fns';
+import { format, add, isToday, toDate, parse, parseISO } from 'date-fns';
 import { DateAdapter } from '@angular/material/core';
 import { MatMenuTrigger } from '@angular/material/menu';
 import Calendar from './models/Calendar';
@@ -69,6 +69,7 @@ export class NgMatCalendarComponent implements OnInit, OnDestroy {
             this.events$.pipe(
                 tap((events) => {
                     this.events = events;
+                    this.parseDates(events);
                 })
             ).subscribe()
         );
@@ -104,6 +105,16 @@ export class NgMatCalendarComponent implements OnInit, OnDestroy {
                 weeknumber: format(this.selectedDate, 'I')
             };
         }
+    }
+
+    parseDates(events: CalendarEvent[]): void {
+        this.events = events.map((event: CalendarEvent) => {
+             event.date = new Date(event.date);
+             event.startTime = new Date(event.startTime);
+             event.endTime = new Date(event.endTime);
+
+             return event;
+        });
     }
 
     isToday(date: Date): boolean {

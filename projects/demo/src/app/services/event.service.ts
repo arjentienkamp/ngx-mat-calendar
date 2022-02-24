@@ -3,11 +3,15 @@ import { DummyEvents } from './dummy-events';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { add, endOfMonth, getTime, set, startOfMonth, toDate } from 'date-fns';
 import { CalendarEvent } from 'projects/ng-mat-calendar/src/lib/models/CalendarEvent';
+import { HttpClient } from '@angular/common/http';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EventService {
+    constructor(private http: HttpClient) { }
+
     events: BehaviorSubject<CalendarEvent[]> = new BehaviorSubject(DummyEvents);
 
     generateRandomDate(start: Date, end: Date): Date {
@@ -44,5 +48,11 @@ export class EventService {
         });
 
         return this.events.asObservable();
+    }
+
+    getEventsFromMockService(): Observable<CalendarEvent[]> {
+        return this.http.get<any>('https://5264dcd3-1b99-4346-9417-44cee2e49fa3.mock.pstmn.io').pipe(
+            map(res => res)
+        );
     }
 }

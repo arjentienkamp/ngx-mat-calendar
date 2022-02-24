@@ -52,7 +52,8 @@ export class AppComponent implements OnInit, OnDestroy {
 
         this.subscriptions.add(
             this.date$.pipe(
-                switchMap((date) => this.eventService.getEvents(date)),
+                // switchMap((date) => this.eventService.getEvents(date)),
+                switchMap((date) => this.eventService.getEventsFromMockService()),
                 tap((events) => this.events$.next(events))
             ).subscribe()
         );

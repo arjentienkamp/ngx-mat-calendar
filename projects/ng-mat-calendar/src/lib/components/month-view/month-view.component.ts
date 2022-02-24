@@ -29,6 +29,7 @@ export class MonthViewComponent extends BaseViewComponent implements OnInit, OnD
     hiddenEventsTriggerOrigin: any;
     hiddenEventsDay: CalendarDay;
     maxEventsVisible = 0;
+    observer: MutationObserver;
 
     scrollListener = new Subject();
     scrollListener$ = this.scrollListener.asObservable();
@@ -56,7 +57,7 @@ export class MonthViewComponent extends BaseViewComponent implements OnInit, OnD
     ngOnInit(): void {
         super.ngOnInit();
         this.generateView();
-        this.listenToElementChanges();
+        this.listenToCalendarViewportChanges();
 
         this.subscriptions$.add(
             this.events$.pipe(
@@ -76,20 +77,16 @@ export class MonthViewComponent extends BaseViewComponent implements OnInit, OnD
         );
     }
 
-    listenToElementChanges(): void {
-        const observer = new MutationObserver( list => {
+    listenToCalendarViewportChanges(): void {
+        this.observer = new MutationObserver( list => {
             this.calculateMaxEventsPerDay();
         });
 
-        observer.observe(this.calendarDayElement.nativeElement, { childList: true });
+        this.observer.observe(this.calendarDayElement.nativeElement, { childList: true });
     }
 
     generateView(): void {
         if (this.selectedDate) {
-            this.monthView = {
-                days: [],
-            };
-
             const emptyDays = this.generateDays();
             this.populateMonthView(emptyDays);
             this.getWeekNumbers();
@@ -172,7 +169,7 @@ export class MonthViewComponent extends BaseViewComponent implements OnInit, OnD
     }
 
     getHiddenEventsHeight(): number {
-        return (this.hiddenEventsDay.eventCount * 30) + 75;
+        return (this.hiddenEventsDay.eventCount * 30) + 85;
     }
 
     calculateMaxEventsPerDay(): void {
@@ -182,5 +179,6 @@ export class MonthViewComponent extends BaseViewComponent implements OnInit, OnD
 
     ngOnDestroy(): void {
         this.scrollListener.next();
+        this.observer.disconnect();
     }
 }

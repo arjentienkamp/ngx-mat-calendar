@@ -1,4 +1,4 @@
-<div *ngIf="event" class="event" [style.backgroundColor]="event.color">
+<div *ngIf="event" class="event" [class.all-day]="event.allDay" [style.backgroundColor]="event.color">
     <div *ngIf="!event.allDay">
         <div class="event__header">
             <p>{{ event.title }}</p>

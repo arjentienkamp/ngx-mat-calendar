@@ -12,10 +12,10 @@ export class EventRenderWeekComponent implements OnInit {
     @Input() event: CalendarEvent;
     @Input() date: Date;
 
-    startTime = '';
-    endTime = '';
-    isSameDay = false;
-    endsToday = false;
+    startTime: string;
+    endTime: string;
+    isSameDay: boolean;
+    endsToday: boolean;
 
     constructor(
         public formattingService: FormattingService,

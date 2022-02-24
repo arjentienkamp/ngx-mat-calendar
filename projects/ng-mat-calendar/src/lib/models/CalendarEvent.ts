@@ -2,9 +2,9 @@ import { colors } from './Colors';
 
 export class CalendarEvent {
     title = '';
-    date = new Date();
-    startTime = new Date();
-    endTime = new Date();
+    date: Date;
+    startTime: Date;
+    endTime: Date;
     allDay?: boolean = false;
 
     color?: any = colors.grey;

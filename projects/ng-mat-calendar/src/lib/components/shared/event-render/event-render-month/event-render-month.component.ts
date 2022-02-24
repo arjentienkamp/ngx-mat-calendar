@@ -12,10 +12,11 @@ export class EventRenderMonthComponent implements OnInit {
     @Input() event: CalendarEvent;
     @Input() date: Date;
 
-    startTime = '';
-    endTime = '';
-    isSameDay = false;
-    endsToday = false;
+    startTime: string;
+    endTime: string;
+    isSameDay: boolean;
+    endsToday: boolean;
+    eventTooltip: string;
 
     constructor(
         public formattingService: FormattingService,
@@ -26,9 +27,19 @@ export class EventRenderMonthComponent implements OnInit {
         this.endTime = this.formattingService.getTime(this.event.endTime);
         this.isSameDay = isSameDay(this.event.startTime, this.event.endTime);
         this.endsToday = isSameDay(this.date, this.event.endTime);
+
+        this.eventTooltip = this.getEventTooltip();
     }
 
-    isPastEvent(event: CalendarEvent): boolean {
-        return isBefore(event.date, new Date());
+    isPastEvent(): boolean {
+        return isBefore(this.event.date, new Date());
+    }
+
+    getEventTooltip(): string {
+        if (this.event.location) {
+            return `${this.event.title} (${this.startTime} - ${this.endTime}) @ ${this.event.location}`;
+        }
+
+        return `${this.event.title} (${this.startTime} - ${this.endTime})`;
     }
 }

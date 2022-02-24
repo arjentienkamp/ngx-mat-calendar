@@ -36,14 +36,6 @@ export class DayViewComponent extends BaseViewComponent implements OnInit {
 
     generateView(): void {
         if (this.selectedDate) {
-            const date = new Date(this.selectedDate);
-
-            this.dayView = new CalendarDay({
-                date,
-                eventGroups: [],
-                events: [],
-            });
-
             const emptyDay = this.generateDays();
             this.populateDayView(emptyDay);
         }

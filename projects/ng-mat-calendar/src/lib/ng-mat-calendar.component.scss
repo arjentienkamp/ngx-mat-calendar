@@ -162,12 +162,12 @@ mat-calendar {
             margin-bottom: $margin-xs;
 
             width: 40px;
-            height: 40px;
+            min-height: 40px;
             border-radius: 20px;
             margin-top: 4px;
             background-color: $color-gray-light;
             color: $color-gray-darker;
-            font-size: $margin-sm;
+            font-size: 14px;
 
             &:hover {
                 cursor: pointer;
