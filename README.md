@@ -9,8 +9,7 @@ GIF
 
 ## Features
 - Display a day/week/month calendar with your events
-- Navigate between weeks, jump to today
-- Focus on current time on initialization
+- Navigate between days/weeks/months, jump to today
 - Use a custom component for rendering events
 - Uses colors of your Material theme
 - Locale can be set
@@ -76,7 +75,7 @@ When using a custom component for rendering the events, you can optionally exten
 | addButtonClick  | emits on add button click                           | `EventEmitter<any>`           |
 
 ## Todo
-- ...
+- Cypress tests
 
 ## License
-...
+MIT License - Arjen Tienkamp
