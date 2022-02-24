@@ -145,8 +145,6 @@ mat-calendar {
         @include elevation();
 
         &.is-today {
-            background-color: $color-bluish-light;
-
             .event-container__date {
                 border-radius: 100%;
                 background: $color-gray-darker;

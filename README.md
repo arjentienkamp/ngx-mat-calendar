@@ -1,4 +1,4 @@
-# Angular Calendar component
+# Angular Calendar Component
 
 This component displays a calendar in your Angular (Material) project. 
 
@@ -22,7 +22,7 @@ Live demo (link)
 
 ## Installation and minimal setup
 ```
-npm install ...
+npm install @arjentienkamp/ngx-mat-calendar
 ```
 
 Initiate default options:
@@ -67,7 +67,7 @@ Add the component to the template:
 | addButtonClick  | emits on add button click                           | `EventEmitter<any>`           |
 
 ## Todo
-- Cypress tests
+- Unit tests
 - CalendarEvent class extendable for custom render component
 - Localization
 

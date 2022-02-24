@@ -1,6 +1,19 @@
 {
-  "name": "ngx-mat-calendar",
-  "version": "0.0.1",
+  "name": "@arjentienkamp/ngx-mat-calendar",
+  "version": "0.0.15",
+  "author": "Arjen Tienkamp",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/arjentienkamp/ngx-mat-calendar.git"
+  },
+  "homepage": "https://github.com/arjentienkamp/ngx-mat-calendar",
+  "keywords": [
+    "calendar",
+    "timetable",
+    "angular",
+    "material",
+    "angular-material"
+  ],
   "peerDependencies": {
     "@angular/common": "^11.2.10",
     "@angular/core": "^11.2.10",
@@ -9,6 +22,9 @@
     "moment": "^2.29.1"
   },
   "dependencies": {
+    "@angular-devkit/build-angular": "^13.2.5",
+    "@angular-devkit/core": "^11.2.9",
     "tslib": "^2.0.0"
-  }
+  },
+  "devDependencies": {}
 }

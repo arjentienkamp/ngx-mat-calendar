@@ -21,7 +21,6 @@ import { KeyboardShortcutDialogComponent } from './components/dialogs/keyboard-s
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatSelectModule } from '@angular/material/select';
-import { PipesModule } from './pipes/pipes.module';
 
 const MaterialModules = [
     MatCardModule,

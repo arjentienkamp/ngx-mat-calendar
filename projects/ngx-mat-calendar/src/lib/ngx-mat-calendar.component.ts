@@ -179,7 +179,7 @@ export class NgxMatCalendarComponent implements OnInit, OnDestroy {
 
     showKeyboardShortcutDialog(): void {
         const dialogRef = this.dialog.open(KeyboardShortcutDialogComponent, {
-            data: { options: this.options }
+            data: this.options
         });
     }
 

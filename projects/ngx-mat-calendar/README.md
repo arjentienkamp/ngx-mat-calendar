@@ -1,24 +1,75 @@
-# NgMatCalendar
+# Angular Calendar Component
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.10.
+This component displays a calendar in your Angular (Material) project. 
 
-## Code scaffolding
+## Demo
+Live demo (link)
 
-Run `ng generate component component-name --project ngx-mat-calendar` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project ngx-mat-calendar`.
-> Note: Don't forget to add `--project ngx-mat-calendar` or else it will be added to the default project in your `angular.json` file. 
+![](http://www.arjentienkamp.com/ngx-mat-calendar/gif-example-1.gif)
 
-## Build
+## Features
+- Display a day/week/month calendar with your events
+- Navigate between days/weeks/months, jump to today
+- Use a custom component for rendering events
+- Uses colors of your Material theme
+- Keyboard shortcuts
+- Call a function on event click
+- Call a function on add button click
 
-Run `ng build ngx-mat-calendar` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Requirements
+- Angular 11+ (tested on Angular 11) + Typescript
+- Angular Material Theme within your app (https://material.angular.io)
 
-## Publishing
+## Installation and minimal setup
+```
+npm install @arjentienkamp/ngx-mat-calendar
+```
 
-After building your library with `ng build ngx-mat-calendar`, go to the dist folder `cd dist/ngx-mat-calendar` and run `npm publish`.
+Initiate default options:
+```
+this.calendarOptions = new CalendarOptions();
+```
 
-## Running unit tests
+Or, change default options:
+```
+this.calendarOptions = new CalendarOptions({
+    enableAddEventButton: false,
+    view: WEEK
+    // see CalendarOptions class for full list
+});
+```
 
-Run `ng test ngx-mat-calendar` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Add the component to the template:
 
-## Further help
+```
+<ngx-mat-calendar
+    [options$]="calendarOptions$"
+    [events$]="events$"
+    [selectedDate$]="date$"
+    (eventClick)="handleEventClick($event)"
+    (dateChange)="handleDateChange($event)"
+    (addButtonClick)="handleAddButtonClick()">
+</ngx-mat-calendar>
+```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## Inputs
+| Property        | Description                                         | Type                            | Required |
+|-----------------|-----------------------------------------------------|---------------------------------|----------|
+| options$        | options have to be passed here                      | `Observable<CalendarOptions>`   | true     |
+| events$         | array of events (i.e from API or other datasource)  | `Observable<CalendarEvent[]>`   | true     |
+| selectedDate$   | the date for initiating the calendar                | `Observable<Date>`              | true     |
+
+## Outputs
+| Property        | Description                                         | Type                          |
+|-----------------|-----------------------------------------------------|-------------------------------|
+| eventClick      | emits when event is clicked                         | `EventEmitter<CalendarEvent>` |
+| dateChange      | emits on date change                                | `EventEmitter<Date>`          |
+| addButtonClick  | emits on add button click                           | `EventEmitter<any>`           |
+
+## Todo
+- Unit tests
+- CalendarEvent class extendable for custom render component
+- Localization
+
+## License
+GNU General Public License - Arjen Tienkamp

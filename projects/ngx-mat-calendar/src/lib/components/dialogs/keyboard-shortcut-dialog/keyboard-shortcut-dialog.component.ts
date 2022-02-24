@@ -8,11 +8,9 @@ import { CalendarOptions } from '../../../models/CalendarOptions';
     styleUrls: ['./keyboard-shortcut-dialog.component.scss']
 })
 export class KeyboardShortcutDialogComponent implements OnInit {
-    options: CalendarOptions;
+    constructor(
+        @Inject(MAT_DIALOG_DATA) public data: CalendarOptions
+    ) { }
 
-    constructor(@Inject(MAT_DIALOG_DATA) public data: { options: CalendarOptions }) { }
-
-    ngOnInit(): void {
-        this.options = this.data.options;
-    }
+    ngOnInit(): void { }
 }

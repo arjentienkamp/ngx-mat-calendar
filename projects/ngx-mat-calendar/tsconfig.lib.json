@@ -13,6 +13,15 @@
       "es2018"
     ]
   },
+  "baseUrl": "./",
+  "paths": {
+    "@arjentienkamp/ngx-mat-calendar": [
+      "../../dist/lib"
+    ],
+    "@arjentienkamp/ngx-mat-calendar/*": [
+      "../../dist/lib/*"
+    ]
+  },
   "angularCompilerOptions": {
     "skipTemplateCodegen": true,
     "strictMetadataEmit": true,
