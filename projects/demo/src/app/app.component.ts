@@ -41,8 +41,6 @@ export class AppComponent implements OnInit, OnDestroy {
             // enableKeyboardShortcutDialog: false,
             // locale: 'es',
             // pixelsPerMinute: 2,
-            // enableDatePickerButton: false,
-            // enableTooltip: false,
             // renderComponent: EventRenderTestComponent,
             // view: WEEK
         });

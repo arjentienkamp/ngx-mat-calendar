@@ -5,7 +5,7 @@ This component displays a calendar in your Angular (Material) project.
 ## Demo
 Live demo (link)
 
-GIF
+![](http://www.arjentienkamp.com/ngx-mat-calendar/gif-example-1.gif)
 
 ## Features
 - Display a day/week/month calendar with your events
@@ -34,11 +34,11 @@ this.calendarOptions = new CalendarOptions();
 Or, change default options:
 ```
 this.calendarOptions = new CalendarOptions({
-    enableTooltip: false
-    renderComponent: EventRenderTestComponent
+    enableAddEventButton: false,
+    view: WEEK,
+    renderComponent.month: EventRenderTestComponent
     // see CalendarOptions class for full list
 });
-
 ```
 
 Add the component to the template:
