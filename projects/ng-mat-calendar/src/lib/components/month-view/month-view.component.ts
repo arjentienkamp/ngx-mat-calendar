@@ -172,7 +172,7 @@ export class MonthViewComponent extends BaseViewComponent implements OnInit, OnD
     }
 
     getHiddenEventsHeight(): number {
-        return (this.hiddenEventsDay.eventCount * 30) + 50;
+        return (this.hiddenEventsDay.eventCount * 30) + 75;
     }
 
     calculateMaxEventsPerDay(): void {

@@ -76,6 +76,30 @@
     }
 }
 
+.calendar__day-events {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    display: flex;
+    flex-direction: row;
+    margin-left: 79px;
+    background-color: $color-lightest;
+    border-left: 1px solid $color-gray-light;
+
+    .day__lane {
+        position: relative;
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+        overflow: hidden;
+        border-right: 1px solid $color-gray-light;
+        
+        .calendar__item {
+            position: relative;
+        }
+    }
+}
+
 .calendar__marker {
     position: relative;
     z-index: 1;

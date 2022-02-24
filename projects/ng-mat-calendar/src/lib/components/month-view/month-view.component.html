@@ -46,7 +46,9 @@
 
         <ng-template
             cdkConnectedOverlay
+            (overlayOutsideClick)="closeHiddenEvents()"
             [cdkConnectedOverlayOffsetY]="-100"
+            [cdkConnectedOverlayOffsetX]="-35"
             cdkConnectedOverlayPanelClass="hidden-events-overlay"
             [cdkConnectedOverlayOrigin]="hiddenEventsTriggerOrigin"
             [cdkConnectedOverlayOpen]="showHiddenEvents">

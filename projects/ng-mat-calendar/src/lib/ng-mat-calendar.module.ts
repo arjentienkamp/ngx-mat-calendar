@@ -14,7 +14,6 @@ import { MatMenuModule } from '@angular/material/menu';
 import { DayViewModule } from './components/day-view/day-view.module';
 import { WeekViewModule } from './components/week-view/week-view.module';
 import { MonthViewModule } from './components/month-view/month-view.module';
-import { CapitalizePipe } from './pipes/capitalize.pipe';
 import { MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/material-moment-adapter';
 import { LocaleDateAdapter } from './other/DateAdapter';
 import { FormattingService } from './services/formatting.service';
@@ -22,6 +21,7 @@ import { KeyboardShortcutDialogComponent } from './components/dialogs/keyboard-s
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatSelectModule } from '@angular/material/select';
+import { PipesModule } from './pipes/pipes.module';
 
 const MaterialModules = [
     MatCardModule,
@@ -44,15 +44,10 @@ const ViewModules = [
     MonthViewModule
 ];
 
-const Pipes = [
-    CapitalizePipe
-];
-
 @NgModule({
     declarations: [
         NgMatCalendarComponent,
-        KeyboardShortcutDialogComponent,
-        ...Pipes
+        KeyboardShortcutDialogComponent
     ],
     imports: [
         BrowserModule,

@@ -68,7 +68,8 @@ export abstract class BaseViewComponent implements OnInit, OnDestroy {
             let eventGroup: CalendarEvent[] = [];
 
             if (event.grid) {
-                eventGroup = this.getOverlappingEvents(event, day.events, event.grid.eventGroups);
+                const eventsNotAllDay = day.events.filter(x => !x.allDay);
+                eventGroup = this.getOverlappingEvents(event, eventsNotAllDay, event.grid.eventGroups);
 
                 eventGroup.map((overlapEvent: CalendarEvent) => {
                     if (overlapEvent.grid) {

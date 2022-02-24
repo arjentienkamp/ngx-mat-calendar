@@ -8,6 +8,19 @@
 </div> 
 
 <div class="calendar__content">
+    <div class="calendar__day-events">
+        <div class="day__lane">
+            <event-display
+                *ngFor="let event of dayView.events | allDayEventPipe: true"
+                class="calendar__item"
+                [component]="options.renderComponent.day"
+                [event]="event"
+                [date]="selectedDate"
+                (click)="onEventClick(event)">
+            </event-display>
+        </div>
+    </div>
+
     <div class="calendar__lanes">
         <div class="calendar__times">
             <div class="time-cell" *ngFor="let hour of hoursOfDay;" [style.height.px]="getCellHeight(hour)">
@@ -23,7 +36,7 @@
             <div class="calendar__marker" *ngIf="isToday(selectedDate)" [style.marginTop.px]="markerPosition"></div>
             
             <event-display
-                *ngFor="let event of dayView.events; let i = index"
+                *ngFor="let event of dayView.events | allDayEventPipe: false"
                 class="calendar__item"
                 [component]="options.renderComponent.day"
                 [event]="event"

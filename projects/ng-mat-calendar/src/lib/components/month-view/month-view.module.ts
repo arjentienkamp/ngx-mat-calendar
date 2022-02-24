@@ -3,19 +3,17 @@ import { BrowserModule } from '@angular/platform-browser';
 import { SharedComponentsModule } from '../shared/shared-components.module';
 import { MonthViewComponent } from './month-view.component';
 import { OverlayModule } from '@angular/cdk/overlay';
-import { LimitPipe } from '../../pipes/limit.pipe';
-import { RestPipe } from '../../pipes/rest.pipe';
+import { PipesModule } from '../../pipes/pipes.module';
 
 @NgModule({
     declarations: [
-        MonthViewComponent,
-        LimitPipe,
-        RestPipe
+        MonthViewComponent
     ],
     imports: [
         BrowserModule,
         SharedComponentsModule,
-        OverlayModule
+        OverlayModule,
+        PipesModule
     ],
     exports: [
         MonthViewComponent

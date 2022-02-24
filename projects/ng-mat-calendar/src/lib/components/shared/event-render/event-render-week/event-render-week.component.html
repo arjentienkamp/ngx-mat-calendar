@@ -1,14 +1,22 @@
 <div *ngIf="event" class="event" [style.backgroundColor]="event.color">
-    <div class="event__header">
-        <p>{{ event.title }}</p>
+    <div *ngIf="!event.allDay">
+        <div class="event__header">
+            <p>{{ event.title }}</p>
+        </div>
+
+        <div class="event__metadata">
+            <p>{{ startTime }} - {{ endTime }}</p>
+
+            <div class="event__location" *ngIf="event.location">
+                <mat-icon>place</mat-icon>
+                <span>{{ event.location }}</span>
+            </div>
+        </div>
     </div>
 
-    <div class="event__metadata">
-        <p>{{ startTime }} - {{ endTime }}</p>
-
-        <div class="event__location" *ngIf="event.location">
-            <mat-icon>place</mat-icon>
-            <span>{{ event.location }}</span>
+    <div *ngIf="event.allDay">
+        <div class="event__header">
+            <p class="title">{{ event.title }}</p>
         </div>
     </div>
 
