@@ -78,4 +78,4 @@ When using a custom component for rendering the events, you can optionally exten
 - Cypress tests
 
 ## License
-MIT License - Arjen Tienkamp
+GNU General Public License - Arjen Tienkamp
