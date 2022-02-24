@@ -11,19 +11,21 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 
 import { NgxMatCalendarModule } from 'projects/ngx-mat-calendar/src/lib/ngx-mat-calendar.module';
 import { HttpClientModule } from '@angular/common/http';
-// import { EventRenderTestComponent } from './component/event-render-test/event-render-test.component';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { EventRenderMonthCustomComponent } from './component/event-render-month-custom/event-render-month-custom.component';
 
 const MaterialModules = [
     MatCardModule,
     MatButtonModule,
     MatIconModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatTooltipModule
 ];
 
 @NgModule({
     declarations: [
         AppComponent,
-        // EventRenderTestComponent
+        EventRenderMonthCustomComponent
     ],
     imports: [
         BrowserModule,

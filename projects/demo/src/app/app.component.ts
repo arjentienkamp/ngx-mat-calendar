@@ -5,6 +5,7 @@ import { CalendarOptions } from 'projects/ngx-mat-calendar/src/lib/models/Calend
 import { WEEK } from 'projects/ngx-mat-calendar/src/lib/models/Views';
 import { BehaviorSubject, Subscription } from 'rxjs';
 import { switchMap, tap } from 'rxjs/operators';
+import { EventRenderMonthCustomComponent } from './component/event-render-month-custom/event-render-month-custom.component';
 // import { EventRenderTestComponent } from './component/event-render-test/event-render-test.component';
 import { EventService } from './services/event.service';
 
@@ -41,9 +42,10 @@ export class AppComponent implements OnInit, OnDestroy {
             // enableKeyboardShortcutDialog: false,
             // locale: 'es',
             // pixelsPerMinute: 2,
-            // renderComponent: EventRenderTestComponent,
             // view: WEEK
         });
+
+        calendarOptions.renderComponent.month = EventRenderMonthCustomComponent;
 
         this.calendarOptions$.next(calendarOptions);
         this.date$.next(this.date);

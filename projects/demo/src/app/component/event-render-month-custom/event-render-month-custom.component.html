@@ -1,0 +1,14 @@
+<div *ngIf="event" class="event">
+    <div
+        class="even__line"
+        [matTooltip]="eventTooltip"
+        [ngStyle]="{'backgroundColor' : event.allDay ? event.color : '' }"
+        [class.all-day]="event.allDay"
+        [class.past-event]="isPastEvent()">
+        <span class="event-color" *ngIf="!event.allDay" [style.backgroundColor]="event.color"></span>
+        <p class="metadata" *ngIf="!event.allDay">{{ startTime }}</p>
+        <p class="title">{{ event.title }}</p>
+    </div>
+
+    <div class="event__multiday" *ngIf="!isSameDay && !endsToday"></div>
+</div>
