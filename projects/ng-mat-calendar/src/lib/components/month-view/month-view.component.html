@@ -32,23 +32,44 @@
                     (click)="onEventClick(event)">
                 </event-display>
 
-                <div
-                    class="hidden-events-trigger"
-                    *ngIf="day.eventCount && maxEventsVisible > 0 && day.eventCount >= maxEventsVisible"
-                    (click)="toggleHiddenEvents(trigger)"
-                    cdkOverlayOrigin
-                    #trigger="cdkOverlayOrigin">
-                    {{ day.eventCount - maxEventsVisible + 1 }} more
-                </div>
+                <span *ngIf="day.eventCount && maxEventsVisible > 0 && day.eventCount >= maxEventsVisible">
+                    <div
+                        class="hidden-events-trigger"                        
+                        (click)="toggleHiddenEvents(trigger, day)"
+                        cdkOverlayOrigin
+                        #trigger="cdkOverlayOrigin">
+                        {{ day.eventCount - maxEventsVisible + 1 }} more
+                    </div>
+                </span>  
             </div>
         </div>
 
         <ng-template
             cdkConnectedOverlay
+            [cdkConnectedOverlayOffsetY]="-100"
             cdkConnectedOverlayPanelClass="hidden-events-overlay"
             [cdkConnectedOverlayOrigin]="hiddenEventsTriggerOrigin"
             [cdkConnectedOverlayOpen]="showHiddenEvents">
-            ...
-        </ng-template>       
+            <div
+                class="event-container"
+                [class.is-today]="isToday(hiddenEventsDay.date)"
+                [style.height.px]="getHiddenEventsHeight()">
+
+                <span
+                    class="event-container__date"
+                    (click)="navigateToDayView(hiddenEventsDay.date)">
+                    {{ getDayNumber(hiddenEventsDay.date) }}
+                </span>
+
+                <event-display
+                    *ngFor="let event of hiddenEventsDay.events"
+                    class="calendar__item"
+                    [component]="options.renderComponent.month"
+                    [event]="event"
+                    [date]="hiddenEventsDay.date"      
+                    (click)="onEventClick(event)">
+                </event-display>
+            </div>
+        </ng-template>          
     </div>
 </div>

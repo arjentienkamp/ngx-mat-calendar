@@ -132,12 +132,46 @@ mat-calendar {
 
 .cdk-overlay-pane.hidden-events-overlay {
     width: calc(100% / 7 - 13px);
-    margin-left: -1px;
-    background-color: $color-lightest;
-    border-top: 0;
-    border-radius: 0 0 $radius-md $radius-md;
 
-    .is-today & {
-        background-color: $color-bluish-light;
+    .event-container {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        background-color: $color-lightest;
+        padding: $margin-xs;
+        border-radius: $radius-md;
+        overflow: hidden;
+        width: 100%;
+        box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+
+        &.is-today {
+            background-color: $color-bluish-light;
+
+            .event-container__date {
+                border-radius: 100%;
+                background: $color-gray-darker;
+                color: $color-lightest;
+            }
+        }
+
+        .event-container__date {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            align-self: center;
+            text-align: center;
+            width: 25px;
+            height: 25px;
+            color: $color-gray-darker;
+            font-size: $font-size-xs;
+
+            &:hover {
+                cursor: pointer;
+            }
+        }
+    }
+
+    event-display {
+        position: relative;
     }
 }

@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { add, startOfWeek } from 'date-fns';
 import { BaseViewComponent } from '../shared/base-view/base-view.component';
-import { CalendarDay, WeekView } from '../../models/Calendar';
+import { WeekView } from '../../models/Calendar';
 import { CalendarEvent } from '../../models/CalendarEvent';
 import { FormattingService } from '../../services/formatting.service';
 import { tap } from 'rxjs/operators';
+import { CalendarDay } from '../../models/CalendarDay';
 
 @Component({
     selector: 'week-view',
@@ -71,11 +72,11 @@ export class WeekViewComponent extends BaseViewComponent implements OnInit {
             let date = new Date(selectedWeekStart);
             date = add(date, { days: i });
 
-            const day: CalendarDay = {
+            const day = new CalendarDay({
                 date,
                 eventGroups: [],
                 events: []
-            };
+            });
 
             days.push(day);
         }

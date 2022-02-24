@@ -4,11 +4,13 @@ import { SharedComponentsModule } from '../shared/shared-components.module';
 import { MonthViewComponent } from './month-view.component';
 import { OverlayModule } from '@angular/cdk/overlay';
 import { LimitPipe } from '../../pipes/limit.pipe';
+import { RestPipe } from '../../pipes/rest.pipe';
 
 @NgModule({
     declarations: [
         MonthViewComponent,
-        LimitPipe
+        LimitPipe,
+        RestPipe
     ],
     imports: [
         BrowserModule,

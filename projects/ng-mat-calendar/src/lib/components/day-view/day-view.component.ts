@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { BaseViewComponent } from '../shared/base-view/base-view.component';
-import { CalendarDay, DayView } from '../../models/Calendar';
+import { DayView } from '../../models/Calendar';
 import { CalendarEvent } from '../../models/CalendarEvent';
 import { FormattingService } from '../../services/formatting.service';
 import { tap } from 'rxjs/operators';
+import { CalendarDay } from '../../models/CalendarDay';
 
 @Component({
     selector: 'day-view',
@@ -37,11 +38,11 @@ export class DayViewComponent extends BaseViewComponent implements OnInit {
         if (this.selectedDate) {
             const date = new Date(this.selectedDate);
 
-            this.dayView = {
+            this.dayView = new CalendarDay({
                 date,
                 eventGroups: [],
                 events: [],
-            };
+            });
 
             const emptyDay = this.generateDays();
             this.populateDayView(emptyDay);
@@ -67,11 +68,12 @@ export class DayViewComponent extends BaseViewComponent implements OnInit {
     generateDays(): CalendarDay {
         const date = new Date(this.selectedDate);
 
-        const day: CalendarDay = {
+        const day: CalendarDay = new CalendarDay({
             date,
             eventGroups: [],
-            events: []
-        };
+            events: [],
+            eventCount: 0
+        });
 
         return day;
     }

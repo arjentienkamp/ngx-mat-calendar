@@ -1,15 +1,9 @@
+import { CalendarDay } from './CalendarDay';
 import { CalendarEvent } from './CalendarEvent';
 
 export default interface Calendar {
     monthAndYear: string;
     weeknumber: string;
-}
-
-export interface CalendarDay {
-    date: Date;
-    eventGroups: string[];
-    events: CalendarEvent[];
-    eventCount?: number;
 }
 
 export interface DayView {

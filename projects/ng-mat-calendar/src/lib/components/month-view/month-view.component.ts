@@ -5,7 +5,8 @@ import {
 import { add, eachWeekOfInterval, endOfMonth, getWeek, isSameMonth, startOfMonth, sub } from 'date-fns';
 import { fromEvent, interval, Subject } from 'rxjs';
 import { takeUntil, tap, throttle } from 'rxjs/operators';
-import { CalendarDay, MonthView } from '../../models/Calendar';
+import { MonthView } from '../../models/Calendar';
+import { CalendarDay } from '../../models/CalendarDay';
 import { CalendarEvent } from '../../models/CalendarEvent';
 import { NEXT, PREVIOUS } from '../../models/Directions';
 import { daysOfWeek } from '../../models/Times';
@@ -26,6 +27,7 @@ export class MonthViewComponent extends BaseViewComponent implements OnInit, OnD
     weekNumbers: number[] = [];
     showHiddenEvents = false;
     hiddenEventsTriggerOrigin: any;
+    hiddenEventsDay: CalendarDay;
     maxEventsVisible = 0;
 
     scrollListener = new Subject();
@@ -47,6 +49,8 @@ export class MonthViewComponent extends BaseViewComponent implements OnInit, OnD
                 throttle(e => interval(1000))
             )
             .subscribe((e: any) => this.handleScroll(e));
+
+        this.hiddenEventsDay = new CalendarDay();
     }
 
     ngOnInit(): void {
@@ -139,7 +143,8 @@ export class MonthViewComponent extends BaseViewComponent implements OnInit, OnD
             const day: CalendarDay = {
                 date,
                 eventGroups: [],
-                events: []
+                events: [],
+                eventCount: 0
             };
 
             days.push(day);
@@ -156,13 +161,18 @@ export class MonthViewComponent extends BaseViewComponent implements OnInit, OnD
         e.deltaY > 0 ? this.setCalendarOffset.emit(NEXT) : this.setCalendarOffset.emit(PREVIOUS);
     }
 
-    toggleHiddenEvents(hiddenEventsTriggerOrigin: any): void {
+    toggleHiddenEvents(hiddenEventsTriggerOrigin: any, day: CalendarDay): void {
         this.hiddenEventsTriggerOrigin = hiddenEventsTriggerOrigin;
+        this.hiddenEventsDay = day;
         this.showHiddenEvents = !this.showHiddenEvents;
     }
 
     closeHiddenEvents(): void {
         this.showHiddenEvents = false;
+    }
+
+    getHiddenEventsHeight(): number {
+        return (this.hiddenEventsDay.eventCount * 30) + 50;
     }
 
     calculateMaxEventsPerDay(): void {
