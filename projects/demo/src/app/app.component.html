@@ -42,14 +42,14 @@
 
     <mat-card>
         <mat-card-content>
-            <ng-mat-calendar
+            <ngx-mat-calendar
                 [options$]="calendarOptions$"
                 [events$]="events$"
                 [selectedDate$]="date$"
                 (eventClick)="handleEventClick($event)"
                 (dateChange)="handleDateChange($event)"
                 (addButtonClick)="handleAddButtonClick()">
-            </ng-mat-calendar>
+            </ngx-mat-calendar>
         </mat-card-content>
     </mat-card>
 </div>

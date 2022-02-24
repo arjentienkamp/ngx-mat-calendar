@@ -1,5 +1,5 @@
-import { CalendarEvent } from 'projects/ng-mat-calendar/src/lib/models/CalendarEvent';
-import { colors } from 'projects/ng-mat-calendar/src/lib/models/Colors';
+import { CalendarEvent } from 'projects/ngx-mat-calendar/src/lib/models/CalendarEvent';
+import { colors } from 'projects/ngx-mat-calendar/src/lib/models/Colors';
 
 export const DummyEvents: CalendarEvent[] = [
     {

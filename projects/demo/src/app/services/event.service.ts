@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { DummyEvents } from './dummy-events';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { add, endOfMonth, getTime, set, startOfMonth, toDate } from 'date-fns';
-import { CalendarEvent } from 'projects/ng-mat-calendar/src/lib/models/CalendarEvent';
+import { CalendarEvent } from 'projects/ngx-mat-calendar/src/lib/models/CalendarEvent';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 

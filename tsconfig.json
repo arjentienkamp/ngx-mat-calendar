@@ -13,9 +13,9 @@
     "downlevelIteration": true,
     "strictPropertyInitialization": false,
     "paths": {
-      "ng-mat-calendar": [
-        "dist/ng-mat-calendar/ng-mat-calendar",
-        "dist/ng-mat-calendar"
+      "ngx-mat-calendar": [
+        "dist/ngx-mat-calendar/ngx-mat-calendar",
+        "dist/ngx-mat-calendar"
       ]
     },
     "experimentalDecorators": true,

@@ -3,38 +3,38 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "ng-mat-calendar": {
+    "ngx-mat-calendar": {
       "projectType": "library",
-      "root": "projects/ng-mat-calendar",
-      "sourceRoot": "projects/ng-mat-calendar/src",
+      "root": "projects/ngx-mat-calendar",
+      "sourceRoot": "projects/ngx-mat-calendar/src",
       "prefix": "",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:ng-packagr",
           "options": {
-            "tsConfig": "projects/ng-mat-calendar/tsconfig.lib.json",
-            "project": "projects/ng-mat-calendar/ng-package.json"
+            "tsConfig": "projects/ngx-mat-calendar/tsconfig.lib.json",
+            "project": "projects/ngx-mat-calendar/ng-package.json"
           },
           "configurations": {
             "production": {
-              "tsConfig": "projects/ng-mat-calendar/tsconfig.lib.prod.json"
+              "tsConfig": "projects/ngx-mat-calendar/tsconfig.lib.prod.json"
             }
           }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "projects/ng-mat-calendar/src/test.ts",
-            "tsConfig": "projects/ng-mat-calendar/tsconfig.spec.json",
-            "karmaConfig": "projects/ng-mat-calendar/karma.conf.js"
+            "main": "projects/ngx-mat-calendar/src/test.ts",
+            "tsConfig": "projects/ngx-mat-calendar/tsconfig.spec.json",
+            "karmaConfig": "projects/ngx-mat-calendar/karma.conf.js"
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "projects/ng-mat-calendar/tsconfig.lib.json",
-              "projects/ng-mat-calendar/tsconfig.spec.json"
+              "projects/ngx-mat-calendar/tsconfig.lib.json",
+              "projects/ngx-mat-calendar/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**"
@@ -166,5 +166,5 @@
       }
     }
   },
-  "defaultProject": "ng-mat-calendar"
+  "defaultProject": "ngx-mat-calendar"
 }

@@ -1,5 +1,5 @@
 import { Component, EventEmitter, HostListener, Input, OnDestroy, OnInit, Output, ViewChild, ViewEncapsulation } from '@angular/core';
-import { format, add, isToday, toDate, parse, parseISO } from 'date-fns';
+import { format, add, isToday, toDate } from 'date-fns';
 import { DateAdapter } from '@angular/material/core';
 import { MatMenuTrigger } from '@angular/material/menu';
 import Calendar from './models/Calendar';
@@ -14,12 +14,12 @@ import { MatDialog } from '@angular/material/dialog';
 import { KeyboardShortcutDialogComponent } from './components/dialogs/keyboard-shortcut-dialog/keyboard-shortcut-dialog.component';
 
 @Component({
-    selector: 'ng-mat-calendar',
-    templateUrl: './ng-mat-calendar.component.html',
-    styleUrls: ['./ng-mat-calendar.component.scss'],
+    selector: 'ngx-mat-calendar',
+    templateUrl: './ngx-mat-calendar.component.html',
+    styleUrls: ['./ngx-mat-calendar.component.scss'],
     encapsulation: ViewEncapsulation.None
 })
-export class NgMatCalendarComponent implements OnInit, OnDestroy {
+export class NgxMatCalendarComponent implements OnInit, OnDestroy {
     @Input() options$: Observable<CalendarOptions>;
     @Input() events$: Observable<CalendarEvent[]>;
     @Input() selectedDate$: BehaviorSubject<Date>;

@@ -45,14 +45,14 @@ this.calendarOptions = new CalendarOptions({
 Add the component to the template:
 
 ```
-<ng-mat-calendar
+<ngx-mat-calendar
     [options$]="calendarOptions$"
     [events$]="events$"
     [selectedDate$]="date$"
     (eventClick)="handleEventClick($event)"
     (dateChange)="handleDateChange($event)"
     (addButtonClick)="handleAddButtonClick()">
-</ng-mat-calendar>
+</ngx-mat-calendar>
 ```
 
 When using a custom component for rendering the events, you can optionally extend the Event class to add more data to the event.

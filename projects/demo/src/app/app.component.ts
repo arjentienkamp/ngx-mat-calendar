@@ -1,8 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { add } from 'date-fns';
-import { CalendarEvent } from 'projects/ng-mat-calendar/src/lib/models/CalendarEvent';
-import { CalendarOptions } from 'projects/ng-mat-calendar/src/lib/models/CalendarOptions';
-import { WEEK } from 'projects/ng-mat-calendar/src/lib/models/Views';
+import { CalendarEvent } from 'projects/ngx-mat-calendar/src/lib/models/CalendarEvent';
+import { CalendarOptions } from 'projects/ngx-mat-calendar/src/lib/models/CalendarOptions';
+import { WEEK } from 'projects/ngx-mat-calendar/src/lib/models/Views';
 import { BehaviorSubject, Subscription } from 'rxjs';
 import { switchMap, tap } from 'rxjs/operators';
 // import { EventRenderTestComponent } from './component/event-render-test/event-render-test.component';

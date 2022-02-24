@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { NgMatCalendarComponent } from './ng-mat-calendar.component';
+import { NgxMatCalendarComponent } from './ngx-mat-calendar.component';
 import { MatCardModule } from '@angular/material/card';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatButtonModule } from '@angular/material/button';
@@ -46,7 +46,7 @@ const ViewModules = [
 
 @NgModule({
     declarations: [
-        NgMatCalendarComponent,
+        NgxMatCalendarComponent,
         KeyboardShortcutDialogComponent
     ],
     imports: [
@@ -57,7 +57,7 @@ const ViewModules = [
         ...MaterialModules
     ],
     exports: [
-        NgMatCalendarComponent,
+        NgxMatCalendarComponent,
         KeyboardShortcutDialogComponent
     ],
     providers: [
@@ -74,4 +74,4 @@ const ViewModules = [
     ],
     bootstrap: []
 })
-export class NgMatCalendarModule { }
+export class NgxMatCalendarModule { }
