@@ -14,7 +14,6 @@ import { MatMenuModule } from '@angular/material/menu';
 import { DayViewModule } from './components/day-view/day-view.module';
 import { WeekViewModule } from './components/week-view/week-view.module';
 import { MonthViewModule } from './components/month-view/month-view.module';
-import { MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/material-moment-adapter';
 import { LocaleDateAdapter } from './other/DateAdapter';
 import { FormattingService } from './services/formatting.service';
 import { KeyboardShortcutDialogComponent } from './components/dialogs/keyboard-shortcut-dialog/keyboard-shortcut-dialog.component';
@@ -62,11 +61,6 @@ const ViewModules = [
     providers: [
         FormattingService,
         {
-            provide: MAT_MOMENT_DATE_ADAPTER_OPTIONS,
-            useValue: {
-                useUtc: true
-            }
-        }, {
             provide: DateAdapter,
             useClass: LocaleDateAdapter
         }
