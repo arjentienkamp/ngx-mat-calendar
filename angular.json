@@ -28,18 +28,6 @@
             "tsConfig": "projects/ngx-mat-calendar/tsconfig.spec.json",
             "karmaConfig": "projects/ngx-mat-calendar/karma.conf.js"
           }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "projects/ngx-mat-calendar/tsconfig.lib.json",
-              "projects/ngx-mat-calendar/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
-          }
         }
       }
     }

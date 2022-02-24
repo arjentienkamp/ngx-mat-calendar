@@ -18,7 +18,6 @@ import { PipesModule } from '../../pipes/pipes.module';
     exports: [
         MonthViewComponent
     ],
-    entryComponents: [],
     providers: [],
     bootstrap: []
 })

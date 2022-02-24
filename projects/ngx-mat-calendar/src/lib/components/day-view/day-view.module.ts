@@ -16,7 +16,6 @@ import { PipesModule } from '../../pipes/pipes.module';
     exports: [
         DayViewComponent
     ],
-    entryComponents: [],
     providers: [],
     bootstrap: []
 })
