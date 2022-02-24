@@ -1,8 +1,8 @@
 (function (global, factory) {
-    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/core'), require('date-fns'), require('@angular/material/core'), require('@angular/material/menu'), require('rxjs'), require('rxjs/operators'), require('@angular/material/dialog'), require('@angular/platform-browser'), require('@angular/forms'), require('@angular/material/card'), require('@angular/material/tooltip'), require('@angular/material/button'), require('@angular/material/icon'), require('@angular/material/form-field'), require('@angular/material/input'), require('@angular/material/datepicker'), require('uuid'), require('rxjs/internal/operators/tap'), require('@angular/cdk/overlay'), require('@angular/material-moment-adapter'), require('@angular/material/divider'), require('@angular/material/select')) :
-    typeof define === 'function' && define.amd ? define('@arjentienkamp/ngx-mat-calendar', ['exports', '@angular/core', 'date-fns', '@angular/material/core', '@angular/material/menu', 'rxjs', 'rxjs/operators', '@angular/material/dialog', '@angular/platform-browser', '@angular/forms', '@angular/material/card', '@angular/material/tooltip', '@angular/material/button', '@angular/material/icon', '@angular/material/form-field', '@angular/material/input', '@angular/material/datepicker', 'uuid', 'rxjs/internal/operators/tap', '@angular/cdk/overlay', '@angular/material-moment-adapter', '@angular/material/divider', '@angular/material/select'], factory) :
-    (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory((global.arjentienkamp = global.arjentienkamp || {}, global.arjentienkamp['ngx-mat-calendar'] = {}), global.ng.core, global.dateFns, global.ng.material.core, global.ng.material.menu, global.rxjs, global.rxjs.operators, global.ng.material.dialog, global.ng.platformBrowser, global.ng.forms, global.ng.material.card, global.ng.material.tooltip, global.ng.material.button, global.ng.material.icon, global.ng.material.formField, global.ng.material.input, global.ng.material.datepicker, global.uuid, global.rxjs['internal/operators/tap'], global.ng.cdk.overlay, global.ng.materialMomentAdapter, global.ng.material.divider, global.ng.material.select));
-}(this, (function (exports, i0, dateFns, core, menu, rxjs, operators, dialog, platformBrowser, forms, card, tooltip, button, icon, formField, input, datepicker, uuid, tap, overlay, materialMomentAdapter, divider, select) { 'use strict';
+    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/core'), require('date-fns'), require('@angular/material/menu'), require('rxjs'), require('rxjs/operators'), require('@angular/material/dialog'), require('@angular/common'), require('@angular/material/icon'), require('@angular/material/tooltip'), require('@angular/material/divider'), require('@angular/material/core'), require('@angular/material/button'), require('@angular/material/datepicker'), require('@angular/material/form-field'), require('@angular/material/select'), require('uuid'), require('rxjs/internal/operators/tap'), require('@angular/cdk/overlay'), require('@angular/platform-browser'), require('@angular/forms'), require('@angular/material/card'), require('@angular/material/input'), require('@angular/material-moment-adapter')) :
+    typeof define === 'function' && define.amd ? define('@arjentienkamp/ngx-mat-calendar', ['exports', '@angular/core', 'date-fns', '@angular/material/menu', 'rxjs', 'rxjs/operators', '@angular/material/dialog', '@angular/common', '@angular/material/icon', '@angular/material/tooltip', '@angular/material/divider', '@angular/material/core', '@angular/material/button', '@angular/material/datepicker', '@angular/material/form-field', '@angular/material/select', 'uuid', 'rxjs/internal/operators/tap', '@angular/cdk/overlay', '@angular/platform-browser', '@angular/forms', '@angular/material/card', '@angular/material/input', '@angular/material-moment-adapter'], factory) :
+    (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory((global.arjentienkamp = global.arjentienkamp || {}, global.arjentienkamp['ngx-mat-calendar'] = {}), global.ng.core, global.dateFns, global.ng.material.menu, global.rxjs, global.rxjs.operators, global.ng.material.dialog, global.ng.common, global.ng.material.icon, global.ng.material.tooltip, global.ng.material.divider, global.ng.material.core, global.ng.material.button, global.ng.material.datepicker, global.ng.material.formField, global.ng.material.select, global.uuid, global.rxjs['internal/operators/tap'], global.ng.cdk.overlay, global.ng.platformBrowser, global.ng.forms, global.ng.material.card, global.ng.material.input, global.ng.materialMomentAdapter));
+}(this, (function (exports, i0, dateFns, i7, rxjs, operators, i2$1, i2, i3, i3$1, i3$2, i1, i4, i8, i9, i10, uuid, tap, i3$3, platformBrowser, forms, card, input, materialMomentAdapter) { 'use strict';
 
     var DAY = 'day';
     var WEEK = 'week';
@@ -71,13 +71,101 @@
         };
         return FormattingService;
     }());
-    FormattingService.ɵprov = i0.ɵɵdefineInjectable({ factory: function FormattingService_Factory() { return new FormattingService(); }, token: FormattingService, providedIn: "root" });
-    FormattingService.decorators = [
-        { type: i0.Injectable, args: [{
-                    providedIn: 'root'
-                },] }
-    ];
+    FormattingService.ɵfac = function FormattingService_Factory(t) { return new (t || FormattingService)(); };
+    FormattingService.ɵprov = i0.ɵɵdefineInjectable({ token: FormattingService, factory: FormattingService.ɵfac, providedIn: 'root' });
+    (function () {
+        (typeof ngDevMode === "undefined" || ngDevMode) && i0.ɵsetClassMetadata(FormattingService, [{
+                type: i0.Injectable,
+                args: [{
+                        providedIn: 'root'
+                    }]
+            }], null, null);
+    })();
 
+    function EventRenderDayComponent_div_0_div_1_div_7_Template(rf, ctx) {
+        if (rf & 1) {
+            i0.ɵɵelementStart(0, "div", 7);
+            i0.ɵɵelementStart(1, "mat-icon");
+            i0.ɵɵtext(2, "place");
+            i0.ɵɵelementEnd();
+            i0.ɵɵelementStart(3, "span");
+            i0.ɵɵtext(4);
+            i0.ɵɵelementEnd();
+            i0.ɵɵelementEnd();
+        }
+        if (rf & 2) {
+            var ctx_r4 = i0.ɵɵnextContext(3);
+            i0.ɵɵadvance(4);
+            i0.ɵɵtextInterpolate(ctx_r4.event.location);
+        }
+    }
+    function EventRenderDayComponent_div_0_div_1_Template(rf, ctx) {
+        if (rf & 1) {
+            i0.ɵɵelementStart(0, "div");
+            i0.ɵɵelementStart(1, "div", 4);
+            i0.ɵɵelementStart(2, "p");
+            i0.ɵɵtext(3);
+            i0.ɵɵelementEnd();
+            i0.ɵɵelementEnd();
+            i0.ɵɵelementStart(4, "div", 5);
+            i0.ɵɵelementStart(5, "p");
+            i0.ɵɵtext(6);
+            i0.ɵɵelementEnd();
+            i0.ɵɵtemplate(7, EventRenderDayComponent_div_0_div_1_div_7_Template, 5, 1, "div", 6);
+            i0.ɵɵelementEnd();
+            i0.ɵɵelementEnd();
+        }
+        if (rf & 2) {
+            var ctx_r1 = i0.ɵɵnextContext(2);
+            i0.ɵɵadvance(3);
+            i0.ɵɵtextInterpolate(ctx_r1.event.title);
+            i0.ɵɵadvance(3);
+            i0.ɵɵtextInterpolate2("", ctx_r1.startTime, " - ", ctx_r1.endTime, "");
+            i0.ɵɵadvance(1);
+            i0.ɵɵproperty("ngIf", ctx_r1.event.location);
+        }
+    }
+    function EventRenderDayComponent_div_0_div_2_Template(rf, ctx) {
+        if (rf & 1) {
+            i0.ɵɵelementStart(0, "div");
+            i0.ɵɵelementStart(1, "div", 4);
+            i0.ɵɵelementStart(2, "p", 8);
+            i0.ɵɵtext(3);
+            i0.ɵɵelementEnd();
+            i0.ɵɵelementEnd();
+            i0.ɵɵelementEnd();
+        }
+        if (rf & 2) {
+            var ctx_r2 = i0.ɵɵnextContext(2);
+            i0.ɵɵadvance(3);
+            i0.ɵɵtextInterpolate(ctx_r2.event.title);
+        }
+    }
+    function EventRenderDayComponent_div_0_div_3_Template(rf, ctx) {
+        if (rf & 1) {
+            i0.ɵɵelement(0, "div", 9);
+        }
+    }
+    function EventRenderDayComponent_div_0_Template(rf, ctx) {
+        if (rf & 1) {
+            i0.ɵɵelementStart(0, "div", 1);
+            i0.ɵɵtemplate(1, EventRenderDayComponent_div_0_div_1_Template, 8, 4, "div", 2);
+            i0.ɵɵtemplate(2, EventRenderDayComponent_div_0_div_2_Template, 4, 1, "div", 2);
+            i0.ɵɵtemplate(3, EventRenderDayComponent_div_0_div_3_Template, 1, 0, "div", 3);
+            i0.ɵɵelementEnd();
+        }
+        if (rf & 2) {
+            var ctx_r0 = i0.ɵɵnextContext();
+            i0.ɵɵstyleProp("background-color", ctx_r0.event.color);
+            i0.ɵɵclassProp("all-day", ctx_r0.event.allDay);
+            i0.ɵɵadvance(1);
+            i0.ɵɵproperty("ngIf", !ctx_r0.event.allDay);
+            i0.ɵɵadvance(1);
+            i0.ɵɵproperty("ngIf", ctx_r0.event.allDay);
+            i0.ɵɵadvance(1);
+            i0.ɵɵproperty("ngIf", !ctx_r0.isSameDay && !ctx_r0.endsToday);
+        }
+    }
     var EventRenderDayComponent = /** @class */ (function () {
         function EventRenderDayComponent(formattingService) {
             this.formattingService = formattingService;
@@ -90,21 +178,85 @@
         };
         return EventRenderDayComponent;
     }());
-    EventRenderDayComponent.decorators = [
-        { type: i0.Component, args: [{
-                    selector: 'event-render-day',
-                    template: "<div *ngIf=\"event\" class=\"event\" [class.all-day]=\"event.allDay\" [style.backgroundColor]=\"event.color\">\n    <div *ngIf=\"!event.allDay\">\n        <div class=\"event__header\">\n            <p>{{ event.title }}</p>\n        </div>\n\n        <div class=\"event__metadata\">\n            <p>{{ startTime }} - {{ endTime }}</p>\n\n            <div class=\"event__location\" *ngIf=\"event.location\">\n                <mat-icon>place</mat-icon>\n                <span>{{ event.location }}</span>\n            </div>\n        </div>\n    </div>\n\n    <div *ngIf=\"event.allDay\">\n        <div class=\"event__header\">\n            <p class=\"title\">{{ event.title }}</p>\n        </div>\n    </div>\n\n    <div class=\"event__multiday\" *ngIf=\"!isSameDay && !endsToday\"></div>\n</div>",
-                    styles: ["*{box-sizing:border-box}.calendar__item{display:flex;flex:1;flex-direction:column;position:absolute;left:0;padding:2px;border-radius:4px;width:100%;transition:.25s}.calendar__item:hover{opacity:.75;cursor:pointer}.calendar__times{position:relative;top:-10px;display:flex;width:60px;margin-right:20px;flex-direction:column;color:#c8c8c8;text-align:center}.time-cell{display:flex;justify-content:center}.calendar__content{flex:1;flex-direction:column;overflow:scroll;margin-top:100px}.calendar__days{position:absolute;top:65px;left:0;bottom:0;right:0;display:flex;flex-direction:row;margin-left:79px;border-left:1px solid #efefef}.calendar__day{display:flex;flex:1;justify-content:flex-start;border-right:1px solid #efefef;padding-right:.5rem;margin-left:.5rem}.calendar__day .day__header{display:flex;flex-direction:column;align-items:center;color:#c8c8c8}.calendar__day .day__header .day-name{margin-bottom:.5rem}.calendar__day .day__header .day-number{display:flex;justify-content:center;align-items:center;margin-bottom:.5rem;width:40px;height:40px;border-radius:20px;background-color:#efefef;color:#2a2a2a}.calendar__day .day__header--today .day-number{background-color:#263238;color:#fff}.calendar__day-events{position:-webkit-sticky;position:sticky;top:0;z-index:2;display:flex;flex-direction:row;margin-left:79px;background-color:#fff;border-left:1px solid #efefef}.calendar__day-events .day__lane{position:relative;display:flex;flex:1;flex-direction:column;overflow:hidden;border-right:1px solid #efefef}.calendar__day-events .day__lane .calendar__item{position:relative}.calendar__day-events .day__lane .calendar__item .event__header{border-bottom:0}.calendar__marker{position:relative;z-index:1;border:1px solid #d32f2f;width:calc(100% + 1rem);left:-.5rem}.calendar__marker:before{content:\"\";display:block;position:absolute;width:10px;background-color:#d32f2f;height:10px;border-radius:10px;top:-5px;left:-7px}.event,:host(event-render){display:flex;flex-direction:column;height:100%}.event{justify-content:space-between;border-radius:4px;overflow:hidden}.event.all-day{height:auto}.event__header{display:flex;text-align:left;color:#546e7a;padding:.25rem;border-bottom:1px solid hsla(0,0%,100%,.5)}.event__header p{white-space:nowrap;text-overflow:ellipsis;max-width:100%;overflow:hidden;margin-bottom:0}.event__metadata{display:flex;flex-direction:column;flex:1;font-weight:100;color:#546e7a;padding:.25rem}.event__metadata p{margin-bottom:.25rem}.event__location{display:flex;justify-content:flex-start;align-items:center}.event__location mat-icon{font-size:16px;height:16px;width:16px;margin-right:.25rem}.event__location span{white-space:nowrap;text-overflow:ellipsis;max-width:100%;overflow:hidden}"]
-                },] }
-    ];
-    EventRenderDayComponent.ctorParameters = function () { return [
-        { type: FormattingService }
-    ]; };
-    EventRenderDayComponent.propDecorators = {
-        event: [{ type: i0.Input }],
-        date: [{ type: i0.Input }]
-    };
+    EventRenderDayComponent.ɵfac = function EventRenderDayComponent_Factory(t) { return new (t || EventRenderDayComponent)(i0.ɵɵdirectiveInject(FormattingService)); };
+    EventRenderDayComponent.ɵcmp = i0.ɵɵdefineComponent({ type: EventRenderDayComponent, selectors: [["event-render-day"]], inputs: { event: "event", date: "date" }, decls: 1, vars: 1, consts: [["class", "event", 3, "all-day", "backgroundColor", 4, "ngIf"], [1, "event"], [4, "ngIf"], ["class", "event__multiday", 4, "ngIf"], [1, "event__header"], [1, "event__metadata"], ["class", "event__location", 4, "ngIf"], [1, "event__location"], [1, "title"], [1, "event__multiday"]], template: function EventRenderDayComponent_Template(rf, ctx) {
+            if (rf & 1) {
+                i0.ɵɵtemplate(0, EventRenderDayComponent_div_0_Template, 4, 7, "div", 0);
+            }
+            if (rf & 2) {
+                i0.ɵɵproperty("ngIf", ctx.event);
+            }
+        }, directives: [i2.NgIf, i3.MatIcon], styles: ["*[_ngcontent-%COMP%]{box-sizing:border-box}.calendar__item[_ngcontent-%COMP%]{display:flex;flex:1;flex-direction:column;position:absolute;left:0;padding:2px;border-radius:4px;width:100%;transition:.25s}.calendar__item[_ngcontent-%COMP%]:hover{opacity:.75;cursor:pointer}.calendar__times[_ngcontent-%COMP%]{position:relative;top:-10px;display:flex;width:60px;margin-right:20px;flex-direction:column;color:#c8c8c8;text-align:center}.time-cell[_ngcontent-%COMP%]{display:flex;justify-content:center}.calendar__content[_ngcontent-%COMP%]{flex:1;flex-direction:column;overflow:scroll;margin-top:100px}.calendar__days[_ngcontent-%COMP%]{position:absolute;top:65px;left:0;bottom:0;right:0;display:flex;flex-direction:row;margin-left:79px;border-left:1px solid #efefef}.calendar__day[_ngcontent-%COMP%]{display:flex;flex:1;justify-content:flex-start;border-right:1px solid #efefef;padding-right:.5rem;margin-left:.5rem}.calendar__day[_ngcontent-%COMP%]   .day__header[_ngcontent-%COMP%]{display:flex;flex-direction:column;align-items:center;color:#c8c8c8}.calendar__day[_ngcontent-%COMP%]   .day__header[_ngcontent-%COMP%]   .day-name[_ngcontent-%COMP%]{margin-bottom:.5rem}.calendar__day[_ngcontent-%COMP%]   .day__header[_ngcontent-%COMP%]   .day-number[_ngcontent-%COMP%]{display:flex;justify-content:center;align-items:center;margin-bottom:.5rem;width:40px;height:40px;border-radius:20px;background-color:#efefef;color:#2a2a2a}.calendar__day[_ngcontent-%COMP%]   .day__header--today[_ngcontent-%COMP%]   .day-number[_ngcontent-%COMP%]{background-color:#263238;color:#fff}.calendar__day-events[_ngcontent-%COMP%]{position:-webkit-sticky;position:sticky;top:0;z-index:2;display:flex;flex-direction:row;margin-left:79px;background-color:#fff;border-left:1px solid #efefef}.calendar__day-events[_ngcontent-%COMP%]   .day__lane[_ngcontent-%COMP%]{position:relative;display:flex;flex:1;flex-direction:column;overflow:hidden;border-right:1px solid #efefef}.calendar__day-events[_ngcontent-%COMP%]   .day__lane[_ngcontent-%COMP%]   .calendar__item[_ngcontent-%COMP%]{position:relative}.calendar__day-events[_ngcontent-%COMP%]   .day__lane[_ngcontent-%COMP%]   .calendar__item[_ngcontent-%COMP%]   .event__header[_ngcontent-%COMP%]{border-bottom:0}.calendar__marker[_ngcontent-%COMP%]{position:relative;z-index:1;border:1px solid #d32f2f;width:calc(100% + 1rem);left:-.5rem}.calendar__marker[_ngcontent-%COMP%]:before{content:\"\";display:block;position:absolute;width:10px;background-color:#d32f2f;height:10px;border-radius:10px;top:-5px;left:-7px}.event[_ngcontent-%COMP%], event-render[_nghost-%COMP%]{display:flex;flex-direction:column;height:100%}.event[_ngcontent-%COMP%]{justify-content:space-between;border-radius:4px;overflow:hidden}.event.all-day[_ngcontent-%COMP%]{height:auto}.event__header[_ngcontent-%COMP%]{display:flex;text-align:left;color:#546e7a;padding:.25rem;border-bottom:1px solid hsla(0,0%,100%,.5)}.event__header[_ngcontent-%COMP%]   p[_ngcontent-%COMP%]{white-space:nowrap;text-overflow:ellipsis;max-width:100%;overflow:hidden;margin-bottom:0}.event__metadata[_ngcontent-%COMP%]{display:flex;flex-direction:column;flex:1;font-weight:100;color:#546e7a;padding:.25rem}.event__metadata[_ngcontent-%COMP%]   p[_ngcontent-%COMP%]{margin-bottom:.25rem}.event__location[_ngcontent-%COMP%]{display:flex;justify-content:flex-start;align-items:center}.event__location[_ngcontent-%COMP%]   mat-icon[_ngcontent-%COMP%]{font-size:16px;height:16px;width:16px;margin-right:.25rem}.event__location[_ngcontent-%COMP%]   span[_ngcontent-%COMP%]{white-space:nowrap;text-overflow:ellipsis;max-width:100%;overflow:hidden}"] });
+    (function () {
+        (typeof ngDevMode === "undefined" || ngDevMode) && i0.ɵsetClassMetadata(EventRenderDayComponent, [{
+                type: i0.Component,
+                args: [{
+                        selector: 'event-render-day',
+                        templateUrl: './event-render-day.component.html',
+                        styleUrls: ['./event-render-day.component.scss']
+                    }]
+            }], function () { return [{ type: FormattingService }]; }, { event: [{
+                    type: i0.Input
+                }], date: [{
+                    type: i0.Input
+                }] });
+    })();
 
+    function EventRenderMonthComponent_div_0_span_2_Template(rf, ctx) {
+        if (rf & 1) {
+            i0.ɵɵelement(0, "span", 7);
+        }
+        if (rf & 2) {
+            var ctx_r1 = i0.ɵɵnextContext(2);
+            i0.ɵɵstyleProp("background-color", ctx_r1.event.color);
+        }
+    }
+    function EventRenderMonthComponent_div_0_p_3_Template(rf, ctx) {
+        if (rf & 1) {
+            i0.ɵɵelementStart(0, "p", 8);
+            i0.ɵɵtext(1);
+            i0.ɵɵelementEnd();
+        }
+        if (rf & 2) {
+            var ctx_r2 = i0.ɵɵnextContext(2);
+            i0.ɵɵadvance(1);
+            i0.ɵɵtextInterpolate(ctx_r2.startTime);
+        }
+    }
+    function EventRenderMonthComponent_div_0_div_6_Template(rf, ctx) {
+        if (rf & 1) {
+            i0.ɵɵelement(0, "div", 9);
+        }
+    }
+    var _c0 = function (a0) { return { "backgroundColor": a0 }; };
+    function EventRenderMonthComponent_div_0_Template(rf, ctx) {
+        if (rf & 1) {
+            i0.ɵɵelementStart(0, "div", 1);
+            i0.ɵɵelementStart(1, "div", 2);
+            i0.ɵɵtemplate(2, EventRenderMonthComponent_div_0_span_2_Template, 1, 2, "span", 3);
+            i0.ɵɵtemplate(3, EventRenderMonthComponent_div_0_p_3_Template, 2, 1, "p", 4);
+            i0.ɵɵelementStart(4, "p", 5);
+            i0.ɵɵtext(5);
+            i0.ɵɵelementEnd();
+            i0.ɵɵelementEnd();
+            i0.ɵɵtemplate(6, EventRenderMonthComponent_div_0_div_6_Template, 1, 0, "div", 6);
+            i0.ɵɵelementEnd();
+        }
+        if (rf & 2) {
+            var ctx_r0 = i0.ɵɵnextContext();
+            i0.ɵɵadvance(1);
+            i0.ɵɵclassProp("all-day", ctx_r0.event.allDay)("past-event", ctx_r0.isPastEvent());
+            i0.ɵɵproperty("matTooltip", ctx_r0.eventTooltip)("ngStyle", i0.ɵɵpureFunction1(10, _c0, ctx_r0.event.allDay ? ctx_r0.event.color : ""));
+            i0.ɵɵadvance(1);
+            i0.ɵɵproperty("ngIf", !ctx_r0.event.allDay);
+            i0.ɵɵadvance(1);
+            i0.ɵɵproperty("ngIf", !ctx_r0.event.allDay);
+            i0.ɵɵadvance(2);
+            i0.ɵɵtextInterpolate(ctx_r0.event.title);
+            i0.ɵɵadvance(1);
+            i0.ɵɵproperty("ngIf", !ctx_r0.isSameDay && !ctx_r0.endsToday);
+        }
+    }
     var EventRenderMonthComponent = /** @class */ (function () {
         function EventRenderMonthComponent(formattingService) {
             this.formattingService = formattingService;
@@ -127,21 +279,114 @@
         };
         return EventRenderMonthComponent;
     }());
-    EventRenderMonthComponent.decorators = [
-        { type: i0.Component, args: [{
-                    selector: 'event-render-month',
-                    template: "<div *ngIf=\"event\" class=\"event\">\n    <div\n        class=\"even__line\"\n        [matTooltip]=\"eventTooltip\"\n        [ngStyle]=\"{'backgroundColor' : event.allDay ? event.color : '' }\"\n        [class.all-day]=\"event.allDay\"\n        [class.past-event]=\"isPastEvent()\">\n        <span class=\"event-color\" *ngIf=\"!event.allDay\" [style.backgroundColor]=\"event.color\"></span>\n        <p class=\"metadata\" *ngIf=\"!event.allDay\">{{ startTime }}</p>\n        <p class=\"title\">{{ event.title }}</p>\n    </div>\n\n    <div class=\"event__multiday\" *ngIf=\"!isSameDay && !endsToday\"></div>\n</div>",
-                    styles: ["*{box-sizing:border-box}.calendar__item{display:flex;flex:1;flex-direction:column;position:absolute;left:0;padding:2px;border-radius:4px;width:100%;transition:.25s}.calendar__item:hover{opacity:.75;cursor:pointer}.calendar__times{position:relative;top:-10px;display:flex;width:60px;margin-right:20px;flex-direction:column;color:#c8c8c8;text-align:center}.time-cell{display:flex;justify-content:center}.calendar__content{flex:1;flex-direction:column;overflow:scroll;margin-top:100px}.calendar__days{position:absolute;top:65px;left:0;bottom:0;right:0;display:flex;flex-direction:row;margin-left:79px;border-left:1px solid #efefef}.calendar__day{display:flex;flex:1;justify-content:flex-start;border-right:1px solid #efefef;padding-right:.5rem;margin-left:.5rem}.calendar__day .day__header{display:flex;flex-direction:column;align-items:center;color:#c8c8c8}.calendar__day .day__header .day-name{margin-bottom:.5rem}.calendar__day .day__header .day-number{display:flex;justify-content:center;align-items:center;margin-bottom:.5rem;width:40px;height:40px;border-radius:20px;background-color:#efefef;color:#2a2a2a}.calendar__day .day__header--today .day-number{background-color:#263238;color:#fff}.calendar__day-events{position:-webkit-sticky;position:sticky;top:0;z-index:2;display:flex;flex-direction:row;margin-left:79px;background-color:#fff;border-left:1px solid #efefef}.calendar__day-events .day__lane{position:relative;display:flex;flex:1;flex-direction:column;overflow:hidden;border-right:1px solid #efefef}.calendar__day-events .day__lane .calendar__item{position:relative}.calendar__day-events .day__lane .calendar__item .event__header{border-bottom:0}.calendar__marker{position:relative;z-index:1;border:1px solid #d32f2f;width:calc(100% + 1rem);left:-.5rem}.calendar__marker:before{content:\"\";display:block;position:absolute;width:10px;background-color:#d32f2f;height:10px;border-radius:10px;top:-5px;left:-7px}:host(event-render){height:100%}.event,:host(event-render){display:flex;flex-direction:column}.event{justify-content:space-between;overflow:hidden;font-size:12px}.even__line{display:flex;align-items:center;text-align:left;color:#546e7a;padding:.25rem}.even__line.all-day{border-radius:2px;width:100%;overflow:hidden;margin-top:.25rem}.even__line.past-event{opacity:.7}.even__line .event-color{min-width:10px;height:10px;border-radius:10px;margin-right:.5rem}.even__line p.metadata{margin-right:.5rem;margin-bottom:0}.even__line p.title{white-space:nowrap;text-overflow:ellipsis;max-width:100%;overflow:hidden;margin-bottom:0}"]
-                },] }
-    ];
-    EventRenderMonthComponent.ctorParameters = function () { return [
-        { type: FormattingService }
-    ]; };
-    EventRenderMonthComponent.propDecorators = {
-        event: [{ type: i0.Input }],
-        date: [{ type: i0.Input }]
-    };
+    EventRenderMonthComponent.ɵfac = function EventRenderMonthComponent_Factory(t) { return new (t || EventRenderMonthComponent)(i0.ɵɵdirectiveInject(FormattingService)); };
+    EventRenderMonthComponent.ɵcmp = i0.ɵɵdefineComponent({ type: EventRenderMonthComponent, selectors: [["event-render-month"]], inputs: { event: "event", date: "date" }, decls: 1, vars: 1, consts: [["class", "event", 4, "ngIf"], [1, "event"], [1, "even__line", 3, "matTooltip", "ngStyle"], ["class", "event-color", 3, "backgroundColor", 4, "ngIf"], ["class", "metadata", 4, "ngIf"], [1, "title"], ["class", "event__multiday", 4, "ngIf"], [1, "event-color"], [1, "metadata"], [1, "event__multiday"]], template: function EventRenderMonthComponent_Template(rf, ctx) {
+            if (rf & 1) {
+                i0.ɵɵtemplate(0, EventRenderMonthComponent_div_0_Template, 7, 12, "div", 0);
+            }
+            if (rf & 2) {
+                i0.ɵɵproperty("ngIf", ctx.event);
+            }
+        }, directives: [i2.NgIf, i3$1.MatTooltip, i2.NgStyle], styles: ["*[_ngcontent-%COMP%]{box-sizing:border-box}.calendar__item[_ngcontent-%COMP%]{display:flex;flex:1;flex-direction:column;position:absolute;left:0;padding:2px;border-radius:4px;width:100%;transition:.25s}.calendar__item[_ngcontent-%COMP%]:hover{opacity:.75;cursor:pointer}.calendar__times[_ngcontent-%COMP%]{position:relative;top:-10px;display:flex;width:60px;margin-right:20px;flex-direction:column;color:#c8c8c8;text-align:center}.time-cell[_ngcontent-%COMP%]{display:flex;justify-content:center}.calendar__content[_ngcontent-%COMP%]{flex:1;flex-direction:column;overflow:scroll;margin-top:100px}.calendar__days[_ngcontent-%COMP%]{position:absolute;top:65px;left:0;bottom:0;right:0;display:flex;flex-direction:row;margin-left:79px;border-left:1px solid #efefef}.calendar__day[_ngcontent-%COMP%]{display:flex;flex:1;justify-content:flex-start;border-right:1px solid #efefef;padding-right:.5rem;margin-left:.5rem}.calendar__day[_ngcontent-%COMP%]   .day__header[_ngcontent-%COMP%]{display:flex;flex-direction:column;align-items:center;color:#c8c8c8}.calendar__day[_ngcontent-%COMP%]   .day__header[_ngcontent-%COMP%]   .day-name[_ngcontent-%COMP%]{margin-bottom:.5rem}.calendar__day[_ngcontent-%COMP%]   .day__header[_ngcontent-%COMP%]   .day-number[_ngcontent-%COMP%]{display:flex;justify-content:center;align-items:center;margin-bottom:.5rem;width:40px;height:40px;border-radius:20px;background-color:#efefef;color:#2a2a2a}.calendar__day[_ngcontent-%COMP%]   .day__header--today[_ngcontent-%COMP%]   .day-number[_ngcontent-%COMP%]{background-color:#263238;color:#fff}.calendar__day-events[_ngcontent-%COMP%]{position:-webkit-sticky;position:sticky;top:0;z-index:2;display:flex;flex-direction:row;margin-left:79px;background-color:#fff;border-left:1px solid #efefef}.calendar__day-events[_ngcontent-%COMP%]   .day__lane[_ngcontent-%COMP%]{position:relative;display:flex;flex:1;flex-direction:column;overflow:hidden;border-right:1px solid #efefef}.calendar__day-events[_ngcontent-%COMP%]   .day__lane[_ngcontent-%COMP%]   .calendar__item[_ngcontent-%COMP%]{position:relative}.calendar__day-events[_ngcontent-%COMP%]   .day__lane[_ngcontent-%COMP%]   .calendar__item[_ngcontent-%COMP%]   .event__header[_ngcontent-%COMP%]{border-bottom:0}.calendar__marker[_ngcontent-%COMP%]{position:relative;z-index:1;border:1px solid #d32f2f;width:calc(100% + 1rem);left:-.5rem}.calendar__marker[_ngcontent-%COMP%]:before{content:\"\";display:block;position:absolute;width:10px;background-color:#d32f2f;height:10px;border-radius:10px;top:-5px;left:-7px}event-render[_nghost-%COMP%]{height:100%}.event[_ngcontent-%COMP%], event-render[_nghost-%COMP%]{display:flex;flex-direction:column}.event[_ngcontent-%COMP%]{justify-content:space-between;overflow:hidden;font-size:12px}.even__line[_ngcontent-%COMP%]{display:flex;align-items:center;text-align:left;color:#546e7a;padding:.25rem}.even__line.all-day[_ngcontent-%COMP%]{border-radius:2px;width:100%;overflow:hidden;margin-top:.25rem}.even__line.past-event[_ngcontent-%COMP%]{opacity:.7}.even__line[_ngcontent-%COMP%]   .event-color[_ngcontent-%COMP%]{min-width:10px;height:10px;border-radius:10px;margin-right:.5rem}.even__line[_ngcontent-%COMP%]   p.metadata[_ngcontent-%COMP%]{margin-right:.5rem;margin-bottom:0}.even__line[_ngcontent-%COMP%]   p.title[_ngcontent-%COMP%]{white-space:nowrap;text-overflow:ellipsis;max-width:100%;overflow:hidden;margin-bottom:0}"] });
+    (function () {
+        (typeof ngDevMode === "undefined" || ngDevMode) && i0.ɵsetClassMetadata(EventRenderMonthComponent, [{
+                type: i0.Component,
+                args: [{
+                        selector: 'event-render-month',
+                        templateUrl: './event-render-month.component.html',
+                        styleUrls: ['./event-render-month.component.scss']
+                    }]
+            }], function () { return [{ type: FormattingService }]; }, { event: [{
+                    type: i0.Input
+                }], date: [{
+                    type: i0.Input
+                }] });
+    })();
 
+    function EventRenderWeekComponent_div_0_div_1_div_7_Template(rf, ctx) {
+        if (rf & 1) {
+            i0.ɵɵelementStart(0, "div", 7);
+            i0.ɵɵelementStart(1, "mat-icon");
+            i0.ɵɵtext(2, "place");
+            i0.ɵɵelementEnd();
+            i0.ɵɵelementStart(3, "span");
+            i0.ɵɵtext(4);
+            i0.ɵɵelementEnd();
+            i0.ɵɵelementEnd();
+        }
+        if (rf & 2) {
+            var ctx_r4 = i0.ɵɵnextContext(3);
+            i0.ɵɵadvance(4);
+            i0.ɵɵtextInterpolate(ctx_r4.event.location);
+        }
+    }
+    function EventRenderWeekComponent_div_0_div_1_Template(rf, ctx) {
+        if (rf & 1) {
+            i0.ɵɵelementStart(0, "div");
+            i0.ɵɵelementStart(1, "div", 4);
+            i0.ɵɵelementStart(2, "p");
+            i0.ɵɵtext(3);
+            i0.ɵɵelementEnd();
+            i0.ɵɵelementEnd();
+            i0.ɵɵelementStart(4, "div", 5);
+            i0.ɵɵelementStart(5, "p");
+            i0.ɵɵtext(6);
+            i0.ɵɵelementEnd();
+            i0.ɵɵtemplate(7, EventRenderWeekComponent_div_0_div_1_div_7_Template, 5, 1, "div", 6);
+            i0.ɵɵelementEnd();
+            i0.ɵɵelementEnd();
+        }
+        if (rf & 2) {
+            var ctx_r1 = i0.ɵɵnextContext(2);
+            i0.ɵɵadvance(3);
+            i0.ɵɵtextInterpolate(ctx_r1.event.title);
+            i0.ɵɵadvance(3);
+            i0.ɵɵtextInterpolate2("", ctx_r1.startTime, " - ", ctx_r1.endTime, "");
+            i0.ɵɵadvance(1);
+            i0.ɵɵproperty("ngIf", ctx_r1.event.location);
+        }
+    }
+    function EventRenderWeekComponent_div_0_div_2_Template(rf, ctx) {
+        if (rf & 1) {
+            i0.ɵɵelementStart(0, "div");
+            i0.ɵɵelementStart(1, "div", 4);
+            i0.ɵɵelementStart(2, "p", 8);
+            i0.ɵɵtext(3);
+            i0.ɵɵelementEnd();
+            i0.ɵɵelementEnd();
+            i0.ɵɵelementEnd();
+        }
+        if (rf & 2) {
+            var ctx_r2 = i0.ɵɵnextContext(2);
+            i0.ɵɵadvance(3);
+            i0.ɵɵtextInterpolate(ctx_r2.event.title);
+        }
+    }
+    function EventRenderWeekComponent_div_0_div_3_Template(rf, ctx) {
+        if (rf & 1) {
+            i0.ɵɵelement(0, "div", 9);
+        }
+    }
+    function EventRenderWeekComponent_div_0_Template(rf, ctx) {
+        if (rf & 1) {
+            i0.ɵɵelementStart(0, "div", 1);
+            i0.ɵɵtemplate(1, EventRenderWeekComponent_div_0_div_1_Template, 8, 4, "div", 2);
+            i0.ɵɵtemplate(2, EventRenderWeekComponent_div_0_div_2_Template, 4, 1, "div", 2);
+            i0.ɵɵtemplate(3, EventRenderWeekComponent_div_0_div_3_Template, 1, 0, "div", 3);
+            i0.ɵɵelementEnd();
+        }
+        if (rf & 2) {
+            var ctx_r0 = i0.ɵɵnextContext();
+            i0.ɵɵstyleProp("background-color", ctx_r0.event.color);
+            i0.ɵɵclassProp("all-day", ctx_r0.event.allDay);
+            i0.ɵɵadvance(1);
+            i0.ɵɵproperty("ngIf", !ctx_r0.event.allDay);
+            i0.ɵɵadvance(1);
+            i0.ɵɵproperty("ngIf", ctx_r0.event.allDay);
+            i0.ɵɵadvance(1);
+            i0.ɵɵproperty("ngIf", !ctx_r0.isSameDay && !ctx_r0.endsToday);
+        }
+    }
     var EventRenderWeekComponent = /** @class */ (function () {
         function EventRenderWeekComponent(formattingService) {
             this.formattingService = formattingService;
@@ -154,20 +399,29 @@
         };
         return EventRenderWeekComponent;
     }());
-    EventRenderWeekComponent.decorators = [
-        { type: i0.Component, args: [{
-                    selector: 'event-render-week',
-                    template: "<div *ngIf=\"event\" class=\"event\" [class.all-day]=\"event.allDay\" [style.backgroundColor]=\"event.color\">\n    <div *ngIf=\"!event.allDay\">\n        <div class=\"event__header\">\n            <p>{{ event.title }}</p>\n        </div>\n\n        <div class=\"event__metadata\">\n            <p>{{ startTime }} - {{ endTime }}</p>\n\n            <div class=\"event__location\" *ngIf=\"event.location\">\n                <mat-icon>place</mat-icon>\n                <span>{{ event.location }}</span>\n            </div>\n        </div>\n    </div>\n\n    <div *ngIf=\"event.allDay\">\n        <div class=\"event__header\">\n            <p class=\"title\">{{ event.title }}</p>\n        </div>\n    </div>\n\n    <div class=\"event__multiday\" *ngIf=\"!isSameDay && !endsToday\"></div>\n</div>",
-                    styles: ["*{box-sizing:border-box}.calendar__item{display:flex;flex:1;flex-direction:column;position:absolute;left:0;padding:2px;border-radius:4px;width:100%;transition:.25s}.calendar__item:hover{opacity:.75;cursor:pointer}.calendar__times{position:relative;top:-10px;display:flex;width:60px;margin-right:20px;flex-direction:column;color:#c8c8c8;text-align:center}.time-cell{display:flex;justify-content:center}.calendar__content{flex:1;flex-direction:column;overflow:scroll;margin-top:100px}.calendar__days{position:absolute;top:65px;left:0;bottom:0;right:0;display:flex;flex-direction:row;margin-left:79px;border-left:1px solid #efefef}.calendar__day{display:flex;flex:1;justify-content:flex-start;border-right:1px solid #efefef;padding-right:.5rem;margin-left:.5rem}.calendar__day .day__header{display:flex;flex-direction:column;align-items:center;color:#c8c8c8}.calendar__day .day__header .day-name{margin-bottom:.5rem}.calendar__day .day__header .day-number{display:flex;justify-content:center;align-items:center;margin-bottom:.5rem;width:40px;height:40px;border-radius:20px;background-color:#efefef;color:#2a2a2a}.calendar__day .day__header--today .day-number{background-color:#263238;color:#fff}.calendar__day-events{position:-webkit-sticky;position:sticky;top:0;z-index:2;display:flex;flex-direction:row;margin-left:79px;background-color:#fff;border-left:1px solid #efefef}.calendar__day-events .day__lane{position:relative;display:flex;flex:1;flex-direction:column;overflow:hidden;border-right:1px solid #efefef}.calendar__day-events .day__lane .calendar__item{position:relative}.calendar__day-events .day__lane .calendar__item .event__header{border-bottom:0}.calendar__marker{position:relative;z-index:1;border:1px solid #d32f2f;width:calc(100% + 1rem);left:-.5rem}.calendar__marker:before{content:\"\";display:block;position:absolute;width:10px;background-color:#d32f2f;height:10px;border-radius:10px;top:-5px;left:-7px}.event,:host(event-render){display:flex;flex-direction:column;height:100%}.event{justify-content:space-between;border-radius:4px;overflow:hidden}.event.all-day{height:auto}.event__header{display:flex;text-align:left;color:#546e7a;padding:.25rem;border-bottom:1px solid hsla(0,0%,100%,.5)}.event__header p{white-space:nowrap;text-overflow:ellipsis;max-width:100%;overflow:hidden;margin-bottom:0}.event__metadata{display:flex;flex-direction:column;flex:1;font-weight:100;color:#546e7a;padding:.25rem}.event__metadata p{margin-bottom:.25rem}.event__location{display:flex;justify-content:flex-start;align-items:center}.event__location mat-icon{font-size:16px;height:16px;width:16px;margin-right:.25rem}.event__location span{white-space:nowrap;text-overflow:ellipsis;max-width:100%;overflow:hidden}"]
-                },] }
-    ];
-    EventRenderWeekComponent.ctorParameters = function () { return [
-        { type: FormattingService }
-    ]; };
-    EventRenderWeekComponent.propDecorators = {
-        event: [{ type: i0.Input }],
-        date: [{ type: i0.Input }]
-    };
+    EventRenderWeekComponent.ɵfac = function EventRenderWeekComponent_Factory(t) { return new (t || EventRenderWeekComponent)(i0.ɵɵdirectiveInject(FormattingService)); };
+    EventRenderWeekComponent.ɵcmp = i0.ɵɵdefineComponent({ type: EventRenderWeekComponent, selectors: [["event-render-week"]], inputs: { event: "event", date: "date" }, decls: 1, vars: 1, consts: [["class", "event", 3, "all-day", "backgroundColor", 4, "ngIf"], [1, "event"], [4, "ngIf"], ["class", "event__multiday", 4, "ngIf"], [1, "event__header"], [1, "event__metadata"], ["class", "event__location", 4, "ngIf"], [1, "event__location"], [1, "title"], [1, "event__multiday"]], template: function EventRenderWeekComponent_Template(rf, ctx) {
+            if (rf & 1) {
+                i0.ɵɵtemplate(0, EventRenderWeekComponent_div_0_Template, 4, 7, "div", 0);
+            }
+            if (rf & 2) {
+                i0.ɵɵproperty("ngIf", ctx.event);
+            }
+        }, directives: [i2.NgIf, i3.MatIcon], styles: ["*[_ngcontent-%COMP%]{box-sizing:border-box}.calendar__item[_ngcontent-%COMP%]{display:flex;flex:1;flex-direction:column;position:absolute;left:0;padding:2px;border-radius:4px;width:100%;transition:.25s}.calendar__item[_ngcontent-%COMP%]:hover{opacity:.75;cursor:pointer}.calendar__times[_ngcontent-%COMP%]{position:relative;top:-10px;display:flex;width:60px;margin-right:20px;flex-direction:column;color:#c8c8c8;text-align:center}.time-cell[_ngcontent-%COMP%]{display:flex;justify-content:center}.calendar__content[_ngcontent-%COMP%]{flex:1;flex-direction:column;overflow:scroll;margin-top:100px}.calendar__days[_ngcontent-%COMP%]{position:absolute;top:65px;left:0;bottom:0;right:0;display:flex;flex-direction:row;margin-left:79px;border-left:1px solid #efefef}.calendar__day[_ngcontent-%COMP%]{display:flex;flex:1;justify-content:flex-start;border-right:1px solid #efefef;padding-right:.5rem;margin-left:.5rem}.calendar__day[_ngcontent-%COMP%]   .day__header[_ngcontent-%COMP%]{display:flex;flex-direction:column;align-items:center;color:#c8c8c8}.calendar__day[_ngcontent-%COMP%]   .day__header[_ngcontent-%COMP%]   .day-name[_ngcontent-%COMP%]{margin-bottom:.5rem}.calendar__day[_ngcontent-%COMP%]   .day__header[_ngcontent-%COMP%]   .day-number[_ngcontent-%COMP%]{display:flex;justify-content:center;align-items:center;margin-bottom:.5rem;width:40px;height:40px;border-radius:20px;background-color:#efefef;color:#2a2a2a}.calendar__day[_ngcontent-%COMP%]   .day__header--today[_ngcontent-%COMP%]   .day-number[_ngcontent-%COMP%]{background-color:#263238;color:#fff}.calendar__day-events[_ngcontent-%COMP%]{position:-webkit-sticky;position:sticky;top:0;z-index:2;display:flex;flex-direction:row;margin-left:79px;background-color:#fff;border-left:1px solid #efefef}.calendar__day-events[_ngcontent-%COMP%]   .day__lane[_ngcontent-%COMP%]{position:relative;display:flex;flex:1;flex-direction:column;overflow:hidden;border-right:1px solid #efefef}.calendar__day-events[_ngcontent-%COMP%]   .day__lane[_ngcontent-%COMP%]   .calendar__item[_ngcontent-%COMP%]{position:relative}.calendar__day-events[_ngcontent-%COMP%]   .day__lane[_ngcontent-%COMP%]   .calendar__item[_ngcontent-%COMP%]   .event__header[_ngcontent-%COMP%]{border-bottom:0}.calendar__marker[_ngcontent-%COMP%]{position:relative;z-index:1;border:1px solid #d32f2f;width:calc(100% + 1rem);left:-.5rem}.calendar__marker[_ngcontent-%COMP%]:before{content:\"\";display:block;position:absolute;width:10px;background-color:#d32f2f;height:10px;border-radius:10px;top:-5px;left:-7px}.event[_ngcontent-%COMP%], event-render[_nghost-%COMP%]{display:flex;flex-direction:column;height:100%}.event[_ngcontent-%COMP%]{justify-content:space-between;border-radius:4px;overflow:hidden}.event.all-day[_ngcontent-%COMP%]{height:auto}.event__header[_ngcontent-%COMP%]{display:flex;text-align:left;color:#546e7a;padding:.25rem;border-bottom:1px solid hsla(0,0%,100%,.5)}.event__header[_ngcontent-%COMP%]   p[_ngcontent-%COMP%]{white-space:nowrap;text-overflow:ellipsis;max-width:100%;overflow:hidden;margin-bottom:0}.event__metadata[_ngcontent-%COMP%]{display:flex;flex-direction:column;flex:1;font-weight:100;color:#546e7a;padding:.25rem}.event__metadata[_ngcontent-%COMP%]   p[_ngcontent-%COMP%]{margin-bottom:.25rem}.event__location[_ngcontent-%COMP%]{display:flex;justify-content:flex-start;align-items:center}.event__location[_ngcontent-%COMP%]   mat-icon[_ngcontent-%COMP%]{font-size:16px;height:16px;width:16px;margin-right:.25rem}.event__location[_ngcontent-%COMP%]   span[_ngcontent-%COMP%]{white-space:nowrap;text-overflow:ellipsis;max-width:100%;overflow:hidden}"] });
+    (function () {
+        (typeof ngDevMode === "undefined" || ngDevMode) && i0.ɵsetClassMetadata(EventRenderWeekComponent, [{
+                type: i0.Component,
+                args: [{
+                        selector: 'event-render-week',
+                        templateUrl: './event-render-week.component.html',
+                        styleUrls: ['./event-render-week.component.scss']
+                    }]
+            }], function () { return [{ type: FormattingService }]; }, { event: [{
+                    type: i0.Input
+                }], date: [{
+                    type: i0.Input
+                }] });
+    })();
 
     var colors;
     (function (colors) {
@@ -233,6 +487,20 @@
         return CalendarOptions;
     }());
 
+    function KeyboardShortcutDialogComponent_div_28_Template(rf, ctx) {
+        if (rf & 1) {
+            i0.ɵɵelementStart(0, "div", 2);
+            i0.ɵɵelementStart(1, "span");
+            i0.ɵɵtext(2, "Add event");
+            i0.ɵɵelementEnd();
+            i0.ɵɵelementStart(3, "span");
+            i0.ɵɵelementStart(4, "span", 3);
+            i0.ɵɵtext(5, "n");
+            i0.ɵɵelementEnd();
+            i0.ɵɵelementEnd();
+            i0.ɵɵelementEnd();
+        }
+    }
     var KeyboardShortcutDialogComponent = /** @class */ (function () {
         function KeyboardShortcutDialogComponent(data) {
             this.data = data;
@@ -240,176 +508,77 @@
         KeyboardShortcutDialogComponent.prototype.ngOnInit = function () { };
         return KeyboardShortcutDialogComponent;
     }());
-    KeyboardShortcutDialogComponent.decorators = [
-        { type: i0.Component, args: [{
-                    selector: 'keyboard-shortcut-dialog',
-                    template: "<h2 mat-dialog-title>Keyboard Shortcuts</h2>\n<mat-dialog-content class=\"mat-typography\">\n    <mat-divider></mat-divider>\n\n    <div class=\"content-row\">\n        <span>Switch to day view</span>\n        <span>\n            <span class=\"keyboard-shortcut\">d</span>\n        </span>\n    </div>\n\n    <div class=\"content-row\">\n        <span>Switch to week view</span>\n        <span>\n            <span class=\"keyboard-shortcut\">w</span>\n        </span>        \n    </div>\n\n    <div class=\"content-row\">\n        <span>Switch to month view</span>\n        <span>\n            <span class=\"keyboard-shortcut\">m</span>\n        </span>\n    </div>\n\n    <div class=\"content-row\">\n        <span>Go to today</span>\n        <span>\n            <span class=\"keyboard-shortcut\">t</span>\n        </span>\n    </div>\n\n    <div class=\"content-row\" *ngIf=\"data.enableAddEventButton\">\n        <span>Add event</span>\n        <span>\n            <span class=\"keyboard-shortcut\">n</span>\n        </span>\n    </div>\n</mat-dialog-content>",
-                    styles: ["*{box-sizing:border-box}.calendar__item{display:flex;flex:1;flex-direction:column;position:absolute;left:0;padding:2px;border-radius:4px;width:100%;transition:.25s}.calendar__item:hover{opacity:.75;cursor:pointer}.calendar__times{position:relative;top:-10px;display:flex;width:60px;margin-right:20px;flex-direction:column;color:#c8c8c8;text-align:center}.time-cell{display:flex;justify-content:center}.calendar__content{flex:1;flex-direction:column;overflow:scroll;margin-top:100px}.calendar__days{position:absolute;top:65px;left:0;bottom:0;right:0;display:flex;flex-direction:row;margin-left:79px;border-left:1px solid #efefef}.calendar__day{display:flex;flex:1;justify-content:flex-start;border-right:1px solid #efefef;padding-right:.5rem;margin-left:.5rem}.calendar__day .day__header{display:flex;flex-direction:column;align-items:center;color:#c8c8c8}.calendar__day .day__header .day-name{margin-bottom:.5rem}.calendar__day .day__header .day-number{display:flex;justify-content:center;align-items:center;margin-bottom:.5rem;width:40px;height:40px;border-radius:20px;background-color:#efefef;color:#2a2a2a}.calendar__day .day__header--today .day-number{background-color:#263238;color:#fff}.calendar__day-events{position:-webkit-sticky;position:sticky;top:0;z-index:2;display:flex;flex-direction:row;margin-left:79px;background-color:#fff;border-left:1px solid #efefef}.calendar__day-events .day__lane{position:relative;display:flex;flex:1;flex-direction:column;overflow:hidden;border-right:1px solid #efefef}.calendar__day-events .day__lane .calendar__item{position:relative}.calendar__day-events .day__lane .calendar__item .event__header{border-bottom:0}.calendar__marker{position:relative;z-index:1;border:1px solid #d32f2f;width:calc(100% + 1rem);left:-.5rem}.calendar__marker:before{content:\"\";display:block;position:absolute;width:10px;background-color:#d32f2f;height:10px;border-radius:10px;top:-5px;left:-7px}.mat-dialog-content{width:450px}.mat-dialog-content mat-divider{margin-bottom:1rem}.mat-dialog-content .content-row{display:flex;align-items:center;justify-content:space-between;height:50px}.mat-dialog-content .keyboard-shortcut{display:block;padding:.5rem 0;border:1px solid #efefef;border-radius:4px;width:40px;text-align:center}"]
-                },] }
-    ];
-    KeyboardShortcutDialogComponent.ctorParameters = function () { return [
-        { type: CalendarOptions, decorators: [{ type: i0.Inject, args: [dialog.MAT_DIALOG_DATA,] }] }
-    ]; };
-
-    var NgxMatCalendarComponent = /** @class */ (function () {
-        function NgxMatCalendarComponent(dateAdapter, dialog) {
-            this.dateAdapter = dateAdapter;
-            this.dialog = dialog;
-            this.dateChange = new i0.EventEmitter();
-            this.eventClick = new i0.EventEmitter();
-            this.addButtonClick = new i0.EventEmitter();
-            this.subscriptions$ = new rxjs.Subscription();
-            this.calendar = {};
-            this.today = dateFns.format(new Date(), 'EEEE, d MMMM');
-        }
-        NgxMatCalendarComponent.prototype.onKeyDown = function (event) {
-            this.handleKeyboardEvents(event);
-        };
-        NgxMatCalendarComponent.prototype.ngOnInit = function () {
-            var _this = this;
-            this.subscriptions$.add(this.options$.pipe(operators.tap(function (options) {
-                _this.options = options;
-                _this.selectedView = options.view;
-                _this.initCalendar();
-            })).subscribe());
-            this.subscriptions$.add(this.events$.pipe(operators.tap(function (events) {
-                _this.events = events;
-                _this.parseDates(events);
-            })).subscribe());
-            this.subscriptions$.add(this.selectedDate$.pipe(operators.tap(function (selectedDate) {
-                _this.selectedDate = selectedDate;
-                _this.initCalendar();
-                if (_this.selectedDate !== selectedDate) {
-                    _this.dateChange.emit(_this.selectedDate);
-                }
-            })).subscribe());
-        };
-        NgxMatCalendarComponent.prototype.initCalendar = function () {
-            if (this.options) {
-                this.enableDatePickerButton = this.options.enableDatePickerButton;
-                this.enableViewToggle = this.options.enableViewToggle;
-                this.enableKeyboardShortcutDialog = this.options.enableKeyboardShortcutDialog;
-                this.dateAdapter.setLocale(this.options.locale);
-                this.generateCalendar();
+    KeyboardShortcutDialogComponent.ɵfac = function KeyboardShortcutDialogComponent_Factory(t) { return new (t || KeyboardShortcutDialogComponent)(i0.ɵɵdirectiveInject(i2$1.MAT_DIALOG_DATA)); };
+    KeyboardShortcutDialogComponent.ɵcmp = i0.ɵɵdefineComponent({ type: KeyboardShortcutDialogComponent, selectors: [["keyboard-shortcut-dialog"]], decls: 29, vars: 1, consts: [["mat-dialog-title", ""], [1, "mat-typography"], [1, "content-row"], [1, "keyboard-shortcut"], ["class", "content-row", 4, "ngIf"]], template: function KeyboardShortcutDialogComponent_Template(rf, ctx) {
+            if (rf & 1) {
+                i0.ɵɵelementStart(0, "h2", 0);
+                i0.ɵɵtext(1, "Keyboard Shortcuts");
+                i0.ɵɵelementEnd();
+                i0.ɵɵelementStart(2, "mat-dialog-content", 1);
+                i0.ɵɵelement(3, "mat-divider");
+                i0.ɵɵelementStart(4, "div", 2);
+                i0.ɵɵelementStart(5, "span");
+                i0.ɵɵtext(6, "Switch to day view");
+                i0.ɵɵelementEnd();
+                i0.ɵɵelementStart(7, "span");
+                i0.ɵɵelementStart(8, "span", 3);
+                i0.ɵɵtext(9, "d");
+                i0.ɵɵelementEnd();
+                i0.ɵɵelementEnd();
+                i0.ɵɵelementEnd();
+                i0.ɵɵelementStart(10, "div", 2);
+                i0.ɵɵelementStart(11, "span");
+                i0.ɵɵtext(12, "Switch to week view");
+                i0.ɵɵelementEnd();
+                i0.ɵɵelementStart(13, "span");
+                i0.ɵɵelementStart(14, "span", 3);
+                i0.ɵɵtext(15, "w");
+                i0.ɵɵelementEnd();
+                i0.ɵɵelementEnd();
+                i0.ɵɵelementEnd();
+                i0.ɵɵelementStart(16, "div", 2);
+                i0.ɵɵelementStart(17, "span");
+                i0.ɵɵtext(18, "Switch to month view");
+                i0.ɵɵelementEnd();
+                i0.ɵɵelementStart(19, "span");
+                i0.ɵɵelementStart(20, "span", 3);
+                i0.ɵɵtext(21, "m");
+                i0.ɵɵelementEnd();
+                i0.ɵɵelementEnd();
+                i0.ɵɵelementEnd();
+                i0.ɵɵelementStart(22, "div", 2);
+                i0.ɵɵelementStart(23, "span");
+                i0.ɵɵtext(24, "Go to today");
+                i0.ɵɵelementEnd();
+                i0.ɵɵelementStart(25, "span");
+                i0.ɵɵelementStart(26, "span", 3);
+                i0.ɵɵtext(27, "t");
+                i0.ɵɵelementEnd();
+                i0.ɵɵelementEnd();
+                i0.ɵɵelementEnd();
+                i0.ɵɵtemplate(28, KeyboardShortcutDialogComponent_div_28_Template, 6, 0, "div", 4);
+                i0.ɵɵelementEnd();
             }
-        };
-        NgxMatCalendarComponent.prototype.generateCalendar = function () {
-            if (this.selectedDate) {
-                this.calendar = {
-                    monthAndYear: dateFns.format(this.selectedDate, 'MMMM yyyy'),
-                    weeknumber: dateFns.format(this.selectedDate, 'I')
-                };
+            if (rf & 2) {
+                i0.ɵɵadvance(28);
+                i0.ɵɵproperty("ngIf", ctx.data.enableAddEventButton);
             }
-        };
-        NgxMatCalendarComponent.prototype.parseDates = function (events) {
-            this.events = events.map(function (event) {
-                event.date = new Date(event.date);
-                event.startTime = new Date(event.startTime);
-                event.endTime = new Date(event.endTime);
-                return event;
-            });
-        };
-        NgxMatCalendarComponent.prototype.isToday = function (date) {
-            return dateFns.isToday(date);
-        };
-        NgxMatCalendarComponent.prototype.setCalendarToday = function () {
-            this.selectedDate = new Date();
-            this.selectedDate$.next(this.selectedDate);
-            this.handleCalendarSet();
-        };
-        NgxMatCalendarComponent.prototype.setCalendarOffset = function (direction) {
-            var _a;
-            var offset = Periods[this.selectedView];
-            this.selectedDate = dateFns.add(this.selectedDate, (_a = {},
-                _a[offset] = direction === PREVIOUS ? -1 : 1,
-                _a));
-            this.selectedDate$.next(this.selectedDate);
-            this.handleCalendarSet();
-        };
-        NgxMatCalendarComponent.prototype.setCalendar = function (date) {
-            if (date) {
-                this.selectedDate = date;
-                this.selectedDate$.next(date);
-                this.handleCalendarSet();
-            }
-        };
-        NgxMatCalendarComponent.prototype.handleCalendarSet = function () {
-            this.generateCalendar();
-            this.dateChange.emit(this.selectedDate);
-        };
-        NgxMatCalendarComponent.prototype.onViewChange = function (view) {
-            this.selectedView = view;
-        };
-        NgxMatCalendarComponent.prototype.changeToDayView = function (date) {
-            this.selectedView = DAY;
-            this.setCalendar(date);
-        };
-        NgxMatCalendarComponent.prototype.getSelectedView = function (view) {
-            return this.selectedView === view;
-        };
-        NgxMatCalendarComponent.prototype.onEventClick = function (event) {
-            this.eventClick.emit(event);
-        };
-        NgxMatCalendarComponent.prototype.onAddButtonClick = function () {
-            this.addButtonClick.emit();
-        };
-        NgxMatCalendarComponent.prototype.onDatePickerChange = function (date) {
-            this.setCalendar(dateFns.toDate(date));
-            this.datePickerMenu.closeMenu();
-        };
-        NgxMatCalendarComponent.prototype.showKeyboardShortcutDialog = function () {
-            var dialogRef = this.dialog.open(KeyboardShortcutDialogComponent, {
-                data: this.options
-            });
-        };
-        NgxMatCalendarComponent.prototype.handleKeyboardEvents = function (event) {
-            switch (event.key) {
-                case 'd':
-                    this.selectedView = DAY;
-                    break;
-                case 'w':
-                    this.selectedView = WEEK;
-                    break;
-                case 'm':
-                    this.selectedView = MONTH;
-                    break;
-                case 't':
-                    this.setCalendarToday();
-                    break;
-                case 'n':
-                    this.addButtonClick.emit();
-                    break;
-                default:
-                    break;
-            }
-        };
-        NgxMatCalendarComponent.prototype.ngOnDestroy = function () {
-            this.subscriptions$.unsubscribe();
-        };
-        return NgxMatCalendarComponent;
-    }());
-    NgxMatCalendarComponent.decorators = [
-        { type: i0.Component, args: [{
-                    selector: 'ngx-mat-calendar',
-                    template: "<div class=\"calendar\" *ngIf=\"events && options\">\n    <div class=\"calendar__toolbar\">\n         <button\n            mat-stroked-button\n            class=\"toolbar__button toolbar__button--today\"\n            color=\"primary\"\n            [matTooltip]=\"today\"\n            (click)=\"setCalendarToday()\">\n                Today\n        </button>\n\n        <button\n            mat-icon-button\n            class=\"toolbar__button toolbar__button--navigate\"\n            color=\"primary\"\n            (click)=\"setCalendarOffset('prev')\">\n            <mat-icon>chevron_left</mat-icon>\n        </button>\n\n        <button\n            mat-icon-button\n            class=\"toolbar__button toolbar__button--navigate\"\n            color=\"primary\"\n            (click)=\"setCalendarOffset('next')\">\n            <mat-icon>chevron_right</mat-icon>\n        </button>\n\n        <div class=\"toolbar__meta\">\n            <span class=\"toolbar__month\">{{ calendar.monthAndYear }}</span>\n            <span class=\"toolbar__week\" *ngIf=\"!getSelectedView('month')\">Week {{ calendar.weeknumber }}</span>\n        </div>\n\n        <div class=\"toolbar__right\">\n            <button\n                *ngIf=\"enableKeyboardShortcutDialog\"\n                mat-icon-button\n                matTooltip=\"Keyboard shortcuts\"\n                class=\"toolbar__button toolbar__button--keyboard-shortcut\"\n                color=\"primary\"\n                (click)=\"showKeyboardShortcutDialog()\">\n                <mat-icon>keyboard</mat-icon>\n            </button>\n\n            <mat-form-field\n                *ngIf=\"enableViewToggle\"\n                appearance=\"outline\"\n                class=\"toolbar__view-switch\">\n                <mat-select\n                    [value]=\"selectedView\"\n                    (selectionChange)=\"onViewChange(view.value)\"\n                    #view>\n                    <mat-option value=\"day\">Day</mat-option>\n                    <mat-option value=\"week\">Week</mat-option>\n                    <mat-option value=\"month\">Month</mat-option>\n                </mat-select>\n            </mat-form-field>\n\n            <mat-menu #datePickerMenu=\"matMenu\">\n                <div (click)=\"$event.stopPropagation()\">\n                    <mat-calendar (selectedChange)=\"onDatePickerChange($event)\"></mat-calendar>\n                </div>\n            </mat-menu>\n\n            <button\n                [matMenuTriggerFor]=\"datePickerMenu\"\n                matTooltip=\"Pick a date\"\n                *ngIf=\"enableDatePickerButton\"\n                mat-icon-button\n                class=\"toolbar__button\"\n                color=\"primary\">\n                <mat-icon>calendar_today</mat-icon>\n            </button>\n        </div>\n    </div>\n\n    <day-view\n        *ngIf=\"getSelectedView('day')\"\n        [events$]=\"events$\"\n        [selectedDate$]=\"selectedDate$\"\n        [options$]=\"options$\"\n        (eventClick)=\"onEventClick($event)\">\n    </day-view>\n\n    <week-view\n        *ngIf=\"getSelectedView('week')\"\n        [events$]=\"events$\"\n        [selectedDate$]=\"selectedDate$\"\n        [options$]=\"options$\"\n        (eventClick)=\"onEventClick($event)\"\n        (changeToDayView)=\"changeToDayView($event)\">\n    </week-view>\n\n    <month-view\n        *ngIf=\"getSelectedView('month')\"\n        [events$]=\"events$\"\n        [selectedDate$]=\"selectedDate$\"\n        [options$]=\"options$\"\n        (eventClick)=\"onEventClick($event)\"\n        (setCalendarOffset)=\"setCalendarOffset($event)\"\n        (changeToDayView)=\"changeToDayView($event)\">\n    </month-view>\n\n    <button\n        class=\"calendar__add-button\"\n        *ngIf=\"options.enableAddEventButton\"\n        mat-fab\n        color=\"primary\"\n        (click)=\"onAddButtonClick()\">\n        <mat-icon>add</mat-icon>\n    </button>\n</div>",
-                    encapsulation: i0.ViewEncapsulation.None,
-                    styles: ["*{box-sizing:border-box}.calendar__item{display:flex;flex:1;flex-direction:column;position:absolute;left:0;padding:2px;border-radius:4px;width:100%;transition:.25s}.calendar__item:hover{opacity:.75;cursor:pointer}.calendar__times{position:relative;top:-10px;display:flex;width:60px;margin-right:20px;flex-direction:column;color:#c8c8c8;text-align:center}.time-cell{display:flex;justify-content:center}.calendar__content{flex:1;flex-direction:column;overflow:scroll;margin-top:100px}.calendar__days{position:absolute;top:65px;left:0;bottom:0;right:0;display:flex;flex-direction:row;margin-left:79px;border-left:1px solid #efefef}.calendar__day{display:flex;flex:1;justify-content:flex-start;border-right:1px solid #efefef;padding-right:.5rem;margin-left:.5rem}.calendar__day .day__header{display:flex;flex-direction:column;align-items:center;color:#c8c8c8}.calendar__day .day__header .day-name{margin-bottom:.5rem}.calendar__day .day__header .day-number{display:flex;justify-content:center;align-items:center;margin-bottom:.5rem;width:40px;height:40px;border-radius:20px;background-color:#efefef;color:#2a2a2a}.calendar__day .day__header--today .day-number{background-color:#263238;color:#fff}.calendar__day-events{position:-webkit-sticky;position:sticky;top:0;z-index:2;display:flex;flex-direction:row;margin-left:79px;background-color:#fff;border-left:1px solid #efefef}.calendar__day-events .day__lane{position:relative;display:flex;flex:1;flex-direction:column;overflow:hidden;border-right:1px solid #efefef}.calendar__day-events .day__lane .calendar__item{position:relative}.calendar__day-events .day__lane .calendar__item .event__header{border-bottom:0}.calendar__marker{position:relative;z-index:1;border:1px solid #d32f2f;width:calc(100% + 1rem);left:-.5rem}.calendar__marker:before{content:\"\";display:block;position:absolute;width:10px;background-color:#d32f2f;height:10px;border-radius:10px;top:-5px;left:-7px}:host(ngx-mat-calendar){flex:1;height:100%}.calendar{position:relative;display:flex;flex-direction:column;height:100%}day-view,month-view,week-view{display:flex;height:100%;overflow:hidden}[hidden]{display:none}.calendar__toolbar{display:flex;flex-direction:row;align-items:center;justify-content:space-between;margin-bottom:1rem}.calendar__toolbar .toolbar__button,.calendar__toolbar .toolbar__month,.calendar__toolbar .toolbar__right{display:flex}.calendar__toolbar .toolbar__button{justify-content:center;margin-left:1rem}.calendar__toolbar .toolbar__button--today{margin-left:0;margin-right:1rem}.calendar__toolbar .toolbar__button--navigate{margin-left:0}.calendar__toolbar .toolbar__meta{display:flex;align-items:center;font-weight:200}.calendar__toolbar .toolbar__meta .toolbar__month{margin-left:1rem;font-size:1.25rem}.calendar__toolbar .toolbar__meta .toolbar__week{margin-left:1rem;font-size:1rem;padding:.25rem .5rem;font-size:.75rem;text-transform:uppercase;background-color:#efefef;border-radius:4px}.calendar__toolbar .toolbar__right{flex:1;justify-content:flex-end;align-items:center}.calendar__toolbar .toolbar__datepicker{position:absolute;right:60px}.calendar__toolbar .toolbar__datepicker .mat-form-field{font-size:12px}.calendar__toolbar .toolbar__datepicker .mat-form-field-wrapper{padding-bottom:0}.calendar__toolbar mat-form-field.toolbar__view-switch{margin-left:1rem;align-items:center}.calendar__toolbar mat-form-field.toolbar__view-switch .mat-form-field-wrapper{margin:0;padding:0}.calendar__toolbar mat-form-field.toolbar__view-switch .mat-form-field-infix{padding:.25rem 0 .5rem;width:90px}.calendar__toolbar mat-form-field.toolbar__view-switch .mat-select-arrow{margin-top:.25rem}.calendar__add-button{position:absolute;z-index:1;right:-.5rem;bottom:-.5rem;width:80px;height:80px}.calendar__add-button mat-icon{transform:scale(1.25)}mat-calendar{padding:0 .75rem}.cdk-overlay-pane.hidden-events-overlay{width:calc((100% / 7) + 50px)}.cdk-overlay-pane.hidden-events-overlay .event-container{display:flex;flex-direction:column;position:absolute;background-color:#fff;padding:.5rem;border-radius:4px;overflow:hidden;width:100%;box-shadow:0 3px 6px rgba(0,0,0,.16),0 3px 6px rgba(0,0,0,.23)}.cdk-overlay-pane.hidden-events-overlay .event-container.is-today .event-container__date{border-radius:100%;background:#2a2a2a;color:#fff}.cdk-overlay-pane.hidden-events-overlay .event-container .event-container__date{display:flex;justify-content:center;align-items:center;align-self:center;margin-bottom:.5rem;width:40px;min-height:40px;border-radius:20px;margin-top:4px;background-color:#efefef;color:#2a2a2a;font-size:14px}.cdk-overlay-pane.hidden-events-overlay .event-container .event-container__date:hover{cursor:pointer}.cdk-overlay-pane.hidden-events-overlay event-display{position:relative}"]
-                },] }
-    ];
-    NgxMatCalendarComponent.ctorParameters = function () { return [
-        { type: core.DateAdapter },
-        { type: dialog.MatDialog }
-    ]; };
-    NgxMatCalendarComponent.propDecorators = {
-        options$: [{ type: i0.Input }],
-        events$: [{ type: i0.Input }],
-        selectedDate$: [{ type: i0.Input }],
-        dateChange: [{ type: i0.Output }],
-        eventClick: [{ type: i0.Output }],
-        addButtonClick: [{ type: i0.Output }],
-        datePickerMenu: [{ type: i0.ViewChild, args: [menu.MatMenuTrigger,] }],
-        onKeyDown: [{ type: i0.HostListener, args: ['window:keydown', ['$event'],] }]
-    };
+        }, directives: [i2$1.MatDialogTitle, i2$1.MatDialogContent, i3$2.MatDivider, i2.NgIf], styles: ["*[_ngcontent-%COMP%]{box-sizing:border-box}.calendar__item[_ngcontent-%COMP%]{display:flex;flex:1;flex-direction:column;position:absolute;left:0;padding:2px;border-radius:4px;width:100%;transition:.25s}.calendar__item[_ngcontent-%COMP%]:hover{opacity:.75;cursor:pointer}.calendar__times[_ngcontent-%COMP%]{position:relative;top:-10px;display:flex;width:60px;margin-right:20px;flex-direction:column;color:#c8c8c8;text-align:center}.time-cell[_ngcontent-%COMP%]{display:flex;justify-content:center}.calendar__content[_ngcontent-%COMP%]{flex:1;flex-direction:column;overflow:scroll;margin-top:100px}.calendar__days[_ngcontent-%COMP%]{position:absolute;top:65px;left:0;bottom:0;right:0;display:flex;flex-direction:row;margin-left:79px;border-left:1px solid #efefef}.calendar__day[_ngcontent-%COMP%]{display:flex;flex:1;justify-content:flex-start;border-right:1px solid #efefef;padding-right:.5rem;margin-left:.5rem}.calendar__day[_ngcontent-%COMP%]   .day__header[_ngcontent-%COMP%]{display:flex;flex-direction:column;align-items:center;color:#c8c8c8}.calendar__day[_ngcontent-%COMP%]   .day__header[_ngcontent-%COMP%]   .day-name[_ngcontent-%COMP%]{margin-bottom:.5rem}.calendar__day[_ngcontent-%COMP%]   .day__header[_ngcontent-%COMP%]   .day-number[_ngcontent-%COMP%]{display:flex;justify-content:center;align-items:center;margin-bottom:.5rem;width:40px;height:40px;border-radius:20px;background-color:#efefef;color:#2a2a2a}.calendar__day[_ngcontent-%COMP%]   .day__header--today[_ngcontent-%COMP%]   .day-number[_ngcontent-%COMP%]{background-color:#263238;color:#fff}.calendar__day-events[_ngcontent-%COMP%]{position:-webkit-sticky;position:sticky;top:0;z-index:2;display:flex;flex-direction:row;margin-left:79px;background-color:#fff;border-left:1px solid #efefef}.calendar__day-events[_ngcontent-%COMP%]   .day__lane[_ngcontent-%COMP%]{position:relative;display:flex;flex:1;flex-direction:column;overflow:hidden;border-right:1px solid #efefef}.calendar__day-events[_ngcontent-%COMP%]   .day__lane[_ngcontent-%COMP%]   .calendar__item[_ngcontent-%COMP%]{position:relative}.calendar__day-events[_ngcontent-%COMP%]   .day__lane[_ngcontent-%COMP%]   .calendar__item[_ngcontent-%COMP%]   .event__header[_ngcontent-%COMP%]{border-bottom:0}.calendar__marker[_ngcontent-%COMP%]{position:relative;z-index:1;border:1px solid #d32f2f;width:calc(100% + 1rem);left:-.5rem}.calendar__marker[_ngcontent-%COMP%]:before{content:\"\";display:block;position:absolute;width:10px;background-color:#d32f2f;height:10px;border-radius:10px;top:-5px;left:-7px}.mat-dialog-content[_ngcontent-%COMP%]{width:450px}.mat-dialog-content[_ngcontent-%COMP%]   mat-divider[_ngcontent-%COMP%]{margin-bottom:1rem}.mat-dialog-content[_ngcontent-%COMP%]   .content-row[_ngcontent-%COMP%]{display:flex;align-items:center;justify-content:space-between;height:50px}.mat-dialog-content[_ngcontent-%COMP%]   .keyboard-shortcut[_ngcontent-%COMP%]{display:block;padding:.5rem 0;border:1px solid #efefef;border-radius:4px;width:40px;text-align:center}"] });
+    (function () {
+        (typeof ngDevMode === "undefined" || ngDevMode) && i0.ɵsetClassMetadata(KeyboardShortcutDialogComponent, [{
+                type: i0.Component,
+                args: [{
+                        selector: 'keyboard-shortcut-dialog',
+                        templateUrl: './keyboard-shortcut-dialog.component.html',
+                        styleUrls: ['./keyboard-shortcut-dialog.component.scss']
+                    }]
+            }], function () {
+            return [{ type: CalendarOptions, decorators: [{
+                            type: i0.Inject,
+                            args: [i2$1.MAT_DIALOG_DATA]
+                        }] }];
+        }, null);
+    })();
 
     /*! *****************************************************************************
     Copyright (c) Microsoft Corporation.
@@ -879,21 +1048,26 @@
         };
         return BaseViewComponent;
     }());
-    BaseViewComponent.decorators = [
-        { type: i0.Component, args: [{
-                    template: ''
-                },] }
-    ];
-    BaseViewComponent.ctorParameters = function () { return [
-        { type: FormattingService }
-    ]; };
-    BaseViewComponent.propDecorators = {
-        options$: [{ type: i0.Input }],
-        selectedDate$: [{ type: i0.Input }],
-        events$: [{ type: i0.Input }],
-        eventClick: [{ type: i0.Output }],
-        changeToDayView: [{ type: i0.Output }]
-    };
+    BaseViewComponent.ɵfac = function BaseViewComponent_Factory(t) { return new (t || BaseViewComponent)(i0.ɵɵdirectiveInject(FormattingService)); };
+    BaseViewComponent.ɵcmp = i0.ɵɵdefineComponent({ type: BaseViewComponent, selectors: [["ng-component"]], inputs: { options$: "options$", selectedDate$: "selectedDate$", events$: "events$" }, outputs: { eventClick: "eventClick", changeToDayView: "changeToDayView" }, decls: 0, vars: 0, template: function BaseViewComponent_Template(rf, ctx) { }, encapsulation: 2 });
+    (function () {
+        (typeof ngDevMode === "undefined" || ngDevMode) && i0.ɵsetClassMetadata(BaseViewComponent, [{
+                type: i0.Component,
+                args: [{
+                        template: ''
+                    }]
+            }], function () { return [{ type: FormattingService }]; }, { options$: [{
+                    type: i0.Input
+                }], selectedDate$: [{
+                    type: i0.Input
+                }], events$: [{
+                    type: i0.Input
+                }], eventClick: [{
+                    type: i0.Output
+                }], changeToDayView: [{
+                    type: i0.Output
+                }] });
+    })();
 
     var CalendarDay = /** @class */ (function () {
         function CalendarDay(init) {
@@ -906,6 +1080,149 @@
         return CalendarDay;
     }());
 
+    var _c0$1 = ["renderTarget"];
+    function EventDisplayComponent_ng_template_0_Template(rf, ctx) { }
+    var EventDisplayComponent = /** @class */ (function () {
+        function EventDisplayComponent(resolver) {
+            this.resolver = resolver;
+        }
+        EventDisplayComponent.prototype.ngOnInit = function () {
+            if (this.event && !this.renderComponent) {
+                this.createRenderComponent();
+            }
+        };
+        EventDisplayComponent.prototype.createRenderComponent = function () {
+            var componentFactory = this.resolver.resolveComponentFactory(this.component);
+            this.renderComponent = this.renderTarget.createComponent(componentFactory);
+            this.renderComponent.instance.event = this.event;
+            this.renderComponent.instance.date = this.date;
+        };
+        EventDisplayComponent.prototype.ngOnDestroy = function () {
+            if (this.renderComponent) {
+                this.renderComponent.destroy();
+            }
+        };
+        return EventDisplayComponent;
+    }());
+    EventDisplayComponent.ɵfac = function EventDisplayComponent_Factory(t) { return new (t || EventDisplayComponent)(i0.ɵɵdirectiveInject(i0.ComponentFactoryResolver)); };
+    EventDisplayComponent.ɵcmp = i0.ɵɵdefineComponent({ type: EventDisplayComponent, selectors: [["event-display"]], viewQuery: function EventDisplayComponent_Query(rf, ctx) {
+            if (rf & 1) {
+                i0.ɵɵviewQuery(_c0$1, 3, i0.ViewContainerRef);
+            }
+            if (rf & 2) {
+                var _t = void 0;
+                i0.ɵɵqueryRefresh(_t = i0.ɵɵloadQuery()) && (ctx.renderTarget = _t.first);
+            }
+        }, inputs: { event: "event", date: "date", component: "component" }, decls: 2, vars: 0, consts: [["renderTarget", ""]], template: function EventDisplayComponent_Template(rf, ctx) {
+            if (rf & 1) {
+                i0.ɵɵtemplate(0, EventDisplayComponent_ng_template_0_Template, 0, 0, "ng-template", null, 0, i0.ɵɵtemplateRefExtractor);
+            }
+        }, styles: [":host(event-display){overflow:hidden}event-render-day,event-render-week{height:100%}"], encapsulation: 2 });
+    (function () {
+        (typeof ngDevMode === "undefined" || ngDevMode) && i0.ɵsetClassMetadata(EventDisplayComponent, [{
+                type: i0.Component,
+                args: [{
+                        selector: 'event-display',
+                        template: "<ng-template #renderTarget></ng-template>",
+                        styleUrls: ['./event-display.component.scss'],
+                        encapsulation: i0.ViewEncapsulation.None
+                    }]
+            }], function () { return [{ type: i0.ComponentFactoryResolver }]; }, { event: [{
+                    type: i0.Input
+                }], date: [{
+                    type: i0.Input
+                }], component: [{
+                    type: i0.Input
+                }], renderTarget: [{
+                    type: i0.ViewChild,
+                    args: ['renderTarget', { read: i0.ViewContainerRef, static: true }]
+                }] });
+    })();
+
+    var AllDayEventPipe = /** @class */ (function () {
+        function AllDayEventPipe() {
+        }
+        AllDayEventPipe.prototype.transform = function (items, allDay) {
+            if (allDay) {
+                return items.filter(function (item) { return item.allDay; });
+            }
+            return items.filter(function (item) { return !item.allDay; });
+        };
+        return AllDayEventPipe;
+    }());
+    AllDayEventPipe.ɵfac = function AllDayEventPipe_Factory(t) { return new (t || AllDayEventPipe)(); };
+    AllDayEventPipe.ɵpipe = i0.ɵɵdefinePipe({ name: "allDayEventPipe", type: AllDayEventPipe, pure: true });
+    (function () {
+        (typeof ngDevMode === "undefined" || ngDevMode) && i0.ɵsetClassMetadata(AllDayEventPipe, [{
+                type: i0.Pipe,
+                args: [{
+                        name: 'allDayEventPipe'
+                    }]
+            }], null, null);
+    })();
+
+    function DayViewComponent_event_display_10_Template(rf, ctx) {
+        if (rf & 1) {
+            var _r7_1 = i0.ɵɵgetCurrentView();
+            i0.ɵɵelementStart(0, "event-display", 17);
+            i0.ɵɵlistener("click", function DayViewComponent_event_display_10_Template_event_display_click_0_listener() { i0.ɵɵrestoreView(_r7_1); var event_r5 = ctx.$implicit; var ctx_r6 = i0.ɵɵnextContext(); return ctx_r6.onEventClick(event_r5); });
+            i0.ɵɵelementEnd();
+        }
+        if (rf & 2) {
+            var event_r5 = ctx.$implicit;
+            var ctx_r0 = i0.ɵɵnextContext();
+            i0.ɵɵproperty("component", ctx_r0.options.renderComponent.day)("event", event_r5)("date", ctx_r0.selectedDate);
+        }
+    }
+    function DayViewComponent_div_14_Template(rf, ctx) {
+        if (rf & 1) {
+            i0.ɵɵelementStart(0, "div", 18);
+            i0.ɵɵtext(1);
+            i0.ɵɵelementEnd();
+        }
+        if (rf & 2) {
+            var hour_r8 = ctx.$implicit;
+            var ctx_r1 = i0.ɵɵnextContext();
+            i0.ɵɵstyleProp("height", ctx_r1.getCellHeight(hour_r8), "px");
+            i0.ɵɵadvance(1);
+            i0.ɵɵtextInterpolate1(" ", hour_r8.title, " ");
+        }
+    }
+    function DayViewComponent_div_17_Template(rf, ctx) {
+        if (rf & 1) {
+            i0.ɵɵelement(0, "div", 19);
+        }
+        if (rf & 2) {
+            var hour_r9 = ctx.$implicit;
+            var ctx_r2 = i0.ɵɵnextContext();
+            i0.ɵɵstyleProp("height", ctx_r2.getCellHeight(hour_r9), "px");
+        }
+    }
+    function DayViewComponent_div_18_Template(rf, ctx) {
+        if (rf & 1) {
+            i0.ɵɵelement(0, "div", 20);
+        }
+        if (rf & 2) {
+            var ctx_r3 = i0.ɵɵnextContext();
+            i0.ɵɵstyleProp("margin-top", ctx_r3.markerPosition, "px");
+        }
+    }
+    function DayViewComponent_event_display_19_Template(rf, ctx) {
+        if (rf & 1) {
+            var _r12_1 = i0.ɵɵgetCurrentView();
+            i0.ɵɵelementStart(0, "event-display", 17);
+            i0.ɵɵlistener("click", function DayViewComponent_event_display_19_Template_event_display_click_0_listener() { i0.ɵɵrestoreView(_r12_1); var event_r10 = ctx.$implicit; var ctx_r11 = i0.ɵɵnextContext(); return ctx_r11.onEventClick(event_r10); });
+            i0.ɵɵelementEnd();
+        }
+        if (rf & 2) {
+            var event_r10 = ctx.$implicit;
+            var ctx_r4 = i0.ɵɵnextContext();
+            i0.ɵɵstyleProp("width", event_r10.grid == null ? null : event_r10.grid.width, "%")("margin-left", event_r10.grid == null ? null : event_r10.grid.offsetLeft, "%")("margin-top", event_r10.grid == null ? null : event_r10.grid.offsetTop, "px")("height", event_r10.grid == null ? null : event_r10.grid.durationOffset, "px");
+            i0.ɵɵproperty("component", ctx_r4.options.renderComponent.day)("event", event_r10)("date", ctx_r4.selectedDate);
+        }
+    }
+    var _c0$2 = function (a0) { return { "day__header--today ": a0 }; };
+    var _c1 = function (a0) { return { "day__lane--today": a0 }; };
     var DayViewComponent = /** @class */ (function (_super) {
         __extends(DayViewComponent, _super);
         function DayViewComponent(formattingService) {
@@ -953,164 +1270,201 @@
         };
         return DayViewComponent;
     }(BaseViewComponent));
-    DayViewComponent.decorators = [
-        { type: i0.Component, args: [{
-                    selector: 'day-view',
-                    template: "<div class=\"calendar__days\">\n    <div class=\"calendar__day\">\n        <div class=\"day__header\" [ngClass]=\"{ 'day__header--today ': isToday(selectedDate) }\">\n            <span class=\"day-name\">{{ getDayName(selectedDate) }}</span> \n            <span class=\"day-number\">{{ getDayNumber(selectedDate) }}</span>\n        </div>\n    </div>\n</div> \n\n<div class=\"calendar__content\">\n    <div class=\"calendar__day-events\">\n        <div class=\"day__lane\">\n            <event-display\n                *ngFor=\"let event of dayView.events | allDayEventPipe: true\"\n                class=\"calendar__item\"\n                [component]=\"options.renderComponent.day\"\n                [event]=\"event\"\n                [date]=\"selectedDate\"\n                (click)=\"onEventClick(event)\">\n            </event-display>\n        </div>\n    </div>\n\n    <div class=\"calendar__lanes\">\n        <div class=\"calendar__times\">\n            <div class=\"time-cell\" *ngFor=\"let hour of hoursOfDay;\" [style.height.px]=\"getCellHeight(hour)\">\n                {{ hour.title }}\n            </div>\n        </div>\n\n        <div class=\"day__lane\" [ngClass]=\"{ 'day__lane--today': isToday(selectedDate) }\">\n            <div class=\"time-grid\">\n                <div class=\"time-grid__cell\" *ngFor=\"let hour of hoursOfDay;\" [style.height.px]=\"getCellHeight(hour)\"></div>\n            </div> \n\n            <div class=\"calendar__marker\" *ngIf=\"isToday(selectedDate)\" [style.marginTop.px]=\"markerPosition\"></div>\n            \n            <event-display\n                *ngFor=\"let event of dayView.events | allDayEventPipe: false\"\n                class=\"calendar__item\"\n                [component]=\"options.renderComponent.day\"\n                [event]=\"event\"\n                [date]=\"selectedDate\"                \n                [style.width.%]=\"event.grid?.width\"\n                [style.marginLeft.%]=\"event.grid?.offsetLeft\"\n                [style.marginTop.px]=\"event.grid?.offsetTop\"\n                [style.height.px]=\"event.grid?.durationOffset\"\n                (click)=\"onEventClick(event)\">\n            </event-display>\n        </div>\n    </div>\n</div>",
-                    styles: ["*{box-sizing:border-box}.calendar__item{display:flex;flex:1;flex-direction:column;position:absolute;left:0;padding:2px;border-radius:4px;width:100%;transition:.25s}.calendar__item:hover{opacity:.75;cursor:pointer}.calendar__times{position:relative;top:-10px;display:flex;width:60px;margin-right:20px;flex-direction:column;color:#c8c8c8;text-align:center}.time-cell{display:flex;justify-content:center}.calendar__content{flex:1;flex-direction:column;overflow:scroll;margin-top:100px}.calendar__days{position:absolute;top:65px;left:0;bottom:0;right:0;display:flex;flex-direction:row;margin-left:79px;border-left:1px solid #efefef}.calendar__day{display:flex;flex:1;justify-content:flex-start;border-right:1px solid #efefef;padding-right:.5rem;margin-left:.5rem}.calendar__day .day__header{display:flex;flex-direction:column;align-items:center;color:#c8c8c8}.calendar__day .day__header .day-name{margin-bottom:.5rem}.calendar__day .day__header .day-number{display:flex;justify-content:center;align-items:center;margin-bottom:.5rem;width:40px;height:40px;border-radius:20px;background-color:#efefef;color:#2a2a2a}.calendar__day .day__header--today .day-number{background-color:#263238;color:#fff}.calendar__day-events{position:-webkit-sticky;position:sticky;top:0;z-index:2;display:flex;flex-direction:row;margin-left:79px;background-color:#fff;border-left:1px solid #efefef}.calendar__day-events .day__lane{position:relative;display:flex;flex:1;flex-direction:column;overflow:hidden;border-right:1px solid #efefef}.calendar__day-events .day__lane .calendar__item{position:relative}.calendar__day-events .day__lane .calendar__item .event__header{border-bottom:0}.calendar__marker{position:relative;z-index:1;border:1px solid #d32f2f;width:calc(100% + 1rem);left:-.5rem}.calendar__marker:before{content:\"\";display:block;position:absolute;width:10px;background-color:#d32f2f;height:10px;border-radius:10px;top:-5px;left:-7px}.calendar__lanes{display:flex;flex:1;flex-direction:row;padding-top:10px}.calendar__lanes .day__lane{display:flex;flex-direction:column;position:relative;flex:1;padding:0 .5rem;border-right:1px solid #efefef;transition:.25s;background-color:#f4f4f4}.calendar__lanes .day__lane .time-grid{position:absolute;top:0;left:0;width:100%}.calendar__lanes .day__lane .time-grid__cell{border-top:1px dotted #dbdbdb;width:100%}.calendar__lanes .day__lane--today{background-color:#eef7fb}.calendar__lanes .day__lane--today .time-grid__cell{border-top-color:#c5e3f1}"]
-                },] }
-    ];
-    DayViewComponent.ctorParameters = function () { return [
-        { type: FormattingService }
-    ]; };
-
-    var EventDisplayComponent = /** @class */ (function () {
-        function EventDisplayComponent(resolver) {
-            this.resolver = resolver;
-        }
-        EventDisplayComponent.prototype.ngOnInit = function () {
-            if (this.event && !this.renderComponent) {
-                this.createRenderComponent();
+    DayViewComponent.ɵfac = function DayViewComponent_Factory(t) { return new (t || DayViewComponent)(i0.ɵɵdirectiveInject(FormattingService)); };
+    DayViewComponent.ɵcmp = i0.ɵɵdefineComponent({ type: DayViewComponent, selectors: [["day-view"]], features: [i0.ɵɵInheritDefinitionFeature], decls: 21, vars: 19, consts: [[1, "calendar__days"], [1, "calendar__day"], [1, "day__header", 3, "ngClass"], [1, "day-name"], [1, "day-number"], [1, "calendar__content"], [1, "calendar__day-events"], [1, "day__lane"], ["class", "calendar__item", 3, "component", "event", "date", "click", 4, "ngFor", "ngForOf"], [1, "calendar__lanes"], [1, "calendar__times"], ["class", "time-cell", 3, "height", 4, "ngFor", "ngForOf"], [1, "day__lane", 3, "ngClass"], [1, "time-grid"], ["class", "time-grid__cell", 3, "height", 4, "ngFor", "ngForOf"], ["class", "calendar__marker", 3, "marginTop", 4, "ngIf"], ["class", "calendar__item", 3, "component", "event", "date", "width", "marginLeft", "marginTop", "height", "click", 4, "ngFor", "ngForOf"], [1, "calendar__item", 3, "component", "event", "date", "click"], [1, "time-cell"], [1, "time-grid__cell"], [1, "calendar__marker"]], template: function DayViewComponent_Template(rf, ctx) {
+            if (rf & 1) {
+                i0.ɵɵelementStart(0, "div", 0);
+                i0.ɵɵelementStart(1, "div", 1);
+                i0.ɵɵelementStart(2, "div", 2);
+                i0.ɵɵelementStart(3, "span", 3);
+                i0.ɵɵtext(4);
+                i0.ɵɵelementEnd();
+                i0.ɵɵelementStart(5, "span", 4);
+                i0.ɵɵtext(6);
+                i0.ɵɵelementEnd();
+                i0.ɵɵelementEnd();
+                i0.ɵɵelementEnd();
+                i0.ɵɵelementEnd();
+                i0.ɵɵelementStart(7, "div", 5);
+                i0.ɵɵelementStart(8, "div", 6);
+                i0.ɵɵelementStart(9, "div", 7);
+                i0.ɵɵtemplate(10, DayViewComponent_event_display_10_Template, 1, 3, "event-display", 8);
+                i0.ɵɵpipe(11, "allDayEventPipe");
+                i0.ɵɵelementEnd();
+                i0.ɵɵelementEnd();
+                i0.ɵɵelementStart(12, "div", 9);
+                i0.ɵɵelementStart(13, "div", 10);
+                i0.ɵɵtemplate(14, DayViewComponent_div_14_Template, 2, 3, "div", 11);
+                i0.ɵɵelementEnd();
+                i0.ɵɵelementStart(15, "div", 12);
+                i0.ɵɵelementStart(16, "div", 13);
+                i0.ɵɵtemplate(17, DayViewComponent_div_17_Template, 1, 2, "div", 14);
+                i0.ɵɵelementEnd();
+                i0.ɵɵtemplate(18, DayViewComponent_div_18_Template, 1, 2, "div", 15);
+                i0.ɵɵtemplate(19, DayViewComponent_event_display_19_Template, 1, 11, "event-display", 16);
+                i0.ɵɵpipe(20, "allDayEventPipe");
+                i0.ɵɵelementEnd();
+                i0.ɵɵelementEnd();
+                i0.ɵɵelementEnd();
             }
-        };
-        EventDisplayComponent.prototype.createRenderComponent = function () {
-            var componentFactory = this.resolver.resolveComponentFactory(this.component);
-            this.renderComponent = this.renderTarget.createComponent(componentFactory);
-            this.renderComponent.instance.event = this.event;
-            this.renderComponent.instance.date = this.date;
-        };
-        EventDisplayComponent.prototype.ngOnDestroy = function () {
-            if (this.renderComponent) {
-                this.renderComponent.destroy();
+            if (rf & 2) {
+                i0.ɵɵadvance(2);
+                i0.ɵɵproperty("ngClass", i0.ɵɵpureFunction1(15, _c0$2, ctx.isToday(ctx.selectedDate)));
+                i0.ɵɵadvance(2);
+                i0.ɵɵtextInterpolate(ctx.getDayName(ctx.selectedDate));
+                i0.ɵɵadvance(2);
+                i0.ɵɵtextInterpolate(ctx.getDayNumber(ctx.selectedDate));
+                i0.ɵɵadvance(4);
+                i0.ɵɵproperty("ngForOf", i0.ɵɵpipeBind2(11, 9, ctx.dayView.events, true));
+                i0.ɵɵadvance(4);
+                i0.ɵɵproperty("ngForOf", ctx.hoursOfDay);
+                i0.ɵɵadvance(1);
+                i0.ɵɵproperty("ngClass", i0.ɵɵpureFunction1(17, _c1, ctx.isToday(ctx.selectedDate)));
+                i0.ɵɵadvance(2);
+                i0.ɵɵproperty("ngForOf", ctx.hoursOfDay);
+                i0.ɵɵadvance(1);
+                i0.ɵɵproperty("ngIf", ctx.isToday(ctx.selectedDate));
+                i0.ɵɵadvance(1);
+                i0.ɵɵproperty("ngForOf", i0.ɵɵpipeBind2(20, 12, ctx.dayView.events, false));
             }
-        };
-        return EventDisplayComponent;
-    }());
-    EventDisplayComponent.decorators = [
-        { type: i0.Component, args: [{
-                    selector: 'event-display',
-                    template: "<ng-template #renderTarget></ng-template>",
-                    encapsulation: i0.ViewEncapsulation.None,
-                    styles: [":host(event-display){overflow:hidden}event-render-day,event-render-week{height:100%}"]
-                },] }
-    ];
-    EventDisplayComponent.ctorParameters = function () { return [
-        { type: i0.ComponentFactoryResolver }
-    ]; };
-    EventDisplayComponent.propDecorators = {
-        event: [{ type: i0.Input }],
-        date: [{ type: i0.Input }],
-        component: [{ type: i0.Input }],
-        renderTarget: [{ type: i0.ViewChild, args: ['renderTarget', { read: i0.ViewContainerRef, static: true },] }]
-    };
+        }, directives: [i2.NgClass, i2.NgForOf, i2.NgIf, EventDisplayComponent], pipes: [AllDayEventPipe], styles: ["*[_ngcontent-%COMP%]{box-sizing:border-box}.calendar__item[_ngcontent-%COMP%]{display:flex;flex:1;flex-direction:column;position:absolute;left:0;padding:2px;border-radius:4px;width:100%;transition:.25s}.calendar__item[_ngcontent-%COMP%]:hover{opacity:.75;cursor:pointer}.calendar__times[_ngcontent-%COMP%]{position:relative;top:-10px;display:flex;width:60px;margin-right:20px;flex-direction:column;color:#c8c8c8;text-align:center}.time-cell[_ngcontent-%COMP%]{display:flex;justify-content:center}.calendar__content[_ngcontent-%COMP%]{flex:1;flex-direction:column;overflow:scroll;margin-top:100px}.calendar__days[_ngcontent-%COMP%]{position:absolute;top:65px;left:0;bottom:0;right:0;display:flex;flex-direction:row;margin-left:79px;border-left:1px solid #efefef}.calendar__day[_ngcontent-%COMP%]{display:flex;flex:1;justify-content:flex-start;border-right:1px solid #efefef;padding-right:.5rem;margin-left:.5rem}.calendar__day[_ngcontent-%COMP%]   .day__header[_ngcontent-%COMP%]{display:flex;flex-direction:column;align-items:center;color:#c8c8c8}.calendar__day[_ngcontent-%COMP%]   .day__header[_ngcontent-%COMP%]   .day-name[_ngcontent-%COMP%]{margin-bottom:.5rem}.calendar__day[_ngcontent-%COMP%]   .day__header[_ngcontent-%COMP%]   .day-number[_ngcontent-%COMP%]{display:flex;justify-content:center;align-items:center;margin-bottom:.5rem;width:40px;height:40px;border-radius:20px;background-color:#efefef;color:#2a2a2a}.calendar__day[_ngcontent-%COMP%]   .day__header--today[_ngcontent-%COMP%]   .day-number[_ngcontent-%COMP%]{background-color:#263238;color:#fff}.calendar__day-events[_ngcontent-%COMP%]{position:-webkit-sticky;position:sticky;top:0;z-index:2;display:flex;flex-direction:row;margin-left:79px;background-color:#fff;border-left:1px solid #efefef}.calendar__day-events[_ngcontent-%COMP%]   .day__lane[_ngcontent-%COMP%]{position:relative;display:flex;flex:1;flex-direction:column;overflow:hidden;border-right:1px solid #efefef}.calendar__day-events[_ngcontent-%COMP%]   .day__lane[_ngcontent-%COMP%]   .calendar__item[_ngcontent-%COMP%]{position:relative}.calendar__day-events[_ngcontent-%COMP%]   .day__lane[_ngcontent-%COMP%]   .calendar__item[_ngcontent-%COMP%]   .event__header[_ngcontent-%COMP%]{border-bottom:0}.calendar__marker[_ngcontent-%COMP%]{position:relative;z-index:1;border:1px solid #d32f2f;width:calc(100% + 1rem);left:-.5rem}.calendar__marker[_ngcontent-%COMP%]:before{content:\"\";display:block;position:absolute;width:10px;background-color:#d32f2f;height:10px;border-radius:10px;top:-5px;left:-7px}.calendar__lanes[_ngcontent-%COMP%]{display:flex;flex:1;flex-direction:row;padding-top:10px}.calendar__lanes[_ngcontent-%COMP%]   .day__lane[_ngcontent-%COMP%]{display:flex;flex-direction:column;position:relative;flex:1;padding:0 .5rem;border-right:1px solid #efefef;transition:.25s;background-color:#f4f4f4}.calendar__lanes[_ngcontent-%COMP%]   .day__lane[_ngcontent-%COMP%]   .time-grid[_ngcontent-%COMP%]{position:absolute;top:0;left:0;width:100%}.calendar__lanes[_ngcontent-%COMP%]   .day__lane[_ngcontent-%COMP%]   .time-grid__cell[_ngcontent-%COMP%]{border-top:1px dotted #dbdbdb;width:100%}.calendar__lanes[_ngcontent-%COMP%]   .day__lane--today[_ngcontent-%COMP%]{background-color:#eef7fb}.calendar__lanes[_ngcontent-%COMP%]   .day__lane--today[_ngcontent-%COMP%]   .time-grid__cell[_ngcontent-%COMP%]{border-top-color:#c5e3f1}"] });
+    (function () {
+        (typeof ngDevMode === "undefined" || ngDevMode) && i0.ɵsetClassMetadata(DayViewComponent, [{
+                type: i0.Component,
+                args: [{
+                        selector: 'day-view',
+                        templateUrl: './day-view.component.html',
+                        styleUrls: ['./day-view.component.scss']
+                    }]
+            }], function () { return [{ type: FormattingService }]; }, null);
+    })();
 
-    var MaterialModules = [
-        icon.MatIconModule,
-        tooltip.MatTooltipModule
-    ];
-    var SharedComponentsModule = /** @class */ (function () {
-        function SharedComponentsModule() {
+    var _c0$3 = function (a0) { return { "day__header--today ": a0 }; };
+    function WeekViewComponent_div_1_Template(rf, ctx) {
+        if (rf & 1) {
+            var _r6_1 = i0.ɵɵgetCurrentView();
+            i0.ɵɵelementStart(0, "div", 9);
+            i0.ɵɵelementStart(1, "div", 10);
+            i0.ɵɵelementStart(2, "span", 11);
+            i0.ɵɵtext(3);
+            i0.ɵɵelementEnd();
+            i0.ɵɵelementStart(4, "span", 12);
+            i0.ɵɵlistener("click", function WeekViewComponent_div_1_Template_span_click_4_listener() { i0.ɵɵrestoreView(_r6_1); var day_r4 = ctx.$implicit; var ctx_r5 = i0.ɵɵnextContext(); return ctx_r5.navigateToDayView(day_r4.date); });
+            i0.ɵɵtext(5);
+            i0.ɵɵelementEnd();
+            i0.ɵɵelementEnd();
+            i0.ɵɵelementEnd();
         }
-        return SharedComponentsModule;
-    }());
-    SharedComponentsModule.decorators = [
-        { type: i0.NgModule, args: [{
-                    declarations: [
-                        EventDisplayComponent,
-                        EventRenderDayComponent,
-                        EventRenderWeekComponent,
-                        EventRenderMonthComponent
-                    ],
-                    imports: __spread([
-                        platformBrowser.BrowserModule
-                    ], MaterialModules),
-                    exports: [
-                        EventDisplayComponent,
-                        EventRenderDayComponent,
-                        EventRenderWeekComponent,
-                        EventRenderMonthComponent
-                    ],
-                    providers: [],
-                    bootstrap: []
-                },] }
-    ];
-
-    var AllDayEventPipe = /** @class */ (function () {
-        function AllDayEventPipe() {
+        if (rf & 2) {
+            var day_r4 = ctx.$implicit;
+            var ctx_r0 = i0.ɵɵnextContext();
+            i0.ɵɵadvance(1);
+            i0.ɵɵproperty("ngClass", i0.ɵɵpureFunction1(3, _c0$3, ctx_r0.isToday(day_r4.date)));
+            i0.ɵɵadvance(2);
+            i0.ɵɵtextInterpolate(ctx_r0.getDayName(day_r4.date));
+            i0.ɵɵadvance(2);
+            i0.ɵɵtextInterpolate(ctx_r0.getDayNumber(day_r4.date));
         }
-        AllDayEventPipe.prototype.transform = function (items, allDay) {
-            if (allDay) {
-                return items.filter(function (item) { return item.allDay; });
-            }
-            return items.filter(function (item) { return !item.allDay; });
-        };
-        return AllDayEventPipe;
-    }());
-    AllDayEventPipe.decorators = [
-        { type: i0.Pipe, args: [{
-                    name: 'allDayEventPipe'
-                },] }
-    ];
-
-    var LimitPipe = /** @class */ (function () {
-        function LimitPipe() {
+    }
+    function WeekViewComponent_div_4_event_display_1_Template(rf, ctx) {
+        if (rf & 1) {
+            var _r11_1 = i0.ɵɵgetCurrentView();
+            i0.ɵɵelementStart(0, "event-display", 15);
+            i0.ɵɵlistener("click", function WeekViewComponent_div_4_event_display_1_Template_event_display_click_0_listener() { i0.ɵɵrestoreView(_r11_1); var event_r9 = ctx.$implicit; var ctx_r10 = i0.ɵɵnextContext(2); return ctx_r10.onEventClick(event_r9); });
+            i0.ɵɵelementEnd();
         }
-        LimitPipe.prototype.transform = function (items, limit) {
-            return items.slice(0, limit);
-        };
-        return LimitPipe;
-    }());
-    LimitPipe.decorators = [
-        { type: i0.Pipe, args: [{
-                    name: 'limitPipe'
-                },] }
-    ];
-
-    var PipesModule = /** @class */ (function () {
-        function PipesModule() {
+        if (rf & 2) {
+            var event_r9 = ctx.$implicit;
+            var day_r7 = i0.ɵɵnextContext().$implicit;
+            var ctx_r8 = i0.ɵɵnextContext();
+            i0.ɵɵproperty("component", ctx_r8.options.renderComponent.week)("event", event_r9)("date", day_r7.date);
         }
-        return PipesModule;
-    }());
-    PipesModule.decorators = [
-        { type: i0.NgModule, args: [{
-                    declarations: [
-                        LimitPipe,
-                        AllDayEventPipe
-                    ],
-                    imports: [],
-                    exports: [
-                        LimitPipe,
-                        AllDayEventPipe
-                    ],
-                    providers: [],
-                    bootstrap: []
-                },] }
-    ];
-
-    var DayViewModule = /** @class */ (function () {
-        function DayViewModule() {
+    }
+    function WeekViewComponent_div_4_Template(rf, ctx) {
+        if (rf & 1) {
+            i0.ɵɵelementStart(0, "div", 13);
+            i0.ɵɵtemplate(1, WeekViewComponent_div_4_event_display_1_Template, 1, 3, "event-display", 14);
+            i0.ɵɵpipe(2, "allDayEventPipe");
+            i0.ɵɵelementEnd();
         }
-        return DayViewModule;
-    }());
-    DayViewModule.decorators = [
-        { type: i0.NgModule, args: [{
-                    declarations: [
-                        DayViewComponent
-                    ],
-                    imports: [
-                        platformBrowser.BrowserModule,
-                        SharedComponentsModule,
-                        PipesModule
-                    ],
-                    exports: [
-                        DayViewComponent
-                    ],
-                    entryComponents: [],
-                    providers: [],
-                    bootstrap: []
-                },] }
-    ];
-
+        if (rf & 2) {
+            var day_r7 = ctx.$implicit;
+            i0.ɵɵadvance(1);
+            i0.ɵɵproperty("ngForOf", i0.ɵɵpipeBind2(2, 1, day_r7.events, true));
+        }
+    }
+    function WeekViewComponent_div_7_Template(rf, ctx) {
+        if (rf & 1) {
+            i0.ɵɵelementStart(0, "div", 16);
+            i0.ɵɵtext(1);
+            i0.ɵɵelementEnd();
+        }
+        if (rf & 2) {
+            var hour_r13 = ctx.$implicit;
+            var ctx_r2 = i0.ɵɵnextContext();
+            i0.ɵɵstyleProp("height", ctx_r2.getCellHeight(hour_r13), "px");
+            i0.ɵɵadvance(1);
+            i0.ɵɵtextInterpolate1(" ", hour_r13.title, " ");
+        }
+    }
+    function WeekViewComponent_div_8_div_2_Template(rf, ctx) {
+        if (rf & 1) {
+            i0.ɵɵelement(0, "div", 22);
+        }
+        if (rf & 2) {
+            var hour_r18 = ctx.$implicit;
+            var ctx_r15 = i0.ɵɵnextContext(2);
+            i0.ɵɵstyleProp("height", ctx_r15.getCellHeight(hour_r18), "px");
+        }
+    }
+    function WeekViewComponent_div_8_div_3_Template(rf, ctx) {
+        if (rf & 1) {
+            i0.ɵɵelement(0, "div", 23);
+        }
+        if (rf & 2) {
+            var ctx_r16 = i0.ɵɵnextContext(2);
+            i0.ɵɵstyleProp("margin-top", ctx_r16.markerPosition, "px");
+        }
+    }
+    function WeekViewComponent_div_8_event_display_4_Template(rf, ctx) {
+        if (rf & 1) {
+            var _r21_1 = i0.ɵɵgetCurrentView();
+            i0.ɵɵelementStart(0, "event-display", 15);
+            i0.ɵɵlistener("click", function WeekViewComponent_div_8_event_display_4_Template_event_display_click_0_listener() { i0.ɵɵrestoreView(_r21_1); var event_r19 = ctx.$implicit; var ctx_r20 = i0.ɵɵnextContext(2); return ctx_r20.onEventClick(event_r19); });
+            i0.ɵɵelementEnd();
+        }
+        if (rf & 2) {
+            var event_r19 = ctx.$implicit;
+            var day_r14 = i0.ɵɵnextContext().$implicit;
+            var ctx_r17 = i0.ɵɵnextContext();
+            i0.ɵɵstyleProp("width", event_r19.grid == null ? null : event_r19.grid.width, "%")("margin-left", event_r19.grid == null ? null : event_r19.grid.offsetLeft, "%")("margin-top", event_r19.grid == null ? null : event_r19.grid.offsetTop, "px")("height", event_r19.grid == null ? null : event_r19.grid.durationOffset, "px");
+            i0.ɵɵproperty("component", ctx_r17.options.renderComponent.week)("event", event_r19)("date", day_r14.date);
+        }
+    }
+    var _c1$1 = function (a0) { return { "day__lane--today": a0 }; };
+    function WeekViewComponent_div_8_Template(rf, ctx) {
+        if (rf & 1) {
+            i0.ɵɵelementStart(0, "div", 17);
+            i0.ɵɵelementStart(1, "div", 18);
+            i0.ɵɵtemplate(2, WeekViewComponent_div_8_div_2_Template, 1, 2, "div", 19);
+            i0.ɵɵelementEnd();
+            i0.ɵɵtemplate(3, WeekViewComponent_div_8_div_3_Template, 1, 2, "div", 20);
+            i0.ɵɵtemplate(4, WeekViewComponent_div_8_event_display_4_Template, 1, 11, "event-display", 21);
+            i0.ɵɵpipe(5, "allDayEventPipe");
+            i0.ɵɵelementEnd();
+        }
+        if (rf & 2) {
+            var day_r14 = ctx.$implicit;
+            var ctx_r3 = i0.ɵɵnextContext();
+            i0.ɵɵproperty("ngClass", i0.ɵɵpureFunction1(7, _c1$1, ctx_r3.isToday(day_r14.date)));
+            i0.ɵɵadvance(2);
+            i0.ɵɵproperty("ngForOf", ctx_r3.hoursOfDay);
+            i0.ɵɵadvance(1);
+            i0.ɵɵproperty("ngIf", ctx_r3.isToday(day_r14.date));
+            i0.ɵɵadvance(1);
+            i0.ɵɵproperty("ngForOf", i0.ɵɵpipeBind2(5, 4, day_r14.events, false));
+        }
+    }
     var WeekViewComponent = /** @class */ (function (_super) {
         __extends(WeekViewComponent, _super);
         function WeekViewComponent(formattingService) {
@@ -1165,41 +1519,190 @@
         };
         return WeekViewComponent;
     }(BaseViewComponent));
-    WeekViewComponent.decorators = [
-        { type: i0.Component, args: [{
-                    selector: 'week-view',
-                    template: "<div class=\"calendar__days\">\n    <div class=\"calendar__day\" *ngFor=\"let day of weekView.days;\">\n        <div class=\"day__header\" [ngClass]=\"{ 'day__header--today ': isToday(day.date) }\">\n            <span class=\"day-name\">{{ getDayName(day.date) }}</span> \n            <span class=\"day-number\" (click)=\"navigateToDayView(day.date)\">{{ getDayNumber(day.date) }}</span>\n        </div>\n    </div>\n</div> \n\n<div class=\"calendar__content\">\n    <div class=\"calendar__day-events\">\n        <div class=\"day__lane\" *ngFor=\"let day of weekView.days\">\n            <event-display\n                *ngFor=\"let event of day.events | allDayEventPipe: true\"\n                class=\"calendar__item\"\n                [component]=\"options.renderComponent.week\"\n                [event]=\"event\"\n                [date]=\"day.date\"\n                (click)=\"onEventClick(event)\">\n            </event-display>\n        </div>\n    </div>\n\n    <div class=\"calendar__lanes\">\n        <div class=\"calendar__times\">\n            <div class=\"time-cell\" *ngFor=\"let hour of hoursOfDay;\" [style.height.px]=\"getCellHeight(hour)\">\n                {{ hour.title }}\n            </div>\n        </div>\n\n        <div class=\"day__lane\"\n            *ngFor=\"let day of weekView.days\"\n            [ngClass]=\"{ 'day__lane--today': isToday(day.date) }\">\n\n            <div class=\"time-grid\">\n                <div class=\"time-grid__cell\" *ngFor=\"let hour of hoursOfDay;\" [style.height.px]=\"getCellHeight(hour)\"></div>\n            </div> \n\n            <div class=\"calendar__marker\" *ngIf=\"isToday(day.date)\" [style.marginTop.px]=\"markerPosition\"></div>\n            \n            <event-display\n                *ngFor=\"let event of day.events | allDayEventPipe: false\"\n                class=\"calendar__item\"\n                [component]=\"options.renderComponent.week\"\n                [event]=\"event\"\n                [date]=\"day.date\"                \n                [style.width.%]=\"event.grid?.width\"\n                [style.marginLeft.%]=\"event.grid?.offsetLeft\"\n                [style.marginTop.px]=\"event.grid?.offsetTop\"\n                [style.height.px]=\"event.grid?.durationOffset\"\n                (click)=\"onEventClick(event)\">\n            </event-display>\n        </div>\n    </div>\n</div>",
-                    styles: ["*{box-sizing:border-box}.calendar__item{display:flex;flex:1;flex-direction:column;position:absolute;left:0;padding:2px;border-radius:4px;width:100%;transition:.25s}.calendar__item:hover{opacity:.75;cursor:pointer}.calendar__times{position:relative;top:-10px;display:flex;width:60px;margin-right:20px;flex-direction:column;color:#c8c8c8;text-align:center}.time-cell{display:flex;justify-content:center}.calendar__content{flex:1;flex-direction:column;overflow:scroll;margin-top:100px}.calendar__days{position:absolute;top:65px;left:0;bottom:0;right:0;display:flex;flex-direction:row;margin-left:79px;border-left:1px solid #efefef}.calendar__day{display:flex;flex:1;justify-content:flex-start;border-right:1px solid #efefef;padding-right:.5rem;margin-left:.5rem}.calendar__day .day__header{display:flex;flex-direction:column;align-items:center;color:#c8c8c8}.calendar__day .day__header .day-name{margin-bottom:.5rem}.calendar__day .day__header .day-number{display:flex;justify-content:center;align-items:center;margin-bottom:.5rem;width:40px;height:40px;border-radius:20px;background-color:#efefef;color:#2a2a2a}.calendar__day .day__header--today .day-number{background-color:#263238;color:#fff}.calendar__day-events{position:-webkit-sticky;position:sticky;top:0;z-index:2;display:flex;flex-direction:row;margin-left:79px;background-color:#fff;border-left:1px solid #efefef}.calendar__day-events .day__lane{position:relative;display:flex;flex:1;flex-direction:column;overflow:hidden;border-right:1px solid #efefef}.calendar__day-events .day__lane .calendar__item{position:relative}.calendar__day-events .day__lane .calendar__item .event__header{border-bottom:0}.calendar__marker{position:relative;z-index:1;border:1px solid #d32f2f;width:calc(100% + 1rem);left:-.5rem}.calendar__marker:before{content:\"\";display:block;position:absolute;width:10px;background-color:#d32f2f;height:10px;border-radius:10px;top:-5px;left:-7px}.calendar__lanes{display:flex;flex:1;flex-direction:row;padding-top:10px}.calendar__lanes .day__lane{display:flex;flex-direction:column;position:relative;flex:1;padding:0 .5rem;border-right:1px solid #efefef;transition:.25s}.calendar__lanes .day__lane:hover{background-color:#f4f4f4}.calendar__lanes .day__lane:hover .time-grid__cell{border-top-color:#dbdbdb}.calendar__lanes .day__lane .time-grid{position:absolute;top:0;left:0;width:100%}.calendar__lanes .day__lane .time-grid__cell{border-top:1px dotted #efefef;width:100%}.calendar__lanes .day__lane--today,.calendar__lanes .day__lane--today:hover{background-color:#eef7fb}.calendar__lanes .day__lane--today .time-grid__cell{border-top-color:#c5e3f1}.calendar__day{justify-content:center}.calendar__day .day__header:hover .day-number{cursor:pointer}"]
-                },] }
-    ];
-    WeekViewComponent.ctorParameters = function () { return [
-        { type: FormattingService }
-    ]; };
+    WeekViewComponent.ɵfac = function WeekViewComponent_Factory(t) { return new (t || WeekViewComponent)(i0.ɵɵdirectiveInject(FormattingService)); };
+    WeekViewComponent.ɵcmp = i0.ɵɵdefineComponent({ type: WeekViewComponent, selectors: [["week-view"]], features: [i0.ɵɵInheritDefinitionFeature], decls: 9, vars: 4, consts: [[1, "calendar__days"], ["class", "calendar__day", 4, "ngFor", "ngForOf"], [1, "calendar__content"], [1, "calendar__day-events"], ["class", "day__lane", 4, "ngFor", "ngForOf"], [1, "calendar__lanes"], [1, "calendar__times"], ["class", "time-cell", 3, "height", 4, "ngFor", "ngForOf"], ["class", "day__lane", 3, "ngClass", 4, "ngFor", "ngForOf"], [1, "calendar__day"], [1, "day__header", 3, "ngClass"], [1, "day-name"], [1, "day-number", 3, "click"], [1, "day__lane"], ["class", "calendar__item", 3, "component", "event", "date", "click", 4, "ngFor", "ngForOf"], [1, "calendar__item", 3, "component", "event", "date", "click"], [1, "time-cell"], [1, "day__lane", 3, "ngClass"], [1, "time-grid"], ["class", "time-grid__cell", 3, "height", 4, "ngFor", "ngForOf"], ["class", "calendar__marker", 3, "marginTop", 4, "ngIf"], ["class", "calendar__item", 3, "component", "event", "date", "width", "marginLeft", "marginTop", "height", "click", 4, "ngFor", "ngForOf"], [1, "time-grid__cell"], [1, "calendar__marker"]], template: function WeekViewComponent_Template(rf, ctx) {
+            if (rf & 1) {
+                i0.ɵɵelementStart(0, "div", 0);
+                i0.ɵɵtemplate(1, WeekViewComponent_div_1_Template, 6, 5, "div", 1);
+                i0.ɵɵelementEnd();
+                i0.ɵɵelementStart(2, "div", 2);
+                i0.ɵɵelementStart(3, "div", 3);
+                i0.ɵɵtemplate(4, WeekViewComponent_div_4_Template, 3, 4, "div", 4);
+                i0.ɵɵelementEnd();
+                i0.ɵɵelementStart(5, "div", 5);
+                i0.ɵɵelementStart(6, "div", 6);
+                i0.ɵɵtemplate(7, WeekViewComponent_div_7_Template, 2, 3, "div", 7);
+                i0.ɵɵelementEnd();
+                i0.ɵɵtemplate(8, WeekViewComponent_div_8_Template, 6, 9, "div", 8);
+                i0.ɵɵelementEnd();
+                i0.ɵɵelementEnd();
+            }
+            if (rf & 2) {
+                i0.ɵɵadvance(1);
+                i0.ɵɵproperty("ngForOf", ctx.weekView.days);
+                i0.ɵɵadvance(3);
+                i0.ɵɵproperty("ngForOf", ctx.weekView.days);
+                i0.ɵɵadvance(3);
+                i0.ɵɵproperty("ngForOf", ctx.hoursOfDay);
+                i0.ɵɵadvance(1);
+                i0.ɵɵproperty("ngForOf", ctx.weekView.days);
+            }
+        }, directives: [i2.NgForOf, i2.NgClass, EventDisplayComponent, i2.NgIf], pipes: [AllDayEventPipe], styles: ["*[_ngcontent-%COMP%]{box-sizing:border-box}.calendar__item[_ngcontent-%COMP%]{display:flex;flex:1;flex-direction:column;position:absolute;left:0;padding:2px;border-radius:4px;width:100%;transition:.25s}.calendar__item[_ngcontent-%COMP%]:hover{opacity:.75;cursor:pointer}.calendar__times[_ngcontent-%COMP%]{position:relative;top:-10px;display:flex;width:60px;margin-right:20px;flex-direction:column;color:#c8c8c8;text-align:center}.time-cell[_ngcontent-%COMP%]{display:flex;justify-content:center}.calendar__content[_ngcontent-%COMP%]{flex:1;flex-direction:column;overflow:scroll;margin-top:100px}.calendar__days[_ngcontent-%COMP%]{position:absolute;top:65px;left:0;bottom:0;right:0;display:flex;flex-direction:row;margin-left:79px;border-left:1px solid #efefef}.calendar__day[_ngcontent-%COMP%]{display:flex;flex:1;justify-content:flex-start;border-right:1px solid #efefef;padding-right:.5rem;margin-left:.5rem}.calendar__day[_ngcontent-%COMP%]   .day__header[_ngcontent-%COMP%]{display:flex;flex-direction:column;align-items:center;color:#c8c8c8}.calendar__day[_ngcontent-%COMP%]   .day__header[_ngcontent-%COMP%]   .day-name[_ngcontent-%COMP%]{margin-bottom:.5rem}.calendar__day[_ngcontent-%COMP%]   .day__header[_ngcontent-%COMP%]   .day-number[_ngcontent-%COMP%]{display:flex;justify-content:center;align-items:center;margin-bottom:.5rem;width:40px;height:40px;border-radius:20px;background-color:#efefef;color:#2a2a2a}.calendar__day[_ngcontent-%COMP%]   .day__header--today[_ngcontent-%COMP%]   .day-number[_ngcontent-%COMP%]{background-color:#263238;color:#fff}.calendar__day-events[_ngcontent-%COMP%]{position:-webkit-sticky;position:sticky;top:0;z-index:2;display:flex;flex-direction:row;margin-left:79px;background-color:#fff;border-left:1px solid #efefef}.calendar__day-events[_ngcontent-%COMP%]   .day__lane[_ngcontent-%COMP%]{position:relative;display:flex;flex:1;flex-direction:column;overflow:hidden;border-right:1px solid #efefef}.calendar__day-events[_ngcontent-%COMP%]   .day__lane[_ngcontent-%COMP%]   .calendar__item[_ngcontent-%COMP%]{position:relative}.calendar__day-events[_ngcontent-%COMP%]   .day__lane[_ngcontent-%COMP%]   .calendar__item[_ngcontent-%COMP%]   .event__header[_ngcontent-%COMP%]{border-bottom:0}.calendar__marker[_ngcontent-%COMP%]{position:relative;z-index:1;border:1px solid #d32f2f;width:calc(100% + 1rem);left:-.5rem}.calendar__marker[_ngcontent-%COMP%]:before{content:\"\";display:block;position:absolute;width:10px;background-color:#d32f2f;height:10px;border-radius:10px;top:-5px;left:-7px}.calendar__lanes[_ngcontent-%COMP%]{display:flex;flex:1;flex-direction:row;padding-top:10px}.calendar__lanes[_ngcontent-%COMP%]   .day__lane[_ngcontent-%COMP%]{display:flex;flex-direction:column;position:relative;flex:1;padding:0 .5rem;border-right:1px solid #efefef;transition:.25s}.calendar__lanes[_ngcontent-%COMP%]   .day__lane[_ngcontent-%COMP%]:hover{background-color:#f4f4f4}.calendar__lanes[_ngcontent-%COMP%]   .day__lane[_ngcontent-%COMP%]:hover   .time-grid__cell[_ngcontent-%COMP%]{border-top-color:#dbdbdb}.calendar__lanes[_ngcontent-%COMP%]   .day__lane[_ngcontent-%COMP%]   .time-grid[_ngcontent-%COMP%]{position:absolute;top:0;left:0;width:100%}.calendar__lanes[_ngcontent-%COMP%]   .day__lane[_ngcontent-%COMP%]   .time-grid__cell[_ngcontent-%COMP%]{border-top:1px dotted #efefef;width:100%}.calendar__lanes[_ngcontent-%COMP%]   .day__lane--today[_ngcontent-%COMP%], .calendar__lanes[_ngcontent-%COMP%]   .day__lane--today[_ngcontent-%COMP%]:hover{background-color:#eef7fb}.calendar__lanes[_ngcontent-%COMP%]   .day__lane--today[_ngcontent-%COMP%]   .time-grid__cell[_ngcontent-%COMP%]{border-top-color:#c5e3f1}.calendar__day[_ngcontent-%COMP%]{justify-content:center}.calendar__day[_ngcontent-%COMP%]   .day__header[_ngcontent-%COMP%]:hover   .day-number[_ngcontent-%COMP%]{cursor:pointer}"] });
+    (function () {
+        (typeof ngDevMode === "undefined" || ngDevMode) && i0.ɵsetClassMetadata(WeekViewComponent, [{
+                type: i0.Component,
+                args: [{
+                        selector: 'week-view',
+                        templateUrl: './week-view.component.html',
+                        styleUrls: ['./week-view.component.scss']
+                    }]
+            }], function () { return [{ type: FormattingService }]; }, null);
+    })();
 
-    var WeekViewModule = /** @class */ (function () {
-        function WeekViewModule() {
+    var LimitPipe = /** @class */ (function () {
+        function LimitPipe() {
         }
-        return WeekViewModule;
+        LimitPipe.prototype.transform = function (items, limit) {
+            return items.slice(0, limit);
+        };
+        return LimitPipe;
     }());
-    WeekViewModule.decorators = [
-        { type: i0.NgModule, args: [{
-                    declarations: [
-                        WeekViewComponent
-                    ],
-                    imports: [
-                        platformBrowser.BrowserModule,
-                        SharedComponentsModule,
-                        PipesModule
-                    ],
-                    exports: [
-                        WeekViewComponent
-                    ],
-                    entryComponents: [],
-                    providers: [],
-                    bootstrap: []
-                },] }
-    ];
+    LimitPipe.ɵfac = function LimitPipe_Factory(t) { return new (t || LimitPipe)(); };
+    LimitPipe.ɵpipe = i0.ɵɵdefinePipe({ name: "limitPipe", type: LimitPipe, pure: true });
+    (function () {
+        (typeof ngDevMode === "undefined" || ngDevMode) && i0.ɵsetClassMetadata(LimitPipe, [{
+                type: i0.Pipe,
+                args: [{
+                        name: 'limitPipe'
+                    }]
+            }], null, null);
+    })();
 
+    var _c0$4 = ["calendarDayElement"];
+    function MonthViewComponent_div_1_Template(rf, ctx) {
+        if (rf & 1) {
+            i0.ɵɵelementStart(0, "div", 9);
+            i0.ɵɵelementStart(1, "div", 10);
+            i0.ɵɵelementStart(2, "span", 11);
+            i0.ɵɵtext(3);
+            i0.ɵɵelementEnd();
+            i0.ɵɵelementEnd();
+            i0.ɵɵelementEnd();
+        }
+        if (rf & 2) {
+            var day_r5 = ctx.$implicit;
+            i0.ɵɵadvance(3);
+            i0.ɵɵtextInterpolate(day_r5.title);
+        }
+    }
+    function MonthViewComponent_div_3_Template(rf, ctx) {
+        if (rf & 1) {
+            i0.ɵɵelementStart(0, "div", 12);
+            i0.ɵɵtext(1);
+            i0.ɵɵelementEnd();
+        }
+        if (rf & 2) {
+            var weekNumber_r6 = ctx.$implicit;
+            i0.ɵɵadvance(1);
+            i0.ɵɵtextInterpolate1(" ", weekNumber_r6, " ");
+        }
+    }
+    function MonthViewComponent_div_7_event_display_5_Template(rf, ctx) {
+        if (rf & 1) {
+            var _r12_1 = i0.ɵɵgetCurrentView();
+            i0.ɵɵelementStart(0, "event-display", 19);
+            i0.ɵɵlistener("click", function MonthViewComponent_div_7_event_display_5_Template_event_display_click_0_listener() { i0.ɵɵrestoreView(_r12_1); var event_r10 = ctx.$implicit; var ctx_r11 = i0.ɵɵnextContext(2); return ctx_r11.onEventClick(event_r10); });
+            i0.ɵɵelementEnd();
+        }
+        if (rf & 2) {
+            var event_r10 = ctx.$implicit;
+            var day_r7 = i0.ɵɵnextContext().$implicit;
+            var ctx_r8 = i0.ɵɵnextContext();
+            i0.ɵɵproperty("component", ctx_r8.options.renderComponent.month)("event", event_r10)("date", day_r7.date);
+        }
+    }
+    function MonthViewComponent_div_7_span_7_Template(rf, ctx) {
+        if (rf & 1) {
+            var _r16_1 = i0.ɵɵgetCurrentView();
+            i0.ɵɵelementStart(0, "span");
+            i0.ɵɵelementStart(1, "div", 20, 21);
+            i0.ɵɵlistener("click", function MonthViewComponent_div_7_span_7_Template_div_click_1_listener() { i0.ɵɵrestoreView(_r16_1); var _r14 = i0.ɵɵreference(2); var day_r7 = i0.ɵɵnextContext().$implicit; var ctx_r15 = i0.ɵɵnextContext(); return ctx_r15.toggleHiddenEvents(_r14, day_r7); });
+            i0.ɵɵtext(3);
+            i0.ɵɵelementEnd();
+            i0.ɵɵelementEnd();
+        }
+        if (rf & 2) {
+            var day_r7 = i0.ɵɵnextContext().$implicit;
+            var ctx_r9 = i0.ɵɵnextContext();
+            i0.ɵɵadvance(3);
+            i0.ɵɵtextInterpolate1(" ", day_r7.eventCount - ctx_r9.maxEventsVisible + 1, " more ");
+        }
+    }
+    function MonthViewComponent_div_7_Template(rf, ctx) {
+        if (rf & 1) {
+            var _r20_1 = i0.ɵɵgetCurrentView();
+            i0.ɵɵelementStart(0, "div", 13);
+            i0.ɵɵelementStart(1, "div", 14);
+            i0.ɵɵelementStart(2, "span", 15);
+            i0.ɵɵlistener("click", function MonthViewComponent_div_7_Template_span_click_2_listener() { i0.ɵɵrestoreView(_r20_1); var day_r7 = ctx.$implicit; var ctx_r19 = i0.ɵɵnextContext(); return ctx_r19.navigateToDayView(day_r7.date); });
+            i0.ɵɵtext(3);
+            i0.ɵɵelementEnd();
+            i0.ɵɵelementEnd();
+            i0.ɵɵelementStart(4, "div", 16);
+            i0.ɵɵtemplate(5, MonthViewComponent_div_7_event_display_5_Template, 1, 3, "event-display", 17);
+            i0.ɵɵpipe(6, "limitPipe");
+            i0.ɵɵtemplate(7, MonthViewComponent_div_7_span_7_Template, 4, 1, "span", 18);
+            i0.ɵɵelementEnd();
+            i0.ɵɵelementEnd();
+        }
+        if (rf & 2) {
+            var day_r7 = ctx.$implicit;
+            var ctx_r3 = i0.ɵɵnextContext();
+            i0.ɵɵclassProp("is-today", ctx_r3.isToday(day_r7.date));
+            i0.ɵɵadvance(1);
+            i0.ɵɵclassProp("not-current-month", !ctx_r3.isCurrentMonth(day_r7.date));
+            i0.ɵɵadvance(2);
+            i0.ɵɵtextInterpolate(ctx_r3.getDayNumber(day_r7.date));
+            i0.ɵɵadvance(2);
+            i0.ɵɵproperty("ngForOf", i0.ɵɵpipeBind2(6, 7, day_r7.events, ctx_r3.maxEventsVisible - 1));
+            i0.ɵɵadvance(2);
+            i0.ɵɵproperty("ngIf", day_r7.eventCount && ctx_r3.maxEventsVisible > 0 && day_r7.eventCount >= ctx_r3.maxEventsVisible);
+        }
+    }
+    function MonthViewComponent_ng_template_8_event_display_3_Template(rf, ctx) {
+        if (rf & 1) {
+            var _r24_1 = i0.ɵɵgetCurrentView();
+            i0.ɵɵelementStart(0, "event-display", 19);
+            i0.ɵɵlistener("click", function MonthViewComponent_ng_template_8_event_display_3_Template_event_display_click_0_listener() { i0.ɵɵrestoreView(_r24_1); var event_r22 = ctx.$implicit; var ctx_r23 = i0.ɵɵnextContext(2); return ctx_r23.onEventClick(event_r22); });
+            i0.ɵɵelementEnd();
+        }
+        if (rf & 2) {
+            var event_r22 = ctx.$implicit;
+            var ctx_r21 = i0.ɵɵnextContext(2);
+            i0.ɵɵproperty("component", ctx_r21.options.renderComponent.month)("event", event_r22)("date", ctx_r21.hiddenEventsDay.date);
+        }
+    }
+    function MonthViewComponent_ng_template_8_Template(rf, ctx) {
+        if (rf & 1) {
+            var _r26_1 = i0.ɵɵgetCurrentView();
+            i0.ɵɵelementStart(0, "div", 22);
+            i0.ɵɵelementStart(1, "span", 23);
+            i0.ɵɵlistener("click", function MonthViewComponent_ng_template_8_Template_span_click_1_listener() { i0.ɵɵrestoreView(_r26_1); var ctx_r25 = i0.ɵɵnextContext(); return ctx_r25.navigateToDayView(ctx_r25.hiddenEventsDay.date); });
+            i0.ɵɵtext(2);
+            i0.ɵɵelementEnd();
+            i0.ɵɵtemplate(3, MonthViewComponent_ng_template_8_event_display_3_Template, 1, 3, "event-display", 17);
+            i0.ɵɵelementEnd();
+        }
+        if (rf & 2) {
+            var ctx_r4 = i0.ɵɵnextContext();
+            i0.ɵɵstyleProp("height", ctx_r4.getHiddenEventsHeight(), "px");
+            i0.ɵɵclassProp("is-today", ctx_r4.isToday(ctx_r4.hiddenEventsDay.date));
+            i0.ɵɵadvance(2);
+            i0.ɵɵtextInterpolate1(" ", ctx_r4.getDayNumber(ctx_r4.hiddenEventsDay.date), " ");
+            i0.ɵɵadvance(1);
+            i0.ɵɵproperty("ngForOf", ctx_r4.hiddenEventsDay.events);
+        }
+    }
     var MonthViewComponent = /** @class */ (function (_super) {
         __extends(MonthViewComponent, _super);
         function MonthViewComponent(formattingService) {
@@ -1324,46 +1827,632 @@
         };
         return MonthViewComponent;
     }(BaseViewComponent));
-    MonthViewComponent.decorators = [
-        { type: i0.Component, args: [{
-                    selector: 'month-view',
-                    template: "<div class=\"calendar__days\">\n    <div class=\"calendar__day\" *ngFor=\"let day of daysOfWeek;\">\n        <div class=\"day__header\">\n            <span class=\"day-name\">{{ day.title }}</span>\n        </div>\n    </div>\n</div>\n\n<div class=\"calendar__weeknumbers\">\n    <div class=\"week-number-cell\" *ngFor=\"let weekNumber of weekNumbers;\">\n        {{ weekNumber }}\n    </div>\n</div>\n\n<div class=\"calendar__content\">\n    <div class=\"calendar__blocks\" #calendarDayElement>\n        <div \n            *ngFor=\"let day of monthView.days\" \n            class=\"day__block\"\n            [class.is-today]=\"isToday(day.date)\">\n            <div class=\"day__block-content\" [class.not-current-month]=\"!isCurrentMonth(day.date)\">\n                <span class=\"day__block-date\" (click)=\"navigateToDayView(day.date)\">{{ getDayNumber(day.date) }}</span>\n            </div>\n\n            <div class=\"day__events\">\n                <event-display\n                    *ngFor=\"let event of day.events | limitPipe: maxEventsVisible - 1\"\n                    class=\"calendar__item\"\n                    [component]=\"options.renderComponent.month\"\n                    [event]=\"event\"\n                    [date]=\"day.date\"      \n                    (click)=\"onEventClick(event)\">\n                </event-display>\n\n                <span *ngIf=\"day.eventCount && maxEventsVisible > 0 && day.eventCount >= maxEventsVisible\">\n                    <div\n                        class=\"hidden-events-trigger\"                        \n                        (click)=\"toggleHiddenEvents(trigger, day)\"\n                        cdkOverlayOrigin\n                        #trigger=\"cdkOverlayOrigin\">\n                        {{ day.eventCount - maxEventsVisible + 1 }} more\n                    </div>\n                </span>  \n            </div>\n        </div>\n\n        <ng-template\n            cdkConnectedOverlay\n            (overlayOutsideClick)=\"closeHiddenEvents()\"\n            [cdkConnectedOverlayOffsetY]=\"-100\"\n            [cdkConnectedOverlayOffsetX]=\"-35\"\n            cdkConnectedOverlayPanelClass=\"hidden-events-overlay\"\n            [cdkConnectedOverlayOrigin]=\"hiddenEventsTriggerOrigin\"\n            [cdkConnectedOverlayOpen]=\"showHiddenEvents\">\n            <div\n                class=\"event-container\"\n                [class.is-today]=\"isToday(hiddenEventsDay.date)\"\n                [style.height.px]=\"getHiddenEventsHeight()\">\n\n                <span\n                    class=\"event-container__date\"\n                    (click)=\"navigateToDayView(hiddenEventsDay.date)\">\n                    {{ getDayNumber(hiddenEventsDay.date) }}\n                </span>\n\n                <event-display\n                    *ngFor=\"let event of hiddenEventsDay.events\"\n                    class=\"calendar__item\"\n                    [component]=\"options.renderComponent.month\"\n                    [event]=\"event\"\n                    [date]=\"hiddenEventsDay.date\"      \n                    (click)=\"onEventClick(event)\">\n                </event-display>\n            </div>\n        </ng-template>          \n    </div>\n</div>\n",
-                    styles: ["*{box-sizing:border-box}.calendar__item{display:flex;flex:1;flex-direction:column;position:absolute;left:0;padding:2px;border-radius:4px;width:100%;transition:.25s}.calendar__item:hover{opacity:.75;cursor:pointer}.calendar__times{position:relative;top:-10px;display:flex;width:60px;margin-right:20px;flex-direction:column;color:#c8c8c8;text-align:center}.time-cell{display:flex;justify-content:center}.calendar__content{flex:1;flex-direction:column;overflow:scroll;margin-top:100px}.calendar__days{position:absolute;top:65px;left:0;bottom:0;right:0;display:flex;flex-direction:row;margin-left:79px;border-left:1px solid #efefef}.calendar__day{display:flex;flex:1;justify-content:flex-start;border-right:1px solid #efefef;padding-right:.5rem;margin-left:.5rem}.calendar__day .day__header{display:flex;flex-direction:column;align-items:center;color:#c8c8c8}.calendar__day .day__header .day-name{margin-bottom:.5rem}.calendar__day .day__header .day-number{display:flex;justify-content:center;align-items:center;margin-bottom:.5rem;width:40px;height:40px;border-radius:20px;background-color:#efefef;color:#2a2a2a}.calendar__day .day__header--today .day-number{background-color:#263238;color:#fff}.calendar__day-events{position:-webkit-sticky;position:sticky;top:0;z-index:2;display:flex;flex-direction:row;margin-left:79px;background-color:#fff;border-left:1px solid #efefef}.calendar__day-events .day__lane{position:relative;display:flex;flex:1;flex-direction:column;overflow:hidden;border-right:1px solid #efefef}.calendar__day-events .day__lane .calendar__item{position:relative}.calendar__day-events .day__lane .calendar__item .event__header{border-bottom:0}.calendar__marker{position:relative;z-index:1;border:1px solid #d32f2f;width:calc(100% + 1rem);left:-.5rem}.calendar__marker:before{content:\"\";display:block;position:absolute;width:10px;background-color:#d32f2f;height:10px;border-radius:10px;top:-5px;left:-7px}.calendar__content{display:flex;margin-left:4px;margin-top:15px;border-left:1px solid #efefef}.calendar__days{height:1.5rem;margin-left:38px}.calendar__days .day__header{flex:1}.calendar__weeknumbers{display:flex;flex-direction:column;justify-content:space-around;padding-top:1.5rem;text-align:center;width:22px;margin-right:12px}.calendar__weeknumbers .week-number-cell{color:#c8c8c8}.calendar__blocks{display:flex;flex:1;flex-wrap:wrap;flex-direction:row;padding-top:.5rem}.calendar__blocks .day__block{position:relative;display:flex;flex-direction:column;width:calc(100% / 7);padding-top:.5rem;overflow:hidden;border-right:1px solid #efefef;border-bottom:1px solid #efefef}.calendar__blocks .day__block .day__block-content{justify-content:center;display:flex}.calendar__blocks .day__block .day__block-date{display:flex;justify-content:center;align-items:center;text-align:center;width:25px;height:25px;color:#2a2a2a;font-size:.75rem}.calendar__blocks .day__block .day__block-date:hover{cursor:pointer}.calendar__blocks .day__block .day__events{position:absolute;overflow:hidden;top:2rem;width:100%}.calendar__blocks .day__block .not-current-month{opacity:.25}.calendar__blocks .day__block.is-today{background-color:#eef7fb}.calendar__blocks .day__block.is-today .day__block-date{border-radius:100%;background:#2a2a2a;color:#fff}.calendar__blocks .day__block .calendar__item{position:relative;padding:0 2px}.hidden-events-trigger{font-size:12px;padding:0 .5rem;font-weight:600}.hidden-events-trigger:hover{cursor:pointer;opacity:.7}"]
-                },] }
+    MonthViewComponent.ɵfac = function MonthViewComponent_Factory(t) { return new (t || MonthViewComponent)(i0.ɵɵdirectiveInject(FormattingService)); };
+    MonthViewComponent.ɵcmp = i0.ɵɵdefineComponent({ type: MonthViewComponent, selectors: [["month-view"]], viewQuery: function MonthViewComponent_Query(rf, ctx) {
+            if (rf & 1) {
+                i0.ɵɵviewQuery(_c0$4, 3, i0.ElementRef);
+            }
+            if (rf & 2) {
+                var _t = void 0;
+                i0.ɵɵqueryRefresh(_t = i0.ɵɵloadQuery()) && (ctx.calendarDayElement = _t.first);
+            }
+        }, hostBindings: function MonthViewComponent_HostBindings(rf, ctx) {
+            if (rf & 1) {
+                i0.ɵɵlistener("resize", function MonthViewComponent_resize_HostBindingHandler($event) { return ctx.onResize($event); }, false, i0.ɵɵresolveWindow);
+            }
+        }, outputs: { setCalendarOffset: "setCalendarOffset" }, features: [i0.ɵɵInheritDefinitionFeature], decls: 9, vars: 7, consts: [[1, "calendar__days"], ["class", "calendar__day", 4, "ngFor", "ngForOf"], [1, "calendar__weeknumbers"], ["class", "week-number-cell", 4, "ngFor", "ngForOf"], [1, "calendar__content"], [1, "calendar__blocks"], ["calendarDayElement", ""], ["class", "day__block", 3, "is-today", 4, "ngFor", "ngForOf"], ["cdkConnectedOverlay", "", "cdkConnectedOverlayPanelClass", "hidden-events-overlay", 3, "cdkConnectedOverlayOffsetY", "cdkConnectedOverlayOffsetX", "cdkConnectedOverlayOrigin", "cdkConnectedOverlayOpen", "overlayOutsideClick"], [1, "calendar__day"], [1, "day__header"], [1, "day-name"], [1, "week-number-cell"], [1, "day__block"], [1, "day__block-content"], [1, "day__block-date", 3, "click"], [1, "day__events"], ["class", "calendar__item", 3, "component", "event", "date", "click", 4, "ngFor", "ngForOf"], [4, "ngIf"], [1, "calendar__item", 3, "component", "event", "date", "click"], ["cdkOverlayOrigin", "", 1, "hidden-events-trigger", 3, "click"], ["trigger", "cdkOverlayOrigin"], [1, "event-container"], [1, "event-container__date", 3, "click"]], template: function MonthViewComponent_Template(rf, ctx) {
+            if (rf & 1) {
+                i0.ɵɵelementStart(0, "div", 0);
+                i0.ɵɵtemplate(1, MonthViewComponent_div_1_Template, 4, 1, "div", 1);
+                i0.ɵɵelementEnd();
+                i0.ɵɵelementStart(2, "div", 2);
+                i0.ɵɵtemplate(3, MonthViewComponent_div_3_Template, 2, 1, "div", 3);
+                i0.ɵɵelementEnd();
+                i0.ɵɵelementStart(4, "div", 4);
+                i0.ɵɵelementStart(5, "div", 5, 6);
+                i0.ɵɵtemplate(7, MonthViewComponent_div_7_Template, 8, 10, "div", 7);
+                i0.ɵɵtemplate(8, MonthViewComponent_ng_template_8_Template, 4, 6, "ng-template", 8);
+                i0.ɵɵlistener("overlayOutsideClick", function MonthViewComponent_Template_ng_template_overlayOutsideClick_8_listener() { return ctx.closeHiddenEvents(); });
+                i0.ɵɵelementEnd();
+                i0.ɵɵelementEnd();
+            }
+            if (rf & 2) {
+                i0.ɵɵadvance(1);
+                i0.ɵɵproperty("ngForOf", ctx.daysOfWeek);
+                i0.ɵɵadvance(2);
+                i0.ɵɵproperty("ngForOf", ctx.weekNumbers);
+                i0.ɵɵadvance(4);
+                i0.ɵɵproperty("ngForOf", ctx.monthView.days);
+                i0.ɵɵadvance(1);
+                i0.ɵɵproperty("cdkConnectedOverlayOffsetY", -100)("cdkConnectedOverlayOffsetX", -35)("cdkConnectedOverlayOrigin", ctx.hiddenEventsTriggerOrigin)("cdkConnectedOverlayOpen", ctx.showHiddenEvents);
+            }
+        }, directives: [i2.NgForOf, i3$3.CdkConnectedOverlay, i2.NgIf, EventDisplayComponent, i3$3.CdkOverlayOrigin], pipes: [LimitPipe], styles: ["*[_ngcontent-%COMP%]{box-sizing:border-box}.calendar__item[_ngcontent-%COMP%]{display:flex;flex:1;flex-direction:column;position:absolute;left:0;padding:2px;border-radius:4px;width:100%;transition:.25s}.calendar__item[_ngcontent-%COMP%]:hover{opacity:.75;cursor:pointer}.calendar__times[_ngcontent-%COMP%]{position:relative;top:-10px;display:flex;width:60px;margin-right:20px;flex-direction:column;color:#c8c8c8;text-align:center}.time-cell[_ngcontent-%COMP%]{display:flex;justify-content:center}.calendar__content[_ngcontent-%COMP%]{flex:1;flex-direction:column;overflow:scroll;margin-top:100px}.calendar__days[_ngcontent-%COMP%]{position:absolute;top:65px;left:0;bottom:0;right:0;display:flex;flex-direction:row;margin-left:79px;border-left:1px solid #efefef}.calendar__day[_ngcontent-%COMP%]{display:flex;flex:1;justify-content:flex-start;border-right:1px solid #efefef;padding-right:.5rem;margin-left:.5rem}.calendar__day[_ngcontent-%COMP%]   .day__header[_ngcontent-%COMP%]{display:flex;flex-direction:column;align-items:center;color:#c8c8c8}.calendar__day[_ngcontent-%COMP%]   .day__header[_ngcontent-%COMP%]   .day-name[_ngcontent-%COMP%]{margin-bottom:.5rem}.calendar__day[_ngcontent-%COMP%]   .day__header[_ngcontent-%COMP%]   .day-number[_ngcontent-%COMP%]{display:flex;justify-content:center;align-items:center;margin-bottom:.5rem;width:40px;height:40px;border-radius:20px;background-color:#efefef;color:#2a2a2a}.calendar__day[_ngcontent-%COMP%]   .day__header--today[_ngcontent-%COMP%]   .day-number[_ngcontent-%COMP%]{background-color:#263238;color:#fff}.calendar__day-events[_ngcontent-%COMP%]{position:-webkit-sticky;position:sticky;top:0;z-index:2;display:flex;flex-direction:row;margin-left:79px;background-color:#fff;border-left:1px solid #efefef}.calendar__day-events[_ngcontent-%COMP%]   .day__lane[_ngcontent-%COMP%]{position:relative;display:flex;flex:1;flex-direction:column;overflow:hidden;border-right:1px solid #efefef}.calendar__day-events[_ngcontent-%COMP%]   .day__lane[_ngcontent-%COMP%]   .calendar__item[_ngcontent-%COMP%]{position:relative}.calendar__day-events[_ngcontent-%COMP%]   .day__lane[_ngcontent-%COMP%]   .calendar__item[_ngcontent-%COMP%]   .event__header[_ngcontent-%COMP%]{border-bottom:0}.calendar__marker[_ngcontent-%COMP%]{position:relative;z-index:1;border:1px solid #d32f2f;width:calc(100% + 1rem);left:-.5rem}.calendar__marker[_ngcontent-%COMP%]:before{content:\"\";display:block;position:absolute;width:10px;background-color:#d32f2f;height:10px;border-radius:10px;top:-5px;left:-7px}.calendar__content[_ngcontent-%COMP%]{display:flex;margin-left:4px;margin-top:15px;border-left:1px solid #efefef}.calendar__days[_ngcontent-%COMP%]{height:1.5rem;margin-left:38px}.calendar__days[_ngcontent-%COMP%]   .day__header[_ngcontent-%COMP%]{flex:1}.calendar__weeknumbers[_ngcontent-%COMP%]{display:flex;flex-direction:column;justify-content:space-around;padding-top:1.5rem;text-align:center;width:22px;margin-right:12px}.calendar__weeknumbers[_ngcontent-%COMP%]   .week-number-cell[_ngcontent-%COMP%]{color:#c8c8c8}.calendar__blocks[_ngcontent-%COMP%]{display:flex;flex:1;flex-wrap:wrap;flex-direction:row;padding-top:.5rem}.calendar__blocks[_ngcontent-%COMP%]   .day__block[_ngcontent-%COMP%]{position:relative;display:flex;flex-direction:column;width:calc(100% / 7);padding-top:.5rem;overflow:hidden;border-right:1px solid #efefef;border-bottom:1px solid #efefef}.calendar__blocks[_ngcontent-%COMP%]   .day__block[_ngcontent-%COMP%]   .day__block-content[_ngcontent-%COMP%]{justify-content:center;display:flex}.calendar__blocks[_ngcontent-%COMP%]   .day__block[_ngcontent-%COMP%]   .day__block-date[_ngcontent-%COMP%]{display:flex;justify-content:center;align-items:center;text-align:center;width:25px;height:25px;color:#2a2a2a;font-size:.75rem}.calendar__blocks[_ngcontent-%COMP%]   .day__block[_ngcontent-%COMP%]   .day__block-date[_ngcontent-%COMP%]:hover{cursor:pointer}.calendar__blocks[_ngcontent-%COMP%]   .day__block[_ngcontent-%COMP%]   .day__events[_ngcontent-%COMP%]{position:absolute;overflow:hidden;top:2rem;width:100%}.calendar__blocks[_ngcontent-%COMP%]   .day__block[_ngcontent-%COMP%]   .not-current-month[_ngcontent-%COMP%]{opacity:.25}.calendar__blocks[_ngcontent-%COMP%]   .day__block.is-today[_ngcontent-%COMP%]{background-color:#eef7fb}.calendar__blocks[_ngcontent-%COMP%]   .day__block.is-today[_ngcontent-%COMP%]   .day__block-date[_ngcontent-%COMP%]{border-radius:100%;background:#2a2a2a;color:#fff}.calendar__blocks[_ngcontent-%COMP%]   .day__block[_ngcontent-%COMP%]   .calendar__item[_ngcontent-%COMP%]{position:relative;padding:0 2px}.hidden-events-trigger[_ngcontent-%COMP%]{font-size:12px;padding:0 .5rem;font-weight:600}.hidden-events-trigger[_ngcontent-%COMP%]:hover{cursor:pointer;opacity:.7}"] });
+    (function () {
+        (typeof ngDevMode === "undefined" || ngDevMode) && i0.ɵsetClassMetadata(MonthViewComponent, [{
+                type: i0.Component,
+                args: [{
+                        selector: 'month-view',
+                        templateUrl: './month-view.component.html',
+                        styleUrls: ['./month-view.component.scss']
+                    }]
+            }], function () { return [{ type: FormattingService }]; }, { setCalendarOffset: [{
+                    type: i0.Output
+                }], calendarDayElement: [{
+                    type: i0.ViewChild,
+                    args: ['calendarDayElement', { read: i0.ElementRef, static: true }]
+                }], onResize: [{
+                    type: i0.HostListener,
+                    args: ['window:resize', ['$event']]
+                }] });
+    })();
+
+    function NgxMatCalendarComponent_div_0_span_13_Template(rf, ctx) {
+        if (rf & 1) {
+            i0.ɵɵelementStart(0, "span", 19);
+            i0.ɵɵtext(1);
+            i0.ɵɵelementEnd();
+        }
+        if (rf & 2) {
+            var ctx_r1 = i0.ɵɵnextContext(2);
+            i0.ɵɵadvance(1);
+            i0.ɵɵtextInterpolate1("Week ", ctx_r1.calendar.weeknumber, "");
+        }
+    }
+    function NgxMatCalendarComponent_div_0_button_15_Template(rf, ctx) {
+        if (rf & 1) {
+            var _r11_1 = i0.ɵɵgetCurrentView();
+            i0.ɵɵelementStart(0, "button", 20);
+            i0.ɵɵlistener("click", function NgxMatCalendarComponent_div_0_button_15_Template_button_click_0_listener() { i0.ɵɵrestoreView(_r11_1); var ctx_r10 = i0.ɵɵnextContext(2); return ctx_r10.showKeyboardShortcutDialog(); });
+            i0.ɵɵelementStart(1, "mat-icon");
+            i0.ɵɵtext(2, "keyboard");
+            i0.ɵɵelementEnd();
+            i0.ɵɵelementEnd();
+        }
+    }
+    function NgxMatCalendarComponent_div_0_mat_form_field_16_Template(rf, ctx) {
+        if (rf & 1) {
+            var _r14_1 = i0.ɵɵgetCurrentView();
+            i0.ɵɵelementStart(0, "mat-form-field", 21);
+            i0.ɵɵelementStart(1, "mat-select", 22, 23);
+            i0.ɵɵlistener("selectionChange", function NgxMatCalendarComponent_div_0_mat_form_field_16_Template_mat_select_selectionChange_1_listener() { i0.ɵɵrestoreView(_r14_1); var _r12 = i0.ɵɵreference(2); var ctx_r13 = i0.ɵɵnextContext(2); return ctx_r13.onViewChange(_r12.value); });
+            i0.ɵɵelementStart(3, "mat-option", 24);
+            i0.ɵɵtext(4, "Day");
+            i0.ɵɵelementEnd();
+            i0.ɵɵelementStart(5, "mat-option", 25);
+            i0.ɵɵtext(6, "Week");
+            i0.ɵɵelementEnd();
+            i0.ɵɵelementStart(7, "mat-option", 26);
+            i0.ɵɵtext(8, "Month");
+            i0.ɵɵelementEnd();
+            i0.ɵɵelementEnd();
+            i0.ɵɵelementEnd();
+        }
+        if (rf & 2) {
+            var ctx_r3 = i0.ɵɵnextContext(2);
+            i0.ɵɵadvance(1);
+            i0.ɵɵproperty("value", ctx_r3.selectedView);
+        }
+    }
+    function NgxMatCalendarComponent_div_0_button_21_Template(rf, ctx) {
+        if (rf & 1) {
+            i0.ɵɵelementStart(0, "button", 27);
+            i0.ɵɵelementStart(1, "mat-icon");
+            i0.ɵɵtext(2, "calendar_today");
+            i0.ɵɵelementEnd();
+            i0.ɵɵelementEnd();
+        }
+        if (rf & 2) {
+            i0.ɵɵnextContext();
+            var _r4 = i0.ɵɵreference(18);
+            i0.ɵɵproperty("matMenuTriggerFor", _r4);
+        }
+    }
+    function NgxMatCalendarComponent_div_0_day_view_22_Template(rf, ctx) {
+        if (rf & 1) {
+            var _r16_1 = i0.ɵɵgetCurrentView();
+            i0.ɵɵelementStart(0, "day-view", 28);
+            i0.ɵɵlistener("eventClick", function NgxMatCalendarComponent_div_0_day_view_22_Template_day_view_eventClick_0_listener($event) { i0.ɵɵrestoreView(_r16_1); var ctx_r15 = i0.ɵɵnextContext(2); return ctx_r15.onEventClick($event); });
+            i0.ɵɵelementEnd();
+        }
+        if (rf & 2) {
+            var ctx_r6 = i0.ɵɵnextContext(2);
+            i0.ɵɵproperty("events$", ctx_r6.events$)("selectedDate$", ctx_r6.selectedDate$)("options$", ctx_r6.options$);
+        }
+    }
+    function NgxMatCalendarComponent_div_0_week_view_23_Template(rf, ctx) {
+        if (rf & 1) {
+            var _r18_1 = i0.ɵɵgetCurrentView();
+            i0.ɵɵelementStart(0, "week-view", 29);
+            i0.ɵɵlistener("eventClick", function NgxMatCalendarComponent_div_0_week_view_23_Template_week_view_eventClick_0_listener($event) { i0.ɵɵrestoreView(_r18_1); var ctx_r17 = i0.ɵɵnextContext(2); return ctx_r17.onEventClick($event); })("changeToDayView", function NgxMatCalendarComponent_div_0_week_view_23_Template_week_view_changeToDayView_0_listener($event) { i0.ɵɵrestoreView(_r18_1); var ctx_r19 = i0.ɵɵnextContext(2); return ctx_r19.changeToDayView($event); });
+            i0.ɵɵelementEnd();
+        }
+        if (rf & 2) {
+            var ctx_r7 = i0.ɵɵnextContext(2);
+            i0.ɵɵproperty("events$", ctx_r7.events$)("selectedDate$", ctx_r7.selectedDate$)("options$", ctx_r7.options$);
+        }
+    }
+    function NgxMatCalendarComponent_div_0_month_view_24_Template(rf, ctx) {
+        if (rf & 1) {
+            var _r21_1 = i0.ɵɵgetCurrentView();
+            i0.ɵɵelementStart(0, "month-view", 30);
+            i0.ɵɵlistener("eventClick", function NgxMatCalendarComponent_div_0_month_view_24_Template_month_view_eventClick_0_listener($event) { i0.ɵɵrestoreView(_r21_1); var ctx_r20 = i0.ɵɵnextContext(2); return ctx_r20.onEventClick($event); })("setCalendarOffset", function NgxMatCalendarComponent_div_0_month_view_24_Template_month_view_setCalendarOffset_0_listener($event) { i0.ɵɵrestoreView(_r21_1); var ctx_r22 = i0.ɵɵnextContext(2); return ctx_r22.setCalendarOffset($event); })("changeToDayView", function NgxMatCalendarComponent_div_0_month_view_24_Template_month_view_changeToDayView_0_listener($event) { i0.ɵɵrestoreView(_r21_1); var ctx_r23 = i0.ɵɵnextContext(2); return ctx_r23.changeToDayView($event); });
+            i0.ɵɵelementEnd();
+        }
+        if (rf & 2) {
+            var ctx_r8 = i0.ɵɵnextContext(2);
+            i0.ɵɵproperty("events$", ctx_r8.events$)("selectedDate$", ctx_r8.selectedDate$)("options$", ctx_r8.options$);
+        }
+    }
+    function NgxMatCalendarComponent_div_0_button_25_Template(rf, ctx) {
+        if (rf & 1) {
+            var _r25_1 = i0.ɵɵgetCurrentView();
+            i0.ɵɵelementStart(0, "button", 31);
+            i0.ɵɵlistener("click", function NgxMatCalendarComponent_div_0_button_25_Template_button_click_0_listener() { i0.ɵɵrestoreView(_r25_1); var ctx_r24 = i0.ɵɵnextContext(2); return ctx_r24.onAddButtonClick(); });
+            i0.ɵɵelementStart(1, "mat-icon");
+            i0.ɵɵtext(2, "add");
+            i0.ɵɵelementEnd();
+            i0.ɵɵelementEnd();
+        }
+    }
+    function NgxMatCalendarComponent_div_0_Template(rf, ctx) {
+        if (rf & 1) {
+            var _r27_1 = i0.ɵɵgetCurrentView();
+            i0.ɵɵelementStart(0, "div", 1);
+            i0.ɵɵelementStart(1, "div", 2);
+            i0.ɵɵelementStart(2, "button", 3);
+            i0.ɵɵlistener("click", function NgxMatCalendarComponent_div_0_Template_button_click_2_listener() { i0.ɵɵrestoreView(_r27_1); var ctx_r26 = i0.ɵɵnextContext(); return ctx_r26.setCalendarToday(); });
+            i0.ɵɵtext(3, " Today ");
+            i0.ɵɵelementEnd();
+            i0.ɵɵelementStart(4, "button", 4);
+            i0.ɵɵlistener("click", function NgxMatCalendarComponent_div_0_Template_button_click_4_listener() { i0.ɵɵrestoreView(_r27_1); var ctx_r28 = i0.ɵɵnextContext(); return ctx_r28.setCalendarOffset("prev"); });
+            i0.ɵɵelementStart(5, "mat-icon");
+            i0.ɵɵtext(6, "chevron_left");
+            i0.ɵɵelementEnd();
+            i0.ɵɵelementEnd();
+            i0.ɵɵelementStart(7, "button", 4);
+            i0.ɵɵlistener("click", function NgxMatCalendarComponent_div_0_Template_button_click_7_listener() { i0.ɵɵrestoreView(_r27_1); var ctx_r29 = i0.ɵɵnextContext(); return ctx_r29.setCalendarOffset("next"); });
+            i0.ɵɵelementStart(8, "mat-icon");
+            i0.ɵɵtext(9, "chevron_right");
+            i0.ɵɵelementEnd();
+            i0.ɵɵelementEnd();
+            i0.ɵɵelementStart(10, "div", 5);
+            i0.ɵɵelementStart(11, "span", 6);
+            i0.ɵɵtext(12);
+            i0.ɵɵelementEnd();
+            i0.ɵɵtemplate(13, NgxMatCalendarComponent_div_0_span_13_Template, 2, 1, "span", 7);
+            i0.ɵɵelementEnd();
+            i0.ɵɵelementStart(14, "div", 8);
+            i0.ɵɵtemplate(15, NgxMatCalendarComponent_div_0_button_15_Template, 3, 0, "button", 9);
+            i0.ɵɵtemplate(16, NgxMatCalendarComponent_div_0_mat_form_field_16_Template, 9, 1, "mat-form-field", 10);
+            i0.ɵɵelementStart(17, "mat-menu", null, 11);
+            i0.ɵɵelementStart(19, "div", 12);
+            i0.ɵɵlistener("click", function NgxMatCalendarComponent_div_0_Template_div_click_19_listener($event) { return $event.stopPropagation(); });
+            i0.ɵɵelementStart(20, "mat-calendar", 13);
+            i0.ɵɵlistener("selectedChange", function NgxMatCalendarComponent_div_0_Template_mat_calendar_selectedChange_20_listener($event) { i0.ɵɵrestoreView(_r27_1); var ctx_r31 = i0.ɵɵnextContext(); return ctx_r31.onDatePickerChange($event); });
+            i0.ɵɵelementEnd();
+            i0.ɵɵelementEnd();
+            i0.ɵɵelementEnd();
+            i0.ɵɵtemplate(21, NgxMatCalendarComponent_div_0_button_21_Template, 3, 1, "button", 14);
+            i0.ɵɵelementEnd();
+            i0.ɵɵelementEnd();
+            i0.ɵɵtemplate(22, NgxMatCalendarComponent_div_0_day_view_22_Template, 1, 3, "day-view", 15);
+            i0.ɵɵtemplate(23, NgxMatCalendarComponent_div_0_week_view_23_Template, 1, 3, "week-view", 16);
+            i0.ɵɵtemplate(24, NgxMatCalendarComponent_div_0_month_view_24_Template, 1, 3, "month-view", 17);
+            i0.ɵɵtemplate(25, NgxMatCalendarComponent_div_0_button_25_Template, 3, 0, "button", 18);
+            i0.ɵɵelementEnd();
+        }
+        if (rf & 2) {
+            var ctx_r0 = i0.ɵɵnextContext();
+            i0.ɵɵadvance(2);
+            i0.ɵɵproperty("matTooltip", ctx_r0.today);
+            i0.ɵɵadvance(10);
+            i0.ɵɵtextInterpolate(ctx_r0.calendar.monthAndYear);
+            i0.ɵɵadvance(1);
+            i0.ɵɵproperty("ngIf", !ctx_r0.getSelectedView("month"));
+            i0.ɵɵadvance(2);
+            i0.ɵɵproperty("ngIf", ctx_r0.enableKeyboardShortcutDialog);
+            i0.ɵɵadvance(1);
+            i0.ɵɵproperty("ngIf", ctx_r0.enableViewToggle);
+            i0.ɵɵadvance(5);
+            i0.ɵɵproperty("ngIf", ctx_r0.enableDatePickerButton);
+            i0.ɵɵadvance(1);
+            i0.ɵɵproperty("ngIf", ctx_r0.getSelectedView("day"));
+            i0.ɵɵadvance(1);
+            i0.ɵɵproperty("ngIf", ctx_r0.getSelectedView("week"));
+            i0.ɵɵadvance(1);
+            i0.ɵɵproperty("ngIf", ctx_r0.getSelectedView("month"));
+            i0.ɵɵadvance(1);
+            i0.ɵɵproperty("ngIf", ctx_r0.options.enableAddEventButton);
+        }
+    }
+    var NgxMatCalendarComponent = /** @class */ (function () {
+        function NgxMatCalendarComponent(dateAdapter, dialog) {
+            this.dateAdapter = dateAdapter;
+            this.dialog = dialog;
+            this.dateChange = new i0.EventEmitter();
+            this.eventClick = new i0.EventEmitter();
+            this.addButtonClick = new i0.EventEmitter();
+            this.subscriptions$ = new rxjs.Subscription();
+            this.calendar = {};
+            this.today = dateFns.format(new Date(), 'EEEE, d MMMM');
+        }
+        NgxMatCalendarComponent.prototype.onKeyDown = function (event) {
+            this.handleKeyboardEvents(event);
+        };
+        NgxMatCalendarComponent.prototype.ngOnInit = function () {
+            var _this = this;
+            this.subscriptions$.add(this.options$.pipe(operators.tap(function (options) {
+                _this.options = options;
+                _this.selectedView = options.view;
+                _this.initCalendar();
+            })).subscribe());
+            this.subscriptions$.add(this.events$.pipe(operators.tap(function (events) {
+                _this.events = events;
+                _this.parseDates(events);
+            })).subscribe());
+            this.subscriptions$.add(this.selectedDate$.pipe(operators.tap(function (selectedDate) {
+                _this.selectedDate = selectedDate;
+                _this.initCalendar();
+                if (_this.selectedDate !== selectedDate) {
+                    _this.dateChange.emit(_this.selectedDate);
+                }
+            })).subscribe());
+        };
+        NgxMatCalendarComponent.prototype.initCalendar = function () {
+            if (this.options) {
+                this.enableDatePickerButton = this.options.enableDatePickerButton;
+                this.enableViewToggle = this.options.enableViewToggle;
+                this.enableKeyboardShortcutDialog = this.options.enableKeyboardShortcutDialog;
+                this.dateAdapter.setLocale(this.options.locale);
+                this.generateCalendar();
+            }
+        };
+        NgxMatCalendarComponent.prototype.generateCalendar = function () {
+            if (this.selectedDate) {
+                this.calendar = {
+                    monthAndYear: dateFns.format(this.selectedDate, 'MMMM yyyy'),
+                    weeknumber: dateFns.format(this.selectedDate, 'I')
+                };
+            }
+        };
+        NgxMatCalendarComponent.prototype.parseDates = function (events) {
+            this.events = events.map(function (event) {
+                event.date = new Date(event.date);
+                event.startTime = new Date(event.startTime);
+                event.endTime = new Date(event.endTime);
+                return event;
+            });
+        };
+        NgxMatCalendarComponent.prototype.isToday = function (date) {
+            return dateFns.isToday(date);
+        };
+        NgxMatCalendarComponent.prototype.setCalendarToday = function () {
+            this.selectedDate = new Date();
+            this.selectedDate$.next(this.selectedDate);
+            this.handleCalendarSet();
+        };
+        NgxMatCalendarComponent.prototype.setCalendarOffset = function (direction) {
+            var _a;
+            var offset = Periods[this.selectedView];
+            this.selectedDate = dateFns.add(this.selectedDate, (_a = {},
+                _a[offset] = direction === PREVIOUS ? -1 : 1,
+                _a));
+            this.selectedDate$.next(this.selectedDate);
+            this.handleCalendarSet();
+        };
+        NgxMatCalendarComponent.prototype.setCalendar = function (date) {
+            if (date) {
+                this.selectedDate = date;
+                this.selectedDate$.next(date);
+                this.handleCalendarSet();
+            }
+        };
+        NgxMatCalendarComponent.prototype.handleCalendarSet = function () {
+            this.generateCalendar();
+            this.dateChange.emit(this.selectedDate);
+        };
+        NgxMatCalendarComponent.prototype.onViewChange = function (view) {
+            this.selectedView = view;
+        };
+        NgxMatCalendarComponent.prototype.changeToDayView = function (date) {
+            this.selectedView = DAY;
+            this.setCalendar(date);
+        };
+        NgxMatCalendarComponent.prototype.getSelectedView = function (view) {
+            return this.selectedView === view;
+        };
+        NgxMatCalendarComponent.prototype.onEventClick = function (event) {
+            this.eventClick.emit(event);
+        };
+        NgxMatCalendarComponent.prototype.onAddButtonClick = function () {
+            this.addButtonClick.emit();
+        };
+        NgxMatCalendarComponent.prototype.onDatePickerChange = function (date) {
+            this.setCalendar(dateFns.toDate(date));
+            this.datePickerMenu.closeMenu();
+        };
+        NgxMatCalendarComponent.prototype.showKeyboardShortcutDialog = function () {
+            var dialogRef = this.dialog.open(KeyboardShortcutDialogComponent, {
+                data: this.options
+            });
+        };
+        NgxMatCalendarComponent.prototype.handleKeyboardEvents = function (event) {
+            switch (event.key) {
+                case 'd':
+                    this.selectedView = DAY;
+                    break;
+                case 'w':
+                    this.selectedView = WEEK;
+                    break;
+                case 'm':
+                    this.selectedView = MONTH;
+                    break;
+                case 't':
+                    this.setCalendarToday();
+                    break;
+                case 'n':
+                    this.addButtonClick.emit();
+                    break;
+                default:
+                    break;
+            }
+        };
+        NgxMatCalendarComponent.prototype.ngOnDestroy = function () {
+            this.subscriptions$.unsubscribe();
+        };
+        return NgxMatCalendarComponent;
+    }());
+    NgxMatCalendarComponent.ɵfac = function NgxMatCalendarComponent_Factory(t) { return new (t || NgxMatCalendarComponent)(i0.ɵɵdirectiveInject(i1.DateAdapter), i0.ɵɵdirectiveInject(i2$1.MatDialog)); };
+    NgxMatCalendarComponent.ɵcmp = i0.ɵɵdefineComponent({ type: NgxMatCalendarComponent, selectors: [["ngx-mat-calendar"]], viewQuery: function NgxMatCalendarComponent_Query(rf, ctx) {
+            if (rf & 1) {
+                i0.ɵɵviewQuery(i7.MatMenuTrigger, 1);
+            }
+            if (rf & 2) {
+                var _t = void 0;
+                i0.ɵɵqueryRefresh(_t = i0.ɵɵloadQuery()) && (ctx.datePickerMenu = _t.first);
+            }
+        }, hostBindings: function NgxMatCalendarComponent_HostBindings(rf, ctx) {
+            if (rf & 1) {
+                i0.ɵɵlistener("keydown", function NgxMatCalendarComponent_keydown_HostBindingHandler($event) { return ctx.onKeyDown($event); }, false, i0.ɵɵresolveWindow);
+            }
+        }, inputs: { options$: "options$", events$: "events$", selectedDate$: "selectedDate$" }, outputs: { dateChange: "dateChange", eventClick: "eventClick", addButtonClick: "addButtonClick" }, decls: 1, vars: 1, consts: [["class", "calendar", 4, "ngIf"], [1, "calendar"], [1, "calendar__toolbar"], ["mat-stroked-button", "", "color", "primary", 1, "toolbar__button", "toolbar__button--today", 3, "matTooltip", "click"], ["mat-icon-button", "", "color", "primary", 1, "toolbar__button", "toolbar__button--navigate", 3, "click"], [1, "toolbar__meta"], [1, "toolbar__month"], ["class", "toolbar__week", 4, "ngIf"], [1, "toolbar__right"], ["mat-icon-button", "", "matTooltip", "Keyboard shortcuts", "class", "toolbar__button toolbar__button--keyboard-shortcut", "color", "primary", 3, "click", 4, "ngIf"], ["appearance", "outline", "class", "toolbar__view-switch", 4, "ngIf"], ["datePickerMenu", "matMenu"], [3, "click"], [3, "selectedChange"], ["matTooltip", "Pick a date", "mat-icon-button", "", "class", "toolbar__button", "color", "primary", 3, "matMenuTriggerFor", 4, "ngIf"], [3, "events$", "selectedDate$", "options$", "eventClick", 4, "ngIf"], [3, "events$", "selectedDate$", "options$", "eventClick", "changeToDayView", 4, "ngIf"], [3, "events$", "selectedDate$", "options$", "eventClick", "setCalendarOffset", "changeToDayView", 4, "ngIf"], ["class", "calendar__add-button", "mat-fab", "", "color", "primary", 3, "click", 4, "ngIf"], [1, "toolbar__week"], ["mat-icon-button", "", "matTooltip", "Keyboard shortcuts", "color", "primary", 1, "toolbar__button", "toolbar__button--keyboard-shortcut", 3, "click"], ["appearance", "outline", 1, "toolbar__view-switch"], [3, "value", "selectionChange"], ["view", ""], ["value", "day"], ["value", "week"], ["value", "month"], ["matTooltip", "Pick a date", "mat-icon-button", "", "color", "primary", 1, "toolbar__button", 3, "matMenuTriggerFor"], [3, "events$", "selectedDate$", "options$", "eventClick"], [3, "events$", "selectedDate$", "options$", "eventClick", "changeToDayView"], [3, "events$", "selectedDate$", "options$", "eventClick", "setCalendarOffset", "changeToDayView"], ["mat-fab", "", "color", "primary", 1, "calendar__add-button", 3, "click"]], template: function NgxMatCalendarComponent_Template(rf, ctx) {
+            if (rf & 1) {
+                i0.ɵɵtemplate(0, NgxMatCalendarComponent_div_0_Template, 26, 10, "div", 0);
+            }
+            if (rf & 2) {
+                i0.ɵɵproperty("ngIf", ctx.events && ctx.options);
+            }
+        }, directives: [i2.NgIf, i4.MatButton, i3$1.MatTooltip, i3.MatIcon, i7.MatMenu, i8.MatCalendar, i9.MatFormField, i10.MatSelect, i1.MatOption, i7.MatMenuTrigger, DayViewComponent, WeekViewComponent, MonthViewComponent], styles: ["*{box-sizing:border-box}.calendar__item{display:flex;flex:1;flex-direction:column;position:absolute;left:0;padding:2px;border-radius:4px;width:100%;transition:.25s}.calendar__item:hover{opacity:.75;cursor:pointer}.calendar__times{position:relative;top:-10px;display:flex;width:60px;margin-right:20px;flex-direction:column;color:#c8c8c8;text-align:center}.time-cell{display:flex;justify-content:center}.calendar__content{flex:1;flex-direction:column;overflow:scroll;margin-top:100px}.calendar__days{position:absolute;top:65px;left:0;bottom:0;right:0;display:flex;flex-direction:row;margin-left:79px;border-left:1px solid #efefef}.calendar__day{display:flex;flex:1;justify-content:flex-start;border-right:1px solid #efefef;padding-right:.5rem;margin-left:.5rem}.calendar__day .day__header{display:flex;flex-direction:column;align-items:center;color:#c8c8c8}.calendar__day .day__header .day-name{margin-bottom:.5rem}.calendar__day .day__header .day-number{display:flex;justify-content:center;align-items:center;margin-bottom:.5rem;width:40px;height:40px;border-radius:20px;background-color:#efefef;color:#2a2a2a}.calendar__day .day__header--today .day-number{background-color:#263238;color:#fff}.calendar__day-events{position:-webkit-sticky;position:sticky;top:0;z-index:2;display:flex;flex-direction:row;margin-left:79px;background-color:#fff;border-left:1px solid #efefef}.calendar__day-events .day__lane{position:relative;display:flex;flex:1;flex-direction:column;overflow:hidden;border-right:1px solid #efefef}.calendar__day-events .day__lane .calendar__item{position:relative}.calendar__day-events .day__lane .calendar__item .event__header{border-bottom:0}.calendar__marker{position:relative;z-index:1;border:1px solid #d32f2f;width:calc(100% + 1rem);left:-.5rem}.calendar__marker:before{content:\"\";display:block;position:absolute;width:10px;background-color:#d32f2f;height:10px;border-radius:10px;top:-5px;left:-7px}:host(ngx-mat-calendar){flex:1;height:100%}.calendar{position:relative;display:flex;flex-direction:column;height:100%}day-view,month-view,week-view{display:flex;height:100%;overflow:hidden}[hidden]{display:none}.calendar__toolbar{display:flex;flex-direction:row;align-items:center;justify-content:space-between;margin-bottom:1rem}.calendar__toolbar .toolbar__button,.calendar__toolbar .toolbar__month,.calendar__toolbar .toolbar__right{display:flex}.calendar__toolbar .toolbar__button{justify-content:center;margin-left:1rem}.calendar__toolbar .toolbar__button--today{margin-left:0;margin-right:1rem}.calendar__toolbar .toolbar__button--navigate{margin-left:0}.calendar__toolbar .toolbar__meta{display:flex;align-items:center;font-weight:200}.calendar__toolbar .toolbar__meta .toolbar__month{margin-left:1rem;font-size:1.25rem}.calendar__toolbar .toolbar__meta .toolbar__week{margin-left:1rem;font-size:1rem;padding:.25rem .5rem;font-size:.75rem;text-transform:uppercase;background-color:#efefef;border-radius:4px}.calendar__toolbar .toolbar__right{flex:1;justify-content:flex-end;align-items:center}.calendar__toolbar .toolbar__datepicker{position:absolute;right:60px}.calendar__toolbar .toolbar__datepicker .mat-form-field{font-size:12px}.calendar__toolbar .toolbar__datepicker .mat-form-field-wrapper{padding-bottom:0}.calendar__toolbar mat-form-field.toolbar__view-switch{margin-left:1rem;align-items:center}.calendar__toolbar mat-form-field.toolbar__view-switch .mat-form-field-wrapper{margin:0;padding:0}.calendar__toolbar mat-form-field.toolbar__view-switch .mat-form-field-infix{padding:.25rem 0 .5rem;width:90px}.calendar__toolbar mat-form-field.toolbar__view-switch .mat-select-arrow{margin-top:.25rem}.calendar__add-button{position:absolute;z-index:1;right:-.5rem;bottom:-.5rem;width:80px;height:80px}.calendar__add-button mat-icon{transform:scale(1.25)}mat-calendar{padding:0 .75rem}.cdk-overlay-pane.hidden-events-overlay{width:calc((100% / 7) + 50px)}.cdk-overlay-pane.hidden-events-overlay .event-container{display:flex;flex-direction:column;position:absolute;background-color:#fff;padding:.5rem;border-radius:4px;overflow:hidden;width:100%;box-shadow:0 3px 6px rgba(0,0,0,.16),0 3px 6px rgba(0,0,0,.23)}.cdk-overlay-pane.hidden-events-overlay .event-container.is-today .event-container__date{border-radius:100%;background:#2a2a2a;color:#fff}.cdk-overlay-pane.hidden-events-overlay .event-container .event-container__date{display:flex;justify-content:center;align-items:center;align-self:center;margin-bottom:.5rem;width:40px;min-height:40px;border-radius:20px;margin-top:4px;background-color:#efefef;color:#2a2a2a;font-size:14px}.cdk-overlay-pane.hidden-events-overlay .event-container .event-container__date:hover{cursor:pointer}.cdk-overlay-pane.hidden-events-overlay event-display{position:relative}"], encapsulation: 2 });
+    (function () {
+        (typeof ngDevMode === "undefined" || ngDevMode) && i0.ɵsetClassMetadata(NgxMatCalendarComponent, [{
+                type: i0.Component,
+                args: [{
+                        selector: 'ngx-mat-calendar',
+                        templateUrl: './ngx-mat-calendar.component.html',
+                        styleUrls: ['./ngx-mat-calendar.component.scss'],
+                        encapsulation: i0.ViewEncapsulation.None
+                    }]
+            }], function () { return [{ type: i1.DateAdapter }, { type: i2$1.MatDialog }]; }, { options$: [{
+                    type: i0.Input
+                }], events$: [{
+                    type: i0.Input
+                }], selectedDate$: [{
+                    type: i0.Input
+                }], dateChange: [{
+                    type: i0.Output
+                }], eventClick: [{
+                    type: i0.Output
+                }], addButtonClick: [{
+                    type: i0.Output
+                }], datePickerMenu: [{
+                    type: i0.ViewChild,
+                    args: [i7.MatMenuTrigger]
+                }], onKeyDown: [{
+                    type: i0.HostListener,
+                    args: ['window:keydown', ['$event']]
+                }] });
+    })();
+
+    var MaterialModules = [
+        i3.MatIconModule,
+        i3$1.MatTooltipModule
     ];
-    MonthViewComponent.ctorParameters = function () { return [
-        { type: FormattingService }
-    ]; };
-    MonthViewComponent.propDecorators = {
-        setCalendarOffset: [{ type: i0.Output }],
-        calendarDayElement: [{ type: i0.ViewChild, args: ['calendarDayElement', { read: i0.ElementRef, static: true },] }],
-        onResize: [{ type: i0.HostListener, args: ['window:resize', ['$event'],] }]
-    };
+    var SharedComponentsModule = /** @class */ (function () {
+        function SharedComponentsModule() {
+        }
+        return SharedComponentsModule;
+    }());
+    SharedComponentsModule.ɵfac = function SharedComponentsModule_Factory(t) { return new (t || SharedComponentsModule)(); };
+    SharedComponentsModule.ɵmod = i0.ɵɵdefineNgModule({ type: SharedComponentsModule });
+    SharedComponentsModule.ɵinj = i0.ɵɵdefineInjector({ providers: [], imports: [__spread([
+                platformBrowser.BrowserModule
+            ], MaterialModules)] });
+    (function () {
+        (typeof ngJitMode === "undefined" || ngJitMode) && i0.ɵɵsetNgModuleScope(SharedComponentsModule, { declarations: [EventDisplayComponent,
+                EventRenderDayComponent,
+                EventRenderWeekComponent,
+                EventRenderMonthComponent], imports: [platformBrowser.BrowserModule, i3.MatIconModule,
+                i3$1.MatTooltipModule], exports: [EventDisplayComponent,
+                EventRenderDayComponent,
+                EventRenderWeekComponent,
+                EventRenderMonthComponent] });
+    })();
+    (function () {
+        (typeof ngDevMode === "undefined" || ngDevMode) && i0.ɵsetClassMetadata(SharedComponentsModule, [{
+                type: i0.NgModule,
+                args: [{
+                        declarations: [
+                            EventDisplayComponent,
+                            EventRenderDayComponent,
+                            EventRenderWeekComponent,
+                            EventRenderMonthComponent
+                        ],
+                        imports: __spread([
+                            platformBrowser.BrowserModule
+                        ], MaterialModules),
+                        exports: [
+                            EventDisplayComponent,
+                            EventRenderDayComponent,
+                            EventRenderWeekComponent,
+                            EventRenderMonthComponent
+                        ],
+                        providers: [],
+                        bootstrap: []
+                    }]
+            }], null, null);
+    })();
+
+    var PipesModule = /** @class */ (function () {
+        function PipesModule() {
+        }
+        return PipesModule;
+    }());
+    PipesModule.ɵfac = function PipesModule_Factory(t) { return new (t || PipesModule)(); };
+    PipesModule.ɵmod = i0.ɵɵdefineNgModule({ type: PipesModule });
+    PipesModule.ɵinj = i0.ɵɵdefineInjector({ providers: [], imports: [[]] });
+    (function () {
+        (typeof ngJitMode === "undefined" || ngJitMode) && i0.ɵɵsetNgModuleScope(PipesModule, { declarations: [LimitPipe,
+                AllDayEventPipe], exports: [LimitPipe,
+                AllDayEventPipe] });
+    })();
+    (function () {
+        (typeof ngDevMode === "undefined" || ngDevMode) && i0.ɵsetClassMetadata(PipesModule, [{
+                type: i0.NgModule,
+                args: [{
+                        declarations: [
+                            LimitPipe,
+                            AllDayEventPipe
+                        ],
+                        imports: [],
+                        exports: [
+                            LimitPipe,
+                            AllDayEventPipe
+                        ],
+                        providers: [],
+                        bootstrap: []
+                    }]
+            }], null, null);
+    })();
+
+    var DayViewModule = /** @class */ (function () {
+        function DayViewModule() {
+        }
+        return DayViewModule;
+    }());
+    DayViewModule.ɵfac = function DayViewModule_Factory(t) { return new (t || DayViewModule)(); };
+    DayViewModule.ɵmod = i0.ɵɵdefineNgModule({ type: DayViewModule });
+    DayViewModule.ɵinj = i0.ɵɵdefineInjector({ providers: [], imports: [[
+                platformBrowser.BrowserModule,
+                SharedComponentsModule,
+                PipesModule
+            ]] });
+    (function () {
+        (typeof ngJitMode === "undefined" || ngJitMode) && i0.ɵɵsetNgModuleScope(DayViewModule, { declarations: [DayViewComponent], imports: [platformBrowser.BrowserModule,
+                SharedComponentsModule,
+                PipesModule], exports: [DayViewComponent] });
+    })();
+    (function () {
+        (typeof ngDevMode === "undefined" || ngDevMode) && i0.ɵsetClassMetadata(DayViewModule, [{
+                type: i0.NgModule,
+                args: [{
+                        declarations: [
+                            DayViewComponent
+                        ],
+                        imports: [
+                            platformBrowser.BrowserModule,
+                            SharedComponentsModule,
+                            PipesModule
+                        ],
+                        exports: [
+                            DayViewComponent
+                        ],
+                        entryComponents: [],
+                        providers: [],
+                        bootstrap: []
+                    }]
+            }], null, null);
+    })();
+
+    var WeekViewModule = /** @class */ (function () {
+        function WeekViewModule() {
+        }
+        return WeekViewModule;
+    }());
+    WeekViewModule.ɵfac = function WeekViewModule_Factory(t) { return new (t || WeekViewModule)(); };
+    WeekViewModule.ɵmod = i0.ɵɵdefineNgModule({ type: WeekViewModule });
+    WeekViewModule.ɵinj = i0.ɵɵdefineInjector({ providers: [], imports: [[
+                platformBrowser.BrowserModule,
+                SharedComponentsModule,
+                PipesModule
+            ]] });
+    (function () {
+        (typeof ngJitMode === "undefined" || ngJitMode) && i0.ɵɵsetNgModuleScope(WeekViewModule, { declarations: [WeekViewComponent], imports: [platformBrowser.BrowserModule,
+                SharedComponentsModule,
+                PipesModule], exports: [WeekViewComponent] });
+    })();
+    (function () {
+        (typeof ngDevMode === "undefined" || ngDevMode) && i0.ɵsetClassMetadata(WeekViewModule, [{
+                type: i0.NgModule,
+                args: [{
+                        declarations: [
+                            WeekViewComponent
+                        ],
+                        imports: [
+                            platformBrowser.BrowserModule,
+                            SharedComponentsModule,
+                            PipesModule
+                        ],
+                        exports: [
+                            WeekViewComponent
+                        ],
+                        entryComponents: [],
+                        providers: [],
+                        bootstrap: []
+                    }]
+            }], null, null);
+    })();
 
     var MonthViewModule = /** @class */ (function () {
         function MonthViewModule() {
         }
         return MonthViewModule;
     }());
-    MonthViewModule.decorators = [
-        { type: i0.NgModule, args: [{
-                    declarations: [
-                        MonthViewComponent
-                    ],
-                    imports: [
-                        platformBrowser.BrowserModule,
-                        SharedComponentsModule,
-                        overlay.OverlayModule,
-                        PipesModule
-                    ],
-                    exports: [
-                        MonthViewComponent
-                    ],
-                    entryComponents: [],
-                    providers: [],
-                    bootstrap: []
-                },] }
-    ];
+    MonthViewModule.ɵfac = function MonthViewModule_Factory(t) { return new (t || MonthViewModule)(); };
+    MonthViewModule.ɵmod = i0.ɵɵdefineNgModule({ type: MonthViewModule });
+    MonthViewModule.ɵinj = i0.ɵɵdefineInjector({ providers: [], imports: [[
+                platformBrowser.BrowserModule,
+                SharedComponentsModule,
+                i3$3.OverlayModule,
+                PipesModule
+            ]] });
+    (function () {
+        (typeof ngJitMode === "undefined" || ngJitMode) && i0.ɵɵsetNgModuleScope(MonthViewModule, { declarations: [MonthViewComponent], imports: [platformBrowser.BrowserModule,
+                SharedComponentsModule,
+                i3$3.OverlayModule,
+                PipesModule], exports: [MonthViewComponent] });
+    })();
+    (function () {
+        (typeof ngDevMode === "undefined" || ngDevMode) && i0.ɵsetClassMetadata(MonthViewModule, [{
+                type: i0.NgModule,
+                args: [{
+                        declarations: [
+                            MonthViewComponent
+                        ],
+                        imports: [
+                            platformBrowser.BrowserModule,
+                            SharedComponentsModule,
+                            i3$3.OverlayModule,
+                            PipesModule
+                        ],
+                        exports: [
+                            MonthViewComponent
+                        ],
+                        entryComponents: [],
+                        providers: [],
+                        bootstrap: []
+                    }]
+            }], null, null);
+    })();
 
     var LocaleDateAdapter = /** @class */ (function (_super) {
         __extends(LocaleDateAdapter, _super);
@@ -1374,67 +2463,111 @@
             return 1;
         };
         return LocaleDateAdapter;
-    }(core.NativeDateAdapter));
-    LocaleDateAdapter.decorators = [
-        { type: i0.Injectable }
-    ];
+    }(i1.NativeDateAdapter));
+    LocaleDateAdapter.ɵfac = function LocaleDateAdapter_Factory(t) { return ɵLocaleDateAdapter_BaseFactory(t || LocaleDateAdapter); };
+    LocaleDateAdapter.ɵprov = i0.ɵɵdefineInjectable({ token: LocaleDateAdapter, factory: LocaleDateAdapter.ɵfac });
+    var ɵLocaleDateAdapter_BaseFactory = /*@__PURE__*/ i0.ɵɵgetInheritedFactory(LocaleDateAdapter);
+    (function () {
+        (typeof ngDevMode === "undefined" || ngDevMode) && i0.ɵsetClassMetadata(LocaleDateAdapter, [{
+                type: i0.Injectable
+            }], null, null);
+    })();
 
     var MaterialModules$1 = [
         card.MatCardModule,
-        button.MatButtonModule,
-        tooltip.MatTooltipModule,
-        icon.MatIconModule,
-        core.MatNativeDateModule,
-        formField.MatFormFieldModule,
+        i4.MatButtonModule,
+        i3$1.MatTooltipModule,
+        i3.MatIconModule,
+        i1.MatNativeDateModule,
+        i9.MatFormFieldModule,
         input.MatInputModule,
-        datepicker.MatDatepickerModule,
-        select.MatSelectModule,
-        menu.MatMenuModule,
-        dialog.MatDialogModule,
-        divider.MatDividerModule
+        i8.MatDatepickerModule,
+        i10.MatSelectModule,
+        i7.MatMenuModule,
+        i2$1.MatDialogModule,
+        i3$2.MatDividerModule
     ];
     var ViewModules = [
         DayViewModule,
         WeekViewModule,
         MonthViewModule
     ];
-    var ɵ0 = {
-        useUtc: true
-    };
     var NgxMatCalendarModule = /** @class */ (function () {
         function NgxMatCalendarModule() {
         }
         return NgxMatCalendarModule;
     }());
-    NgxMatCalendarModule.decorators = [
-        { type: i0.NgModule, args: [{
-                    declarations: [
-                        NgxMatCalendarComponent,
-                        KeyboardShortcutDialogComponent
-                    ],
-                    imports: __spread([
-                        platformBrowser.BrowserModule,
-                        forms.FormsModule,
-                        forms.ReactiveFormsModule
-                    ], ViewModules, MaterialModules$1),
-                    exports: [
-                        NgxMatCalendarComponent,
-                        KeyboardShortcutDialogComponent
-                    ],
-                    providers: [
-                        FormattingService,
-                        {
-                            provide: materialMomentAdapter.MAT_MOMENT_DATE_ADAPTER_OPTIONS,
-                            useValue: ɵ0
-                        },
-                        {
-                            provide: core.DateAdapter,
-                            useClass: LocaleDateAdapter
-                        }
-                    ],
-                    bootstrap: []
-                },] }
-    ];
+    NgxMatCalendarModule.ɵfac = function NgxMatCalendarModule_Factory(t) { return new (t || NgxMatCalendarModule)(); };
+    NgxMatCalendarModule.ɵmod = i0.ɵɵdefineNgModule({ type: NgxMatCalendarModule });
+    NgxMatCalendarModule.ɵinj = i0.ɵɵdefineInjector({ providers: [
+            FormattingService,
+            {
+                provide: materialMomentAdapter.MAT_MOMENT_DATE_ADAPTER_OPTIONS,
+                useValue: {
+                    useUtc: true
+                }
+            }, {
+                provide: i1.DateAdapter,
+                useClass: LocaleDateAdapter
+            }
+        ], imports: [__spread([
+                platformBrowser.BrowserModule,
+                forms.FormsModule,
+                forms.ReactiveFormsModule
+            ], ViewModules, MaterialModules$1)] });
+    (function () {
+        (typeof ngJitMode === "undefined" || ngJitMode) && i0.ɵɵsetNgModuleScope(NgxMatCalendarModule, { declarations: [NgxMatCalendarComponent,
+                KeyboardShortcutDialogComponent], imports: [platformBrowser.BrowserModule,
+                forms.FormsModule,
+                forms.ReactiveFormsModule, DayViewModule,
+                WeekViewModule,
+                MonthViewModule, card.MatCardModule,
+                i4.MatButtonModule,
+                i3$1.MatTooltipModule,
+                i3.MatIconModule,
+                i1.MatNativeDateModule,
+                i9.MatFormFieldModule,
+                input.MatInputModule,
+                i8.MatDatepickerModule,
+                i10.MatSelectModule,
+                i7.MatMenuModule,
+                i2$1.MatDialogModule,
+                i3$2.MatDividerModule], exports: [NgxMatCalendarComponent,
+                KeyboardShortcutDialogComponent] });
+    })();
+    (function () {
+        (typeof ngDevMode === "undefined" || ngDevMode) && i0.ɵsetClassMetadata(NgxMatCalendarModule, [{
+                type: i0.NgModule,
+                args: [{
+                        declarations: [
+                            NgxMatCalendarComponent,
+                            KeyboardShortcutDialogComponent
+                        ],
+                        imports: __spread([
+                            platformBrowser.BrowserModule,
+                            forms.FormsModule,
+                            forms.ReactiveFormsModule
+                        ], ViewModules, MaterialModules$1),
+                        exports: [
+                            NgxMatCalendarComponent,
+                            KeyboardShortcutDialogComponent
+                        ],
+                        providers: [
+                            FormattingService,
+                            {
+                                provide: materialMomentAdapter.MAT_MOMENT_DATE_ADAPTER_OPTIONS,
+                                useValue: {
+                                    useUtc: true
+                                }
+                            }, {
+                                provide: i1.DateAdapter,
+                                useClass: LocaleDateAdapter
+                            }
+                        ],
+                        bootstrap: []
+                    }]
+            }], null, null);
+    })();
 
     /*
      * Public API Surface of ngx-mat-calendar
@@ -1447,25 +2580,6 @@
     exports.KeyboardShortcutDialogComponent = KeyboardShortcutDialogComponent;
     exports.NgxMatCalendarComponent = NgxMatCalendarComponent;
     exports.NgxMatCalendarModule = NgxMatCalendarModule;
-    exports.ɵ0 = ɵ0;
-    exports.ɵa = CalendarOptions;
-    exports.ɵb = DayViewModule;
-    exports.ɵc = DayViewComponent;
-    exports.ɵd = BaseViewComponent;
-    exports.ɵe = FormattingService;
-    exports.ɵf = SharedComponentsModule;
-    exports.ɵg = EventDisplayComponent;
-    exports.ɵh = EventRenderDayComponent;
-    exports.ɵi = EventRenderWeekComponent;
-    exports.ɵj = EventRenderMonthComponent;
-    exports.ɵk = PipesModule;
-    exports.ɵl = LimitPipe;
-    exports.ɵm = AllDayEventPipe;
-    exports.ɵn = WeekViewModule;
-    exports.ɵo = WeekViewComponent;
-    exports.ɵp = MonthViewModule;
-    exports.ɵq = MonthViewComponent;
-    exports.ɵr = LocaleDateAdapter;
 
     Object.defineProperty(exports, '__esModule', { value: true });
 

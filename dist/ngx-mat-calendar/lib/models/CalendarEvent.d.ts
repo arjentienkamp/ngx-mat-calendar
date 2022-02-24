@@ -17,3 +17,4 @@ export declare class CalendarEventGrid {
     eventsInGroup: number;
     eventGroups: string[];
 }
+//# sourceMappingURL=CalendarEvent.d.ts.map

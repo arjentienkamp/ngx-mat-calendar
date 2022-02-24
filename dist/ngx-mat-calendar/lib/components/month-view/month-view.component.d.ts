@@ -4,6 +4,7 @@ import { MonthView } from '../../models/Calendar';
 import { CalendarDay } from '../../models/CalendarDay';
 import { FormattingService } from '../../services/formatting.service';
 import { BaseViewComponent } from '../shared/base-view/base-view.component';
+import * as i0 from "@angular/core";
 export declare class MonthViewComponent extends BaseViewComponent implements OnInit, OnDestroy {
     setCalendarOffset: EventEmitter<string>;
     monthView: MonthView;
@@ -35,4 +36,7 @@ export declare class MonthViewComponent extends BaseViewComponent implements OnI
     getHiddenEventsHeight(): number;
     calculateMaxEventsPerDay(): void;
     ngOnDestroy(): void;
+    static ɵfac: i0.ɵɵFactoryDef<MonthViewComponent, never>;
+    static ɵcmp: i0.ɵɵComponentDefWithMeta<MonthViewComponent, "month-view", never, {}, { "setCalendarOffset": "setCalendarOffset"; }, never, never>;
 }
+//# sourceMappingURL=month-view.component.d.ts.map

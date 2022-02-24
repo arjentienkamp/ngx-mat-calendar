@@ -23,3 +23,4 @@ export declare class CalendarOptions {
     constructor(init?: Partial<CalendarOptions>);
     get getPixelsPerMinute(): number;
 }
+//# sourceMappingURL=CalendarOptions.d.ts.map

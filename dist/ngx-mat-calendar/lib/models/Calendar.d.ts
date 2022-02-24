@@ -15,3 +15,4 @@ export interface WeekView {
 export interface MonthView {
     days: CalendarDay[];
 }
+//# sourceMappingURL=Calendar.d.ts.map

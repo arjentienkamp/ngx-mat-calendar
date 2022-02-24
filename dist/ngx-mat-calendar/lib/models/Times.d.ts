@@ -13,3 +13,4 @@ export declare enum Periods {
     week = "weeks",
     month = "months"
 }
+//# sourceMappingURL=Times.d.ts.map

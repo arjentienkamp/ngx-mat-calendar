@@ -32,6 +32,8 @@
   "esm2015": "esm2015/arjentienkamp-ngx-mat-calendar.js",
   "fesm2015": "fesm2015/arjentienkamp-ngx-mat-calendar.js",
   "typings": "arjentienkamp-ngx-mat-calendar.d.ts",
-  "metadata": "arjentienkamp-ngx-mat-calendar.metadata.json",
-  "sideEffects": false
+  "sideEffects": false,
+  "scripts": {
+    "prepublishOnly": "node --eval \"console.error('ERROR: Trying to publish a package that has been compiled by Ivy. This is not allowed.\\nPlease delete and rebuild the package, without compiling with Ivy, before attempting to publish.\\n')\" && exit 1"
+  }
 }

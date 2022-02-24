@@ -6,3 +6,4 @@ export declare class CalendarDay {
     eventCount: number;
     constructor(init?: Partial<CalendarDay>);
 }
+//# sourceMappingURL=CalendarDay.d.ts.map

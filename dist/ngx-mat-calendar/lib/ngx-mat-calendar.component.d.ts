@@ -7,6 +7,7 @@ import { CalendarEvent } from './models/CalendarEvent';
 import { Views } from './models/Views';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
+import * as i0 from "@angular/core";
 export declare class NgxMatCalendarComponent implements OnInit, OnDestroy {
     private dateAdapter;
     private dialog;
@@ -49,4 +50,7 @@ export declare class NgxMatCalendarComponent implements OnInit, OnDestroy {
     showKeyboardShortcutDialog(): void;
     handleKeyboardEvents(event: KeyboardEvent): void;
     ngOnDestroy(): void;
+    static ɵfac: i0.ɵɵFactoryDef<NgxMatCalendarComponent, never>;
+    static ɵcmp: i0.ɵɵComponentDefWithMeta<NgxMatCalendarComponent, "ngx-mat-calendar", never, { "options$": "options$"; "events$": "events$"; "selectedDate$": "selectedDate$"; }, { "dateChange": "dateChange"; "eventClick": "eventClick"; "addButtonClick": "addButtonClick"; }, never, never>;
 }
+//# sourceMappingURL=ngx-mat-calendar.component.d.ts.map

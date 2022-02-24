@@ -4,3 +4,4 @@ export declare enum colors {
     pink = "#ffc1e3",
     green = "#c8e6c9"
 }
+//# sourceMappingURL=Colors.d.ts.map

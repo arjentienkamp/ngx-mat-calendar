@@ -4,6 +4,7 @@ import { CalendarEvent } from '../../../models/CalendarEvent';
 import { CalendarOptions } from '../../../models/CalendarOptions';
 import { FormattingService } from '../../../services/formatting.service';
 import { Observable, Subscription } from 'rxjs';
+import * as i0 from "@angular/core";
 export declare abstract class BaseViewComponent implements OnInit, OnDestroy {
     protected formattingService: FormattingService;
     options$: Observable<CalendarOptions>;
@@ -43,4 +44,7 @@ export declare abstract class BaseViewComponent implements OnInit, OnDestroy {
     protected sortByAllDay(event: CalendarEvent): number;
     protected isSameDay(date: Date, startTime: Date, endTime: Date): boolean;
     ngOnDestroy(): void;
+    static ɵfac: i0.ɵɵFactoryDef<BaseViewComponent, never>;
+    static ɵcmp: i0.ɵɵComponentDefWithMeta<BaseViewComponent, "ng-component", never, { "options$": "options$"; "selectedDate$": "selectedDate$"; "events$": "events$"; }, { "eventClick": "eventClick"; "changeToDayView": "changeToDayView"; }, never, never>;
 }
+//# sourceMappingURL=base-view.component.d.ts.map
