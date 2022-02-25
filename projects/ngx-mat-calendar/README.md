@@ -38,6 +38,11 @@ If you have not done this already, make sure to include the styles from Angular 
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 ```
 
+Also make sure the `<body>` tag has the mat-typoghrapy class: 
+```
+<body class="mat-typography">
+```
+
 ## Calendar setup
 Initiate default options:
 ```
