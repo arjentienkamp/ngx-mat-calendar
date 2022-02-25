@@ -25,11 +25,20 @@ Live demo (link)
 npm install @arjentienkamp/ngx-mat-calendar
 ```
 
-Include the global SCSS file in your Angular app (don't forget to include Angular Material styles as well):
+Include the global SCSS file in your Angular app:
 ```
 @import '../node_modules/@arjentienkamp/ngx-mat-calendar/src/lib/styles/_styles.scss';
 ```
 
+# Material basics
+
+If you have not done this already, make sure to include the styles from Angular Material to your app's style sheet, and also include the Roboto and Material Icons fonts in your app's index.html:
+```
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+```
+
+# Calendar setup
 Initiate default options:
 ```
 this.calendarOptions = new CalendarOptions();
