@@ -3,7 +3,7 @@
 This component displays a calendar in your Angular (Material) project. 
 
 ## Demo
-Live demo (link)
+[Live demo](https://arjentienkamp.github.io/ngx-mat-calendar/)
 
 ![](http://www.arjentienkamp.com/ngx-mat-calendar/gif-example-1.gif)
 
