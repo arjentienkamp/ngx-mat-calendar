@@ -1,12 +1,16 @@
 {
   "name": "ngx-mat-calendar",
-  "version": "0.0.17",
+  "version": "0.0.24",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
     "test": "ng test",
-    "lint": "ng lint"
+    "lint": "ng lint",
+    "build-package": "cd ../../ && ng build ngx-mat-calendar --configuration production",
+    "publish-package": "cd ./dist/ngx-mat-calendar npm publish --access public",
+    "npm-publish": "npm run build-package && npm run publish-package",
+    "build:copy-styles": "copyfiles -u 4 \"projects/ngx-mat-calendar/src/**/styles/*\" \"dist/ngx-mat-calendar/lib/styles\""
   },
   "private": false,
   "dependencies": {
@@ -37,6 +41,7 @@
     "@types/jasmine": "~3.6.0",
     "@types/node": "^12.11.1",
     "codelyzer": "^6.0.0",
+    "copyfiles": "^2.4.1",
     "jasmine-core": "~3.6.0",
     "jasmine-spec-reporter": "~5.0.0",
     "karma": "~6.3.16",

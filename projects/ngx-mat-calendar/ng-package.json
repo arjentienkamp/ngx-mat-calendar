@@ -3,5 +3,12 @@
   "dest": "../../dist/ngx-mat-calendar",
   "lib": {
     "entryFile": "src/public-api.ts"
-  }
+  },
+  "allowedNonPeerDependencies": [
+    "angular-devkit/build-angular",
+    "@angular-devkit/core",
+    "@angular/material",
+    "date-fns"
+  ],
+  "assets": ["./src/lib/styles"]
 }

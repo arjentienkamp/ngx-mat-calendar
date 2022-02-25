@@ -17,12 +17,17 @@ Live demo (link)
 - Call a function on add button click
 
 ## Requirements
-- Angular 11+ (tested on Angular 11) + Typescript
+- Angular 13+ (tested on Angular 13) + Angular Material + Typescript
 - Angular Material Theme within your app (https://material.angular.io)
 
 ## Installation and minimal setup
 ```
 npm install @arjentienkamp/ngx-mat-calendar
+```
+
+Include the global SCSS file in your Angular app (don't forget to include Angular Material styles as well):
+```
+@import '../node_modules/@arjentienkamp/ngx-mat-calendar/src/lib/styles/_styles.scss';
 ```
 
 Initiate default options:

@@ -14,10 +14,10 @@
     "strictPropertyInitialization": false,
     "paths": {
       "ngx-mat-calendar": [
-        "dist/ngx-mat-calendar/ngx-mat-calendar",
         "dist/ngx-mat-calendar"
       ]
     },
+    "preserveSymlinks": true,
     "experimentalDecorators": true,
     "moduleResolution": "node",
     "importHelpers": true,
