@@ -1,16 +1,15 @@
 {
   "name": "ngx-mat-calendar",
-  "version": "0.0.24",
+  "version": "0.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "build-package": "cd ../../ && ng build ngx-mat-calendar --configuration production",
-    "publish-package": "cd ./dist/ngx-mat-calendar npm publish --access public",
-    "npm-publish": "npm run build-package && npm run publish-package",
-    "build:copy-styles": "copyfiles -u 4 \"projects/ngx-mat-calendar/src/**/styles/*\" \"dist/ngx-mat-calendar/lib/styles\""
+    "build:exec": "ng build ngx-mat-calendar --configuration production",
+    "build:copy-styles": "copyfiles -u 4 \"projects/ngx-mat-calendar/src/**/styles/*\" \"dist/ngx-mat-calendar/lib/styles\"",
+    "release": "npm run build:exec && npm run build:copy-styles"
   },
   "private": false,
   "dependencies": {
