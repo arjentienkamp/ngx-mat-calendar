@@ -32,7 +32,7 @@ Include the global SCSS file in your Angular app:
 
 ## Material basics
 
-If you have not done this already, make sure to include the styles from Angular Material to your app's style sheet, and also include the Roboto and Material Icons fonts in your app's index.html:
+If you have not done this already, make sure to include the styles from Angular Material to your app's stylesheet, and also include the Roboto and Material Icons fonts in your app's index.html:
 ```
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
