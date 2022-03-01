@@ -91,7 +91,7 @@ Add the component to the template:
 - Localization
 
 ## Changelog
-[Changelog](https://arjentienkamp.github.io/ngx-mat-calendar/changelog.md)
+[Changelog](https://github.com/arjentienkamp/ngx-mat-calendar/blob/main/changelog.md)
 
 ## License
 GNU General Public License - Arjen Tienkamp
