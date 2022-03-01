@@ -1,6 +1,6 @@
 <div class="calendar__days">
     <div class="calendar__day" *ngFor="let day of daysOfWeek;">
-        <div class="day__header">
+        <div class="day__header" [class.is-today]=weekDayIsToday(day)>
             <span class="day-name">{{ day.title }}</span>
         </div>
     </div>

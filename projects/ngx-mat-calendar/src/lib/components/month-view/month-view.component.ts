@@ -2,7 +2,7 @@ import {
     Component, ElementRef, EventEmitter,
     HostListener, OnDestroy, OnInit, Output, QueryList, ViewChild, ViewChildren
 } from '@angular/core';
-import { add, eachWeekOfInterval, endOfMonth, getWeek, isSameMonth, startOfMonth, sub } from 'date-fns';
+import { add, eachWeekOfInterval, endOfMonth, getMonth, getWeek, isSameMonth, startOfMonth, sub } from 'date-fns';
 import { fromEvent, interval, Subject } from 'rxjs';
 import { takeUntil, tap, throttle } from 'rxjs/operators';
 import { MonthView } from '../../models/Calendar';
@@ -175,6 +175,16 @@ export class MonthViewComponent extends BaseViewComponent implements OnInit, OnD
     calculateMaxEventsPerDay(): void {
         const dayBlockHeight = this.calendarDayElement.nativeElement.children[0]?.getBoundingClientRect().height;
         this.maxEventsVisible = Math.floor((dayBlockHeight - 25) / 30);
+    }
+
+    weekDayIsToday(day: any): boolean {
+        // console.log(day, this.selectedDate)
+
+        // const currentMonth = getMonth(this.selectedDate);
+        // const previousMonth = getMonth(sub(this.selectedDate, { months: 1 }));
+
+        // if (currentMonth)
+        return true;
     }
 
     ngOnDestroy(): void {
