@@ -1,6 +1,6 @@
 {
   "name": "@arjentienkamp/ngx-mat-calendar",
-  "version": "0.0.39",
+  "version": "0.0.40",
   "author": "Arjen Tienkamp",
   "repository": {
     "type": "git",
@@ -14,6 +14,7 @@
     "material",
     "angular-material"
   ],
+  "license": "GPL-3.0-or-later",
   "peerDependencies": {
     "@angular/common": "~13.2.4",
     "@angular/core": "~13.2.4",

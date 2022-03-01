@@ -90,5 +90,8 @@ Add the component to the template:
 - CalendarEvent class extendable for custom render component
 - Localization
 
+## Changelog
+[Changelog](https://github.com/arjentienkamp/ngx-mat-calendar/blob/main/changelog.md)
+
 ## License
 GNU General Public License - Arjen Tienkamp
