@@ -5,6 +5,7 @@ $font-size-md:          1.25rem;
 $font-size-lg:          1.75rem;
 $font-size-xl:          3rem;
 
+// margins/paddings
 $margin-xxs:            .25rem;
 $margin-xs:             .5rem;
 $margin-sm:             .75rem;
@@ -12,14 +13,17 @@ $margin-md:             1rem;
 $margin-lg:             1.5rem;
 $margin-xl:             2rem;
 
+// border radius
 $radius-sm:             2px;
 $radius-md:             4px;
 $radius-lg:             6px;
 
+// transitions
 $transition-sm:         100ms;
 $transition-md:         250ms;
 $transition-lg:         350ms;
 
+// colors
 $brand-primary:         #263238;
 $brand-secondary:       #78909C;
 $brand-tertiary:        #e2f1f8;
@@ -38,3 +42,10 @@ $color-600:             #546E7A;
 $color-lightest:        #FFFFFF;
 $color-darkest:         #2A2A2A;
 $color-focus:           #d32f2f;
+
+// responsive breakpoints
+$breakpoints: (
+  'sm': 767px,
+  'md': 992px,
+  'lg': 1200px
+) !default;
