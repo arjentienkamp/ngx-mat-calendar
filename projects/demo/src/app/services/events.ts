@@ -143,6 +143,6 @@ export const events: DummyCalendarEvent[] = [
         date: new Date(),
         startTime: { hour: 18, minute: 30 },
         endTime: { hour: 20, minute: 15 },
-        offsetStart: 28
+        offsetStart: 27
     }
 ];

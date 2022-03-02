@@ -40,6 +40,10 @@ export class EventRenderMonthComponent implements OnInit {
             return `${this.event.title} (${this.startTime} - ${this.endTime}) @ ${this.event.location}`;
         }
 
+        if (this.event.allDay) {
+            return this.event.title;
+        }
+
         return `${this.event.title} (${this.startTime} - ${this.endTime})`;
     }
 }
