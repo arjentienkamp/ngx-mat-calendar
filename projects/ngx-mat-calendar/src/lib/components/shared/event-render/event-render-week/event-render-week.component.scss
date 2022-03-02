@@ -26,6 +26,10 @@
     padding: $margin-xxs;
     border-bottom: 1px solid rgba($color-lightest, .5);
 
+    @include max-width('md') {
+        font-size: $font-size-xs;
+    }
+
     p {
         @include text-overflow;
         margin-bottom: 0;
@@ -39,6 +43,10 @@
     font-weight: 100;
     color: $color-600;
     padding: $margin-xxs;
+
+    @include max-width('md') {
+        font-size: $font-size-xs;
+    }
 
     p {
         margin-bottom: $margin-xxs;

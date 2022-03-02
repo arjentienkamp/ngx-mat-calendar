@@ -52,9 +52,8 @@ export class AppComponent implements OnInit, OnDestroy {
 
         this.subscriptions.add(
             this.date$.pipe(
-                // switchMap((date) => this.eventService.getEvents(date)),
-                switchMap((date) => this.eventService.getEventsFromMockService()),
-                tap((events) => this.events$.next(events))
+                switchMap((date) => this.eventService.getEvents(date)),
+                tap((events: CalendarEvent[]) => this.events$.next(events))
             ).subscribe()
         );
     }
@@ -84,7 +83,6 @@ export class AppComponent implements OnInit, OnDestroy {
     }
 
     handleDateChange(date: Date): void {
-        // make sure the date service is not random for the preferred effect
         this.date$.next(date);
     }
 

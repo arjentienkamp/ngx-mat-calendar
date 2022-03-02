@@ -12,6 +12,7 @@ import { tap } from 'rxjs/operators';
 import { PREVIOUS } from './models/Directions';
 import { MatDialog } from '@angular/material/dialog';
 import { KeyboardShortcutDialogComponent } from './components/dialogs/keyboard-shortcut-dialog/keyboard-shortcut-dialog.component';
+import { colors } from './models/Colors';
 
 @Component({
     selector: 'ngx-mat-calendar',
@@ -69,7 +70,7 @@ export class NgxMatCalendarComponent implements OnInit, OnDestroy {
             this.events$.pipe(
                 tap((events) => {
                     this.events = events;
-                    this.parseDates(events);
+                    this.parseEvents(events);
                 })
             ).subscribe()
         );
@@ -107,11 +108,12 @@ export class NgxMatCalendarComponent implements OnInit, OnDestroy {
         }
     }
 
-    parseDates(events: CalendarEvent[]): void {
+    parseEvents(events: CalendarEvent[]): void {
         this.events = events.map((event: CalendarEvent) => {
              event.date = new Date(event.date);
              event.startTime = new Date(event.startTime);
              event.endTime = new Date(event.endTime);
+             event.color = event.color || colors.grey;
 
              return event;
         });
