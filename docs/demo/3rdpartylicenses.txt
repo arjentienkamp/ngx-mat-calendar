@@ -64,6 +64,7 @@ THE SOFTWARE.
 MIT
 
 @arjentienkamp/ngx-mat-calendar
+GPL-3.0-or-later
 
 date-fns
 MIT
