@@ -3,7 +3,7 @@
 .calendar__content {
     display: flex;
     margin-left: 4px;
-    margin-top: 15px;
+    margin-top: 25px;
     border-left: 1px solid $color-gray-light;
 }
 
@@ -13,6 +13,7 @@
 
     .calendar__day {
         padding-left: $margin-xs;
+        padding-top: 8px;
         margin-left: 0;
 
         &.is-today {
