@@ -11,8 +11,21 @@
     height: $margin-lg;
     margin-left: 38px;
 
+    .calendar__day {
+        padding-left: $margin-xs;
+        margin-left: 0;
+
+        &.is-today {
+            background-color: $color-bluish-light;
+        }
+    }
+
     .day__header {
         flex: 1;
+
+        .day-name {
+            z-index: 1;
+        }
     }
 }
 

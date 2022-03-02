@@ -89,6 +89,7 @@ Add the component to the template:
 - Unit tests
 - CalendarEvent class extendable for custom render component
 - Localization
+- Responsive
 
 ## Changelog
 [Changelog](https://github.com/arjentienkamp/ngx-mat-calendar/blob/main/changelog.md)

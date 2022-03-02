@@ -12,7 +12,10 @@
     "timetable",
     "angular",
     "material",
-    "angular-material"
+    "angular-material",
+    "typescript",
+    "calendar-component",
+    "frontend"
   ],
   "license": "GPL-3.0-or-later",
   "peerDependencies": {
