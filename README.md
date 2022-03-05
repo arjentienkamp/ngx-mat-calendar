@@ -25,6 +25,15 @@ This component displays a calendar in your Angular (Material) project.
 npm install @arjentienkamp/ngx-mat-calendar
 ```
 
+Import the module:
+```
+@NgModule({
+    imports: [
+        NgxMatCalendarModule
+    ]
+})
+```
+
 Include the global SCSS file in your Angular app:
 ```
 @import '../node_modules/@arjentienkamp/ngx-mat-calendar/src/lib/styles/_styles.scss';
