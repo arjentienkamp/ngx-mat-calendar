@@ -154,7 +154,6 @@ mat-calendar {
         border-radius: $radius-md;
         overflow: hidden;
         width: 100%;
-        @include elevation();
 
         &.is-today {
             .event-container__date {
