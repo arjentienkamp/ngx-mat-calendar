@@ -91,6 +91,9 @@ Add the component to the template:
 - Localization
 - Responsive
 
+## NPM package
+[NPM](https://www.npmjs.com/package/@arjentienkamp/ngx-mat-calendar)
+
 ## Changelog
 [Changelog](https://github.com/arjentienkamp/ngx-mat-calendar/blob/main/changelog.md)
 
