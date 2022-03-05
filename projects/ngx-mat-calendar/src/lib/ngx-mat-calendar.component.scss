@@ -59,6 +59,10 @@ month-view {
         .toolbar__month {
             margin-left: $margin-md;
             font-size: $font-size-md;
+
+            @include max-width('md') {
+                font-size: $font-size-sm;
+            }
         }
 
         .toolbar__week {
@@ -70,6 +74,14 @@ month-view {
             text-transform: uppercase;
             background-color: $color-gray-light;
             border-radius: $radius-md;
+
+            @include max-width('md') {
+                padding: $margin-xxs;
+            }
+
+            @include max-width('sm') {
+                display: none;
+            }
         }
     }
 
