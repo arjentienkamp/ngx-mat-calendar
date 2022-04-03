@@ -53,13 +53,14 @@ export class AppComponent implements OnInit, OnDestroy {
         this.subscriptions.add(
             this.date$.pipe(
                 switchMap((date) => this.eventService.getEvents(date)),
-                tap((events: CalendarEvent[]) => this.events$.next(events))
+                tap((events: CalendarEvent[]) => { this.events$.next(events), console.log(events) })
             ).subscribe()
         );
     }
 
     changeDateFromParent(): void {
-        this.date$.next(add(this.date, { days: 25 }));
+        this.date = add(this.date, { months: 1 });
+        this.date$.next(this.date);
     }
 
     onCompactChange(): void {

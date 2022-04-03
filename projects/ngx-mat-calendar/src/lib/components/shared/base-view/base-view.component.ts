@@ -30,6 +30,8 @@ export abstract class BaseViewComponent implements OnInit, OnDestroy {
     selectedDate = new Date();
     events: CalendarEvent[] = [];
 
+    abstract generateView(): any;
+
     protected constructor(
         protected formattingService: FormattingService
     ) {
@@ -50,6 +52,7 @@ export abstract class BaseViewComponent implements OnInit, OnDestroy {
             this.selectedDate$.pipe(
                 tap(selectedDate => {
                     this.selectedDate = selectedDate;
+                    this.generateView();
                 })
             ).subscribe()
         );
