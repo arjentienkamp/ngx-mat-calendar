@@ -30,7 +30,7 @@ export abstract class BaseViewComponent implements OnInit, OnDestroy {
     selectedDate = new Date();
     events: CalendarEvent[] = [];
 
-    abstract generateView(): any;
+    abstract generateView(): void;
 
     protected constructor(
         protected formattingService: FormattingService
