@@ -53,7 +53,7 @@ export class AppComponent implements OnInit, OnDestroy {
         this.subscriptions.add(
             this.date$.pipe(
                 switchMap((date) => this.eventService.getEvents(date)),
-                tap((events: CalendarEvent[]) => { this.events$.next(events), console.log(events) })
+                tap((events: CalendarEvent[]) => this.events$.next(events))
             ).subscribe()
         );
     }
