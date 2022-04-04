@@ -71,9 +71,9 @@ Add the component to the template:
 
 ```
 <ngx-mat-calendar
-    [options$]="calendarOptions$"
-    [events$]="events$"
-    [selectedDate$]="date$"
+    [options]="calendarOptions"
+    [events]="events"
+    [selectedDate]="date"
     (eventClick)="handleEventClick($event)"
     (dateChange)="handleDateChange($event)"
     (addButtonClick)="handleAddButtonClick()">
