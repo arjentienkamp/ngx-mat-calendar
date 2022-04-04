@@ -65,12 +65,8 @@ export class NgxMatCalendarComponent implements OnInit {
 
     @ViewChild(MatMenuTrigger) datePickerMenu: MatMenuTrigger;
 
-    differ: any;
     views: Views;
     selectedView: Views;
-    enableDatePickerButton: boolean;
-    enableViewToggle: boolean;
-    enableKeyboardShortcutDialog: boolean;
     calendar = {} as Calendar;
     today = format(new Date(), 'EEEE, d MMMM');
 
@@ -88,9 +84,6 @@ export class NgxMatCalendarComponent implements OnInit {
 
     initCalendar(): void {
         if (this.options) {
-            this.enableDatePickerButton = this.options.enableDatePickerButton;
-            this.enableViewToggle = this.options.enableViewToggle;
-            this.enableKeyboardShortcutDialog = this.options.enableKeyboardShortcutDialog;
             this.dateAdapter.setLocale(this.options.locale);
             this.generateCalendar();
         }

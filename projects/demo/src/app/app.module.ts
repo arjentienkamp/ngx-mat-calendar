@@ -13,13 +13,18 @@ import { NgxMatCalendarModule } from 'projects/ngx-mat-calendar/src/lib/ngx-mat-
 import { HttpClientModule } from '@angular/common/http';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { EventRenderMonthCustomComponent } from './component/event-render-month-custom/event-render-month-custom.component';
+import { MatSelectModule } from '@angular/material/select';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 const MaterialModules = [
     MatCardModule,
     MatButtonModule,
     MatIconModule,
     MatCheckboxModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatFormFieldModule,
+    MatSelectModule
 ];
 
 @NgModule({
@@ -32,6 +37,8 @@ const MaterialModules = [
         NgxMatCalendarModule,
         BrowserAnimationsModule,
         HttpClientModule,
+        FormsModule,
+        ReactiveFormsModule,
         ...MaterialModules
     ],
     entryComponents: [

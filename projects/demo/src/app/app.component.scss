@@ -1,3 +1,5 @@
+@import '../../../ngx-mat-calendar/src/lib/styles/variables.scss';
+
 .container {
     height: 100%;
     padding: 1rem;
@@ -10,12 +12,31 @@
         height: auto;
         margin-bottom: 1rem;
 
-        div {
-            margin-right: 1rem;
+        .toolbar__content {
+            margin-left: 1rem;
         }
 
         .toolbar__checkbox {
             margin-left: 1rem;
+        }
+
+        mat-form-field.toolbar__theme-switch {
+            margin-left: $margin-md;
+            align-items: center;
+    
+            .mat-form-field-wrapper {
+                margin: 0;
+                padding: 0;
+            }
+    
+            .mat-form-field-infix {
+                padding: $margin-xxs 0 $margin-xs 0;
+                width: 90px;
+            }
+    
+            .mat-select-arrow {
+                margin-top: $margin-xxs;
+            }
         }
     }
 

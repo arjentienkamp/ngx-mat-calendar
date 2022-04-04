@@ -30,9 +30,9 @@
             <span class="toolbar__week" *ngIf="!getSelectedView('month')">Week {{ calendar.weeknumber }}</span>
         </div>
 
-        <div class="toolbar__right">
+        <div class="toolbar__right" *ngIf="options$ | async as options">
             <button
-                *ngIf="enableKeyboardShortcutDialog"
+                *ngIf="options.enableKeyboardShortcutDialog"
                 mat-icon-button
                 matTooltip="Keyboard shortcuts"
                 class="toolbar__button toolbar__button--keyboard-shortcut"
@@ -42,7 +42,7 @@
             </button>
 
             <mat-form-field
-                *ngIf="enableViewToggle"
+                *ngIf="options.enableViewToggle"
                 appearance="outline"
                 class="toolbar__view-switch">
                 <mat-select
@@ -64,7 +64,7 @@
             <button
                 [matMenuTriggerFor]="datePickerMenu"
                 matTooltip="Pick a date"
-                *ngIf="enableDatePickerButton"
+                *ngIf="options.enableDatePickerButton"
                 mat-icon-button
                 class="toolbar__button"
                 color="primary">

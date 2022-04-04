@@ -2,7 +2,7 @@
     <mat-card class="toolbar">
         <div>Demo toolbar</div>
 
-        <div>
+        <div class="toolbar__content">
             <button
                 mat-stroked-button
                 color="primary"
@@ -37,6 +37,19 @@
                 (change)="onDatePickerButtonChange()">
                 Datepicker
             </mat-checkbox>
+
+            <mat-form-field
+                appearance="outline"
+                class="toolbar__theme-switch">
+                <mat-select
+                    [value]="selectedTheme"
+                    (selectionChange)="onThemeChange(theme.value)"
+                    #theme>
+                    <mat-option value="theme-blue-grey">Blue Grey</mat-option>
+                    <mat-option value="theme-deep-purple">Deep Purple</mat-option>
+                    <mat-option value="theme-indigo-pink">Indigo Pink</mat-option>                    
+                </mat-select>
+            </mat-form-field>
         </div>
     </mat-card>
 

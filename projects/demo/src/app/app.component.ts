@@ -1,26 +1,30 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Renderer2, ViewEncapsulation } from '@angular/core';
 import { add } from 'date-fns';
 import { CalendarEvent } from 'projects/ngx-mat-calendar/src/lib/models/CalendarEvent';
 import { CalendarOptions } from 'projects/ngx-mat-calendar/src/lib/models/CalendarOptions';
+import { Themes } from './models/Themes';
 import { EventService } from './services/event.service';
 
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
-    styleUrls: ['./app.component.scss']
+    styleUrls: ['./app.component.scss'],
+    encapsulation: ViewEncapsulation.None
 })
 export class AppComponent implements OnInit {
     events: CalendarEvent[];
     calendarOptions = new CalendarOptions();
     date = new Date();
 
+    selectedTheme: Themes = 'theme-blue-grey';
     compact = false;
     addButton = true;
     viewToggle = true;
     enableDatePickerButton = true;
 
     constructor(
-        private eventService: EventService
+        private eventService: EventService,
+        private renderer: Renderer2
     ) {}
 
     ngOnInit(): void {
@@ -66,6 +70,15 @@ export class AppComponent implements OnInit {
     onDatePickerButtonChange(): void {
         this.enableDatePickerButton = !this.enableDatePickerButton;
         this.initCalendar();
+    }
+
+    onThemeChange(theme: Themes): void {
+        if (this.selectedTheme) {
+            this.renderer.removeClass(document.body, this.selectedTheme);
+        }
+
+        this.renderer.addClass(document.body, theme);
+        this.selectedTheme = theme;
     }
 
     handleDateChange(date: Date): void {
