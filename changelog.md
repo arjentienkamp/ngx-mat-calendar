@@ -2,7 +2,7 @@
 
 ### 04-04-2022 - 0.0.48
 - Minor bugfixes
-- Add theme switcher to demo toolbar
+- Added theme switcher to demo toolbar
 
 ### 02-02-2022 - 0.0.41
 - Update dummy events for demo
