@@ -1,4 +1,4 @@
-import { Component, EventEmitter, HostListener, Input, OnDestroy, OnInit, Output, ViewChild, ViewEncapsulation } from '@angular/core';
+import { Component, EventEmitter, HostListener, Input, OnInit, Output, ViewChild, ViewEncapsulation } from '@angular/core';
 import { format, add, isToday, toDate } from 'date-fns';
 import { DateAdapter } from '@angular/material/core';
 import { MatMenuTrigger } from '@angular/material/menu';
@@ -19,7 +19,7 @@ import { colors } from './models/Colors';
     styleUrls: ['./ngx-mat-calendar.component.scss'],
     encapsulation: ViewEncapsulation.None
 })
-export class NgxMatCalendarComponent implements OnInit, OnDestroy {
+export class NgxMatCalendarComponent implements OnInit {
     options$ = new BehaviorSubject<CalendarOptions>(new CalendarOptions());
     events$ = new BehaviorSubject<CalendarEvent[]>([]);
     selectedDate$ = new BehaviorSubject<Date>(new Date());
@@ -64,8 +64,6 @@ export class NgxMatCalendarComponent implements OnInit, OnDestroy {
     @Output() addButtonClick: EventEmitter<any> = new EventEmitter();
 
     @ViewChild(MatMenuTrigger) datePickerMenu: MatMenuTrigger;
-
-    private subscriptions$: Subscription = new Subscription();
 
     differ: any;
     views: Views;
@@ -209,9 +207,5 @@ export class NgxMatCalendarComponent implements OnInit, OnDestroy {
             default:
                 break;
         }
-    }
-
-    ngOnDestroy(): void {
-        this.subscriptions$.unsubscribe();
     }
 }
