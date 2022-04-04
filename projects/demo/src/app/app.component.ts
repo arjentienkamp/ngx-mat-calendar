@@ -83,7 +83,7 @@ export class AppComponent implements OnInit {
 
     handleDateChange(date: Date): void {
         this.date = date;
-        this.getEvents(date);
+        this.getEvents(date); console.log(date)
     }
 
     handleEventClick(event: CalendarEvent): void {

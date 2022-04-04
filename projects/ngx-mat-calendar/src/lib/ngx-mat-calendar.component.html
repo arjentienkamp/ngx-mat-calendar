@@ -57,7 +57,11 @@
 
             <mat-menu #datePickerMenu="matMenu">
                 <div (click)="$event.stopPropagation()">
-                    <mat-calendar (selectedChange)="onDatePickerChange($event)"></mat-calendar>
+                    <mat-calendar
+                        (selectedChange)="onDatePickerChange($event)"
+                        [startAt]="selectedDate$ | async"
+                        [selected]="selectedDate$ | async">
+                    </mat-calendar>
                 </div>
             </mat-menu>
 
@@ -100,12 +104,14 @@
         (changeToDayView)="changeToDayView($event)">
     </month-view>
 
-    <button
-        class="calendar__add-button"
-        *ngIf="options.enableAddEventButton"
-        mat-fab
-        color="primary"
-        (click)="onAddButtonClick()">
-        <mat-icon>add</mat-icon>
-    </button>
+    <div *ngIf="options$ | async as options">
+        <button
+            class="calendar__add-button"
+            *ngIf="options.enableAddEventButton"
+            mat-fab
+            color="primary"
+            (click)="onAddButtonClick()">
+            <mat-icon>add</mat-icon>
+        </button>
+    </div>
 </div>

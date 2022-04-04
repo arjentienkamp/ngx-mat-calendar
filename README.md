@@ -63,7 +63,7 @@ Or, change default options:
 this.calendarOptions = new CalendarOptions({
     enableAddEventButton: false,
     view: WEEK
-    // see CalendarOptions class for full list
+    // see CalendarOptions class for full list of options
 });
 ```
 

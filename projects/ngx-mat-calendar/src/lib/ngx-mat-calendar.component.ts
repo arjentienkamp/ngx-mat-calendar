@@ -1,4 +1,4 @@
-import { Component, EventEmitter, HostListener, Input, OnInit, Output, ViewChild, ViewEncapsulation } from '@angular/core';
+import { Component, EventEmitter, HostListener, Input, OnDestroy, OnInit, Output, ViewChild, ViewEncapsulation } from '@angular/core';
 import { format, add, isToday, toDate } from 'date-fns';
 import { DateAdapter } from '@angular/material/core';
 import { MatMenuTrigger } from '@angular/material/menu';
@@ -7,7 +7,7 @@ import { CalendarOptions } from './models/CalendarOptions';
 import { CalendarEvent } from './models/CalendarEvent';
 import { DAY, WEEK, MONTH, Views } from './models/Views';
 import { Periods } from './models/Times';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Subscription, tap } from 'rxjs';
 import { PREVIOUS } from './models/Directions';
 import { MatDialog } from '@angular/material/dialog';
 import { KeyboardShortcutDialogComponent } from './components/dialogs/keyboard-shortcut-dialog/keyboard-shortcut-dialog.component';
@@ -19,16 +19,16 @@ import { colors } from './models/Colors';
     styleUrls: ['./ngx-mat-calendar.component.scss'],
     encapsulation: ViewEncapsulation.None
 })
-export class NgxMatCalendarComponent implements OnInit {
+export class NgxMatCalendarComponent implements OnInit, OnDestroy {
     options$ = new BehaviorSubject<CalendarOptions>(new CalendarOptions());
     events$ = new BehaviorSubject<CalendarEvent[]>([]);
     selectedDate$ = new BehaviorSubject<Date>(new Date());
 
     @Input()
-    set options(value: CalendarOptions) {
-        this.selectedView = value.view;
-        this.initCalendar();
-        this.options$.next(value);
+    set options(options: CalendarOptions) {
+        this.selectedView = options.view;
+        this.dateAdapter.setLocale(options.locale);
+        this.options$.next(options);
     }
 
     get options(): CalendarOptions {
@@ -36,8 +36,8 @@ export class NgxMatCalendarComponent implements OnInit {
     }
 
     @Input()
-    set events(value: CalendarEvent[]) {
-        this.parseEvents(value);
+    set events(events: CalendarEvent[]) {
+        this.parseEvents(events);
     }
 
     get events(): CalendarEvent[] {
@@ -45,14 +45,9 @@ export class NgxMatCalendarComponent implements OnInit {
     }
 
     @Input()
-    set selectedDate(value: Date) {
-        this.initCalendar();
-
-        if (this.selectedDate$.getValue() !== value) {
-            this.dateChange.emit(value);
-        }
-
-        this.selectedDate$.next(value);
+    set selectedDate(selectedDate: Date) {
+        this.generateCalendar(selectedDate);
+        this.selectedDate$.next(selectedDate);
     }
 
     get selectedDate(): Date {
@@ -70,6 +65,8 @@ export class NgxMatCalendarComponent implements OnInit {
     calendar = {} as Calendar;
     today = format(new Date(), 'EEEE, d MMMM');
 
+    private subscriptions$ = new Subscription();
+
     @HostListener('window:keydown', ['$event'])
     onKeyDown(event: KeyboardEvent): void {
         this.handleKeyboardEvents(event);
@@ -80,20 +77,22 @@ export class NgxMatCalendarComponent implements OnInit {
         private dialog: MatDialog
     ) {}
 
-    ngOnInit(): void {}
-
-    initCalendar(): void {
-        if (this.options) {
-            this.dateAdapter.setLocale(this.options.locale);
-            this.generateCalendar();
-        }
+    ngOnInit(): void {
+        this.subscriptions$.add(
+            this.selectedDate$.pipe(
+                tap((selectedDate) => {
+                    this.generateCalendar(selectedDate);
+                    this.dateChange.emit(selectedDate);
+                })
+            ).subscribe()
+        );
     }
 
-    generateCalendar(): void {
-        if (this.selectedDate) {
-            this.calendar = { // @TODO: new class instance
-                monthAndYear: format(this.selectedDate, 'MMMM yyyy'),
-                weeknumber: format(this.selectedDate, 'I')
+    generateCalendar(selectedDate: Date): void {
+        if (selectedDate) {
+            this.calendar = {
+                monthAndYear: format(selectedDate, 'MMMM yyyy'),
+                weeknumber: format(selectedDate, 'I')
             };
         }
     }
@@ -114,33 +113,19 @@ export class NgxMatCalendarComponent implements OnInit {
     }
 
     setCalendarToday(): void {
-        this.selectedDate = new Date();
-        this.selectedDate$.next(this.selectedDate);
-        this.handleCalendarSet();
+        this.selectedDate$.next(new Date());
     }
 
     setCalendarOffset(direction: string): void {
         const offset = Periods[this.selectedView];
 
-        this.selectedDate = add(this.selectedDate, {
+        this.selectedDate$.next(add(this.selectedDate$.getValue(), {
             [offset]: direction === PREVIOUS ? -1 : 1
-        });
-
-        this.selectedDate$.next(this.selectedDate);
-        this.handleCalendarSet();
+        }));
     }
 
     setCalendar(date: Date): void {
-        if (date) {
-            this.selectedDate = date;
-            this.selectedDate$.next(date);
-            this.handleCalendarSet();
-        }
-    }
-
-    handleCalendarSet(): void {
-        this.generateCalendar();
-        this.dateChange.emit(this.selectedDate);
+        this.selectedDate$.next(date);
     }
 
     onViewChange(view: any): void {
@@ -200,5 +185,9 @@ export class NgxMatCalendarComponent implements OnInit {
             default:
                 break;
         }
+    }
+
+    ngOnDestroy(): void {
+        this.subscriptions$.unsubscribe();
     }
 }
