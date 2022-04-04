@@ -7,7 +7,7 @@ import { CalendarOptions } from './models/CalendarOptions';
 import { CalendarEvent } from './models/CalendarEvent';
 import { DAY, WEEK, MONTH, Views } from './models/Views';
 import { Periods } from './models/Times';
-import { BehaviorSubject, Subscription } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 import { PREVIOUS } from './models/Directions';
 import { MatDialog } from '@angular/material/dialog';
 import { KeyboardShortcutDialogComponent } from './components/dialogs/keyboard-shortcut-dialog/keyboard-shortcut-dialog.component';
