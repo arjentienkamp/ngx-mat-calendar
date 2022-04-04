@@ -12,6 +12,7 @@ import { PREVIOUS } from './models/Directions';
 import { MatDialog } from '@angular/material/dialog';
 import { KeyboardShortcutDialogComponent } from './components/dialogs/keyboard-shortcut-dialog/keyboard-shortcut-dialog.component';
 import { colors } from './models/Colors';
+import { MatCalendar } from '@angular/material/datepicker';
 
 @Component({
     selector: 'ngx-mat-calendar',
@@ -46,7 +47,6 @@ export class NgxMatCalendarComponent implements OnInit, OnDestroy {
 
     @Input()
     set selectedDate(selectedDate: Date) {
-        this.generateCalendar(selectedDate);
         this.selectedDate$.next(selectedDate);
     }
 
@@ -59,6 +59,7 @@ export class NgxMatCalendarComponent implements OnInit, OnDestroy {
     @Output() addButtonClick: EventEmitter<any> = new EventEmitter();
 
     @ViewChild(MatMenuTrigger) datePickerMenu: MatMenuTrigger;
+    @ViewChild(MatCalendar) matCalendar: MatCalendar<Date>;
 
     views: Views;
     selectedView: Views;
@@ -81,6 +82,10 @@ export class NgxMatCalendarComponent implements OnInit, OnDestroy {
         this.subscriptions$.add(
             this.selectedDate$.pipe(
                 tap((selectedDate) => {
+                    if (this.matCalendar) {
+                        this.matCalendar.activeDate = selectedDate;
+                    }
+
                     this.generateCalendar(selectedDate);
                     this.dateChange.emit(selectedDate);
                 })

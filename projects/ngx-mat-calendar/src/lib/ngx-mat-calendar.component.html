@@ -59,7 +59,6 @@
                 <div (click)="$event.stopPropagation()">
                     <mat-calendar
                         (selectedChange)="onDatePickerChange($event)"
-                        [startAt]="selectedDate$ | async"
                         [selected]="selectedDate$ | async">
                     </mat-calendar>
                 </div>
