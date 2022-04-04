@@ -83,9 +83,9 @@ Add the component to the template:
 ## Inputs
 | Property        | Description                                         | Type                            | Required |
 |-----------------|-----------------------------------------------------|---------------------------------|----------|
-| options$        | options have to be passed here                      | `Observable<CalendarOptions>`   | true     |
-| events$         | array of events (i.e from API or other datasource)  | `Observable<CalendarEvent[]>`   | true     |
-| selectedDate$   | the date for initiating the calendar                | `Observable<Date>`              | true     |
+| options         | options have to be passed here                      | CalendarOptions                 | true     |
+| events          | array of events (i.e from API or other datasource)  | CalendarEvent[]                 | true     |
+| selectedDate    | the date for initiating the calendar                | Date                            | true     |
 
 ## Outputs
 | Property        | Description                                         | Type                          |

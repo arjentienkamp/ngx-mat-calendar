@@ -1,6 +1,6 @@
 {
   "name": "@arjentienkamp/ngx-mat-calendar",
-  "version": "0.0.44",
+  "version": "0.0.47",
   "author": "Arjen Tienkamp",
   "repository": {
     "type": "git",
@@ -43,7 +43,7 @@
     "@angular/platform-browser": "~13.2.4",
     "@angular/platform-browser-dynamic": "~13.2.4",
     "@angular/router": "~13.2.4",
-    "rxjs": "~6.6.0",
+    "rxjs": "^7.5.5",
     "tslib": "^2.0.0",
     "zone.js": "~0.11.4",
     "@types/uuid": "^8.3.0",

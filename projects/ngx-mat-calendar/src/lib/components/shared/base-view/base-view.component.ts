@@ -15,8 +15,8 @@ import Calendar from '../../../models/Calendar';
 })
 export abstract class BaseViewComponent implements OnInit, OnDestroy {
     @Input() options$: Observable<CalendarOptions>;
-    @Input() selectedDate$: Observable<Date>;
     @Input() events$: Observable<CalendarEvent[]>;
+    @Input() selectedDate$: Observable<Date>;
 
     @Output() eventClick: EventEmitter<CalendarEvent> = new EventEmitter();
     @Output() changeToDayView: EventEmitter<Date> = new EventEmitter();

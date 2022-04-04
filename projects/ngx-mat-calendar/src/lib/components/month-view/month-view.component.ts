@@ -186,7 +186,7 @@ export class MonthViewComponent extends BaseViewComponent implements OnInit, OnD
     }
 
     ngOnDestroy(): void {
-        this.scrollListener.next();
+        this.scrollListener.next(null);
         this.observer.disconnect();
     }
 }

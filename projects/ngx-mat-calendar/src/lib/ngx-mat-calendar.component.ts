@@ -7,7 +7,7 @@ import { CalendarOptions } from './models/CalendarOptions';
 import { CalendarEvent } from './models/CalendarEvent';
 import { DAY, WEEK, MONTH, Views } from './models/Views';
 import { Periods } from './models/Times';
-import { BehaviorSubject, Observable, Subscription } from 'rxjs';
+import { BehaviorSubject, Observable, Subject, Subscription } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { PREVIOUS } from './models/Directions';
 import { MatDialog } from '@angular/material/dialog';
@@ -21,9 +21,44 @@ import { colors } from './models/Colors';
     encapsulation: ViewEncapsulation.None
 })
 export class NgxMatCalendarComponent implements OnInit, OnDestroy {
-    @Input() options$: Observable<CalendarOptions>;
-    @Input() events$: Observable<CalendarEvent[]>;
-    @Input() selectedDate$: BehaviorSubject<Date>;
+    options$ = new BehaviorSubject<CalendarOptions>(new CalendarOptions());
+    events$ = new BehaviorSubject<CalendarEvent[]>([]);
+    selectedDate$ = new BehaviorSubject<Date>(new Date());
+
+    @Input()
+    set options(value: CalendarOptions) {
+        this.selectedView = value.view;
+        this.initCalendar();
+        this.options$.next(value);
+    }
+
+    get options(): CalendarOptions {
+        return this.options$.getValue();
+    }
+
+    @Input()
+    set events(value: CalendarEvent[]) {
+        this.parseEvents(value);
+    }
+
+    get events(): CalendarEvent[] {
+        return this.events$.getValue();
+    }
+
+    @Input()
+    set selectedDate(value: Date) {
+        this.initCalendar();
+
+        if (this.selectedDate$.getValue() !== value) {
+            this.dateChange.emit(value);
+        }
+
+        this.selectedDate$.next(value);
+    }
+
+    get selectedDate(): Date {
+        return this.selectedDate$.getValue();
+    }
 
     @Output() dateChange: EventEmitter<Date> = new EventEmitter();
     @Output() eventClick: EventEmitter<CalendarEvent> = new EventEmitter();
@@ -35,10 +70,7 @@ export class NgxMatCalendarComponent implements OnInit, OnDestroy {
 
     differ: any;
     views: Views;
-    options: CalendarOptions;
-    events: CalendarEvent[];
     selectedView: Views;
-    selectedDate: Date;
     enableDatePickerButton: boolean;
     enableViewToggle: boolean;
     enableKeyboardShortcutDialog: boolean;
@@ -55,39 +87,7 @@ export class NgxMatCalendarComponent implements OnInit, OnDestroy {
         private dialog: MatDialog
     ) {}
 
-    ngOnInit(): void {
-        this.subscriptions$.add(
-            this.options$.pipe(
-                tap((options) => {
-                    this.options = options;
-                    this.selectedView = options.view;
-                    this.initCalendar();
-                })
-            ).subscribe()
-        );
-
-        this.subscriptions$.add(
-            this.events$.pipe(
-                tap((events) => {
-                    this.events = events;
-                    this.parseEvents(events);
-                })
-            ).subscribe()
-        );
-
-        this.subscriptions$.add(
-            this.selectedDate$.pipe(
-                tap(selectedDate => {
-                    this.selectedDate = selectedDate;
-                    this.initCalendar();
-
-                    if (this.selectedDate !== selectedDate) {
-                        this.dateChange.emit(this.selectedDate);
-                    }
-                })
-            ).subscribe()
-        );
-    }
+    ngOnInit(): void {}
 
     initCalendar(): void {
         if (this.options) {
@@ -109,14 +109,14 @@ export class NgxMatCalendarComponent implements OnInit, OnDestroy {
     }
 
     parseEvents(events: CalendarEvent[]): void {
-        this.events = events.map((event: CalendarEvent) => {
+        this.events$.next(events.map((event: CalendarEvent) => {
              event.date = new Date(event.date);
              event.startTime = new Date(event.startTime);
              event.endTime = new Date(event.endTime);
              event.color = event.color || colors.grey;
 
              return event;
-        });
+        }));
     }
 
     isToday(date: Date): boolean {
