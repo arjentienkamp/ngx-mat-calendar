@@ -7,8 +7,7 @@ import { CalendarOptions } from '../../../models/CalendarOptions';
 import { hoursOfDay } from '../../../models/Times';
 import { FormattingService } from '../../../services/formatting.service';
 import { interval, Observable, Subscription } from 'rxjs';
-import { tap } from 'rxjs/internal/operators/tap';
-import Calendar from '../../../models/Calendar';
+import { tap } from 'rxjs/operators';
 
 @Component({
     template: ''
