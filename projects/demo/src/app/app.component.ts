@@ -2,6 +2,7 @@ import { Component, OnInit, Renderer2, ViewEncapsulation } from '@angular/core';
 import { add } from 'date-fns';
 import { CalendarEvent } from 'projects/ngx-mat-calendar/src/lib/models/CalendarEvent';
 import { CalendarOptions } from 'projects/ngx-mat-calendar/src/lib/models/CalendarOptions';
+import { EventRenderMonthComponent } from './component/event-render-month/event-render-month.component';
 import { Themes } from './models/Themes';
 import { EventService } from './services/event.service';
 
@@ -21,6 +22,7 @@ export class AppComponent implements OnInit {
     addButton = true;
     viewToggle = true;
     enableDatePickerButton = true;
+    enableCustomMonthViewComponent = false;
 
     constructor(
         private eventService: EventService,
@@ -38,6 +40,10 @@ export class AppComponent implements OnInit {
             enableViewToggle: this.viewToggle,
             enableDatePickerButton: this.enableDatePickerButton
         });
+
+        if (this.enableCustomMonthViewComponent) {
+            this.calendarOptions.renderComponent.month = EventRenderMonthComponent;
+        }
 
         this.getEvents(this.date);
     }
@@ -69,6 +75,11 @@ export class AppComponent implements OnInit {
 
     onDatePickerButtonChange(): void {
         this.enableDatePickerButton = !this.enableDatePickerButton;
+        this.initCalendar();
+    }
+
+    onCustomMonthViewComponentButtonChange(): void {
+        this.enableCustomMonthViewComponent = !this.enableCustomMonthViewComponent;
         this.initCalendar();
     }
 

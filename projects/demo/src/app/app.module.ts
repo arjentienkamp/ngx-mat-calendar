@@ -12,7 +12,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { NgxMatCalendarModule } from 'projects/ngx-mat-calendar/src/lib/ngx-mat-calendar.module';
 import { HttpClientModule } from '@angular/common/http';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { EventRenderMonthCustomComponent } from './component/event-render-month-custom/event-render-month-custom.component';
+import { EventRenderMonthComponent } from './component/event-render-month/event-render-month.component';
 import { MatSelectModule } from '@angular/material/select';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -30,7 +30,7 @@ const MaterialModules = [
 @NgModule({
     declarations: [
         AppComponent,
-        EventRenderMonthCustomComponent
+        EventRenderMonthComponent
     ],
     imports: [
         BrowserModule,

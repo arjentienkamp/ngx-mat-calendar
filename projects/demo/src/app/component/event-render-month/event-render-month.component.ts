@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormattingService } from '../../../../services/formatting.service';
-import { EventRenderBaseComponent } from '../event-render-base.component';
+import { EventRenderBaseComponent } from 'projects/ngx-mat-calendar/src/lib/components/shared/event-render/event-render-base.component';
+import { FormattingService } from 'projects/ngx-mat-calendar/src/lib/services/formatting.service';
 
 @Component({
+    // tslint:disable-next-line:component-selector
     selector: 'event-render-month',
     templateUrl: './event-render-month.component.html',
     styleUrls: ['./event-render-month.component.scss']

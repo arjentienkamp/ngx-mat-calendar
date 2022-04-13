@@ -14,12 +14,13 @@
     font-size: 12px;
 }
 
-.even__line {
+.event__line {
     display: flex;
     align-items: center;
     text-align: left;
     color: $color-600;
     padding: $margin-xxs;
+    border: 1px solid;
 
     &.all-day {
         border-radius: $radius-sm;

@@ -8,10 +8,10 @@ export class CalendarOptions {
     pixelsPerMinute = 1.3;
     dateFormat = 'DD-MM-YYYY';
     timeFormat = 'HH:mm';
-    renderComponent = {
-        day: EventRenderDayComponent,
-        week: EventRenderWeekComponent,
-        month: EventRenderMonthComponent
+    renderComponent: {
+        day?: any,
+        week?: any,
+        month?: any
     };
     calendarEventType = typeof CalendarEvent;
     jumpToSpy = true;
@@ -25,6 +25,12 @@ export class CalendarOptions {
 
     constructor(init?: Partial<CalendarOptions>) {
         Object.assign(this, init);
+
+        this.renderComponent = {
+            day: EventRenderDayComponent,
+            week: EventRenderWeekComponent,
+            month: EventRenderMonthComponent
+        };
     }
 
     get getPixelsPerMinute(): number {

@@ -6,6 +6,8 @@ import { EventDisplayComponent } from './event-display/event-display.component';
 import { EventRenderDayComponent } from './event-render/event-render-day/event-render-day.component';
 import { EventRenderWeekComponent } from './event-render/event-render-week/event-render-week.component';
 import { EventRenderMonthComponent } from './event-render/event-render-month/event-render-month.component';
+import { EventRenderBaseComponent } from './event-render/event-render-base.component';
+import { EventDisplayDirective } from './event-display/event-display.directive';
 
 const MaterialModules = [
     MatIconModule,
@@ -17,7 +19,9 @@ const MaterialModules = [
         EventDisplayComponent,
         EventRenderDayComponent,
         EventRenderWeekComponent,
-        EventRenderMonthComponent
+        EventRenderMonthComponent,
+        EventDisplayDirective,
+        EventRenderBaseComponent
     ],
     imports: [
         BrowserModule,
@@ -30,6 +34,11 @@ const MaterialModules = [
         EventRenderMonthComponent
     ],
     providers: [],
-    bootstrap: []
+    bootstrap: [],
+    entryComponents: [
+        EventRenderDayComponent,
+        EventRenderWeekComponent,
+        EventRenderMonthComponent
+    ]
 })
 export class SharedComponentsModule { }

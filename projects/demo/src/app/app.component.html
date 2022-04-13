@@ -38,6 +38,13 @@
                 Datepicker
             </mat-checkbox>
 
+            <mat-checkbox
+                class="toolbar__checkbox"
+                [checked]="enableCustomMonthViewComponent"
+                (change)="onCustomMonthViewComponentButtonChange()">
+                Custom Month View
+            </mat-checkbox>
+
             <mat-form-field
                 appearance="outline"
                 class="toolbar__theme-switch">

@@ -1,15 +1,13 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { isBefore, isSameDay } from 'date-fns';
-import { CalendarEvent } from 'projects/ngx-mat-calendar/src/lib/models/CalendarEvent';
-import { FormattingService } from 'projects/ngx-mat-calendar/src/lib/services/formatting.service';
+import { CalendarEvent } from '../../../models/CalendarEvent';
+import { DisplayComponent } from '../../../models/DisplayComponent';
+import { FormattingService } from '../../../services/formatting.service';
 
 @Component({
-    // tslint:disable-next-line:component-selector
-    selector: 'event-render-month-custom',
-    templateUrl: './event-render-month-custom.component.html',
-    styleUrls: ['./event-render-month-custom.component.scss']
+    template: ''
 })
-export class EventRenderMonthCustomComponent implements OnInit {
+export class EventRenderBaseComponent implements DisplayComponent, OnInit {
     @Input() event: CalendarEvent;
     @Input() date: Date;
 
@@ -20,7 +18,7 @@ export class EventRenderMonthCustomComponent implements OnInit {
     eventTooltip: string;
 
     constructor(
-        public formattingService: FormattingService,
+        protected formattingService: FormattingService
     ) {}
 
     ngOnInit(): void {
@@ -28,8 +26,6 @@ export class EventRenderMonthCustomComponent implements OnInit {
         this.endTime = this.formattingService.getTime(this.event.endTime);
         this.isSameDay = isSameDay(this.event.startTime, this.event.endTime);
         this.endsToday = isSameDay(this.date, this.event.endTime);
-
-        this.eventTooltip = this.getEventTooltip();
     }
 
     isPastEvent(): boolean {
