@@ -5,6 +5,7 @@
         <div class="toolbar__content">
             <button
                 mat-stroked-button
+                matTooltip="Change the calendar date from the parent component"
                 color="primary"
                 (click)="changeDateFromParent()">
                 Change date
@@ -12,6 +13,7 @@
 
             <mat-checkbox
                 class="toolbar__checkbox"
+                matTooltip="Enable/disable compact view for day and week view"
                 [checked]="compact"
                 (change)="onCompactChange()">
                 Compact
@@ -19,6 +21,7 @@
 
             <mat-checkbox
                 class="toolbar__checkbox"
+                matTooltip="Enable/disable the add button"
                 [checked]="addButton"
                 (change)="onAddButtonChange()">
                 Add button
@@ -26,6 +29,7 @@
 
             <mat-checkbox
                 class="toolbar__checkbox"
+                matTooltip="Enable/disable the toggle to change to day/week/month view"
                 [checked]="viewToggle"
                 (change)="onViewToggleChange()">
                 View toggle
@@ -33,6 +37,7 @@
 
             <mat-checkbox
                 class="toolbar__checkbox"
+                matTooltip="Enable/disable the date picker in the calendar"
                 [checked]="enableDatePickerButton"
                 (change)="onDatePickerButtonChange()">
                 Datepicker
@@ -40,6 +45,7 @@
 
             <mat-checkbox
                 class="toolbar__checkbox"
+                matTooltip="Enable/disable custom component to render the month view"
                 [checked]="enableCustomMonthViewComponent"
                 (change)="onCustomMonthViewComponentButtonChange()">
                 Custom Month View
@@ -47,6 +53,7 @@
 
             <mat-form-field
                 appearance="outline"
+                matTooltip="Change the Material Theme of the app"
                 class="toolbar__theme-switch">
                 <mat-select
                     [value]="selectedTheme"
