@@ -12,7 +12,7 @@ import { tap } from 'rxjs/operators';
 @Component({
     template: ''
 })
-export abstract class BaseViewComponent implements OnInit, OnDestroy {
+export abstract class ViewBaseComponent implements OnInit, OnDestroy {
     @Input() options$: Observable<CalendarOptions>;
     @Input() events$: Observable<CalendarEvent[]>;
     @Input() selectedDate$: Observable<Date>;

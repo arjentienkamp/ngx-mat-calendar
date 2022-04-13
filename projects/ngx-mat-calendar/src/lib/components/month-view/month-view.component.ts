@@ -8,14 +8,14 @@ import { CalendarEvent } from '../../models/CalendarEvent';
 import { NEXT, PREVIOUS } from '../../models/Directions';
 import { daysOfWeek } from '../../models/Times';
 import { FormattingService } from '../../services/formatting.service';
-import { BaseViewComponent } from '../shared/base-view/base-view.component';
+import { ViewBaseComponent } from '../shared/view-base/view-base.component';
 
 @Component({
     selector: 'month-view',
     templateUrl: './month-view.component.html',
     styleUrls: ['./month-view.component.scss']
 })
-export class MonthViewComponent extends BaseViewComponent implements OnInit, OnDestroy {
+export class MonthViewComponent extends ViewBaseComponent implements OnInit, OnDestroy {
     @Output() setCalendarOffset: EventEmitter<string> = new EventEmitter();
 
     monthView = {} as MonthView;

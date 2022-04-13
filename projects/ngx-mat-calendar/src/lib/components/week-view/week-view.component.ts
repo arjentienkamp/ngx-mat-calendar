@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { add, startOfWeek } from 'date-fns';
-import { BaseViewComponent } from '../shared/base-view/base-view.component';
+import { ViewBaseComponent } from '../shared/view-base/view-base.component';
 import { WeekView } from '../../models/Calendar';
 import { CalendarEvent } from '../../models/CalendarEvent';
 import { FormattingService } from '../../services/formatting.service';
@@ -12,7 +12,7 @@ import { CalendarDay } from '../../models/CalendarDay';
     templateUrl: './week-view.component.html',
     styleUrls: ['./week-view.component.scss']
 })
-export class WeekViewComponent extends BaseViewComponent implements OnInit {
+export class WeekViewComponent extends ViewBaseComponent implements OnInit {
     weekView = {} as WeekView;
 
     constructor(

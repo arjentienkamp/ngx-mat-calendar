@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { BaseViewComponent } from '../shared/base-view/base-view.component';
+import { ViewBaseComponent } from '../shared/view-base/view-base.component';
 import { DayView } from '../../models/Calendar';
 import { CalendarEvent } from '../../models/CalendarEvent';
 import { FormattingService } from '../../services/formatting.service';
@@ -11,7 +11,7 @@ import { CalendarDay } from '../../models/CalendarDay';
     templateUrl: './day-view.component.html',
     styleUrls: ['./day-view.component.scss']
 })
-export class DayViewComponent extends BaseViewComponent implements OnInit {
+export class DayViewComponent extends ViewBaseComponent implements OnInit {
     dayView = {} as DayView;
 
     constructor(
