@@ -9,11 +9,12 @@ import { DAY, WEEK, MONTH, Views } from './models/Views';
 import { Periods } from './models/Times';
 import { BehaviorSubject, Subscription } from 'rxjs';
 import { tap } from 'rxjs/operators';
-import { PREVIOUS } from './models/Directions';
+import { NEXT, PREVIOUS } from './models/Directions';
 import { MatDialog } from '@angular/material/dialog';
 import { KeyboardShortcutDialogComponent } from './components/dialogs/keyboard-shortcut-dialog/keyboard-shortcut-dialog.component';
 import { colors } from './models/Colors';
 import { MatCalendar } from '@angular/material/datepicker';
+import { ARROWLEFT, ARROWRIGHT, D, M, N, T, W } from './models/KeyboardShortcuts';
 
 @Component({
     selector: 'ngx-mat-calendar',
@@ -168,24 +169,32 @@ export class NgxMatCalendarComponent implements OnInit, OnDestroy {
 
     handleKeyboardEvents(event: KeyboardEvent): void {
         switch (event.key) {
-            case 'd':
+            case D:
                 this.selectedView = DAY;
                 break;
 
-            case 'w':
+            case W:
                 this.selectedView = WEEK;
                 break;
 
-            case 'm':
+            case M:
                 this.selectedView = MONTH;
                 break;
 
-            case 't':
+            case T:
                 this.setCalendarToday();
                 break;
 
-            case 'n':
+            case N:
                 this.addButtonClick.emit();
+                break;
+
+            case ARROWLEFT:
+                this.setCalendarOffset(PREVIOUS);
+                break;
+
+            case ARROWRIGHT:
+                this.setCalendarOffset(NEXT);
                 break;
 
             default:
