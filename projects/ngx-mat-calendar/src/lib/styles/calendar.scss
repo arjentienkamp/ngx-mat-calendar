@@ -8,6 +8,12 @@
 
     color: $color-gray-medium;
     text-align: center;
+
+    @include max-width('sm') {
+        width: 30px;
+        margin-right: 15px;
+        font-size: $font-size-xs;
+    }
 }
 
 .time-cell {
@@ -37,6 +43,10 @@
     flex-direction: row;
     margin-left: 79px;
     border-left: 1px solid $color-gray-light;
+
+    @include max-width('sm') {
+        margin-left: 44px;
+    }
 }
 
 .calendar__day {
@@ -75,6 +85,12 @@
                 height: 30px;
                 font-size: $margin-sm;
             }
+
+            @include max-width('sm') {
+                width: 15px;
+                height: 15px;
+                font-size: $margin-xs;
+            }
         }   
     }
 
@@ -95,6 +111,10 @@
     margin-left: 79px;
     background-color: $color-lightest;
     border-left: 1px solid $color-gray-light;
+
+    @include max-width('sm') {
+        margin-left: 44px;
+    }
 
     .day__lane {
         position: relative;
